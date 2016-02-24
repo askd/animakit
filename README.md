@@ -1,2 +1,2 @@
-# reanimation
-React Animation Pack
+# animakit
+React animation kit
