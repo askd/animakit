@@ -4,7 +4,7 @@
   "description": "React animation kit. Homepage",
   "scripts": {
     "clean": "rimraf dist",
-    "build:webpack": "cross-env NODE_ENV=production webpack --config webpack.config.prod.js",
+    "build:webpack": "cross-env NODE_ENV=production webpack",
     "build": "npm run clean && npm run build:webpack",
     "dev": "node devServer.js"
   },

@@ -1,17 +1,21 @@
 const path              = require('path');
 const frontPath         = path.join(__dirname, 'front');
+const srcPath           = path.join(frontPath, 'src');
+const nodeModulesPath   = path.join(__dirname, 'node_modules');
 
 const webpack           = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const postcss           = require(path.join(frontPath, 'postcss', 'plugins'));
 
-module.exports = {
-  devtool: 'cheap-module-eval-source-map',
+const production = process.env.NODE_ENV === 'production';
+
+const config = {
+  devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
   entry: [
     'webpack-hot-middleware/client',
-    path.join(frontPath, 'src', 'index')
+    path.join(srcPath, 'index')
   ],
 
   output: {
@@ -24,17 +28,15 @@ module.exports = {
     root:               frontPath,
     extensions:         ['', '.js', '.jsx'],
     modulesDirectories: [
-      path.join(frontPath, 'src'),
-      path.join(__dirname, 'node_modules')
+      srcPath,
+      nodeModulesPath
     ]
   },
 
   plugins: [
     new ExtractTextPlugin('application.css', {
       allChunks: true
-    }),
-    new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    })
   ],
 
   module: {
@@ -49,10 +51,42 @@ module.exports = {
         loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
-        )
+        ),
+        include: srcPath
+      },
+      {
+        test:   /\.css/,
+        loader: ExtractTextPlugin.extract(
+          'style',
+          'css!postcss'
+        ),
+        include: nodeModulesPath
       }
     ]
   },
 
   postcss
 };
+
+if (production) {
+  config.plugins.push(
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      compressor: {
+        warnings: false
+      }
+    })
+  );
+} else {
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  );
+}
+
+module.exports = config;
