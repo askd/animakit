@@ -1,22 +1,25 @@
 const path              = require('path');
-const frontPath         = path.join(__dirname, 'front');
-const srcPath           = path.join(frontPath, 'src');
+const srcPath           = path.join(__dirname, 'src');
 const nodeModulesPath   = path.join(__dirname, 'node_modules');
 
 const webpack           = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const postcss           = require(path.join(frontPath, 'postcss', 'plugins'));
+const assets            = require('postcss-assets');
+const nested            = require('postcss-nested');
+const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
 
 const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
-  entry: [
-    'webpack-hot-middleware/client',
-    path.join(srcPath, 'index')
-  ],
+  entry: production ?
+    path.join(srcPath, 'index') :
+    [
+      'webpack-hot-middleware/client',
+      path.join(srcPath, 'index')
+    ],
 
   output: {
     path:       path.join(__dirname, 'dist'),
@@ -25,7 +28,7 @@ const config = {
   },
 
   resolve: {
-    root:               frontPath,
+    root:               srcPath,
     extensions:         ['', '.js', '.jsx'],
     modulesDirectories: [
       srcPath,
@@ -44,7 +47,7 @@ const config = {
       {
         test:    /\.jsx?/,
         loader:  'babel',
-        include: path.join(frontPath, 'src')
+        include: srcPath
       },
       {
         test:   /\.css/,
@@ -53,19 +56,15 @@ const config = {
           'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
         ),
         include: srcPath
-      },
-      {
-        test:   /\.css/,
-        loader: ExtractTextPlugin.extract(
-          'style',
-          'css!postcss'
-        ),
-        include: nodeModulesPath
       }
     ]
   },
 
-  postcss
+  postcss: [
+    assets(),
+    nested(),
+    autoprefixer()
+  ]
 };
 
 if (production) {

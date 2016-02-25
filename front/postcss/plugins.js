@@ -3,7 +3,7 @@ const nested          = require('postcss-nested');
 const autoprefixer    = require('autoprefixer');
 
 module.exports = [
-  autoreset(),
   nested(),
+  autoreset(),
   autoprefixer()
 ];

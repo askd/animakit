@@ -1,0 +1,209 @@
+body {
+  overflow: hidden;
+}
+
+.root {
+
+}
+
+.header {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  background: rgba(255,255,255,.75);
+  font-family: 'Trebuchet MS',Arial,sans-serif;
+}
+
+.title {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 700;
+}
+
+.settings {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.settingsName {
+  float: left;
+  clear: left;
+  width: 70px;
+  padding-top: 5px;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.settingsData {
+  margin-left: 70px;
+  padding-top: 5px;
+  height: 20px;
+}
+.settingsDataNL {
+  composes: settingsData;
+  clear: left;
+  margin-left: 0;
+  padding-top: 0;
+}
+
+.settingsVal {
+  font-size: 14px;
+  line-height: 20px;
+  margin-right: 5px;
+}
+
+.button {
+  min-width: 20px;
+  height: 20px;
+  margin: 0 0 0 5px;
+  padding: 0;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+  appearance: none;
+  border: 0;
+  border-radius: 10px;
+  outline: none;
+  color: #000;
+  text-align: center;
+  font-family: 'Trebuchet MS',Arial,sans-serif;
+  font-size: 16px;
+  line-height: 18px;
+  cursor: pointer;
+
+  &:first-child {
+    margin-left: 0;
+  }
+
+  &:disabled {
+    opacity: 1;
+    color: rgba(0,0,0,.25);
+  }
+}
+
+.buttonRotate {
+  composes: button;
+  padding: 0 10px;
+}
+
+.input {
+  width: 145px;
+  height: 20px;
+  margin: 0;
+  padding: 0 5px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.25);
+  appearance: none;
+  border: 0;
+  outline: none;
+  font-family: 'Trebuchet MS',Arial,sans-serif;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Trebuchet MS',Arial,sans-serif;
+  color: #fff;
+
+  &1 {
+    composes: side;
+    background: #f50d1d;
+  }
+  &2 {
+    composes: side;
+    background: #f87c22;
+  }
+  &3 {
+    composes: side;
+    background: #f6b30a;
+  }
+  &4 {
+    composes: side;
+    background: #239e34;
+  }
+  &5 {
+    composes: side;
+    background: #2e7ce1;
+  }
+  &6 {
+    composes: side;
+    background: #bb39db;
+  }
+}
+
+.box1 {
+  composes: box;
+
+  & .side {
+    width: 200px;
+    height: 200px;
+  }
+
+  & .side2 {
+    width: 150px;
+    height: 150px;
+  }
+
+  & .side3 {
+    width: 100px;
+    height: 100px;
+  }
+
+  & .side4 {
+    width: 250px;
+    height: 250px;
+  }
+
+  & .side6 {
+    width: 150px;
+    height: 150px;
+  }
+}
+
+.box2 {
+  composes: box;
+
+  & .side {
+    width: 600px;
+    height: 400px;
+  }
+}
+
+.box3 {
+  composes: box;
+
+  & .side {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
+.github {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  right: 0;
+  width: 149px;
+  height: 149px;
+  white-space: nowrap;
+  text-indent: 150px;
+  overflow: hidden;
+  background-image: inline('images/github.png');
+  background-repeat: no-repeat;
+}
