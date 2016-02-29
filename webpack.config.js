@@ -15,7 +15,10 @@ const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
   entry: production ?
-    path.join(srcPath, 'index') :
+    [
+      'babel-polyfill',
+      path.join(srcPath, 'index')
+    ] :
     [
       'webpack-hot-middleware/client',
       path.join(srcPath, 'index')
