@@ -125,19 +125,18 @@ export class RotatorFull extends React.Component {
     return (
       <div className = { styles.root }>
         <div className = { styles.header }>
-          <h2 className = { styles.title }>Animakit &gt; Rotator &gt; Full</h2>
           <dl className = { styles.settings }>
             <dt className = { styles.settingsName }>Rotate</dt>
             <dd className = { styles.settingsData }>
               <button
                 className = { styles.buttonRotate }
-                onClick = { this.listeners.prevSide }
+                onClick   = { this.listeners.prevSide }
               >
                 &larr;
               </button>
               <button
                 className = { styles.buttonRotate }
-                onClick = { this.listeners.nextSide }
+                onClick   = { this.listeners.nextSide }
               >
                 &rarr;
               </button>
@@ -147,15 +146,15 @@ export class RotatorFull extends React.Component {
               <span className = { styles.settingsVal }>{ this.state.sidesCount }</span>
               <button
                 className = { styles.button }
-                disabled = { this.state.sidesCount === this.props.maxSidesCount }
-                onClick  = { this.listeners.addSide }
+                disabled  = { this.state.sidesCount === this.props.maxSidesCount }
+                onClick   = { this.listeners.addSide }
               >
                 +
               </button>
               <button
                 className = { styles.button }
-                disabled = { this.state.sidesCount === this.props.minSidesCount }
-                onClick  = { this.listeners.removeSide }
+                disabled  = { this.state.sidesCount === this.props.minSidesCount }
+                onClick   = { this.listeners.removeSide }
               >
                 -
               </button>
@@ -166,15 +165,15 @@ export class RotatorFull extends React.Component {
               <span className = { styles.settingsVal }>{ this.state.zoom }</span>
               <button
                 className = { styles.button }
-                disabled = { this.state.zoom === this.props.maxZoom }
-                onClick  = { this.listeners.zoomIn }
+                disabled  = { this.state.zoom === this.props.maxZoom }
+                onClick   = { this.listeners.zoomIn }
               >
                 +
               </button>
               <button
                 className = { styles.button }
-                disabled={ this.state.zoom === this.props.minZoom }
-                onClick={ this.listeners.zoomOut }
+                disabled  = { this.state.zoom === this.props.minZoom }
+                onClick   = { this.listeners.zoomOut }
               >
                 -
               </button>

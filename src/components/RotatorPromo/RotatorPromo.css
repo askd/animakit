@@ -1,0 +1,59 @@
+@import '../vars.css';
+
+.root {
+  width: 400px;
+}
+.slide {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-family: $font;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0,0,0,.5);
+  text-align: center;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.25);
+  }
+}
+.slideTitle {
+  position: relative;
+  width: 100%;
+  font-size: 24px;
+  line-height: 30px;
+}
+.slideText {
+  position: relative;
+  margin: 20px 40px;
+  font-size: 16px;
+  line-height: 20px;
+}
+.slideWinter {
+  composes: slide;
+  background-image: url('./images/winter.jpg');
+}
+.slideSpring {
+  composes: slide;
+  background-image: url('./images/spring.jpg');
+}
+.slideSummer {
+  composes: slide;
+  background-image: url('./images/summer.jpg');
+}
+.slideAutumn {
+  composes: slide;
+  background-image: url('./images/autumn.jpg');
+}

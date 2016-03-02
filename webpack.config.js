@@ -5,8 +5,8 @@ const nodeModulesPath   = path.join(__dirname, 'node_modules');
 const webpack           = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const precss            = require('precss');
 const assets            = require('postcss-assets');
-const nested            = require('postcss-nested');
 const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
@@ -15,17 +15,17 @@ const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
   entry: production ?
-    [
-      'babel-polyfill',
-      path.join(srcPath, 'index')
-    ] :
-    [
-      'webpack-hot-middleware/client',
-      path.join(srcPath, 'index')
-    ],
+  [
+    'babel-polyfill',
+    path.join(srcPath, 'index')
+  ] :
+  [
+    'webpack-hot-middleware/client',
+    path.join(srcPath, 'index')
+  ],
 
   output: {
-    path:       path.join(__dirname, 'dist'),
+    path:       path.join(__dirname, 'assets'),
     filename:   'application.js',
     publicPath: '/assets/'
   },
@@ -48,24 +48,29 @@ const config = {
   module: {
     loaders: [
       {
-        test:    /\.jsx?/,
+        test:    /\.jsx?$/,
         loader:  'babel',
         include: srcPath
       },
       {
-        test:   /\.css/,
-        loader: ExtractTextPlugin.extract(
+        test:    /\.css$/,
+        /* loader: ExtractTextPlugin.extract(
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
-        ),
+        ), */
+        loader:  'style!css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss',
         include: srcPath
+      },
+      {
+        test:   /\.jpg$/,
+        loader: 'file?name=[name].[ext]'
       }
     ]
   },
 
   postcss: [
+    precss(),
     assets(),
-    nested(),
     autoprefixer()
   ]
 };
