@@ -70,7 +70,7 @@ a.navLink {
   height: 200px;
   box-sizing: border-box;
   padding: 80px;
-  background: #f50d1d;
+  background: $color1;
   color: #fff;
   font-size: 14px;
   line-height: 20px;

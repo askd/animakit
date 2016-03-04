@@ -1,8 +1,51 @@
 @import '../vars.css';
 
 .root {
+  position: relative;
   width: 400px;
 }
+
+.nav {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  width: 20px;
+}
+.navItem {
+  margin: 10px 0;
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0,0,0,.5);
+    transition: transform .5s;
+  }
+
+  &:hover::after {
+    transform: scale(1.5);
+  }
+}
+.navItemActive {
+  composes: navItem;
+
+  &::after {
+    background: $color3;
+  }
+
+  &:hover::after {
+    transform: scale(1);
+  }
+}
+
 .slide {
   position: relative;
   width: 400px;
@@ -32,8 +75,9 @@
 .slideTitle {
   position: relative;
   width: 100%;
-  font-size: 24px;
+  font-size: 30px;
   line-height: 30px;
+  color: $color3;
 }
 .slideText {
   position: relative;

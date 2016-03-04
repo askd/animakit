@@ -3,29 +3,38 @@ import styles          from './RotatorPromo.css';
 import AnimakitRotator from 'animakit-rotator';
 
 export class RotatorPromo extends React.Component {
-  state = {
-    side:       0,
+  static propTypes = {
+    sidesCount: React.PropTypes.number
+  };
+
+  static defaultProps = {
     sidesCount: 4
   };
 
+  state = {
+    side: 0
+  };
+
   listeners = {
+    setSide:  [],
     nextSide: this.nextSide.bind(this)
   };
 
+  setSide(side) {
+    this.setState({ side });
+  }
+
   nextSide() {
     let side = this.state.side + 1;
-    if (side >= this.state.sidesCount) side = 0;
+    if (side >= this.props.sidesCount) side = 0;
 
     this.setState({ side });
   }
 
-  componentDidMount() {
-    if (this.interval) clearInterval(this.interval);
-    this.interval = setInterval(this.listeners.nextSide, 12000);
-  }
-
-  componentWillUnmount() {
-    if (this.interval) clearInterval(this.interval);
+  componentWillMount() {
+    this.listeners.setSide = Array.from(Array(this.props.sidesCount), (_, i) => {
+      return this.setSide.bind(this, i);
+    }, this);
   }
 
   render() {
@@ -76,6 +85,17 @@ export class RotatorPromo extends React.Component {
             </p>
           </div>
         </AnimakitRotator>
+        <ul className = { styles.nav }>
+          { Array.from(Array(this.props.sidesCount), (_, i) => {
+            return (
+              <li
+                key = { i }
+                className = { this.state.side === i ? styles.navItemActive : styles.navItem }
+                onClick = { this.listeners.setSide[i] }
+              />
+            );
+          }, this)}
+        </ul>
       </div>
     );
   }

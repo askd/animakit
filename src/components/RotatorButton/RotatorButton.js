@@ -4,8 +4,7 @@ import AnimakitRotator from 'animakit-rotator';
 
 export class RotatorButton extends React.Component {
   state = {
-    side:       0,
-    sidesCount: 2
+    side: 0
   };
 
   listeners = {

@@ -27,7 +27,7 @@ const config = {
   output: {
     path:       path.join(__dirname, 'assets'),
     filename:   'application.js',
-    publicPath: '/assets/'
+    publicPath: production ? '/animakit/assets/' : '/assets/'
   },
 
   resolve: {
@@ -54,11 +54,11 @@ const config = {
       },
       {
         test:    /\.css$/,
-        /* loader: ExtractTextPlugin.extract(
+        loader: production ?
+        ExtractTextPlugin.extract(
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
-        ), */
-        loader:  'style!css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss',
+        ) : 'style!css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss',
         include: srcPath
       },
       {
