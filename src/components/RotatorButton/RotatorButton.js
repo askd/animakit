@@ -3,8 +3,12 @@ import styles          from './RotatorButton.css';
 import AnimakitRotator from 'animakit-rotator';
 
 export class RotatorButton extends React.Component {
+  static propTypes = {
+    handleChangeSide: React.PropTypes.func
+  };
+
   state = {
-    side: 0
+    side: 'button'
   };
 
   listeners = {
@@ -12,17 +16,19 @@ export class RotatorButton extends React.Component {
   };
 
   showLoader() {
-    this.setState({ side: 1 });
+    this.setState({ side: 'loader' });
+    this.props.handleChangeSide('loader');
 
     if (this.loaderTimeout) clearTimeout(this.loaderTimeout);
 
     this.loaderTimeout = setTimeout(() => {
       this.showButton();
-    }, 3000);
+    }, 1000);
   }
 
   showButton() {
-    this.setState({ side: 0 });
+    this.setState({ side: 'button' });
+    this.props.handleChangeSide('button');
   }
 
   onClick() {

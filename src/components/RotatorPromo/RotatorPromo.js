@@ -4,36 +4,35 @@ import AnimakitRotator from 'animakit-rotator';
 
 export class RotatorPromo extends React.Component {
   static propTypes = {
-    sidesCount: React.PropTypes.number
+    sides:            React.PropTypes.array,
+    handleChangeSide: React.PropTypes.func
   };
 
   static defaultProps = {
-    sidesCount: 4
+    sides: [
+      'spring',
+      'summer',
+      'autumn',
+      'winter'
+    ]
   };
 
   state = {
-    side: 0
+    side: 'spring'
   };
 
   listeners = {
-    setSide:  [],
-    nextSide: this.nextSide.bind(this)
+    setSide: []
   };
 
   setSide(side) {
     this.setState({ side });
-  }
-
-  nextSide() {
-    let side = this.state.side + 1;
-    if (side >= this.props.sidesCount) side = 0;
-
-    this.setState({ side });
+    this.props.handleChangeSide(side);
   }
 
   componentWillMount() {
-    this.listeners.setSide = Array.from(Array(this.props.sidesCount), (_, i) => {
-      return this.setSide.bind(this, i);
+    this.listeners.setSide = this.props.sides.map(side => {
+      return this.setSide.bind(this, side);
     }, this);
   }
 
@@ -45,7 +44,7 @@ export class RotatorPromo extends React.Component {
           duration = { 2000 }
         >
           <div
-            key       = "spring"
+            key       = { this.props.sides[0] }
             className = { styles.slideSpring }
           >
             <h2 className = { styles.slideTitle }>Spring</h2>
@@ -54,7 +53,7 @@ export class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = "summer"
+            key       = { this.props.sides[1] }
             className = { styles.slideSummer }
           >
             <h2 className = { styles.slideTitle }>Summer</h2>
@@ -63,7 +62,7 @@ export class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = "autumn"
+            key       = { this.props.sides[2] }
             className = { styles.slideAutumn }
           >
             <h2 className = { styles.slideTitle }>Autumn</h2>
@@ -74,7 +73,7 @@ export class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = "winter"
+            key       = { this.props.sides[3] }
             className = { styles.slideWinter }
           >
             <h2 className = { styles.slideTitle }>Winter</h2>
@@ -86,11 +85,11 @@ export class RotatorPromo extends React.Component {
           </div>
         </AnimakitRotator>
         <ul className = { styles.nav }>
-          { Array.from(Array(this.props.sidesCount), (_, i) => {
+          { this.props.sides.map((side, i) => {
             return (
               <li
-                key = { i }
-                className = { this.state.side === i ? styles.navItemActive : styles.navItem }
+                key = { side }
+                className = { this.state.side === side ? styles.navItemActive : styles.navItem }
                 onClick = { this.listeners.setSide[i] }
               />
             );

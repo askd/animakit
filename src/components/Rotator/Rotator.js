@@ -13,12 +13,22 @@ export class Rotator extends React.Component {
   };
 
   state = {
-    showFull: false
+    showFull: false,
+    side:     {
+      button: 'button',
+      form:   'signin',
+      promo:  'spring'
+    }
   };
 
   listeners = {
-    launch: this.launch.bind(this),
-    close:  this.close.bind(this)
+    launch:     this.launch.bind(this),
+    close:      this.close.bind(this),
+    changeSide: {
+      button: this.changeSide.bind(this, 'button'),
+      form:   this.changeSide.bind(this, 'form'),
+      promo:  this.changeSide.bind(this, 'promo')
+    }
   };
 
   launch() {
@@ -33,21 +43,30 @@ export class Rotator extends React.Component {
     });
   }
 
+  changeSide(name, value) {
+    const side = this.state.side;
+    side[name] = value;
+    this.setState({ side });
+  }
+
   render() {
     return (
       <div className = { styles.root }>
         <ul className = { styles.list }>
-          <li className = { styles.item }>
+          <li
+            key = "button"
+            className = { styles.item }
+          >
             <h2 className = { styles.itemTitle }>Submit Button</h2>
             <div className = { styles.itemContent }>
               <div className = { styles.itemComponent }>
-                <RotatorButton />
+                <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
               </div>
               <div className = { styles.itemCode }>
                 <pre>
                   <code className="jsx">
                     {
-`<AnimakitRotator side={ this.state.side }>
+`<AnimakitRotator side="${ this.state.side.button }">
   <button key="button">Submit</button>
   <div key="loader" className="loader"></div>
 </AnimakitRotator>`
@@ -57,17 +76,21 @@ export class Rotator extends React.Component {
               </div>
             </div>
           </li>
-          <li className = { styles.item }>
+
+          <li
+            key = "form"
+            className = { styles.item }
+          >
             <h2 className = { styles.itemTitle }>Auth Form</h2>
             <div className = { styles.itemContent }>
               <div className = { styles.itemComponent }>
-                <RotatorForm />
+                <RotatorForm handleChangeSide = { this.listeners.changeSide.form } />
               </div>
               <div className = { styles.itemCode }>
                 <pre>
                   <code className="jsx">
                   {
-`<AnimakitRotator side={ this.state.side }>
+`<AnimakitRotator side="${ this.state.side.form }">
   <form key="signin" method="post">
     <h2>Sign In</h2>
     ...
@@ -90,17 +113,21 @@ export class Rotator extends React.Component {
               </div>
             </div>
           </li>
-          <li className = { styles.item }>
+
+          <li
+            key = "promo"
+            className = { styles.item }
+          >
             <h2 className = { styles.itemTitle }>Promo Page</h2>
             <div className = { styles.itemContent }>
               <div className = { styles.itemComponent }>
-                <RotatorPromo />
+                <RotatorPromo handleChangeSide = { this.listeners.changeSide.promo } />
               </div>
               <div className = { styles.itemCode }>
                 <pre>
                   <code className="jsx">
                     {
-`<AnimakitRotator side={ this.state.side }>
+`<AnimakitRotator side="${ this.state.side.promo }">
   <div key="spring" className="spring">
     <h2>Spring</h2>
     ...

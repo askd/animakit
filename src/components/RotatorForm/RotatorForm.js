@@ -3,8 +3,12 @@ import styles          from './RotatorForm.css';
 import AnimakitRotator from 'animakit-rotator';
 
 export class RotatorForm extends React.Component {
+  static propTypes = {
+    handleChangeSide: React.PropTypes.func
+  };
+
   state = {
-    side: 0
+    form: 'signin'
   };
 
   listeners = {
@@ -13,28 +17,21 @@ export class RotatorForm extends React.Component {
     onClickPassRec: this.onClickPassRec.bind(this)
   };
 
-  showSignIn() {
-    this.setState({ side: 0 });
-  }
-
-  showSignUp() {
-    this.setState({ side: 1 });
-  }
-
-  showPassRec() {
-    this.setState({ side: 2 });
+  showForm(form) {
+    this.setState({ form });
+    this.props.handleChangeSide(form);
   }
 
   onClickSignIn() {
-    this.showSignIn();
+    this.showForm('signin');
   }
 
   onClickSignUp() {
-    this.showSignUp();
+    this.showForm('signup');
   }
 
   onClickPassRec() {
-    this.showPassRec();
+    this.showForm('passrec');
   }
 
   render() {
@@ -42,10 +39,12 @@ export class RotatorForm extends React.Component {
       <div className = { styles.root }>
         <AnimakitRotator
           axis = "Y"
-          side = { this.state.side }
+          side = { this.state.form }
         >
-
-          <div className = { styles.form }>
+          <div
+            key = "signin"
+            className = { styles.form }
+          >
             <div className = { styles.formMain }>
               <h2 className={ styles.title }>Sign In</h2>
               <input
@@ -74,7 +73,10 @@ export class RotatorForm extends React.Component {
             </div>
           </div>
 
-          <div className = { styles.form }>
+          <div
+            key = "signup"
+            className = { styles.form }
+          >
             <div className = { styles.formMain }>
               <h2 className={ styles.title }>Sign Up</h2>
               <input
@@ -102,7 +104,10 @@ export class RotatorForm extends React.Component {
             </div>
           </div>
 
-          <div key = "passrec" className = { styles.form }>
+          <div
+            key = "passrec"
+            className = { styles.form }
+          >
             <div className = { styles.formMain }>
               <h2 className={ styles.title }>Password Recovery</h2>
               <p className = { styles.formText }>
