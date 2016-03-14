@@ -1,7 +1,8 @@
-import React    from 'react';
-import { Link } from 'react-router';
+import React           from 'react';
+import { Link }        from 'react-router';
+import AnimakitRotator from 'animakit-rotator';
 
-import styles   from './App.css';
+import styles          from './App.css';
 
 export class App extends React.Component {
   static propTypes = {
@@ -45,14 +46,22 @@ export class App extends React.Component {
         <header className = { styles.header }>
           { this.renderNav() }
         </header>
-        { showLinks && <Link to="/rotator" className={ styles.item }>Rotator</Link> }
+        { showLinks && <Link to = "/rotator" className = { styles.itemRotator }>
+          <AnimakitRotator>
+            <div className = { styles.itemRotatorSide } key = "1">Rotator</div>
+            <div className = { styles.itemRotatorSide } key = "2" />
+            <div className = { styles.itemRotatorSide } key = "3" />
+            <div className = { styles.itemRotatorSide } key = "4" />
+            <div className = { styles.itemRotatorSide } key = "5" />
+          </AnimakitRotator>
+        </Link> }
         { !showLinks && this.props.children }
-        <div className={ styles.github }>
-          <div className={ styles.githubRibbon }>
+        <div className = { styles.github }>
+          <div className = { styles.githubRibbon }>
             <a
               className = { styles.githubLink }
-              href="https://github.com/askd/animakit-rotator"
-              target="_blank"
+              href = "https://github.com/askd/animakit-rotator"
+              target = "_blank"
             >Fork me on GitHub</a>
           </div>
         </div>

@@ -71,7 +71,7 @@ export class Rotator extends React.Component {
                 <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
               </div>
               <div className = { this.state.sideChanged === 'button' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="default">
+                <SyntaxHighlighter language="xml" stylesheet="github-gist">
                   {
 `<AnimakitRotator side="${ this.state.side.button }">
   <button key="button">Submit</button>
@@ -93,7 +93,7 @@ export class Rotator extends React.Component {
                 <RotatorForm handleChangeSide = { this.listeners.changeSide.form } />
               </div>
               <div className = { this.state.sideChanged === 'form' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="default">
+                <SyntaxHighlighter language="xml" stylesheet="github-gist">
                   {
 `<AnimakitRotator side="${ this.state.side.form }">
   <form key="signin" method="post">
@@ -128,7 +128,7 @@ export class Rotator extends React.Component {
                 <RotatorPromo handleChangeSide = { this.listeners.changeSide.promo } />
               </div>
               <div className = { this.state.sideChanged === 'promo' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="default">
+                <SyntaxHighlighter language="xml" stylesheet="github-gist">
                   {
 `<AnimakitRotator side="${ this.state.side.promo }">
   <div key="mars" className="mars">

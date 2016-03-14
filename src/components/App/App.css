@@ -1,5 +1,9 @@
 @import '../vars.css';
 
+body {
+  background: #f7f7f7;
+}
+
 .root {
   min-width: 1000px;
   padding-top: 36px;
@@ -69,7 +73,7 @@ a.navLink {
   width: 200px;
   height: 200px;
   box-sizing: border-box;
-  padding: 80px;
+  padding: 90px;
   background: $color1;
   color: #fff;
   font-size: 14px;
@@ -77,6 +81,25 @@ a.navLink {
   text-align: center;
   text-decoration: none;
 }
+.itemRotator {
+  display: block;
+  margin: 70px 20px;
+  width: 200px;
+  height: 100px;
+}
+.itemRotatorSide {
+  width: 200px;
+  height: 100px;
+  box-sizing: border-box;
+  padding: 40px;
+  background: $color1;
+  color: #fff;
+  font-family: $font;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
 .github {
   position: fixed;
   z-index: 10;
