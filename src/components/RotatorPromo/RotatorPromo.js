@@ -10,15 +10,15 @@ export class RotatorPromo extends React.Component {
 
   static defaultProps = {
     sides: [
-      'spring',
-      'summer',
-      'autumn',
-      'winter'
+      'mars',
+      'earth',
+      'venus',
+      'mercury'
     ]
   };
 
   state = {
-    side: 'spring'
+    side: 'mars'
   };
 
   listeners = {
@@ -45,42 +45,45 @@ export class RotatorPromo extends React.Component {
         >
           <div
             key       = { this.props.sides[0] }
-            className = { styles.slideSpring }
+            className = { styles.slideMars }
           >
-            <h2 className = { styles.slideTitle }>Spring</h2>
+            <h2 className = { styles.slideTitle }>Mars</h2>
             <p className = { styles.slideText }>
-              Spring is the time of year when it is summer in the sun and&nbsp;winter in&nbsp;the&nbsp;shade.
+              {`Mars is a terrestrial planet with a thin atmosphere,
+              having surface features reminiscent both of the impact craters of the Moon
+              and the valleys, deserts, and polar ice caps of Earth`}
             </p>
           </div>
           <div
             key       = { this.props.sides[1] }
-            className = { styles.slideSummer }
+            className = { styles.slideEarth }
           >
-            <h2 className = { styles.slideTitle }>Summer</h2>
+            <h2 className = { styles.slideTitle }>Earth</h2>
             <p className = { styles.slideText }>
-              Summertime is always the best of&nbsp;what might be.
+              {`Earth is the third planet from the Sun, the densest planet in the Solar System,
+                the largest of the Solar System's four terrestrial planets,
+                and the only astronomical object known to harbor life`}
             </p>
           </div>
           <div
             key       = { this.props.sides[2] }
-            className = { styles.slideAutumn }
+            className = { styles.slideVenus }
           >
-            <h2 className = { styles.slideTitle }>Autumn</h2>
+            <h2 className = { styles.slideTitle }>Venus</h2>
             <p className = { styles.slideText }>
-              Autumn seemed to arrive suddenly that&nbsp;year.
-              <br />
-              The morning of the first September was crisp and golden as an apple.
+              {`Venus is a terrestrial planet and is sometimes called Earth's "sister planet"
+              because of their similar size, mass, proximity to the Sun and bulk composition`}
             </p>
           </div>
           <div
             key       = { this.props.sides[3] }
-            className = { styles.slideWinter }
+            className = { styles.slideMercury }
           >
-            <h2 className = { styles.slideTitle }>Winter</h2>
+            <h2 className = { styles.slideTitle }>Mercury</h2>
             <p className = { styles.slideText }>
-              If we had no winter, the spring would not be so pleasant:
-              <br />
-              if we did not sometimes taste of&nbsp;adversity, prosperity would not be so welcome.
+              {`Mercury is one of four terrestrial planets in the Solar System,
+                the smallest, the one closest to the Sun,
+                and is a rocky body like Earth`}
             </p>
           </div>
         </AnimakitRotator>

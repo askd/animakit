@@ -24,25 +24,42 @@
     display: block;
     width: 10px;
     height: 10px;
-    border-radius: 5px;
+    border-radius: 50%;
     background: #fff;
-    box-shadow: 0 0 5px rgba(0,0,0,.5);
-    transition: transform .5s;
+    transition: all .5s;
   }
 
-  &:hover::after {
-    transform: scale(1.5);
+  &:nth-child(1):hover::after {
+    box-shadow: 0 0 0 3px $color1;
+  }
+  &:nth-child(2):hover::after {
+    box-shadow: 0 0 0 3px $color5;
+  }
+  &:nth-child(3):hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+  &:nth-child(4):hover::after {
+    box-shadow: 0 0 0 3px $color6;
   }
 }
 .navItemActive {
   composes: navItem;
 
-  &::after {
-    background: $color3;
+  &:nth-child(1)::after {
+    background: $color1;
+    box-shadow: 0 0 0 3px $color1;
   }
-
-  &:hover::after {
-    transform: scale(1);
+  &:nth-child(2)::after {
+    background: $color5;
+    box-shadow: 0 0 0 3px $color5;
+  }
+  &:nth-child(3)::after {
+    background: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+  &:nth-child(4)::after {
+    background: $color6;
+    box-shadow: 0 0 0 3px $color6;
   }
 }
 
@@ -53,13 +70,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;;
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
   font-family: $font;
   color: #fff;
-  text-shadow: 0 0 5px rgba(0,0,0,.5);
   text-align: center;
 
   &::before {
@@ -74,30 +90,31 @@
 }
 .slideTitle {
   position: relative;
-  width: 100%;
-  font-size: 30px;
-  line-height: 30px;
-  color: $color3;
+  width: 340px;
+  padding: 20px;
+  font-size: 40px;
+  line-height: 1;
 }
 .slideText {
   position: relative;
-  margin: 20px 40px;
-  font-size: 16px;
-  line-height: 20px;
+  width: 340px;
+  padding: 20px;
+  font-size: 12px;
+  line-height: 18px;
 }
-.slideWinter {
+.slideMars {
   composes: slide;
-  background-image: url('./images/winter.jpg');
+  background-image: url('./images/mars.jpg');
 }
-.slideSpring {
+.slideEarth {
   composes: slide;
-  background-image: url('./images/spring.jpg');
+  background-image: url('./images/earth.jpg');
 }
-.slideSummer {
+.slideVenus {
   composes: slide;
-  background-image: url('./images/summer.jpg');
+  background-image: url('./images/venus.jpg');
 }
-.slideAutumn {
+.slideMercury {
   composes: slide;
-  background-image: url('./images/autumn.jpg');
+  background-image: url('./images/mercury.jpg');
 }

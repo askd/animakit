@@ -50,13 +50,26 @@
   float: left;
   width: 50%;
   max-width: 480px;
+  box-sizing: border-box;
+  padding: 20px;
+  background: rgba(0,0,0,.1);
+  font-family: 'Lucida Console', monospace;
+  font-size: 14px;
+  line-height: 20px;
 
-  & pre {
-    background: rgba(0,0,0,.1);
-    padding: 20px;
-    font-family: 'Lucida Console', monospace;
-    font-size: 14px;
-    line-height: 20px;
+  & > pre > code > span:first-child > span:nth-child(6) {
+    display: inline-block;
+    background: rgba(0,0,0,.125);
+    box-shadow: 0 0 0 2px rgba(0,0,0,.125);
+    border-radius: 10px;
+  }
+}
+
+.itemCodeChanged {
+  composes: itemCode;
+
+  & > pre > code > span:first-child > span:nth-child(6) {
+    animation: blink .5s 1;
   }
 }
 .button {
@@ -87,11 +100,17 @@
   }
 }
 .buttonLaunch {
-  composes: button;;
+  composes: button;
 }
 .buttonClose {
   composes: button;
   position: fixed;
   bottom: 40px;
   left: 20px;
+}
+
+@keyframes blink {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.5); opacity: .5; }
+  100% { transform: scale(1); opacity: 1; }
 }

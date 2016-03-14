@@ -1,4 +1,5 @@
 import React             from 'react';
+import SyntaxHighlighter from 'react-syntax-highlighter';
 
 import styles            from './Rotator.css';
 
@@ -17,8 +18,9 @@ export class Rotator extends React.Component {
     side:     {
       button: 'button',
       form:   'signin',
-      promo:  'spring'
-    }
+      promo:  'mars'
+    },
+    sideChanged: null
   };
 
   listeners = {
@@ -46,7 +48,13 @@ export class Rotator extends React.Component {
   changeSide(name, value) {
     const side = this.state.side;
     side[name] = value;
-    this.setState({ side });
+    const sideChanged = name;
+
+    this.setState({ side, sideChanged });
+
+    setTimeout(() => {
+      this.setState({ sideChanged: null });
+    }, 500);
   }
 
   render() {
@@ -62,17 +70,15 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
               </div>
-              <div className = { styles.itemCode }>
-                <pre>
-                  <code className="jsx">
-                    {
+              <div className = { this.state.sideChanged === 'button' ? styles.itemCodeChanged : styles.itemCode }>
+                <SyntaxHighlighter language="xml" stylesheet="default">
+                  {
 `<AnimakitRotator side="${ this.state.side.button }">
   <button key="button">Submit</button>
   <div key="loader" className="loader"></div>
 </AnimakitRotator>`
-                    }
-                  </code>
-                </pre>
+                  }
+                </SyntaxHighlighter>
               </div>
             </div>
           </li>
@@ -86,9 +92,8 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorForm handleChangeSide = { this.listeners.changeSide.form } />
               </div>
-              <div className = { styles.itemCode }>
-                <pre>
-                  <code className="jsx">
+              <div className = { this.state.sideChanged === 'form' ? styles.itemCodeChanged : styles.itemCode }>
+                <SyntaxHighlighter language="xml" stylesheet="default">
                   {
 `<AnimakitRotator side="${ this.state.side.form }">
   <form key="signin" method="post">
@@ -107,9 +112,8 @@ export class Rotator extends React.Component {
     <button>Reset Password</button>
   </form>
 </AnimakitRotator>`
-                  }
-                  </code>
-                </pre>
+                }
+                </SyntaxHighlighter>
               </div>
             </div>
           </li>
@@ -123,31 +127,29 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorPromo handleChangeSide = { this.listeners.changeSide.promo } />
               </div>
-              <div className = { styles.itemCode }>
-                <pre>
-                  <code className="jsx">
-                    {
+              <div className = { this.state.sideChanged === 'promo' ? styles.itemCodeChanged : styles.itemCode }>
+                <SyntaxHighlighter language="xml" stylesheet="default">
+                  {
 `<AnimakitRotator side="${ this.state.side.promo }">
-  <div key="spring" className="spring">
-    <h2>Spring</h2>
+  <div key="mars" className="mars">
+    <h2>Mars</h2>
     ...
   </div>
-  <div key="summer" className="summer">
-    <h2>Summer</h2>
+  <div key="earth" className="earth">
+    <h2>Earth</h2>
     ...
   </div>
-  <div key="autumn" className="autumn">
-    <h2>Autumn</h2>
+  <div key="venus" className="venus">
+    <h2>Venus</h2>
     ...
   </div>
-  <div key="winter" className="winter">
-    <h2>Winter</h2>
+  <div key="mercury" className="mercury">
+    <h2>Mercury</h2>
     ...
   </div>
 </AnimakitRotator>`
-                    }
-                  </code>
-                </pre>
+                  }
+                </SyntaxHighlighter>
               </div>
             </div>
           </li>
