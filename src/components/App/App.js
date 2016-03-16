@@ -46,15 +46,18 @@ export class App extends React.Component {
         <header className = { styles.header }>
           { this.renderNav() }
         </header>
-        { showLinks && <Link to = "/rotator" className = { styles.itemRotator }>
-          <AnimakitRotator>
-            <div className = { styles.itemRotatorSide } key = "1">Rotator</div>
-            <div className = { styles.itemRotatorSide } key = "2" />
-            <div className = { styles.itemRotatorSide } key = "3" />
-            <div className = { styles.itemRotatorSide } key = "4" />
-            <div className = { styles.itemRotatorSide } key = "5" />
-          </AnimakitRotator>
-        </Link> }
+        { showLinks && <main className = { styles.main }>
+          <p className = { styles.mainText }>React components developed to make your site more friendly ;)</p>
+          <Link to = "/rotator" className = { styles.itemRotator }>
+            <AnimakitRotator>
+              <div className = { styles.itemRotatorSide } key = "1">Rotator</div>
+              <div className = { styles.itemRotatorSide } key = "2" />
+              <div className = { styles.itemRotatorSide } key = "3" />
+              <div className = { styles.itemRotatorSide } key = "4" />
+              <div className = { styles.itemRotatorSide } key = "5" />
+            </AnimakitRotator>
+          </Link>
+        </main> }
         { !showLinks && this.props.children }
         <div className = { styles.github }>
           <div className = { styles.githubRibbon }>

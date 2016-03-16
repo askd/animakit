@@ -60,6 +60,10 @@ export class Rotator extends React.Component {
   render() {
     return (
       <div className = { styles.root }>
+        <div className = { styles.intro }>
+          <p>Rotate your components in three-dimensional space.
+          Just wrap them with AnimakitRotator, set the side and enjoy ;)</p>
+        </div>
         <ul className = { styles.list }>
           <li
             key = "button"
@@ -95,7 +99,7 @@ export class Rotator extends React.Component {
               <div className = { this.state.sideChanged === 'form' ? styles.itemCodeChanged : styles.itemCode }>
                 <SyntaxHighlighter language="xml" stylesheet="github-gist">
                   {
-`<AnimakitRotator side="${ this.state.side.form }">
+`<AnimakitRotator side="${ this.state.side.form }" axis="Y">
   <form key="signin" method="post">
     <h2>Sign In</h2>
     ...
@@ -130,7 +134,7 @@ export class Rotator extends React.Component {
               <div className = { this.state.sideChanged === 'promo' ? styles.itemCodeChanged : styles.itemCode }>
                 <SyntaxHighlighter language="xml" stylesheet="github-gist">
                   {
-`<AnimakitRotator side="${ this.state.side.promo }">
+`<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>
   <div key="mars" className="mars">
     <h2>Mars</h2>
     ...

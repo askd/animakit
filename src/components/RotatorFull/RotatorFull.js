@@ -23,21 +23,28 @@ export class RotatorFull extends React.Component {
     sidesCount: 2,
     zoom:       1,
     back:       true,
+    duration:   1000,
+    durationIn: 1000,
     easing:     'cubic-bezier(.175,.885,.32,1.275)' // 'cubic-bezier(.45,-0.67,.53,1.63)'
   };
 
   listeners = {
-    nextSide:    this.nextSide.bind(this),
-    prevSide:    this.prevSide.bind(this),
-    addSide:     this.addSide.bind(this),
-    removeSide:  this.removeSide.bind(this),
-    resetBack:   this.resetBack.bind(this),
-    resetAxis:   this.resetAxis.bind(this),
-    zoomIn:      this.zoomIn.bind(this),
-    zoomOut:     this.zoomOut.bind(this),
-    resetEasing: this.resetEasing.bind(this),
-    keyDown:     this.keyDown.bind(this)
+    nextSide:      this.nextSide.bind(this),
+    prevSide:      this.prevSide.bind(this),
+    addSide:       this.addSide.bind(this),
+    removeSide:    this.removeSide.bind(this),
+    setBack:       this.setBack.bind(this),
+    setAxis:       this.setAxis.bind(this),
+    zoomIn:        this.zoomIn.bind(this),
+    zoomOut:       this.zoomOut.bind(this),
+    setDuration:   this.setDuration.bind(this),
+    resetDuration: this.resetDuration.bind(this),
+    setEasing:     this.setEasing.bind(this),
+    keyDown:       this.keyDown.bind(this),
+    keyDownInput:  this.keyDownInput.bind(this)
   };
+
+  isKeyDownInput = false;
 
   nextSide() {
     let side = this.state.side + 1;
@@ -84,25 +91,47 @@ export class RotatorFull extends React.Component {
     this.setState({ zoom });
   }
 
-  resetBack() {
+  setBack() {
     this.setState({
       back: !this.state.back
     });
   }
 
-  resetAxis(event) {
+  setAxis(event) {
     this.setState({
       axis: event.target.value
     });
   }
 
-  resetEasing(event) {
+  setDuration(event) {
+    const durationIn = parseInt(event.target.value, 10);
+
+    this.setState({
+      duration: durationIn || this.state.duration,
+      durationIn
+    });
+  }
+
+  resetDuration() {
+    if (!this.state.durationIn) {
+      this.setState({
+        durationIn: this.state.duration
+      });
+    }
+  }
+
+  setEasing(event) {
     this.setState({
       easing: event.target.value
     });
   }
 
   keyDown(event) {
+    if (this.isKeyDownInput) {
+      this.isKeyDownInput = false;
+      return;
+    }
+
     const keyCode = event.keyCode;
     if (keyCode === 37 || keyCode === 38) {
       this.prevSide();
@@ -112,6 +141,10 @@ export class RotatorFull extends React.Component {
       this.nextSide();
       event.preventDefault();
     }
+  }
+
+  keyDownInput() {
+    this.isKeyDownInput = true;
   }
 
   componentDidMount() {
@@ -189,7 +222,7 @@ export class RotatorFull extends React.Component {
                   name     = { 'axis' }
                   value    = { 'X' }
                   checked  = { this.state.axis === 'X' }
-                  onChange = { this.listeners.resetAxis }
+                  onChange = { this.listeners.setAxis }
                 />X
               </span>
               <span className = { styles.settingsVal }>
@@ -198,7 +231,7 @@ export class RotatorFull extends React.Component {
                   name     = { 'axis' }
                   value    = { 'Y' }
                   checked  = { this.state.axis === 'Y' }
-                  onChange = { this.listeners.resetAxis }
+                  onChange = { this.listeners.setAxis }
                 />Y
               </span>
             </dd>
@@ -210,7 +243,21 @@ export class RotatorFull extends React.Component {
               <input
                 type     = { 'checkbox' }
                 checked  = { this.state.back }
-                onChange = { this.listeners.resetBack }
+                onChange = { this.listeners.setBack }
+              />
+            </dd>
+
+            <dt className = { styles.settingsName }>
+              <label>Duration</label>
+            </dt>
+            <dd className = { styles.settingsData }>
+              <input
+                type      = { 'number' }
+                className = { styles.inputNumber }
+                onChange  = { this.listeners.setDuration }
+                onBlur    = { this.listeners.resetDuration }
+                onKeyDown = { this.listeners.keyDownInput }
+                value     = { this.state.durationIn }
               />
             </dd>
 
@@ -219,8 +266,10 @@ export class RotatorFull extends React.Component {
             </dt>
             <dd className = { styles.settingsDataNL }>
               <input
+                type      = { 'text' }
                 className = { styles.input }
-                onChange  = { this.listeners.resetEasing }
+                onChange  = { this.listeners.setEasing }
+                onKeyDown = { this.listeners.keyDownInput }
                 value     = { this.state.easing }
               />
             </dd>
@@ -230,7 +279,8 @@ export class RotatorFull extends React.Component {
           <AnimakitRotator
             axis       = { this.state.axis }
             side       = { this.state.side }
-            background = { this.state.back ? '#eee' : null }
+            background = { this.state.back ? '#fff' : null }
+            duration   = { this.state.duration }
             easing     = { this.state.easing }
           >
             { Array.from(Array(this.state.sidesCount), (_, i) => {

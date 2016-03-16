@@ -67,6 +67,15 @@ button, input {
 a.navLink {
   border-bottom:1px dotted color(#fff a(70%));
 }
+
+
+.main {
+  margin: 40px 0;
+}
+.mainText {
+  margin: 0 20px;
+}
+
 .item {
   display: block;
   margin: 20px;

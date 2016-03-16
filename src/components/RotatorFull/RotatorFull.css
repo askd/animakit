@@ -101,6 +101,11 @@
   line-height: 20px;
 }
 
+.inputNumber {
+  composes: input;
+  width: 45px;
+}
+
 .box {
   position: absolute;
   top: 50%;

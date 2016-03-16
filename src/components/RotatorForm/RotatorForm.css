@@ -8,8 +8,7 @@
   width: 300px;
   height: 380px;
   background: #fff;
-  border-radius: 5px;
-  box-shadow: inset 0 0 5px $color2;
+  box-shadow: inset 0 0 0 1px color($color4 a(75%));
   font-family: $font;
 }
 .formMain {
@@ -23,9 +22,7 @@
   box-sizing: border-box;
   width: 100%;
   padding: 20px;
-  background: $color2;
-  border-radius: 0 0 5px 5px;
-  box-shadow: inset 0 1px 5px color(#fff a(50%));
+  background: $color4;
   font-size: 16px;
   line-height: 20px;
   color: #fff;
@@ -36,7 +33,7 @@
   padding: 10px 0;
   font-size: 20px;
   line-height: 20px;
-  color: color($color2 a(75%));
+  color: color($color4 a(75%));
   text-align: left;
 }
 .formText {
@@ -91,7 +88,7 @@
   margin: 20px 0 0;
   font-size: 16px;
   line-height: 20px;
-  color: $color2;
-  border-bottom: 1px dotted color($color2 a(50%));
+  color: $color4;
+  border-bottom: 1px dotted color($color4 a(50%));
   cursor: pointer;
 }
