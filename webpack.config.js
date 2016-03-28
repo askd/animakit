@@ -53,7 +53,7 @@ const config = {
         include: srcPath
       },
       {
-        test:    /\.css$/,
+        test:   /\.css$/,
         loader: production ?
         ExtractTextPlugin.extract(
           'style',
@@ -62,7 +62,7 @@ const config = {
         include: srcPath
       },
       {
-        test:   /\.jpg$/,
+        test:   /\.(jpg|png)$/,
         loader: 'file?name=[name].[ext]'
       }
     ]

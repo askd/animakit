@@ -57,21 +57,30 @@
   font-family: 'Lucida Console', monospace;
   font-size: 14px;
   line-height: 20px;
+}
+.itemCodePart {
+  display: block;
+  color: rgba(0,0,0,.375);
+  overflow-x: auto;
+}
+.itemCodePartHL {
+  composes: itemCodePart;
 
-  & > pre > code > span:first-child > span:nth-child(6) {
+  & > code > span:first-child > span:nth-child(6) {
     display: inline-block;
     background: rgba(0,0,0,.125);
     border-radius: 10px;
   }
 }
+.itemCodePartHLA {
+  composes: itemCodePartHL;
 
-.itemCodeChanged {
-  composes: itemCode;
-
-  & > pre > code > span:first-child > span:nth-child(6) {
+  & > code > span:first-child > span:nth-child(6) {
     animation: blink .5s 1;
   }
 }
+
+
 .button {
   width: 100px;
   height: 40px;

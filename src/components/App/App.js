@@ -3,6 +3,7 @@ import { Link }        from 'react-router';
 import AnimakitRotator from 'animakit-rotator';
 
 import styles          from './App.css';
+import './favicon.png';
 
 export class App extends React.Component {
   static propTypes = {

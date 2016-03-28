@@ -74,14 +74,30 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
               </div>
-              <div className = { this.state.sideChanged === 'button' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="github-gist">
-                  {
-`<AnimakitRotator side="${ this.state.side.button }">
-  <button key="button">Submit</button>
-  <div key="loader" className="loader"></div>
-</AnimakitRotator>`
+              <div className = { styles.itemCode }>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { this.state.sideChanged === 'button' ? styles.itemCodePartHLA : styles.itemCodePartHL }
+                >
+                  { `<AnimakitRotator side="${ this.state.side.button }">` }
+                </SyntaxHighlighter>
+                  <pre className = { styles.itemCodePart }>
+                    <code>
+                    {
+`  <button key="button">Submit</button>
+  <div key="loader" className="loader"></div>`
                   }
+                  </code>
+                </pre>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { styles.itemCodePartHL }
+                >
+                  { '</AnimakitRotator>' }
                 </SyntaxHighlighter>
               </div>
             </div>
@@ -96,11 +112,19 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorForm handleChangeSide = { this.listeners.changeSide.form } />
               </div>
-              <div className = { this.state.sideChanged === 'form' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="github-gist">
+              <div className = { styles.itemCode }>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { this.state.sideChanged === 'form' ? styles.itemCodePartHLA : styles.itemCodePartHL }
+                >
+                    { `<AnimakitRotator side="${ this.state.side.form }" axis="Y">` }
+                </SyntaxHighlighter>
+                <pre className = { styles.itemCodePart }>
+                  <code>
                   {
-`<AnimakitRotator side="${ this.state.side.form }" axis="Y">
-  <form key="signin" method="post">
+`  <form key="signin" method="post">
     <h2>Sign In</h2>
     ...
     <button>Sign In</button>
@@ -114,9 +138,17 @@ export class Rotator extends React.Component {
     <h2>Password Recovery</h2>
     ...
     <button>Reset Password</button>
-  </form>
-</AnimakitRotator>`
-                }
+  </form>`
+                  }
+                  </code>
+                </pre>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { styles.itemCodePartHL }
+                >
+                  { '</AnimakitRotator>' }
                 </SyntaxHighlighter>
               </div>
             </div>
@@ -131,11 +163,19 @@ export class Rotator extends React.Component {
               <div className = { styles.itemComponent }>
                 <RotatorPromo handleChangeSide = { this.listeners.changeSide.promo } />
               </div>
-              <div className = { this.state.sideChanged === 'promo' ? styles.itemCodeChanged : styles.itemCode }>
-                <SyntaxHighlighter language="xml" stylesheet="github-gist">
+              <div className = { styles.itemCode }>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { this.state.sideChanged === 'promo' ? styles.itemCodePartHLA : styles.itemCodePartHL }
+                >
+                  { `<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>` }
+                </SyntaxHighlighter>
+                <pre className = { styles.itemCodePart }>
+                  <code>
                   {
-`<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>
-  <div key="mars" className="mars">
+`  <div key="mars" className="mars">
     <h2>Mars</h2>
     ...
   </div>
@@ -150,9 +190,17 @@ export class Rotator extends React.Component {
   <div key="mercury" className="mercury">
     <h2>Mercury</h2>
     ...
-  </div>
-</AnimakitRotator>`
+  </div>`
                   }
+                  </code>
+                </pre>
+                <SyntaxHighlighter
+                  language   = "xml"
+                  stylesheet = "github-gist"
+                  style      ={{}}
+                  className  = { styles.itemCodePartHL }
+                >
+                  { '</AnimakitRotator>' }
                 </SyntaxHighlighter>
               </div>
             </div>
