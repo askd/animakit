@@ -1,6 +1,6 @@
 .DS_Store
+/assets
 /node_modules
-/dist
 npm-debug.log
 *.sublime-project
 *.sublime-workspace
