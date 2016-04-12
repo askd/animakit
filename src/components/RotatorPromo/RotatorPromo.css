@@ -74,19 +74,10 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
+  box-shadow: inset 0 0 0 1px color(#fff a(25%));
   font-family: $font;
   color: #fff;
   text-align: center;
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,.25);
-  }
 }
 .slideTitle {
   position: relative;

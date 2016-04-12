@@ -1,0 +1,57 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  width: 370px;
+}
+
+.item {
+  border-left: 10px solid;
+  background: #333;
+  transition: background .125s ease-out .5s;
+}
+.item.expanded {
+  background: #000;
+  transition: background .125s ease-out .375s;
+}
+
+.itemMars {
+  composes: item;
+  border-color: $color1;
+}
+.itemEarth {
+  composes: item;
+  border-color: $color5;
+}
+.itemVenus {
+  composes: item;
+  border-color: $color3;
+}
+.itemMercury {
+  composes: item;
+  border-color: $color6;
+}
+
+.header {
+  position: relative;
+  width: 360px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px;
+  color: #fff;
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.image {
+  position: relative;
+  width: 360px;
+  height: 360px;
+  transform: scale(0);
+  transition: transform .5s ease-out 0s;
+}
+
+.item.expanded .image {
+  transform: scale(1);
+  transition: transform .5s ease-out .5s;
+}

@@ -37,10 +37,10 @@ button, input {
     border-color: transparent transparent transparent rgba(0,0,0,.75);
   }
 }
-.nav {
+.topnav {
   margin-left: 10px;
 }
-.navLink {
+.topnavLink {
   display: inline-block;
   vertical-align: top;
   font-size: 13px;
@@ -64,7 +64,7 @@ button, input {
     text-align: center;
   }
 }
-a.navLink {
+a.topnavLink {
   border-bottom:1px dotted color(#fff a(70%));
 }
 
@@ -76,27 +76,46 @@ a.navLink {
   margin: 0 20px;
 }
 
-.item {
-  display: block;
+.nav {
   margin: 20px;
-  width: 200px;
-  height: 200px;
-  box-sizing: border-box;
-  padding: 90px;
-  background: $color1;
-  color: #fff;
+}
+
+.navList {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.navItem {
+  width: 480px;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+  }
+}
+
+.navText {
+  margin: 70px 0 0 220px;
+  width: 180px;
   font-size: 14px;
   line-height: 20px;
-  text-align: center;
-  text-decoration: none;
 }
-.itemRotator {
-  display: block;
-  margin: 70px 20px;
+
+.navLink {
+  float: left;
   width: 200px;
+  box-sizing: border-box;
+}
+
+.navLinkRotator {
+  composes: navLink;
+  margin: 40px 0;
   height: 100px;
 }
-.itemRotatorSide {
+.navLinkRotatorSide {
   width: 200px;
   height: 100px;
   box-sizing: border-box;
@@ -107,6 +126,49 @@ a.navLink {
   font-size: 14px;
   line-height: 20px;
   text-align: center;
+}
+
+
+.navLinkExpander {
+  composes: navLink;
+  margin: 20px 0;
+  width: 200px;
+  height: 140px;
+  padding: 35px 0;
+  background: color($color5 a(75%));
+  text-align: center;
+  text-decoration: none;
+
+
+  & > div {
+    position: relative;
+    width: 100%;
+    height: 70px;
+    box-sizing: border-box;
+    padding: 25px 0;
+    background: $color5;
+    box-shadow: inset 0 0 0 1px color(#fff a(75%));
+    color: #fff;
+    font-size: 14px;
+    line-height: 20px;
+
+    &::before,
+    &::after {
+      position: absolute;
+      left: 50%;
+      width: 10px;
+      height: 20px;
+      margin-left: -5px;
+    }
+    &::before {
+      content: '\2191';
+      top: 1px;
+    }
+    &::after {
+      content: '\2193';
+      bottom: 5px;
+    }
+  }
 }
 
 .github {

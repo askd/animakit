@@ -2,7 +2,8 @@ import React           from 'react';
 import { Link }        from 'react-router';
 import AnimakitRotator from 'animakit-rotator';
 
-import styles          from './App.css';
+import AppStyles       from './App.css';
+
 import './favicon.png';
 
 export class App extends React.Component {
@@ -15,23 +16,24 @@ export class App extends React.Component {
   getNavTitle(path) {
     if (path === '/') return 'Animakit';
     if (path === '/rotator') return 'Rotator';
+    if (path === '/expander') return 'Expander';
     return '';
   }
 
   renderNav() {
     const navLen = this.props.routes.length;
     return (
-      <nav className = { styles.nav }>
+      <nav className = { AppStyles.topnav }>
         { this.props.routes.map((route, i) => {
           if (i === navLen - 1) {
             return (
-              <span key={ i } className={ styles.navLink }>
+              <span key={ i } className={ AppStyles.topnavLink }>
                 { this.getNavTitle(route.path) }
               </span>
             );
           }
           return (
-            <Link key={ i } to={ route.path } className={ styles.navLink }>
+            <Link key={ i } to={ route.path } className={ AppStyles.topnavLink }>
               { this.getNavTitle(route.path) }
             </Link>
           );
@@ -40,35 +42,60 @@ export class App extends React.Component {
     );
   }
 
+  renderRibbon() {
+    const navLen = this.props.routes.length;
+    if (navLen === 1) return null;
+
+    const path = this.props.routes[navLen - 1].path.substr(1);
+    return (
+      <div className = { AppStyles.github }>
+        <div className = { AppStyles.githubRibbon }>
+          <a
+            className = { AppStyles.githubLink }
+            href = { `https://github.com/askd/animakit-${ path }` }
+            target = "_blank"
+          >Fork me on GitHub</a>
+        </div>
+      </div>
+    );
+  }
+
   render() {
     const showLinks = this.props.children === null;
     return (
-      <div className = { styles.root }>
-        <header className = { styles.header }>
+      <div className = { AppStyles.root }>
+        <header className = { AppStyles.header }>
           { this.renderNav() }
         </header>
-        { showLinks && <main className = { styles.main }>
-          <p className = { styles.mainText }>React components developed to make your site more friendly ;)</p>
-          <Link to = "/rotator" className = { styles.itemRotator }>
-            <AnimakitRotator>
-              <div className = { styles.itemRotatorSide } key = "1">Rotator</div>
-              <div className = { styles.itemRotatorSide } key = "2" />
-              <div className = { styles.itemRotatorSide } key = "3" />
-              <div className = { styles.itemRotatorSide } key = "4" />
-              <div className = { styles.itemRotatorSide } key = "5" />
-            </AnimakitRotator>
-          </Link>
+        { showLinks && <main className = { AppStyles.main }>
+          <p className = { AppStyles.mainText }>React components developed to make your site more friendly ;)</p>
+          <nav className = { AppStyles.nav }>
+            <ul className = { AppStyles.navList }>
+              <li className = { AppStyles.navItem }>
+                <Link to = "/rotator" className = { AppStyles.navLinkRotator }>
+                  <AnimakitRotator>
+                    <div className = { AppStyles.navLinkRotatorSide } key = "1">Rotator</div>
+                    <div className = { AppStyles.navLinkRotatorSide } key = "2" />
+                    <div className = { AppStyles.navLinkRotatorSide } key = "3" />
+                    <div className = { AppStyles.navLinkRotatorSide } key = "4" />
+                    <div className = { AppStyles.navLinkRotatorSide } key = "5" />
+                  </AnimakitRotator>
+                </Link>
+                <p className = { AppStyles.navText }>Rotate your components in&nbsp;three-dimensional space</p>
+              </li>
+              <li className = { AppStyles.navItem }>
+                <Link to = "/expander" className = { AppStyles.navLinkExpander }>
+                  <div>Expander</div>
+                </Link>
+                <p className = { AppStyles.navText }>Expand and collapse content of&nbsp;your&nbsp;components</p>
+              </li>
+            </ul>
+          </nav>
         </main> }
+
         { !showLinks && this.props.children }
-        <div className = { styles.github }>
-          <div className = { styles.githubRibbon }>
-            <a
-              className = { styles.githubLink }
-              href = "https://github.com/askd/animakit-rotator"
-              target = "_blank"
-            >Fork me on GitHub</a>
-          </div>
-        </div>
+
+        { this.renderRibbon() }
       </div>
     );
   }

@@ -1,0 +1,52 @@
+@import '../vars.css';
+
+.root {
+
+}
+.intro {
+  padding: 40px 20px;
+}
+.list {
+  padding: 0 0 20px;
+}
+.item {
+  padding: 20px;
+  border-top: 1px dotted rgba(0,0,0,.25);
+}
+.itemTitle {
+  font-size: 16px;
+  line-height: 20px;
+}
+.itemText {
+  font-size: 13px;
+  line-height: 16px;
+  color: rgba(0,0,0,.75);
+}
+.itemContent {
+  margin-top: 20px;
+
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+    overflow: hidden;
+  }
+}
+.itemComponent {
+  position: relative;
+  float: left;
+  width: 50%;
+}
+.itemComponentFullscreen {
+  position: fixed;
+  z-index: 2;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: color(#f7f7f7 a(96%));
+}
+.itemCode {
+  float: left;
+  width: 50%;
+}

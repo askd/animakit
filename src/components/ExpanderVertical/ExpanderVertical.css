@@ -1,0 +1,95 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  height: 320px;
+  box-sizing: border-box;
+  border: 2px solid $color4;
+
+  &::after {
+    content: '';
+
+  }
+}
+
+.header {
+  float: left;
+  position: relative;
+  width: 40px;
+  height: 316px;
+  background: $color4;
+  cursor: pointer;
+}
+
+.title {
+  position: absolute;
+  bottom: -40px;
+  left: 0;
+  width: 316px;
+  height: 40px;
+  box-sizing: border-box;
+  padding: 10px;
+  transform: rotate(-90deg);
+  transform-origin: 0 0;
+  color: #fff;
+  line-height: 20px;
+  text-align: center;
+}
+
+.content {
+  float: left;
+  height: 316px;
+  background: #fff;
+}
+
+.form {
+  width: 260px;
+  padding: 10px 20px;
+}
+
+.input {
+  width: 260px;
+  height: 40px;
+  box-sizing: border-box;
+  margin: 10px 0 0;
+  padding: 10px 15px;
+  background: #fff;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.1), inset 0 0 5px rgba(0,0,0,.25);
+  color: #000;
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: left;
+}
+.inputTextarea {
+  composes: input;
+  height: 110px;
+  resize: none;
+}
+.button {
+  width: 260px;
+  height: 50px;
+  box-sizing: border-box;
+  margin: 15px 0 0;
+  padding: 15px;
+  background: $color0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color0 a(65%));
+  appearance: none;
+  border: 0;
+  border-radius: 5px;
+  outline: none;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+  cursor: pointer;
+
+  &:active {
+    box-shadow: inset 0 0 5px rgba(0,0,0,.35);
+  }
+}

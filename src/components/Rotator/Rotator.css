@@ -24,6 +24,7 @@
 }
 .itemContent {
   margin-top: 20px;
+  min-height: 100px;
 
   &::after {
     content: '';
@@ -45,52 +46,18 @@
   width: 100%;
   height: 100%;
   background: color(#f7f7f7 a(96%));
+  animation: popup .25s ease-in 1;
 }
 .itemCode {
   float: left;
   width: 50%;
-  max-width: 480px;
-  box-sizing: border-box;
-  padding: 20px;
-  background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.125);
-  font-family: 'Lucida Console', monospace;
-  font-size: 14px;
-  line-height: 20px;
-}
-.itemCodePart {
-  display: block;
-  color: rgba(0,0,0,.375);
-  overflow-x: auto;
-}
-.itemCodePartHL {
-  composes: itemCodePart;
-
-  & > code > span:first-child > span:nth-child(6) {
-    display: inline-block;
-    background: rgba(0,0,0,.125);
-    border-radius: 10px;
-  }
-}
-.itemCodePartHLA {
-  composes: itemCodePartHL;
-
-  & > code > span:first-child > span:nth-child(6) {
-    animation: blink .5s 1;
-  }
 }
 
 
 .button {
-  width: 100px;
-  height: 40px;
   box-sizing: border-box;
-  padding: 10px;
-  background: $color1;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color1 a(65%));
   appearance: none;
   border: 0;
-  border-radius: 5px;
   outline: none;
   color: #fff;
   text-align: center;
@@ -98,6 +65,16 @@
   line-height: 20px;
   cursor: pointer;
   transition: box-shadow .5s;
+}
+.buttonLaunch {
+  composes: button;
+
+  width: 100px;
+  height: 100px;
+  padding: 40x 10px;
+  background: $color1;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color1 a(65%));
+  border-radius: 50px;
 
   &:hover {
     box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color1 a(65%)), 0 0 15px rgba(0,0,0,.25);
@@ -108,18 +85,30 @@
     box-shadow: inset 0 0 5px rgba(0,0,0,.35);
   }
 }
-.buttonLaunch {
+.buttonHide {
   composes: button;
-}
-.buttonClose {
-  composes: button;
+
   position: fixed;
   bottom: 40px;
   left: 20px;
+  width: 50px;
+  height: 50px;
+  padding: 15px 0;
+  background: $color0;
+  box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color0 a(65%));
+  border-radius: 25px;
+
+  &:hover {
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,.15), 0 0 10px color($color0 a(65%)), 0 0 15px rgba(0,0,0,.25);
+  }
+
+  &:active,
+  &:active:hover {
+    box-shadow: inset 0 0 5px rgba(0,0,0,.35);
+  }
 }
 
-@keyframes blink {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: .5; }
-  100% { transform: scale(1); opacity: 1; }
+@keyframes popup {
+  from { opacity: 0; }
+  to   { opacity: 1;}
 }

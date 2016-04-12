@@ -1,7 +1,8 @@
 import React             from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
 
-import styles            from './Rotator.css';
+import RotatorStyles     from './Rotator.css';
+import CodeStyles        from 'components/Code/Code.css';
 
 import { RotatorButton } from 'components/RotatorButton/RotatorButton';
 import { RotatorForm }   from 'components/RotatorForm/RotatorForm';
@@ -59,169 +60,174 @@ export class Rotator extends React.Component {
 
   render() {
     return (
-      <div className = { styles.root }>
-        <div className = { styles.intro }>
+      <div className = { RotatorStyles.root }>
+        <div className = { RotatorStyles.intro }>
           <p>Rotate your components in three-dimensional space.
           Just wrap them with AnimakitRotator, set the side and enjoy ;)</p>
         </div>
-        <ul className = { styles.list }>
+        <ul className = { RotatorStyles.list }>
           <li
             key = "button"
-            className = { styles.item }
+            className = { RotatorStyles.item }
           >
-            <h2 className = { styles.itemTitle }>Submit Button</h2>
-            <div className = { styles.itemContent }>
-              <div className = { styles.itemComponent }>
+            <div className = { RotatorStyles.itemContent }>
+              <div className = { RotatorStyles.itemComponent }>
                 <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
               </div>
-              <div className = { styles.itemCode }>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { this.state.sideChanged === 'button' ? styles.itemCodePartHLA : styles.itemCodePartHL }
-                >
-                  { `<AnimakitRotator side="${ this.state.side.button }">` }
-                </SyntaxHighlighter>
-                  <pre className = { styles.itemCodePart }>
+              <div className = { RotatorStyles.itemCode }>
+                <div className = { CodeStyles.root }>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { this.state.sideChanged === 'button' ? CodeStyles.blockHLA : CodeStyles.blockHL }
+                  >
+                    { `<AnimakitRotator side="${ this.state.side.button }">` }
+                  </SyntaxHighlighter>
+                  <pre className = { CodeStyles.block }>
                     <code>
-                    {
+                      {
 `  <button key="button">Submit</button>
   <div key="loader" className="loader"></div>`
-                  }
-                  </code>
-                </pre>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { styles.itemCodePartHL }
-                >
-                  { '</AnimakitRotator>' }
-                </SyntaxHighlighter>
+                      }
+                    </code>
+                  </pre>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { CodeStyles.blockHL }
+                  >
+                    { '</AnimakitRotator>' }
+                  </SyntaxHighlighter>
+                  </div>
               </div>
             </div>
           </li>
 
           <li
             key = "form"
-            className = { styles.item }
+            className = { RotatorStyles.item }
           >
-            <h2 className = { styles.itemTitle }>Auth Form</h2>
-            <div className = { styles.itemContent }>
-              <div className = { styles.itemComponent }>
+            <div className = { RotatorStyles.itemContent }>
+              <div className = { RotatorStyles.itemComponent }>
                 <RotatorForm handleChangeSide = { this.listeners.changeSide.form } />
               </div>
-              <div className = { styles.itemCode }>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { this.state.sideChanged === 'form' ? styles.itemCodePartHLA : styles.itemCodePartHL }
-                >
+              <div className = { RotatorStyles.itemCode }>
+                <div className = { CodeStyles.root }>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { this.state.sideChanged === 'form' ? CodeStyles.blockHLA : CodeStyles.blockHL }
+                  >
                     { `<AnimakitRotator side="${ this.state.side.form }" axis="Y">` }
-                </SyntaxHighlighter>
-                <pre className = { styles.itemCodePart }>
-                  <code>
-                  {
-`  <form key="signin" method="post">
+                  </SyntaxHighlighter>
+                  <pre className = { CodeStyles.block }>
+                    <code>
+                      {
+`  <form key="signin">
     <h2>Sign In</h2>
     ...
     <button>Sign In</button>
   </form>
-  <form key="signup" method="post">
+  <form key="signup">
     <h2>Sign Up</h2>
     ...
     <button>Sign Up</button>
   </form>
-  <form key="passrec" method="post">
+  <form key="passrec">
     <h2>Password Recovery</h2>
     ...
     <button>Reset Password</button>
   </form>`
-                  }
-                  </code>
-                </pre>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { styles.itemCodePartHL }
-                >
-                  { '</AnimakitRotator>' }
-                </SyntaxHighlighter>
+                      }
+                    </code>
+                  </pre>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { CodeStyles.blockHL }
+                  >
+                    { '</AnimakitRotator>' }
+                  </SyntaxHighlighter>
+                </div>
               </div>
             </div>
           </li>
 
           <li
             key = "promo"
-            className = { styles.item }
+            className = { RotatorStyles.item }
           >
-            <h2 className = { styles.itemTitle }>Promo Page</h2>
-            <div className = { styles.itemContent }>
-              <div className = { styles.itemComponent }>
+            <div className = { RotatorStyles.itemContent }>
+              <div className = { RotatorStyles.itemComponent }>
                 <RotatorPromo handleChangeSide = { this.listeners.changeSide.promo } />
               </div>
-              <div className = { styles.itemCode }>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { this.state.sideChanged === 'promo' ? styles.itemCodePartHLA : styles.itemCodePartHL }
-                >
-                  { `<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>` }
-                </SyntaxHighlighter>
-                <pre className = { styles.itemCodePart }>
-                  <code>
-                  {
-`  <div key="mars" className="mars">
+              <div className = { RotatorStyles.itemCode }>
+                <div className = { CodeStyles.root }>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { this.state.sideChanged === 'promo' ? CodeStyles.blockHLA : CodeStyles.blockHL }
+                  >
+                    { `<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>` }
+                  </SyntaxHighlighter>
+                  <pre className = { CodeStyles.block }>
+                    <code>
+                      {
+`  <div key="mars">
     <h2>Mars</h2>
     ...
   </div>
-  <div key="earth" className="earth">
+  <div key="earth">
     <h2>Earth</h2>
     ...
   </div>
-  <div key="venus" className="venus">
+  <div key="venus">
     <h2>Venus</h2>
     ...
   </div>
-  <div key="mercury" className="mercury">
+  <div key="mercury">
     <h2>Mercury</h2>
     ...
   </div>`
-                  }
-                  </code>
-                </pre>
-                <SyntaxHighlighter
-                  language   = "xml"
-                  stylesheet = "github-gist"
-                  style      ={{}}
-                  className  = { styles.itemCodePartHL }
-                >
-                  { '</AnimakitRotator>' }
-                </SyntaxHighlighter>
+                      }
+                    </code>
+                  </pre>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { CodeStyles.blockHL }
+                  >
+                    { '</AnimakitRotator>' }
+                  </SyntaxHighlighter>
+                </div>
               </div>
             </div>
           </li>
-          <li className = { styles.item }>
-            <h2 className = { styles.itemTitle }>Full Functionality</h2>
-            <div className = { styles.itemContent }>
-              <button
-                className = { styles.buttonLaunch }
-                onClick = { this.listeners.launch }
-              >
-                Launch
-              </button>
+          <li className = { RotatorStyles.item }>
+            <p className = { RotatorStyles.itemTitle }>Need more options?</p>
+            <div className = { RotatorStyles.itemContent }>
+              { !this.state.showFull &&
+                <button
+                  className = { RotatorStyles.buttonLaunch }
+                  onClick = { this.listeners.launch }
+                >
+                  Launch
+                </button>
+              }
               { this.state.showFull &&
-                <div className = { styles.itemComponentFullscreen }>
+                <div className = { RotatorStyles.itemComponentFullscreen }>
                   <RotatorFull />
                   <button
-                    className = { styles.buttonClose }
+                    className = { RotatorStyles.buttonHide }
                     onClick = { this.listeners.close }
                   >
-                    Close
+                    Hide
                   </button>
                 </div>
               }

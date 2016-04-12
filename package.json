@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "React animation kit. Homepage",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "rimraf assets",
     "build:webpack": "cross-env NODE_ENV=production webpack",
     "build": "npm run clean && npm run build:webpack",
     "dev": "node devServer.js"
@@ -43,6 +43,7 @@
   },
   "dependencies": {
     "animakit-rotator": "git+ssh://git@github.com/askd/animakit-rotator",
+    "animakit-expander": "git+ssh://git@github.com/askd/animakit-expander",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "react-router": "^2.0.1",
