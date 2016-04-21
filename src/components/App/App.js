@@ -103,7 +103,7 @@ export class App extends React.Component {
 
               <dt>Do I need to install the whole Animakit to use one of the components?</dt>
               <dd>
-                No. All components are independent and developed for independent use.
+                No. All components are independent and developed for separate use.
               </dd>
 
               <dt>Could I request to add one more component to Animakit?</dt>
