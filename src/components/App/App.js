@@ -91,6 +91,27 @@ export class App extends React.Component {
               </li>
             </ul>
           </nav>
+          <article className = { AppStyles.article }>
+            <h2>FAQ</h2>
+
+            <dl>
+              <dt>If the Animakit has any relation to React Animation?</dt>
+              <dd>
+                No. Animakit is separate collection of the components.
+                All components use React but implement an animation on their own way.
+              </dd>
+
+              <dt>Do I need to install the whole Animakit to use one of the components?</dt>
+              <dd>
+                No. All components are independent and developed for independent use.
+              </dd>
+
+              <dt>Could I request to add one more component to Animakit?</dt>
+              <dd>
+                Yes. Feel free to leave an&nbsp;<a href="https://github.com/askd/animakit/issues">issue</a> ;)
+              </dd>
+            </dl>
+          </article>
         </main> }
 
         { !showLinks && this.props.children }

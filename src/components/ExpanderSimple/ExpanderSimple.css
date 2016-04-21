@@ -2,27 +2,31 @@
 
 .root {
   width: 300px;
-
-  border: 2px solid $color6;
+  padding: 10px;
 }
 
 .header {
   position: relative;
+  display: inline-block;
+  vertical-align: top;
   height: 20px;
-  padding: 8px 20px;
-  background: $color6;
-  color: #fff;
-  line-height: 20px;
   cursor: pointer;
 }
 
+.title {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 18px;
+  color: $color5;
+  border-bottom: 2px dotted;
+}
+
 .toggle {
-  position: absolute;
-  top: 50%;
-  right: 20px;
-  margin-top: -3px;
+  display: inline-block;
+  vertical-align: top;
   width: 0;
   height: 0;
+  margin: 8px 0 0 8px;
   border-style: solid;
   border-width: 6px;
   border-color: transparent;
@@ -31,18 +35,17 @@
 .toggleOn {
   composes: toggle;
   border-bottom-width: 0;
-  border-top-color: #fff;
+  border-top-color: $color5;
 }
 
 .toggleOff {
   composes: toggle;
   border-top-width: 0;
-  border-bottom-color: #fff;
+  border-bottom-color: $color5;
 }
 
 .content {
-  padding: 5px 20px;
-  background: #fff;
+  margin-top: 10px;
   font-family: $font;
   font-size: 14px;
   line-height: 30px;

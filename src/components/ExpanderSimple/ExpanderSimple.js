@@ -32,7 +32,7 @@ export class ExpanderSimple extends React.Component {
           className = { styles.header }
           onClick = { this.listeners.onClick }
         >
-          <span>Hickory Dickory Dock</span>
+          <span className = { styles.title }>Hickory Dickory Dock</span>
           <span className = { this.state.expanded ? styles.toggleOff : styles.toggleOn } />
         </header>
 

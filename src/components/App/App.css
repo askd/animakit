@@ -171,6 +171,44 @@ a.topnavLink {
   }
 }
 
+.article {
+  border-top: 1px solid $color0;
+  padding: 20px;
+
+  & h2 {
+    font-size: 30px;
+    line-height: 40px;
+    color: $color0;
+  }
+
+  & dl {
+    line-height: 20px;
+  }
+
+  & dt {
+    margin-top: 20px;
+    font-weight: 700;
+
+  }
+
+  & dd {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  & a {
+    color: $color5;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: $color6;
+    }
+  }
+}
+
 .github {
   position: fixed;
   z-index: 10;
