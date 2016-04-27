@@ -52,7 +52,7 @@ export class App extends React.Component {
         <div className = { AppStyles.githubRibbon }>
           <a
             className = { AppStyles.githubLink }
-            href = { `https://github.com/askd/animakit-${ path }` }
+            href = { `https://github.com/animakit/animakit-${ path }` }
             target = "_blank"
           >Fork me on GitHub</a>
         </div>

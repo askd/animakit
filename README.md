@@ -13,14 +13,14 @@ React components developed to make your site more friendly ;)
 React component for three-dimensional rotation of content blocks.
 Supports up to 6 blocks, different sizes and X/Y axis.
 
-Repository on GitHub: https://github.com/askd/animakit-rotator
+Repository on GitHub: https://github.com/animakit/animakit-rotator
 
 ### Expander
 
 React component for expanding and collapsing of content blocks.
 Supports both vertical and horizontal mode.
 
-Repository on GitHub: https://github.com/askd/animakit-expander
+Repository on GitHub: https://github.com/animakit/animakit-expander
 
 
 ## FAQ
