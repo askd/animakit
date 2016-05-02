@@ -73,7 +73,7 @@ export class App extends React.Component {
             <ul className = { AppStyles.navList }>
               <li className = { AppStyles.navItem }>
                 <Link to = "/rotator" className = { AppStyles.navLinkRotator }>
-                  <AnimakitRotator>
+                  <AnimakitRotator shadow>
                     <div className = { AppStyles.navLinkRotatorSide } key = "1">Rotator</div>
                     <div className = { AppStyles.navLinkRotatorSide } key = "2" />
                     <div className = { AppStyles.navLinkRotatorSide } key = "3" />

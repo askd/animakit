@@ -54,7 +54,6 @@
 }
 .error {
   margin: 14px 0 0;
-  font-family: $font;
   font-size: 14px;
   line-height: 20px;
   color: $color1;

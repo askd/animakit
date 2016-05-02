@@ -38,8 +38,9 @@ export class RotatorForm extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitRotator
-          axis = "Y"
           side = { this.state.form }
+          axis = "Y"
+          shadow
         >
           <div
             key = "signin"

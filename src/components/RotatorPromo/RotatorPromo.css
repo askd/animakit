@@ -75,7 +75,6 @@
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 1px color(#fff a(25%));
-  font-family: $font;
   color: #fff;
   text-align: center;
 }

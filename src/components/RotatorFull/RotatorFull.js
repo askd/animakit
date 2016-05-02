@@ -23,6 +23,7 @@ export class RotatorFull extends React.Component {
     sidesCount: 2,
     zoom:       1,
     back:       true,
+    shadow:     true,
     duration:   1000,
     durationIn: 1000,
     easing:     'cubic-bezier(.175,.885,.32,1.275)' // 'cubic-bezier(.45,-0.67,.53,1.63)'
@@ -34,6 +35,7 @@ export class RotatorFull extends React.Component {
     addSide:       this.addSide.bind(this),
     removeSide:    this.removeSide.bind(this),
     setBack:       this.setBack.bind(this),
+    setShadow:     this.setShadow.bind(this),
     setAxis:       this.setAxis.bind(this),
     zoomIn:        this.zoomIn.bind(this),
     zoomOut:       this.zoomOut.bind(this),
@@ -94,6 +96,12 @@ export class RotatorFull extends React.Component {
   setBack() {
     this.setState({
       back: !this.state.back
+    });
+  }
+
+  setShadow() {
+    this.setState({
+      shadow: !this.state.shadow
     });
   }
 
@@ -248,6 +256,17 @@ export class RotatorFull extends React.Component {
             </dd>
 
             <dt className = { styles.settingsName }>
+              <label>Shadow</label>
+            </dt>
+            <dd className = { styles.settingsData }>
+              <input
+                type     = { 'checkbox' }
+                checked  = { this.state.shadow }
+                onChange = { this.listeners.setShadow }
+              />
+            </dd>
+
+            <dt className = { styles.settingsName }>
               <label>Duration</label>
             </dt>
             <dd className = { styles.settingsData }>
@@ -280,6 +299,7 @@ export class RotatorFull extends React.Component {
             axis       = { this.state.axis }
             side       = { this.state.side }
             background = { this.state.back ? '#fff' : null }
+            shadow     = { this.state.shadow }
             duration   = { this.state.duration }
             easing     = { this.state.easing }
           >

@@ -42,6 +42,7 @@ export class RotatorPromo extends React.Component {
         <AnimakitRotator
           side   =   { this.state.side }
           duration = { 2000 }
+          shadow
         >
           <div
             key       = { this.props.sides[0] }

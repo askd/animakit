@@ -121,25 +121,25 @@ export class Rotator extends React.Component {
                     style      = {{}}
                     className  = { this.state.sideChanged === 'form' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
-                    { `<AnimakitRotator side="${ this.state.side.form }" axis="Y">` }
+                    {
+`<AnimakitRotator
+  side="${ this.state.side.form }"
+  axis="Y"
+  shadow
+>`
+                    }
                   </SyntaxHighlighter>
                   <pre className = { CodeStyles.block }>
                     <code>
                       {
 `  <form key="signin">
-    <h2>Sign In</h2>
     ...
-    <button>Sign In</button>
   </form>
   <form key="signup">
-    <h2>Sign Up</h2>
     ...
-    <button>Sign Up</button>
   </form>
   <form key="passrec">
-    <h2>Password Recovery</h2>
     ...
-    <button>Reset Password</button>
   </form>`
                       }
                     </code>
@@ -173,25 +173,27 @@ export class Rotator extends React.Component {
                     style      = {{}}
                     className  = { this.state.sideChanged === 'promo' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
-                    { `<AnimakitRotator side="${ this.state.side.promo }" duration={2000}>` }
+                    {
+`<AnimakitRotator
+  side="${ this.state.side.promo }"
+  duration={2000}
+  shadow
+>`
+                    }
                   </SyntaxHighlighter>
                   <pre className = { CodeStyles.block }>
                     <code>
                       {
 `  <div key="mars">
-    <h2>Mars</h2>
     ...
   </div>
   <div key="earth">
-    <h2>Earth</h2>
     ...
   </div>
   <div key="venus">
-    <h2>Venus</h2>
     ...
   </div>
   <div key="mercury">
-    <h2>Mercury</h2>
     ...
   </div>`
                       }
