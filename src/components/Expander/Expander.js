@@ -84,9 +84,9 @@ export class Expander extends React.Component {
                   <pre className = { CodeStyles.block }>
                     <code>
                       {
-`<header onClick={toggle}>
-  Hickory Dickory Dock
-</header>`
+`<div className="title" onClick={toggle}>
+  <span>I Got You</span>
+</div>`
                       }
                     </code>
                   </pre>
@@ -168,8 +168,8 @@ export class Expander extends React.Component {
                       {
 `</div>
 <div className="field">
-  <input type="radio" onChange={ toggle }/> No
-  <input type="radio" onChange={ toggle }/> Yes
+  <input type="radio" ... /> No
+  <input type="radio" ... /> Yes
 `
                       }
                     </code>
@@ -286,9 +286,9 @@ export class Expander extends React.Component {
                   <pre className = { CodeStyles.block }>
                     <code>
                       {
-`<header onClick={toggle}>
+`<div onClick={toggle}>
   ${ item.charAt(0).toUpperCase() + item.slice(1) }
-</header>`
+</div>`
                       }
                     </code>
                   </pre>

@@ -1,0 +1,19 @@
+@import '../vars.css';
+
+.root {
+  font-size: 14px;
+  line-height: 30px;
+}
+
+.couplet {
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.more {
+  display: inline-block;
+  margin-top: 10px;
+  cursor: pointer;
+  color: $color0;
+}

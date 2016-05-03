@@ -1,5 +1,6 @@
 import React            from 'react';
 import styles           from './ExpanderSimple.css';
+import { SimpleText }   from 'components/SimpleText/SimpleText';
 import AnimakitExpander from 'animakit-expander';
 
 export class ExpanderSimple extends React.Component {
@@ -8,11 +9,13 @@ export class ExpanderSimple extends React.Component {
   };
 
   state = {
-    expanded: false
+    expanded: false,
+    showMore: false
   };
 
   listeners = {
-    onClick: this.onClick.bind(this)
+    onClick:      this.onClick.bind(this),
+    onToggleText: this.onToggleText.bind(this)
   };
 
   toggleExpanded() {
@@ -25,25 +28,28 @@ export class ExpanderSimple extends React.Component {
     this.toggleExpanded();
   }
 
+  onToggleText() {
+    const showMore = !this.state.showMore;
+    this.setState({ showMore });
+  }
+
   render() {
     return (
       <div className = { styles.root }>
-        <header
+        <div
           className = { styles.header }
           onClick = { this.listeners.onClick }
         >
-          <span className = { styles.title }>Hickory Dickory Dock</span>
+          <span className = { styles.title }>{ this.state.expanded ? 'Hide lyrics' : 'Show lyrics' }</span>
           <span className = { this.state.expanded ? styles.toggleOff : styles.toggleOn } />
-        </header>
+        </div>
 
         <AnimakitExpander expanded = { this.state.expanded }>
-          <article className = { styles.content }>
-            <p>Hickory, dickory, dock.</p>
-            <p>The mouse ran up the clock.</p>
-            <p>The clock struck one,</p>
-            <p>The mouse ran down,</p>
-            <p>Hickory, dickory, dock.</p>
-          </article>
+          <SimpleText
+            className     = { styles.content }
+            handleToggle  = { this.listeners.onToggleText }
+            showMore      = { this.state.showMore }
+          />
         </AnimakitExpander>
       </div>
     );

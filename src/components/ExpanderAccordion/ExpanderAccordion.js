@@ -60,13 +60,13 @@ export class ExpanderAccordion extends React.Component {
               key = { item }
               className = { className }
             >
-              <header
+              <div
                 key = { `${ item }Header ` }
                 className = { styles.header }
                 onClick = { this.listeners.onClick[item] }
               >
                 { itemName }
-              </header>
+              </div>
               <AnimakitExpander
                 key = { `${ item }Content ` }
                 expanded = { this.state.expanded[item] }
