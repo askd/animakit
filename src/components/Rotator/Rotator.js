@@ -17,9 +17,10 @@ export class Rotator extends React.Component {
   state = {
     showFull: false,
     side:     {
-      button: 'button',
-      form:   'signin',
-      promo:  'mars'
+      button:  'button',
+      button2: 'button',
+      form:    'signin',
+      promo:   'mars'
     },
     sideChanged: null
   };
@@ -28,9 +29,10 @@ export class Rotator extends React.Component {
     launch:     this.launch.bind(this),
     close:      this.close.bind(this),
     changeSide: {
-      button: this.changeSide.bind(this, 'button'),
-      form:   this.changeSide.bind(this, 'form'),
-      promo:  this.changeSide.bind(this, 'promo')
+      button:  this.changeSide.bind(this, 'button'),
+      button2: this.changeSide.bind(this, 'button2'),
+      form:    this.changeSide.bind(this, 'form'),
+      promo:   this.changeSide.bind(this, 'promo')
     }
   };
 
@@ -72,7 +74,11 @@ export class Rotator extends React.Component {
           >
             <div className = { RotatorStyles.itemContent }>
               <div className = { RotatorStyles.itemComponent }>
-                <RotatorButton handleChangeSide = { this.listeners.changeSide.button } />
+                <p className = { RotatorStyles.itemComment }>Fixed width</p>
+                <RotatorButton
+                  showAttempts
+                  handleChangeSide = { this.listeners.changeSide.button }
+                />
               </div>
               <div className = { RotatorStyles.itemCode }>
                 <div className = { CodeStyles.root }>
@@ -100,7 +106,55 @@ export class Rotator extends React.Component {
                   >
                     { '</AnimakitRotator>' }
                   </SyntaxHighlighter>
-                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li
+            key = "button2"
+            className = { RotatorStyles.item }
+          >
+            <div className = { RotatorStyles.itemContent }>
+              <div className = { RotatorStyles.itemComponent }>
+                <p className = { RotatorStyles.itemComment }>
+                  Flexible width
+                  (see <a href="https://github.com/animakit/animakit-rotator/blob/master/README.md">
+                    Limitations in README
+                  </a>)
+                </p>
+                <RotatorButton
+                  modifier = "Flexible"
+                  handleChangeSide = { this.listeners.changeSide.button2 }
+                />
+              </div>
+              <div className = { RotatorStyles.itemCode }>
+                <div className = { CodeStyles.root }>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { this.state.sideChanged === 'button2' ? CodeStyles.blockHLA : CodeStyles.blockHL }
+                  >
+                    { `<AnimakitRotator side="${ this.state.side.button2 }">` }
+                  </SyntaxHighlighter>
+                  <pre className = { CodeStyles.block }>
+                    <code>
+                      {
+`  <button key="button">Submit</button>
+  <div key="loader" className="loader"></div>`
+                      }
+                    </code>
+                  </pre>
+                  <SyntaxHighlighter
+                    language   = "xml"
+                    stylesheet = "github-gist"
+                    style      = {{}}
+                    className  = { CodeStyles.blockHL }
+                  >
+                    { '</AnimakitRotator>' }
+                  </SyntaxHighlighter>
+                </div>
               </div>
             </div>
           </li>

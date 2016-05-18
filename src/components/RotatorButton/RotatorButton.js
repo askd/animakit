@@ -5,7 +5,14 @@ import AnimakitRotator  from 'animakit-rotator';
 
 export class RotatorButton extends React.Component {
   static propTypes = {
+    modifier:         React.PropTypes.string,
+    showAttempts:     React.PropTypes.bool,
     handleChangeSide: React.PropTypes.func
+  };
+
+  static defaultProps = {
+    modifier:     '',
+    showAttempts: false
   };
 
   state = {
@@ -39,8 +46,10 @@ export class RotatorButton extends React.Component {
     if (this.loaderTimeout) clearTimeout(this.loaderTimeout);
 
     this.loaderTimeout = setTimeout(() => {
-      const attempts = this.state.attempts + 1;
-      this.setState({ attempts });
+      if (this.props.showAttempts) {
+        const attempts = this.state.attempts + 1;
+        this.setState({ attempts });
+      }
 
       this.showButton();
     }, 1000);
@@ -56,17 +65,21 @@ export class RotatorButton extends React.Component {
   }
 
   render() {
-    const attempts = this.state.attempts ? ` (attempts: ${ this.state.attempts })` : '';
+    let caption = 'Submit form';
+    if (this.props.showAttempts) {
+      const attempts = this.state.attempts ? ` (attempts: ${ this.state.attempts })` : '';
+      caption = `Submit form${ attempts }`;
+    }
 
     return (
-      <div className = { styles.root }>
+      <div className = { styles[`root${ this.props.modifier }`] }>
         <AnimakitRotator
           side = { this.state.side }
         >
           <SimpleButton
             key         = "button"
             className   = { styles.button }
-            caption     = { `Submit${ attempts }` }
+            caption     = { caption }
             handleClick = { this.listeners.onClick }
           />
           <div

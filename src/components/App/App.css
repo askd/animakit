@@ -10,7 +10,8 @@ body {
   font-family: $font;
 }
 
-button, input {
+button,
+input {
   font-family: $font;
 }
 
@@ -22,7 +23,7 @@ button, input {
   height: 36px;
   box-sizing: border-box;
   padding: 10px;
-  background: rgba(0,0,0,.75);
+  background: rgba(0, 0, 0, 0.75);
 
   &::after {
     content: '';
@@ -34,12 +35,14 @@ button, input {
     height: 0;
     border-style: solid;
     border-width: 18px 0 18px 18px;
-    border-color: transparent transparent transparent rgba(0,0,0,.75);
+    border-color: transparent transparent transparent rgba(0, 0, 0, 0.75);
   }
 }
+
 .topnav {
   margin-left: 10px;
 }
+
 .topnavLink {
   display: inline-block;
   vertical-align: top;
@@ -53,6 +56,7 @@ button, input {
     position: relative;
     margin-left: 20px;
   }
+
   &:not(:first-child)::before {
     content: '\25B8';
     position: absolute;
@@ -64,14 +68,15 @@ button, input {
     text-align: center;
   }
 }
-a.topnavLink {
-  border-bottom:1px dotted color(#fff a(70%));
-}
 
+a.topnavLink {
+  border-bottom: 1px dotted color(#fff a(70%));
+}
 
 .main {
   margin: 40px 0;
 }
+
 .mainText {
   margin: 0 20px;
 }
@@ -115,6 +120,7 @@ a.topnavLink {
   margin: 40px 0;
   height: 100px;
 }
+
 .navLinkRotatorSide {
   width: 200px;
   height: 100px;
@@ -127,7 +133,6 @@ a.topnavLink {
   text-align: center;
 }
 
-
 .navLinkExpander {
   composes: navLink;
   margin: 20px 0;
@@ -137,7 +142,6 @@ a.topnavLink {
   background: color($color5 a(75%));
   text-align: center;
   text-decoration: none;
-
 
   & > div {
     position: relative;
@@ -218,12 +222,13 @@ a.topnavLink {
   overflow: hidden;
   pointer-events: none;
 }
+
 .githubRibbon {
   position: absolute;
   top: 80px;
   right: -43px;
   transform: rotate(-45deg);
-  background: rgba(0,0,0,.75);
+  background: rgba(0, 0, 0, 0.75);
   padding: 2px 0;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
@@ -232,6 +237,7 @@ a.topnavLink {
   z-index: 9999;
   pointer-events: auto;
 }
+
 .githubLink {
   display: inline-block;
   padding: 2px 0;

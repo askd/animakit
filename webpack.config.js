@@ -32,7 +32,7 @@ const config = {
 
   resolve: {
     root:               srcPath,
-    extensions:         ['', '.js', '.jsx'],
+    extensions:         ['', '.js', '.es6'],
     modulesDirectories: [
       srcPath,
       nodeModulesPath
@@ -48,7 +48,7 @@ const config = {
   module: {
     loaders: [
       {
-        test:    /\.jsx?$/,
+        test:    /\.(js|es6)$/,
         loader:  'babel',
         include: srcPath
       },
