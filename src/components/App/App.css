@@ -174,6 +174,65 @@ a.topnavLink {
   }
 }
 
+.navLinkElastic {
+  composes: navLink;
+  position: relative;
+  margin: 20px 0;
+  width: 200px;
+  height: 140px;
+  background: $color4;
+  border: 1px dashed #fff;
+  border-radius: 20px;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-size: 14px;
+  line-height: 20px;
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    width: 20px;
+    height: 10px;
+    margin-top: -5px;
+  }
+  &::before {
+    content: '\2190';
+    left: 11px;
+  }
+  &::after {
+    content: '\2192';
+    right: 15px;
+    text-align: right;
+  }
+
+  & > div {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    box-sizing: border-box;
+    padding: 60px 0;
+
+    &::before,
+    &::after {
+      position: absolute;
+      left: 50%;
+      width: 10px;
+      height: 20px;
+      margin-left: -5px;
+    }
+    &::before {
+      content: '\2191';
+      top: 11px;
+    }
+    &::after {
+      content: '\2193';
+      bottom: 15px;
+    }
+  }
+}
+
 .article {
   border-top: 1px solid $color0;
   padding: 20px;

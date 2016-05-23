@@ -17,6 +17,7 @@ export class App extends React.Component {
     if (path === '/') return 'Animakit';
     if (path === '/rotator') return 'Rotator';
     if (path === '/expander') return 'Expander';
+    if (path === '/elastic') return 'Elastic';
     return '';
   }
 
@@ -47,6 +48,8 @@ export class App extends React.Component {
     if (navLen === 1) return null;
 
     const path = this.props.routes[navLen - 1].path.substr(1);
+    if (path === 'elastic') return null;
+
     return (
       <div className = { AppStyles.github }>
         <div className = { AppStyles.githubRibbon }>
@@ -88,6 +91,12 @@ export class App extends React.Component {
                   <div>Expander</div>
                 </Link>
                 <p className = { AppStyles.navText }>Expand and collapse content of&nbsp;your&nbsp;components</p>
+              </li>
+              <li className = { AppStyles.navItem }>
+                <Link to = "/elastic" className = { AppStyles.navLinkElastic }>
+                  <div>Elastic</div>
+                </Link>
+                <p className = { AppStyles.navText }>Make content of&nbsp;your&nbsp;components elastic</p>
               </li>
             </ul>
           </nav>

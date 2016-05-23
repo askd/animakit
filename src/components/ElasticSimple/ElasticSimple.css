@@ -1,0 +1,50 @@
+@import '../vars.css';
+
+.root {
+  display: inline-block;
+  padding: 10px;
+  border: 3px dotted $color4;
+  border-radius: 10px;
+}
+
+.text h2 {
+  color: $color4;
+}
+
+.more {
+  position: absolute;
+  top: 0;
+  right: 100%;
+  font-size: 14px;
+  line-height: 30px;
+  color: $color0;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.content {
+  display: flex;
+}
+
+.image {
+  position: relative;
+  height: 145px;
+  background-image: url('./images/I_feel_good.jpg');
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+}
+
+.imageVisible {
+  composes: image;
+  width: 145px;
+  margin-left: 10px;
+
+  & .more {
+    margin-right: 10px;
+  }
+}
+
+.imageHidden {
+  composes: image;
+  width: 0;
+}

@@ -4,8 +4,14 @@ import styles from './SimpleText.css';
 export class SimpleText extends React.Component {
   static propTypes = {
     className:    React.PropTypes.string,
+    title:        React.PropTypes.string,
     showMore:     React.PropTypes.bool,
     handleToggle: React.PropTypes.func
+  };
+
+  static defaultProps = {
+    className: null,
+    title:     null
   };
 
   /* state = {
@@ -27,6 +33,11 @@ export class SimpleText extends React.Component {
   render() {
     return (
       <article className = { `${ this.props.className } ${ styles.root }` }>
+        { this.props.title &&
+          <h2 className = { styles.title }>
+            { this.props.title }
+          </h2>
+        }
         <div className = { styles.couplet }>
           <p>Wow! I feel good, I knew that I would now</p>
           <p>I feel good, I knew that I would now</p>

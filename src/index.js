@@ -4,6 +4,7 @@ import { render }                     from 'react-dom';
 import { App }                        from 'components/App/App';
 import { Rotator }                    from 'components/Rotator/Rotator';
 import { Expander }                   from 'components/Expander/Expander';
+import { Elastic }                    from 'components/Elastic/Elastic';
 
 import './reset.css';
 
@@ -13,6 +14,7 @@ render((
     <Route path="/" component={ App }>
       <Route path="/rotator" component={ Rotator } />
       <Route path="/expander" component={ Expander } />
+      <Route path="/elastic" component={ Elastic } />
     </Route>
   </Router>
 ), document.getElementById('root'));

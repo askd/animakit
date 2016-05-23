@@ -1,5 +1,6 @@
 import React             from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
+import { githubGist }    from 'react-syntax-highlighter/dist/styles';
 
 import RotatorStyles     from './Rotator.css';
 import CodeStyles        from 'components/Code/Code.css';
@@ -61,6 +62,8 @@ export class Rotator extends React.Component {
   }
 
   render() {
+    githubGist.hljs = {};
+
     return (
       <div className = { RotatorStyles.root }>
         <div className = { RotatorStyles.intro }>
@@ -84,8 +87,7 @@ export class Rotator extends React.Component {
                 <div className = { CodeStyles.root }>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { this.state.sideChanged === 'button' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
                     { `<AnimakitRotator side="${ this.state.side.button }">` }
@@ -100,8 +102,7 @@ export class Rotator extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '</AnimakitRotator>' }
@@ -132,8 +133,7 @@ export class Rotator extends React.Component {
                 <div className = { CodeStyles.root }>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { this.state.sideChanged === 'button2' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
                     { `<AnimakitRotator side="${ this.state.side.button2 }">` }
@@ -148,8 +148,7 @@ export class Rotator extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '</AnimakitRotator>' }
@@ -171,8 +170,7 @@ export class Rotator extends React.Component {
                 <div className = { CodeStyles.root }>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { this.state.sideChanged === 'form' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
                     {
@@ -200,8 +198,7 @@ export class Rotator extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '</AnimakitRotator>' }
@@ -223,8 +220,7 @@ export class Rotator extends React.Component {
                 <div className = { CodeStyles.root }>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { this.state.sideChanged === 'promo' ? CodeStyles.blockHLA : CodeStyles.blockHL }
                   >
                     {
@@ -255,8 +251,7 @@ export class Rotator extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '</AnimakitRotator>' }

@@ -8,6 +8,12 @@
   padding: 40px 20px;
 }
 
+.ud {
+  margin-top: 20px;
+  color: $color1;
+  font-weight: 700;
+}
+
 .list {
   padding: 0 0 20px;
 }

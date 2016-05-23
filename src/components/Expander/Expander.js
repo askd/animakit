@@ -1,5 +1,6 @@
 import React                 from 'react';
 import SyntaxHighlighter     from 'react-syntax-highlighter';
+import { githubGist }        from 'react-syntax-highlighter/dist/styles';
 
 import ExpanderStyles        from './Expander.css';
 import CodeStyles            from 'components/Code/Code.css';
@@ -62,6 +63,8 @@ export class Expander extends React.Component {
   }
 
   render() {
+    githubGist.hljs = {};
+
     const expandedChanged = this.state.expandedChanged || [];
 
     return (
@@ -92,8 +95,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = {
                       expandedChanged.indexOf('simple') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
                     }
@@ -111,8 +113,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '</AnimakitExpander>' }
@@ -142,8 +143,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = {
                       expandedChanged.indexOf('field.error') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
                     }
@@ -157,8 +157,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '  </AnimakitExpander>' }
@@ -176,8 +175,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = {
                       expandedChanged.indexOf('field.other') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
                     }
@@ -191,8 +189,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '  </AnimakitExpander>' }
@@ -229,8 +226,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = {
                       expandedChanged.indexOf('vertical') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
                     }
@@ -254,8 +250,7 @@ export class Expander extends React.Component {
                   </pre>
                   <SyntaxHighlighter
                     language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
+                    style      = { githubGist }
                     className  = { CodeStyles.blockHL }
                   >
                     { '  </AnimakitExpander>' }
@@ -281,42 +276,41 @@ export class Expander extends React.Component {
               <div className = { ExpanderStyles.itemCode }>
                 <div className = { CodeStyles.root }>
                 { Object.keys(this.state.expanded.accordion).map(item => {
+                  const active = expandedChanged.indexOf(`accordion.${ item }`) !== -1;
                   return (
-                  <div key = { item }>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+                    <div key = { item }>
+                      <pre className = { CodeStyles.block }>
+                        <code>
+                        {
 `<div onClick={toggle}>
   ${ item.charAt(0).toUpperCase() + item.slice(1) }
 </div>`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
-                    className  = {
-                      expandedChanged.indexOf(`accordion.${ item }`) !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
-                    }
-                  >
-                    { `<AnimakitExpander expanded={${ this.state.expanded.accordion[item] }}>` }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '  <image ... />' }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    stylesheet = "github-gist"
-                    style      = {{}}
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '</AnimakitExpander>' }
-                  </SyntaxHighlighter>
-                </div>
-                );
+                        }
+                        </code>
+                      </pre>
+                      <SyntaxHighlighter
+                        language   = "xml"
+                        style      = { githubGist }
+                        className  = {
+                          active ? CodeStyles.blockHLA : CodeStyles.blockHL
+                        }
+                      >
+                        { `<AnimakitExpander expanded={${ this.state.expanded.accordion[item] }}>` }
+                      </SyntaxHighlighter>
+                      <pre className = { CodeStyles.block }>
+                        <code>
+                        { '  <image ... />' }
+                        </code>
+                      </pre>
+                      <SyntaxHighlighter
+                        language   = "xml"
+                        style      = { githubGist }
+                        className  = { CodeStyles.blockHL }
+                      >
+                        { '</AnimakitExpander>' }
+                      </SyntaxHighlighter>
+                    </div>
+                  );
                 })}
                 </div>
               </div>

@@ -5,6 +5,10 @@
   line-height: 30px;
 }
 
+.title {
+  font-size: 16px;
+}
+
 .couplet {
   & + & {
     margin-top: 10px;
