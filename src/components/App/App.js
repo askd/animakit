@@ -48,7 +48,6 @@ export class App extends React.Component {
     if (navLen === 1) return null;
 
     const path = this.props.routes[navLen - 1].path.substr(1);
-    if (path === 'elastic') return null;
 
     return (
       <div className = { AppStyles.github }>
@@ -84,19 +83,19 @@ export class App extends React.Component {
                     <div className = { AppStyles.navLinkRotatorSide } key = "5" />
                   </AnimakitRotator>
                 </Link>
-                <p className = { AppStyles.navText }>Rotate your components in&nbsp;three-dimensional space</p>
+                <p className = { AppStyles.navText }>Rotate your components in&nbsp;3D&nbsp;space</p>
               </li>
               <li className = { AppStyles.navItem }>
                 <Link to = "/expander" className = { AppStyles.navLinkExpander }>
                   <div>Expander</div>
                 </Link>
-                <p className = { AppStyles.navText }>Expand and collapse content of&nbsp;your&nbsp;components</p>
+                <p className = { AppStyles.navText }>Expand and collapse the content of&nbsp;your&nbsp;components</p>
               </li>
               <li className = { AppStyles.navItem }>
                 <Link to = "/elastic" className = { AppStyles.navLinkElastic }>
                   <div>Elastic</div>
                 </Link>
-                <p className = { AppStyles.navText }>Make content of&nbsp;your&nbsp;components elastic</p>
+                <p className = { AppStyles.navText }>Make the content of&nbsp;your&nbsp;components elastic</p>
               </li>
             </ul>
           </nav>
@@ -106,8 +105,8 @@ export class App extends React.Component {
             <dl>
               <dt>If the Animakit has any relation to React Animation?</dt>
               <dd>
-                No. Animakit is separate collection of the components.
-                All components use React but implement an animation on their own way.
+                No. Animakit is the separate collection of the components.
+                All components use React but implement an animation in their own way.
               </dd>
 
               <dt>Do I need to install the whole Animakit to use one of the components?</dt>

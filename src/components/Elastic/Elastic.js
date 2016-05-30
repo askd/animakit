@@ -18,11 +18,8 @@ export class Elastic extends React.Component {
     return (
       <div className = { ElasticStyles.root }>
         <div className = { ElasticStyles.intro }>
-          <p>Do not like abrupt changes in the sizes?
+          <p>You do not like abrupt changes in the sizes?
           AnimakitElastic will solve this problem ;)</p>
-          <p className = { ElasticStyles.ud }>
-            Under development
-          </p>
         </div>
         <ul className = { ElasticStyles.list }>
           <li
@@ -45,9 +42,12 @@ export class Elastic extends React.Component {
                   <pre className = { CodeStyles.block }>
                     <code>
                       {
-`  <article>
-    ...
-  </article>`
+`  <div>
+    <article>
+      ...
+    </article>
+    <img ... />
+  </div>`
                       }
                     </code>
                   </pre>

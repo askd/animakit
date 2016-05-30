@@ -1,7 +1,7 @@
 import React           from 'react';
 import styles          from './ElasticSimple.css';
 import { SimpleText }  from 'components/SimpleText/SimpleText';
-import AnimakitElastic from 'components/AnimakitElastic/AnimakitElastic';
+import AnimakitElastic from 'animakit-elastic';
 
 export class ElasticSimple extends React.Component {
   state = {

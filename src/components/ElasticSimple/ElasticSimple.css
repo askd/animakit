@@ -28,6 +28,7 @@
 
 .image {
   position: relative;
+  flex-shrink: 0;
   height: 145px;
   background-image: url('./images/I_feel_good.jpg');
   background-size: 100% 100%;
