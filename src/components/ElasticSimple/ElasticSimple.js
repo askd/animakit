@@ -5,6 +5,7 @@ import AnimakitElastic from 'animakit-elastic';
 
 export class ElasticSimple extends React.Component {
   state = {
+    // show:      false,
     showText:  false,
     showImage: false
   };
@@ -23,6 +24,14 @@ export class ElasticSimple extends React.Component {
     const showText = !this.state.showText;
     this.setState({ showText });
   }
+
+  /* componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        show: true
+      });
+    }, 5000);
+  } */
 
   render() {
     return (

@@ -2,7 +2,7 @@
 
 .root {
   display: inline-block;
-  padding: 10px;
+  vertical-align: top;
   border: 3px dotted $color4;
   border-radius: 10px;
 }
@@ -24,6 +24,7 @@
 
 .content {
   display: flex;
+  padding: 7px 10px;
 }
 
 .image {

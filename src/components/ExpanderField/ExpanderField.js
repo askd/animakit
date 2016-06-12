@@ -33,10 +33,10 @@ export class ExpanderField extends React.Component {
 
   validate(value) {
     const regexp = new RegExp(
-      '^[a-zA-Z0-9.!#$%&\'*+\/=?^_`{|}~-]+' +
+      '^[a-zA-Z0-9.!#$%&\'*+/=?^_`{|}~-]+' +
       '@[a-zA-Z0-9]' +
       '(?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?' +
-      '(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
+      '(?:.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$',
       'i'
     );
     const valid = regexp.test(value);
@@ -65,9 +65,11 @@ export class ExpanderField extends React.Component {
             onKeyUp = { this.listeners.onKeyUp }
           />
           <AnimakitExpander expanded = { this.state.expanded.error }>
+          { this.state.expanded.error &&
             <div className = { styles.error }>
               Sorry, but this does not look like an&nbsp;e-mail address to me
             </div>
+          }
           </AnimakitExpander>
         </div>
         <div className = { styles.field }>

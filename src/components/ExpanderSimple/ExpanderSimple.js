@@ -44,7 +44,7 @@ export class ExpanderSimple extends React.Component {
           <span className = { this.state.expanded ? styles.toggleOff : styles.toggleOn } />
         </div>
 
-        <AnimakitExpander expanded = { this.state.expanded }>
+        <AnimakitExpander expanded = { this.state.expanded } durationPerPx = { 3 }>
           <SimpleText
             className     = { styles.content }
             handleToggle  = { this.listeners.onToggleText }
