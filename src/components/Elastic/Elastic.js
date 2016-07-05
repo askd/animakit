@@ -18,8 +18,8 @@ export class Elastic extends React.Component {
     return (
       <div className = { ElasticStyles.root }>
         <div className = { ElasticStyles.intro }>
-          <p>You do not like abrupt changes in the sizes?
-          AnimakitElastic will solve this problem ;)</p>
+          <p>{ `Don't you like abrupt changes in the sizes?
+          AnimakitElastic will solve this problem ;)` }</p>
         </div>
         <ul className = { ElasticStyles.list }>
           <li
