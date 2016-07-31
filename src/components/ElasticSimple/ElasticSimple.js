@@ -1,7 +1,7 @@
 import React           from 'react';
 import styles          from './ElasticSimple.css';
 import { SimpleText }  from 'components/SimpleText/SimpleText';
-import AnimakitElastic from 'animakit-elastic';
+import AnimakitElastic from /* 'components/AnimakitElastic/AnimakitElastic'; */ 'animakit-elastic';
 
 export class ElasticSimple extends React.Component {
   state = {
@@ -34,39 +34,10 @@ export class ElasticSimple extends React.Component {
   } */
 
   render() {
-    /* return (
-      <div className = { styles.proot }>
-        <div className = { styles.pcon }>
-          <div className = { styles.pitem }>
-            <div className = { styles.pwrap }>
-              <AnimakitElastic>
-                <div className = { styles.content }>
-                  <SimpleText
-                    className    = { styles.text }
-                    title        = "I Got You"
-                    handleToggle = { this.listeners.onToggleText }
-                    showMore     = { this.state.showText }
-                  />
-                  <div className = { this.state.showImage ? styles.imageVisible : styles.imageHidden }>
-                    <span
-                      className = { styles.more }
-                      onClick = { this.listeners.onToggleImage }
-                    >
-                      { this.state.showImage ? '- Image' : '+ Image' }
-                    </span>
-                  </div>
-                </div>
-              </AnimakitElastic>
-            </div>
-          </div>
-        </div>
-      </div>
-    ); */
-
     return (
       <div className = { styles.root }>
         <AnimakitElastic>
-          <div className = { styles.content }>
+          { <div className = { styles.content }>
             <SimpleText
               className    = { styles.text }
               title        = "I Got You"
@@ -81,7 +52,7 @@ export class ElasticSimple extends React.Component {
                 { this.state.showImage ? '- Image' : '+ Image' }
               </span>
             </div>
-          </div>
+          </div> }
         </AnimakitElastic>
       </div>
     );

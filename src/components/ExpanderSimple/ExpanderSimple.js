@@ -1,7 +1,7 @@
 import React            from 'react';
 import styles           from './ExpanderSimple.css';
 import { SimpleText }   from 'components/SimpleText/SimpleText';
-import AnimakitExpander from 'animakit-expander';
+import AnimakitExpander from /* 'components/AnimakitExpander/AnimakitExpander'; */ 'animakit-expander';
 
 export class ExpanderSimple extends React.Component {
   static propTypes = {
