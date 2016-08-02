@@ -3,7 +3,7 @@ React components developed to make your site more friendly ;)
 
 > **Note:** This repository contains only demo pages. Each component has it own repository.
 
-## [Demos](http://askd.github.io/animakit/)
+## [Demos](https://animakit.github.io)
 
 
 ## Components
@@ -22,11 +22,14 @@ Supports both vertical and horizontal mode.
 
 Repository on GitHub: https://github.com/animakit/animakit-expander
 
+### Elastic
+
+React component for smooth resizing of content blocks.
+
+Repository on GitHub: https://github.com/animakit/animakit-elastic
+
 
 ## FAQ
-
-#### If the Animakit has any relation to React Animation?
-No. Animakit is separate collection of the components. All components use React but implement an animation on their own way.
 
 #### Do I need to install the whole Animakit to use one of the components?
 No. All components are independent and developed for separate use.

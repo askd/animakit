@@ -44,6 +44,7 @@ export class Elastic extends React.Component {
                       {
 `  <div>
     <article>
+      <h2>I Got You</h2>
       ...
     </article>
     <img ... />

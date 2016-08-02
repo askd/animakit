@@ -100,15 +100,16 @@ export class Expander extends React.Component {
                       expandedChanged.indexOf('simple') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
                     }
                   >
-                    { `<AnimakitExpander expanded={${ this.state.expanded.simple }} durationPerPx={3}>` }
+                    {
+`<AnimakitExpander
+  expanded={${ this.state.expanded.simple }}
+  durationPerPx={3}
+>`
+                    }
                   </SyntaxHighlighter>
                   <pre className = { CodeStyles.block }>
                     <code>
-                      {
-`  <article>
-    ...
-  </article>`
-                      }
+                      { '  <article>...</article>' }
                     </code>
                   </pre>
                   <SyntaxHighlighter
