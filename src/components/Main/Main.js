@@ -162,8 +162,16 @@ export default class App extends React.Component {
           <article className = { styles.article }>
             <h2 className={ styles.title }>The reason to use</h2>
             <p>
+              Animations draw attention to and explain changes on&nbsp;the&nbsp;page.
+            </p>
+            <p>
+              Changes in&nbsp;the&nbsp;state of&nbsp;an&nbsp;element,
+              revealing and hiding of&nbsp;content, or&nbsp;shifts to&nbsp;another area of&nbsp;content
+              are all common areas for&nbsp;transitional animations.
+            </p>
+            <p>
               The word “animation” is derived from “anima”, the&nbsp;Latin word for&nbsp;soul or&nbsp;spirit.
-              The verb “to&nbsp;animate” literally means “to&nbsp;give life&nbsp;to”.
+              The&nbsp;verb “to&nbsp;animate” literally means “to&nbsp;give life&nbsp;to”.
             </p>
             <p>
               Adding transition effects helps you to&nbsp;enliven your website
@@ -173,6 +181,7 @@ export default class App extends React.Component {
         </div>
 
         <div className = { styles.block }>
+          <h2 className = { styles.title }>Choose one to start</h2>
           <nav className = { styles.nav }>
             <ul className = { styles.navList }>
               <li className = { styles.navItemRotator }>
@@ -204,6 +213,8 @@ export default class App extends React.Component {
                     your components
                     <br />
                     in 3D space
+                    <br />
+                    <span className = { styles.navMore }>Learn more</span>
                   </p>
                 </Link>
               </li>
@@ -236,6 +247,8 @@ export default class App extends React.Component {
                     the content
                     <br />
                     of your components
+                    <br />
+                    <span className = { styles.navMore }>Learn more</span>
                   </p>
                 </Link>
               </li>
@@ -268,6 +281,8 @@ export default class App extends React.Component {
                     of your components
                     <br />
                     elastic
+                    <br />
+                    <span className = { styles.navMore }>Learn more</span>
                   </p>
                 </Link>
               </li>
