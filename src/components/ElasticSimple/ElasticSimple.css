@@ -5,6 +5,7 @@
   vertical-align: top;
   border: 3px dotted $color4;
   border-radius: 10px;
+  max-width: 434px;
 }
 
 .text h2 {

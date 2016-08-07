@@ -1,26 +1,17 @@
-import React           from 'react';
-import styles          from './RotatorForm.css';
 import AnimakitRotator from 'animakit-rotator';
 
-export class RotatorForm extends React.Component {
+import React           from 'react';
+
+import styles          from './RotatorForm.css';
+
+export default class RotatorForm extends React.Component {
   static propTypes = {
-    handleChangeSide: React.PropTypes.func
+    handleChangeSide: React.PropTypes.func,
   };
 
   state = {
-    form: 'signin'
+    form: 'signin',
   };
-
-  listeners = {
-    onClickSignIn:  this.onClickSignIn.bind(this),
-    onClickSignUp:  this.onClickSignUp.bind(this),
-    onClickPassRec: this.onClickPassRec.bind(this)
-  };
-
-  showForm(form) {
-    this.setState({ form });
-    this.props.handleChangeSide(form);
-  }
 
   onClickSignIn() {
     this.showForm('signin');
@@ -33,6 +24,17 @@ export class RotatorForm extends React.Component {
   onClickPassRec() {
     this.showForm('passrec');
   }
+
+  showForm(form) {
+    this.setState({ form });
+    this.props.handleChangeSide(form);
+  }
+
+  listeners = {
+    onClickSignIn:  this.onClickSignIn.bind(this),
+    onClickSignUp:  this.onClickSignUp.bind(this),
+    onClickPassRec: this.onClickPassRec.bind(this),
+  };
 
   render() {
     return (

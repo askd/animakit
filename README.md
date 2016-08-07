@@ -1,6 +1,8 @@
 # Animakit
 React components developed to make your site more friendly ;)
 
+Just wrap your existing UI with Animakit components to get transitions for better UX.
+
 > **Note:** This repository contains only demo pages. Each component has it own repository.
 
 ## [Demos](https://animakit.github.io)
@@ -35,4 +37,4 @@ Repository on GitHub: https://github.com/animakit/animakit-elastic
 No. All components are independent and developed for separate use.
 
 #### Could I request to add one more component to Animakit?
-Yes. Feel free to leave an [issue](https://github.com/askd/animakit/issues) ;)
+Yes. Feel free to leave an [issue](https://github.com/animakit/animakit-core/issues) ;)

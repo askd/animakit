@@ -1,27 +1,32 @@
+import AnimakitRotator  from 'animakit-rotator';
+import SimpleButton     from 'components/SimpleButton/SimpleButton';
+
 import React            from 'react';
 import styles           from './RotatorButton.css';
-import { SimpleButton } from 'components/SimpleButton/SimpleButton';
-import AnimakitRotator  from 'animakit-rotator';
 
-export class RotatorButton extends React.Component {
+export default class RotatorButton extends React.Component {
   static propTypes = {
     modifier:         React.PropTypes.string,
     showAttempts:     React.PropTypes.bool,
-    handleChangeSide: React.PropTypes.func
+    handleChangeSide: React.PropTypes.func,
   };
 
   static defaultProps = {
     modifier:     '',
-    showAttempts: false
+    showAttempts: false,
   };
 
   state = {
     side:     'button',
-    attempts: 0
+    attempts: 0,
   };
 
+  onClick() {
+    this.showLoader();
+  }
+
   listeners = {
-    onClick: this.onClick.bind(this)
+    onClick: this.onClick.bind(this),
   };
 
   interval = false;
@@ -60,19 +65,15 @@ export class RotatorButton extends React.Component {
     this.props.handleChangeSide('button');
   }
 
-  onClick() {
-    this.showLoader();
-  }
-
   render() {
     let caption = 'Submit form';
     if (this.props.showAttempts) {
-      const attempts = this.state.attempts ? ` (attempts: ${ this.state.attempts })` : '';
-      caption = `Submit form${ attempts }`;
+      const attempts = this.state.attempts ? ` (attempts: ${this.state.attempts})` : '';
+      caption = `Submit form${attempts}`;
     }
 
     return (
-      <div className = { styles[`root${ this.props.modifier }`] }>
+      <div className = { styles[`root${this.props.modifier}`] }>
         <AnimakitRotator
           side = { this.state.side }
         >

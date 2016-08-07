@@ -1,10 +1,10 @@
 import React from 'react';
 
-export class SimpleButton extends React.Component {
+export default class SimpleButton extends React.PureComponent {
   static propTypes = {
     className:   React.PropTypes.string,
     caption:     React.PropTypes.string,
-    handleClick: React.PropTypes.func
+    handleClick: React.PropTypes.func,
   };
 
   render() {

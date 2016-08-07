@@ -1,17 +1,17 @@
 import React  from 'react';
 import styles from './SimpleText.css';
 
-export class SimpleText extends React.Component {
+export default class SimpleText extends React.PureComponent {
   static propTypes = {
     className:    React.PropTypes.string,
     title:        React.PropTypes.string,
     showMore:     React.PropTypes.bool,
-    handleToggle: React.PropTypes.func
+    handleToggle: React.PropTypes.func,
   };
 
   static defaultProps = {
     className: null,
-    title:     null
+    title:     null,
   };
 
   /* state = {
@@ -32,7 +32,7 @@ export class SimpleText extends React.Component {
 
   render() {
     return (
-      <article className = { `${ this.props.className } ${ styles.root }` }>
+      <article className = { `${this.props.className} ${styles.root}` }>
         { this.props.title &&
           <h2 className = { styles.title }>
             { this.props.title }

@@ -1,19 +1,25 @@
-import React           from 'react';
-import styles          from './ElasticSimple.css';
-import { SimpleText }  from 'components/SimpleText/SimpleText';
 import AnimakitElastic from /* 'components/AnimakitElastic/AnimakitElastic'; */ 'animakit-elastic';
 
-export class ElasticSimple extends React.Component {
+import SimpleText      from 'components/SimpleText/SimpleText';
+
+import React           from 'react';
+
+import styles          from './ElasticSimple.css';
+
+export default class ElasticSimple extends React.Component {
   state = {
     // show:      false,
     showText:  false,
-    showImage: false
+    showImage: false,
   };
 
-  listeners = {
-    onToggleImage: this.onToggleImage.bind(this),
-    onToggleText:  this.onToggleText.bind(this)
-  };
+  /* componentDidMount() {
+    setTimeout(() => {
+      this.setState({
+        show: true
+      });
+    }, 5000);
+  } */
 
   onToggleImage() {
     const showImage = !this.state.showImage;
@@ -25,13 +31,10 @@ export class ElasticSimple extends React.Component {
     this.setState({ showText });
   }
 
-  /* componentDidMount() {
-    setTimeout(() => {
-      this.setState({
-        show: true
-      });
-    }, 5000);
-  } */
+  listeners = {
+    onToggleImage: this.onToggleImage.bind(this),
+    onToggleText:  this.onToggleText.bind(this),
+  };
 
   render() {
     return (

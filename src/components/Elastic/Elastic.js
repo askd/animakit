@@ -1,47 +1,40 @@
-import React             from 'react';
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { githubGist }    from 'react-syntax-highlighter/dist/styles';
+import ElasticSimple from 'components/ElasticSimple/ElasticSimple';
+import Demo          from 'components/Demo/Demo';
+import DemoComponent from 'components/Demo/DemoComponent';
+import DemoCode      from 'components/Demo/DemoCode';
+import Code          from 'components/Code/Code';
+import CodeBlock     from 'components/Code/CodeBlock';
 
-import ElasticStyles     from './Elastic.css';
-import CodeStyles        from 'components/Code/Code.css';
+import React         from 'react';
 
-import { ElasticSimple } from 'components/ElasticSimple/ElasticSimple';
+import ElasticStyles from './Elastic.css';
 
-export class Elastic extends React.Component {
+export default class Elastic extends React.PureComponent {
   static propTypes = {
-    children: React.PropTypes.any
+    children: React.PropTypes.any,
   };
 
   render() {
-    githubGist.hljs = {};
-
     return (
       <div className = { ElasticStyles.root }>
         <div className = { ElasticStyles.intro }>
           <p>{ `Don't you like abrupt changes in the sizes?
           AnimakitElastic will solve this problem ;)` }</p>
         </div>
-        <ul className = { ElasticStyles.list }>
-          <li
-            key = "simple"
-            className = { ElasticStyles.item }
-          >
-            <div className = { ElasticStyles.itemContent }>
-              <div className = { ElasticStyles.itemComponent }>
-                <ElasticSimple />
-              </div>
-              <div className = { ElasticStyles.itemCode }>
-                <div className = { CodeStyles.root }>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '<AnimakitElastic>' }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+
+        <Demo key = "simple">
+          <DemoComponent>
+            <ElasticSimple />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock
+                highlight
+              >
+                { '<AnimakitElastic>' }
+              </CodeBlock>
+              <CodeBlock>
+                {
 `  <div>
     <article>
       <h2>I Got You</h2>
@@ -49,22 +42,17 @@ export class Elastic extends React.Component {
     </article>
     <img ... />
   </div>`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '</AnimakitElastic>' }
-                  </SyntaxHighlighter>
-                </div>
-              </div>
-            </div>
-          </li>
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '</AnimakitElastic>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
 
-        </ul>
       </div>
     );
   }

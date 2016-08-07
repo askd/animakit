@@ -1,11 +1,12 @@
-import React           from 'react';
-import styles          from './RotatorPromo.css';
 import AnimakitRotator from 'animakit-rotator';
 
-export class RotatorPromo extends React.Component {
+import React           from 'react';
+import styles          from './RotatorPromo.css';
+
+export default class RotatorPromo extends React.Component {
   static propTypes = {
     sides:            React.PropTypes.array,
-    handleChangeSide: React.PropTypes.func
+    handleChangeSide: React.PropTypes.func,
   };
 
   static defaultProps = {
@@ -13,28 +14,26 @@ export class RotatorPromo extends React.Component {
       'mars',
       'earth',
       'venus',
-      'mercury'
-    ]
+      'mercury',
+    ],
   };
 
   state = {
-    side: 'mars'
+    side: 'mars',
   };
 
-  listeners = {
-    setSide: []
-  };
+  componentWillMount() {
+    this.listeners.setSide = this.props.sides.map(side => this.setSide.bind(this, side), this);
+  }
 
   setSide(side) {
     this.setState({ side });
     this.props.handleChangeSide(side);
   }
 
-  componentWillMount() {
-    this.listeners.setSide = this.props.sides.map(side => {
-      return this.setSide.bind(this, side);
-    }, this);
-  }
+  listeners = {
+    setSide: [],
+  };
 
   render() {
     return (
@@ -89,15 +88,13 @@ export class RotatorPromo extends React.Component {
           </div>
         </AnimakitRotator>
         <ul className = { styles.nav }>
-          { this.props.sides.map((side, i) => {
-            return (
-              <li
-                key = { side }
-                className = { this.state.side === side ? styles.navItemActive : styles.navItem }
-                onClick = { this.listeners.setSide[i] }
-              />
-            );
-          }, this)}
+          { this.props.sides.map((side, i) =>
+            <li
+              key = { side }
+              className = { this.state.side === side ? styles.navItemActive : styles.navItem }
+              onClick = { this.listeners.setSide[i] }
+            />
+          , this)}
         </ul>
       </div>
     );

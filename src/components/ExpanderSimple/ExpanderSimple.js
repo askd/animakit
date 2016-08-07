@@ -1,28 +1,19 @@
-import React            from 'react';
-import styles           from './ExpanderSimple.css';
-import { SimpleText }   from 'components/SimpleText/SimpleText';
 import AnimakitExpander from /* 'components/AnimakitExpander/AnimakitExpander'; */ 'animakit-expander';
 
-export class ExpanderSimple extends React.Component {
+import React            from 'react';
+import SimpleText       from 'components/SimpleText/SimpleText';
+
+import styles           from './ExpanderSimple.css';
+
+export default class ExpanderSimple extends React.Component {
   static propTypes = {
-    handleChangeExpanded: React.PropTypes.func
+    handleChangeExpanded: React.PropTypes.func,
   };
 
   state = {
     expanded: false,
-    showMore: false
+    showMore: false,
   };
-
-  listeners = {
-    onClick:      this.onClick.bind(this),
-    onToggleText: this.onToggleText.bind(this)
-  };
-
-  toggleExpanded() {
-    const expanded = !this.state.expanded;
-    this.setState({ expanded });
-    this.props.handleChangeExpanded(expanded);
-  }
 
   onClick() {
     this.toggleExpanded();
@@ -31,6 +22,17 @@ export class ExpanderSimple extends React.Component {
   onToggleText() {
     const showMore = !this.state.showMore;
     this.setState({ showMore });
+  }
+
+  listeners = {
+    onClick:      this.onClick.bind(this),
+    onToggleText: this.onToggleText.bind(this),
+  };
+
+  toggleExpanded() {
+    const expanded = !this.state.expanded;
+    this.setState({ expanded });
+    this.props.handleChangeExpanded(expanded);
   }
 
   render() {

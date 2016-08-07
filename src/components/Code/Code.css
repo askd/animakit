@@ -8,13 +8,20 @@
   font-size: 14px;
   line-height: 20px;
 }
+
 .block {
   display: block;
   color: rgba(0,0,0,.375);
   overflow-x: auto;
 }
-.blockHL {
+
+.blockHighlight {
   composes: block;
+  color: #333;
+}
+
+.blockBlink {
+  composes: blockHighlight;
 
   & > code > span > span:nth-child(6) {
     display: inline-block;
@@ -22,8 +29,9 @@
     border-radius: 10px;
   }
 }
-.blockHLA {
-  composes: blockHL;
+
+.blockBlinkActive {
+  composes: blockBlink;
 
   & > code > span > span:nth-child(6) {
     animation: blink .5s 1;

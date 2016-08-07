@@ -1,18 +1,21 @@
-import React                 from 'react';
-import SyntaxHighlighter     from 'react-syntax-highlighter';
-import { githubGist }        from 'react-syntax-highlighter/dist/styles';
+import ExpanderSimple    from 'components/ExpanderSimple/ExpanderSimple';
+import ExpanderField     from 'components/ExpanderField/ExpanderField';
+import ExpanderVertical  from 'components/ExpanderVertical/ExpanderVertical';
+import ExpanderAccordion from 'components/ExpanderAccordion/ExpanderAccordion';
+import Demo              from 'components/Demo/Demo';
+import DemoComponent     from 'components/Demo/DemoComponent';
+import DemoCode          from 'components/Demo/DemoCode';
+import Code              from 'components/Code/Code';
+import CodeBlock         from 'components/Code/CodeBlock';
 
-import ExpanderStyles        from './Expander.css';
-import CodeStyles            from 'components/Code/Code.css';
+import React             from 'react';
 
-import { ExpanderSimple }    from 'components/ExpanderSimple/ExpanderSimple';
-import { ExpanderField }     from 'components/ExpanderField/ExpanderField';
-import { ExpanderVertical }  from 'components/ExpanderVertical/ExpanderVertical';
-import { ExpanderAccordion } from 'components/ExpanderAccordion/ExpanderAccordion';
+import ExpanderStyles    from './Expander.css';
 
-export class Expander extends React.Component {
+
+export default class Expander extends React.Component {
   static propTypes = {
-    children: React.PropTypes.any
+    children: React.PropTypes.any,
   };
 
   state = {
@@ -20,17 +23,17 @@ export class Expander extends React.Component {
       simple: false,
       field:  {
         error: false,
-        other: false
+        other: false,
       },
       vertical:  false,
       accordion: {
         mars:    false,
         earth:   false,
         venus:   false,
-        mercury: false
-      }
+        mercury: false,
+      },
     },
-    expandedChanged: null
+    expandedChanged: null,
   };
 
   listeners = {
@@ -38,8 +41,8 @@ export class Expander extends React.Component {
       simple:    this.changeExpanded.bind(this, 'simple'),
       field:     this.changeExpanded.bind(this, 'field'),
       vertical:  this.changeExpanded.bind(this, 'vertical'),
-      accordion: this.changeExpanded.bind(this, 'accordion')
-    }
+      accordion: this.changeExpanded.bind(this, 'accordion'),
+    },
   };
 
   changeExpanded(name, value) {
@@ -47,7 +50,7 @@ export class Expander extends React.Component {
     const expandedChanged = [];
     if (name === 'field' || name === 'accordion') {
       Object.keys(value).forEach(key => {
-        if (expanded[name][key] !== value[key]) expandedChanged.push(`${ name }.${ key }`);
+        if (expanded[name][key] !== value[key]) expandedChanged.push(`${name}.${key}`);
         expanded[name][key] = value[key];
       }, this);
     } else {
@@ -63,8 +66,6 @@ export class Expander extends React.Component {
   }
 
   render() {
-    githubGist.hljs = {};
-
     const expandedChanged = this.state.expandedChanged || [];
 
     return (
@@ -73,251 +74,187 @@ export class Expander extends React.Component {
           <p>Dreaming about easy way to expand and collapse content of your components?
           Feel free to use AnimakitExpander ;)</p>
         </div>
-        <ul className = { ExpanderStyles.list }>
-          <li
-            key = "simple"
-            className = { ExpanderStyles.item }
-          >
-            <div className = { ExpanderStyles.itemContent }>
-              <div className = { ExpanderStyles.itemComponent }>
-                <ExpanderSimple handleChangeExpanded = { this.listeners.changeExpanded.simple } />
-              </div>
-              <div className = { ExpanderStyles.itemCode }>
-                <div className = { CodeStyles.root }>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+
+        <Demo key = "simple">
+          <DemoComponent>
+            <ExpanderSimple handleChangeExpanded = { this.listeners.changeExpanded.simple } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock>
+                {
 `<div className="title" onClick={toggle}>
   <span>I Got You</span>
 </div>`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = {
-                      expandedChanged.indexOf('simple') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
-                    }
-                  >
-                    {
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { expandedChanged.indexOf('simple') !== -1 }
+              >
+                {
 `<AnimakitExpander
-  expanded={${ this.state.expanded.simple }}
+  expanded={${this.state.expanded.simple}}
   durationPerPx={3}
 >`
-                    }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '  <article>...</article>' }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '</AnimakitExpander>' }
-                  </SyntaxHighlighter>
-                </div>
-              </div>
-            </div>
-          </li>
+                }
+              </CodeBlock>
+              <CodeBlock>
+                { '  <article>...</article>' }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '</AnimakitExpander>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
 
-          <li
-            key = "field"
-            className = { ExpanderStyles.item }
-          >
-            <div className = { ExpanderStyles.itemContent }>
-              <div className = { ExpanderStyles.itemComponent }>
-                <ExpanderField handleChangeExpanded = { this.listeners.changeExpanded.field } />
-              </div>
-              <div className = { ExpanderStyles.itemCode }>
-                <div className = { CodeStyles.root }>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+        <Demo key = "field">
+          <DemoComponent>
+            <ExpanderField handleChangeExpanded = { this.listeners.changeExpanded.field } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock>
+                {
 `<div className="field">
   <input onKeyUp={validate} />`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = {
-                      expandedChanged.indexOf('field.error') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
-                    }
-                  >
-                    { `  <AnimakitExpander expanded={${ this.state.expanded.field.error }}>` }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '    <div>Sorry, ... </div>' }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '  </AnimakitExpander>' }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { expandedChanged.indexOf('field.error') !== -1 }
+              >
+                { `  <AnimakitExpander expanded={${this.state.expanded.field.error}}>` }
+              </CodeBlock>
+              <CodeBlock>
+                { '    <div>Sorry, ... </div>' }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '  </AnimakitExpander>' }
+              </CodeBlock>
+              <CodeBlock>
+                {
 `</div>
 <div className="field">
   <input type="radio" ... /> No
   <input type="radio" ... /> Yes
 `
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = {
-                      expandedChanged.indexOf('field.other') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
-                    }
-                  >
-                    { `  <AnimakitExpander expanded={${ this.state.expanded.field.other }} align="bottom">` }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '    <textarea ... />' }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '  </AnimakitExpander>' }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '</div>' }
-                    </code>
-                  </pre>
-                </div>
-              </div>
-            </div>
-          </li>
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { expandedChanged.indexOf('field.other') !== -1 }
+              >
+                { `  <AnimakitExpander expanded={${this.state.expanded.field.other}} align="bottom">` }
+              </CodeBlock>
+              <CodeBlock>
+                { '    <textarea ... />' }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '  </AnimakitExpander>' }
+              </CodeBlock>
+              <CodeBlock>
+                { '</div>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
 
-          <li
-            key = "vertical"
-            className = { ExpanderStyles.item }
-          >
-            <div className = { ExpanderStyles.itemContent }>
-              <div className = { ExpanderStyles.itemComponent }>
-                <ExpanderVertical handleChangeExpanded = { this.listeners.changeExpanded.vertical } />
-              </div>
-              <div className = { ExpanderStyles.itemCode }>
-                <div className = { CodeStyles.root }>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+        <Demo key = "vertical">
+          <DemoComponent>
+            <ExpanderVertical handleChangeExpanded = { this.listeners.changeExpanded.vertical } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock>
+                {
 `<header onClick={toggle}>
   Contact Us
 </header>
 <main>`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = {
-                      expandedChanged.indexOf('vertical') !== -1 ? CodeStyles.blockHLA : CodeStyles.blockHL
-                    }
-                  >
-                    {
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { expandedChanged.indexOf('vertical') !== -1 }
+              >
+                {
 `  <AnimakitExpander
-    expanded={${ this.state.expanded.vertical }}
+    expanded={${this.state.expanded.vertical}}
     horizontal
     align="right"
   >`
-                    }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      {
+                }
+              </CodeBlock>
+              <CodeBlock>
+                {
 `    <form>
     ...
     </form>`
-                      }
-                    </code>
-                  </pre>
-                  <SyntaxHighlighter
-                    language   = "xml"
-                    style      = { githubGist }
-                    className  = { CodeStyles.blockHL }
-                  >
-                    { '  </AnimakitExpander>' }
-                  </SyntaxHighlighter>
-                  <pre className = { CodeStyles.block }>
-                    <code>
-                      { '</main>' }
-                    </code>
-                  </pre>
-                </div>
-              </div>
-            </div>
-          </li>
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '  </AnimakitExpander>' }
+              </CodeBlock>
+              <CodeBlock>
+                { '</main>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
 
-          <li
-            key = "accordion"
-            className = { ExpanderStyles.item }
-          >
-            <div className = { ExpanderStyles.itemContent }>
-              <div className = { ExpanderStyles.itemComponent }>
-                <ExpanderAccordion handleChangeExpanded = { this.listeners.changeExpanded.accordion } />
-              </div>
-              <div className = { ExpanderStyles.itemCode }>
-                <div className = { CodeStyles.root }>
-                { Object.keys(this.state.expanded.accordion).map(item => {
-                  const active = expandedChanged.indexOf(`accordion.${ item }`) !== -1;
-                  return (
-                    <div key = { item }>
-                      <pre className = { CodeStyles.block }>
-                        <code>
-                        {
+        <Demo key = "accordion">
+          <DemoComponent>
+            <ExpanderAccordion handleChangeExpanded = { this.listeners.changeExpanded.accordion } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+            { Object.keys(this.state.expanded.accordion).map(item => {
+              const active = expandedChanged.indexOf(`accordion.${item}`) !== -1;
+              return (
+                <div key = { item }>
+                  <CodeBlock>
+                    {
 `<div onClick={toggle}>
-  ${ item.charAt(0).toUpperCase() + item.slice(1) }
+  ${item.charAt(0).toUpperCase() + item.slice(1)}
 </div>`
-                        }
-                        </code>
-                      </pre>
-                      <SyntaxHighlighter
-                        language   = "xml"
-                        style      = { githubGist }
-                        className  = {
-                          active ? CodeStyles.blockHLA : CodeStyles.blockHL
-                        }
-                      >
-                        { `<AnimakitExpander expanded={${ this.state.expanded.accordion[item] }}>` }
-                      </SyntaxHighlighter>
-                      <pre className = { CodeStyles.block }>
-                        <code>
-                        { '  <image ... />' }
-                        </code>
-                      </pre>
-                      <SyntaxHighlighter
-                        language   = "xml"
-                        style      = { githubGist }
-                        className  = { CodeStyles.blockHL }
-                      >
-                        { '</AnimakitExpander>' }
-                      </SyntaxHighlighter>
-                    </div>
-                  );
-                })}
+                    }
+                  </CodeBlock>
+                  <CodeBlock
+                    highlight
+                    blink
+                    blinkActive = { active }
+                  >
+                    { `<AnimakitExpander expanded={${this.state.expanded.accordion[item]}}>` }
+                  </CodeBlock>
+                  <CodeBlock>
+                    { '  <image ... />' }
+                  </CodeBlock>
+                  <CodeBlock
+                    highlight
+                  >
+                    { '</AnimakitExpander>' }
+                  </CodeBlock>
                 </div>
-              </div>
-            </div>
-          </li>
-        </ul>
+              );
+            })}
+            </Code>
+          </DemoCode>
+        </Demo>
+
       </div>
     );
   }

@@ -1,0 +1,40 @@
+.root {
+  position: fixed;
+  z-index: 10;
+  bottom: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.ribbon {
+  position: absolute;
+  top: 80px;
+  right: -43px;
+  transform: rotate(-45deg);
+  background: rgba(0, 0, 0, 0.75);
+  padding: 2px 0;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.5);
+  font-size: 13px;
+  font-weight: 700;
+  z-index: 9999;
+  pointer-events: auto;
+}
+
+.link {
+  display: inline-block;
+  padding: 2px 0;
+  width: 200px;
+  line-height: 20px;
+  color: #fff;
+  text-decoration: none;
+  text-shadow: 0 -1px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  border-width: 1px 0;
+  border-style: dotted;
+  border-color: #fff;
+  border-color: rgba(255, 255, 255, 0.7);
+}

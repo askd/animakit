@@ -1,15 +1,17 @@
-import React            from 'react';
-import styles           from './ExpanderAccordion.css';
 import AnimakitExpander from 'animakit-expander';
 
-export class ExpanderAccordion extends React.Component {
+import React            from 'react';
+
+import styles           from './ExpanderAccordion.css';
+
+export default class ExpanderAccordion extends React.Component {
   static propTypes = {
     items:                React.PropTypes.array,
-    handleChangeExpanded: React.PropTypes.func
+    handleChangeExpanded: React.PropTypes.func,
   };
 
   static defaultProps = {
-    items: ['mars', 'earth', 'venus', 'mercury']
+    items: ['mars', 'earth', 'venus', 'mercury'],
   };
 
   state = {
@@ -17,12 +19,8 @@ export class ExpanderAccordion extends React.Component {
       mars:    false,
       earth:   false,
       venus:   false,
-      mercury: false
-    }
-  };
-
-  listeners = {
-    onClick: {}
+      mercury: false,
+    },
   };
 
   componentWillMount() {
@@ -30,6 +28,14 @@ export class ExpanderAccordion extends React.Component {
       this.listeners.onClick[item] = this.onClick.bind(this, item);
     }, this);
   }
+
+  onClick(name) {
+    this.toggleExpanded(name);
+  }
+
+  listeners = {
+    onClick: {},
+  };
 
   toggleExpanded(name) {
     const expanded = this.state.expanded;
@@ -44,37 +50,33 @@ export class ExpanderAccordion extends React.Component {
     this.props.handleChangeExpanded(expanded);
   }
 
-  onClick(name) {
-    this.toggleExpanded(name);
-  }
-
   render() {
     return (
       <div className = { styles.root }>
         { this.props.items.map(item => {
           const itemName = item.charAt(0).toUpperCase() + item.slice(1);
-          let className = styles[`item${ itemName }`];
-          if (this.state.expanded[item]) className += ` ${ styles.expanded }`;
+          let className = styles[`item${itemName}`];
+          if (this.state.expanded[item]) className += ` ${styles.expanded}`;
           return (
             <div
               key = { item }
               className = { className }
             >
               <div
-                key = { `${ item }Header ` }
+                key = { `${item}Header ` }
                 className = { styles.header }
                 onClick = { this.listeners.onClick[item] }
               >
                 { itemName }
               </div>
               <AnimakitExpander
-                key = { `${ item }Content ` }
+                key = { `${item}Content ` }
                 expanded = { this.state.expanded[item] }
                 duration = { 1000 }
               >
                 <img
                   className = { styles.image }
-                  src = { `assets/${ item }.jpg` }
+                  src = { `assets/${item}.jpg` }
                   alt=""
                 />
               </AnimakitExpander>

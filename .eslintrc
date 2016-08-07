@@ -9,16 +9,17 @@
       "afterColon": true,
       "align": "value"
     }],
-    "comma-dangle": [2, "never"],
-    "template-curly-spacing": [2, "always"],
-    "arrow-body-style": 0,
-    "react/sort-comp": 0,
     "react/jsx-equals-spacing": 0,
     "react/jsx-curly-spacing": 0,
-    "import/no-unresolved": 0
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "import/no-unresolved": 0,
+    "import/no-extraneous-dependencies": 0
   },
   "plugins": [
     "babel",
     "react"
-  ]
+  ],
+  "env": {
+    "browser": true
+  }
 }

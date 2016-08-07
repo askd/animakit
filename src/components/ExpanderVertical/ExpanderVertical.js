@@ -1,28 +1,30 @@
-import React            from 'react';
-import styles           from './ExpanderVertical.css';
 import AnimakitExpander from 'animakit-expander';
 
-export class ExpanderVertical extends React.Component {
+import React            from 'react';
+
+import styles           from './ExpanderVertical.css';
+
+export default class ExpanderVertical extends React.Component {
   static propTypes = {
-    handleChangeExpanded: React.PropTypes.func
+    handleChangeExpanded: React.PropTypes.func,
   };
 
   state = {
-    expanded: false
+    expanded: false,
   };
 
+  onClick() {
+    this.toggleExpanded();
+  }
+
   listeners = {
-    onClick: this.onClick.bind(this)
+    onClick: this.onClick.bind(this),
   };
 
   toggleExpanded() {
     const expanded = !this.state.expanded;
     this.setState({ expanded });
     this.props.handleChangeExpanded(expanded);
-  }
-
-  onClick() {
-    this.toggleExpanded();
   }
 
   render() {

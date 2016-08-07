@@ -1,29 +1,40 @@
-import React            from 'react';
-import styles           from './ExpanderField.css';
 import AnimakitExpander from 'animakit-expander';
 
-export class ExpanderField extends React.Component {
+import React            from 'react';
+import styles           from './ExpanderField.css';
+
+export default class ExpanderField extends React.Component {
   static propTypes = {
-    handleChangeExpanded: React.PropTypes.func
+    handleChangeExpanded: React.PropTypes.func,
   };
 
   state = {
     expanded: {
       error: false,
-      other: false
-    }
+      other: false,
+    },
   };
+
+  onKeyUp(event) {
+    const value = event.target.value;
+    if (this.validateTimeout) clearTimeout(this.validateTimeout);
+    this.validateTimeout = setTimeout(() => { this.validate(value); }, 1000);
+  }
+
+  onChange(event) {
+    this.toggleExpanded('other', event.target.value === 'Yes');
+  }
 
   listeners = {
     onKeyUp:  this.onKeyUp.bind(this),
-    onChange: this.onChange.bind(this)
+    onChange: this.onChange.bind(this),
   };
 
   toggleExpanded(name, value) {
     if (this.state.expanded[name] === value) return;
 
     const expanded = {
-      ...this.state.expanded
+      ...this.state.expanded,
     };
     expanded[name] = value;
 
@@ -41,16 +52,6 @@ export class ExpanderField extends React.Component {
     );
     const valid = regexp.test(value);
     this.toggleExpanded('error', !valid);
-  }
-
-  onKeyUp(event) {
-    const value = event.target.value;
-    if (this.validateTimeout) clearTimeout(this.validateTimeout);
-    this.validateTimeout = setTimeout(() => { this.validate(value); }, 1000);
-  }
-
-  onChange(event) {
-    this.toggleExpanded('other', event.target.value === 'Yes');
   }
 
   render() {
@@ -76,20 +77,22 @@ export class ExpanderField extends React.Component {
           <span className = { styles.text }>
             Anything else?
           </span>
-          <label className = { styles.radio }>
+          <label htmlFor="a-no" className = { styles.radio }>
             <input
-              name = "else"
-              type = "radio"
+              id    = "a-no"
+              name  = "else"
+              type  = "radio"
               value = "No"
               checked = { !this.state.expanded.other }
               onChange = { this.listeners.onChange }
             />
             <span>No</span>
           </label>
-          <label className = { styles.radio }>
+          <label htmlFor="a-yes" className = { styles.radio }>
             <input
-              name = "else"
-              type = "radio"
+              id    = "a-yes"
+              name  = "else"
+              type  = "radio"
               value = "Yes"
               checked = { this.state.expanded.other }
               onChange = { this.listeners.onChange }
