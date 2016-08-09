@@ -6,17 +6,23 @@
 
 .block {
   position: relative;
-  border-top: 1px dotted rgba(0, 0, 0, 0.25);
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
   padding: 20px;
-
-  &:first-child {
-    border-top: 0;
-  }
-
-  &:nth-child(even) {
-    background: $bgcolor;
-  }
 }
+
+.blockUse {
+  composes: block;
+  background: $bgcolor;
+}
+
+.blockDemo {
+  composes: block;
+  padding: 0;
+  border: 0;
+  background: #333;
+  color: #fff;
+}
+
 
 .title {
   font-size: 24px;
@@ -59,115 +65,50 @@
 }
 
 .nav {
-  margin-top: 20px;
+
 }
 
 .navList {
-  display: flex;
-  flex-wrap: wrap;
-  width: 100%;
+
 }
 
 .navItem {
-  position: relative;
-  width: 420px;
-  padding-left: 60px;
+  width: 100%;
+  padding-top: 20px;
 }
 
-.navItemRotator {
-  composes: navItem;
-}
-
-.navItemExpander {
-  composes: navItem;
-}
-
-.navItemElastic {
-  composes: navItem;
-}
-
-.navLauncher {
-  position: absolute;
-  top: 60px;
-  left: 10px;
-  width: 30px;
-  height: 50px;
-  background-color: $bgcolor;
-  box-sizing: border-box;
-  border: 1px solid color($color0 a(50%));
-  border-radius: 15px;
-  cursor: pointer;
-  transition: background-color 1s ease;
+.navTitle {
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 40px;
+  font-weight: 700;
+  /* color: #333; */
 
   &::after {
-    content: '';
-    position: absolute;
-    top: 2px;
-    left: 2px;
-    display: block;
-    width: 24px;
-    height: 24px;
-    box-sizing: border-box;
-    border: 1px solid color($color0 a(50%));
-    border-radius: 12px;
-    background: #fff;
-    transition: transform 1s ease;
-  }
-}
-
-.navLauncherActive {
-  composes: navLauncher;
-  background-color: $color0;
-
-  &::after {
-    transform: translateY(20px);
-  }
-}
-
-.navItemRotator .navLauncherActive {
-  background-color: $color1;
-}
-
-.navItemExpander .navLauncherActive {
-  background-color: $color5;
-}
-
-.navItemElastic .navLauncherActive {
-  background-color: $color4;
-}
-
-.navLink {
-  display: block;
-  text-decoration: none;
-
-  &::after {
-    content: '';
-    display: block;
-    clear: both;
-    overflow: hidden;
-  }
-
-  &:focus {
-    outline: none;
+    content: ':';
   }
 }
 
 .navText {
-  float: left;
-  margin: 45px 0 0 20px;
-  width: 180px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #000;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 20px;
+  font-size: 16px;
+  line-height: 40px;
 }
 
 .navMore {
   display: inline-block;
-  color: $color0;
-  background: rgba(0,0,0,0);
-  border-radius: 15px;
-  padding: 5px 10px;
-  margin: 5px 0 0 -10px;
+  vertical-align: top;
+  margin-left: 20px;
+  color: #fff;
+  background: $color1;
+  border-radius: 20px;
+  padding: 10px 20px;
+  line-height: 20px;
+  text-decoration: none;
   transition: all 0.5s ease;
 
   &::after {
@@ -177,209 +118,14 @@
 
 .navLink:hover .navMore,
 .navLink:focus .navMore {
-  color: #000;
-  background: rgba(0,0,0,0.125);
+
 }
 
 .navComponent {
-  float: left;
-  width: 200px;
-  height: 140px;
-  margin: 20px 0;
-}
-
-.component {
-  position: relative;
-  width: 200px;
-  height: 140px;
-  box-sizing: border-box;
-}
-
-.rotator {
-  composes: component;
-  margin: 20px 0;
-  height: 100px;
-}
-
-.rotatorSide {
-  width: 200px;
-  height: 100px;
-  box-sizing: border-box;
-  padding: 40px;
-  background: $color1;
-  color: #fff;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-}
-
-.expander {
-  composes: component;
-
-  padding: 35px 0;
-  background: color($color5 a(75%));
-}
-
-.expanderContainer {
-  position: relative;
-  overflow: hidden;
-
-  &::before, &::after {
-    content: '';
-    position: absolute;
-    z-index: 2;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: color(#fff a(75%));
-  }
-  &::before {
-    top: 0;
-  }
-  &::after {
-    bottom: 0;
-  }
-}
-
-.expanderContent {
-  position: relative;
-  width: 200px;
-  height: 70px;
-  overflow: hidden;
-  background: $color5;
-  color: #fff;
-
-  &::before,
-  &::after {
-    position: absolute;
-    left: 50%;
-    width: 10px;
-    height: 20px;
-    margin-left: -5px;
-  }
-  &::before {
-    content: '\2191';
-    top: 1px;
-  }
-  &::after {
-    content: '\2193';
-    bottom: 1px;
-  }
-}
-
-.expanderTitle {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: -10px;
-  width: 100%;
-  height: 20px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #fff;
-  text-align: center;
-}
-
-.elastic {
-  composes: component;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.elasticContainer {
-  position: relative;
-  vertical-align: top;
-  background: $color4;
-  border: 1px dashed #fff;
-  border-radius: 20px;
-  color: #fff;
-
-  &::before,
-  &::after {
-    position: absolute;
-    top: 50%;
-    width: 20px;
-    height: 10px;
-    margin-top: -5px;
-  }
-  &::before {
-    content: '\2190';
-    left: 11px;
-  }
-  &::after {
-    content: '\2192';
-    right: 15px;
-    text-align: right;
-  }
-}
-
-.elasticContainerIn {
-  display: inline-block;
-
-  &::before,
-  &::after {
-    position: absolute;
-    left: 50%;
-    width: 10px;
-    height: 20px;
-    margin-left: -5px;
-  }
-  &::before {
-    content: '\2191';
-    top: 11px;
-  }
-  &::after {
-    content: '\2193';
-    bottom: 11px;
-  }
-}
-
-.elasticContent {
-  width: 200px;
-  height: 140px;
-}
-
-.elasticContent0 {
-  composes: elasticContent;
-
-  width: 200px;
-  height: 140px;
-}
-
-.elasticContent1 {
-  composes: elasticContent;
-
-  width: 160px;
-  height: 140px;
-}
-
-.elasticContent2 {
-  composes: elasticContent;
-
-  width: 200px;
-  height: 140px;
-}
-
-.elasticContent3 {
-  composes: elasticContent;
-
-  width: 200px;
-  height: 100px;
-}
-
-.elasticTitle {
-  position: absolute;
-  top: 50%;
-  left: 0;
-  margin-top: -10px;
-  width: 100%;
-  height: 20px;
-  font-size: 14px;
-  line-height: 20px;
-  color: #fff;
-  text-align: center;
+  margin: 20px 0 0;
+  background: $bgcolor;
+  border-top: 1px dotted rgba(0, 0, 0, 0.25);
+  color: #000;
 }
 
 .article {
@@ -398,7 +144,7 @@
   & dt {
     margin-top: 20px;
     font-weight: 700;
-
+    color: #333;
   }
 
   & dd {

@@ -1,9 +1,5 @@
 @import '../vars.css';
 
-body {
-  background: #fff;
-}
-
 .root {
   min-width: 480px;
   padding-top: 36px;

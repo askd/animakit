@@ -5,6 +5,7 @@ export default class SimpleText extends React.PureComponent {
   static propTypes = {
     className:    React.PropTypes.string,
     title:        React.PropTypes.string,
+    hasMore:      React.PropTypes.bool,
     showMore:     React.PropTypes.bool,
     handleToggle: React.PropTypes.func,
   };
@@ -12,6 +13,8 @@ export default class SimpleText extends React.PureComponent {
   static defaultProps = {
     className: null,
     title:     null,
+    hasMore:   true,
+    showMore:  false,
   };
 
   /* state = {
@@ -51,12 +54,12 @@ export default class SimpleText extends React.PureComponent {
             <p>So nice, so nice, cause I got you</p>
           </div>
         }
-        <span
+        { this.props.hasMore && <span
           className = { styles.more }
           onClick = { this.props.handleToggle }
         >
           { this.props.showMore ? '- Couplet' : '+ Couplet' }
-        </span>
+        </span> }
       </article>
     );
   }

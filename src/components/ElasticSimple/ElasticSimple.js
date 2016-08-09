@@ -7,6 +7,14 @@ import React           from 'react';
 import styles          from './ElasticSimple.css';
 
 export default class ElasticSimple extends React.Component {
+  static propTypes = {
+    onlyHorizontal: React.PropTypes.bool,
+  };
+
+  static defaultProps = {
+    onlyHorizontal: false,
+  };
+
   state = {
     // show:      false,
     showText:  false,
@@ -40,12 +48,13 @@ export default class ElasticSimple extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitElastic>
-          { <div className = { styles.content }>
+          <div className = { styles.content }>
             <SimpleText
               className    = { styles.text }
               title        = "I Got You"
               handleToggle = { this.listeners.onToggleText }
               showMore     = { this.state.showText }
+              hasMore      = { !this.props.onlyHorizontal }
             />
             <div className = { this.state.showImage ? styles.imageVisible : styles.imageHidden }>
               <span
@@ -55,7 +64,7 @@ export default class ElasticSimple extends React.Component {
                 { this.state.showImage ? '- Image' : '+ Image' }
               </span>
             </div>
-          </div> }
+          </div>
         </AnimakitElastic>
       </div>
     );

@@ -31,7 +31,7 @@
 .image {
   position: relative;
   flex-shrink: 0;
-  height: 145px;
+  height: 135px;
   background-image: url('./images/I_feel_good.jpg');
   background-size: 100% 100%;
   background-repeat: no-repeat;
@@ -39,8 +39,8 @@
 
 .imageVisible {
   composes: image;
-  width: 145px;
-  margin-left: 10px;
+  width: 135px;
+  margin-left: 8px;
 
   & .more {
     margin-right: 10px;

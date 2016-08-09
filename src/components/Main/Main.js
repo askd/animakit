@@ -1,110 +1,21 @@
-import Code             from 'components/Code/Code';
-import CodeBlock        from 'components/Code/CodeBlock';
+import RotatorDemo  from 'components/RotatorDemo/RotatorDemo';
+import ExpanderDemo from 'components/ExpanderDemo/ExpanderDemo';
+import ElasticDemo  from 'components/ElasticDemo/ElasticDemo';
+import Code         from 'components/Code/Code';
+import CodeBlock    from 'components/Code/CodeBlock';
 
-import React            from 'react';
-import { Link }         from 'react-router';
+import React        from 'react';
+import { Link }     from 'react-router';
 
-import AnimakitRotator  from 'animakit-rotator';
-import AnimakitExpander from 'animakit-expander';
-import AnimakitElastic  from 'animakit-elastic';
+import styles       from './Main.css';
 
-import styles           from './Main.css';
-
-export default class App extends React.Component {
+export default class App extends React.PureComponent {
   static propTypes = {
-    components: React.PropTypes.array,
-    routes:     React.PropTypes.array,
-    params:     React.PropTypes.any,
+    routes: React.PropTypes.array,
+    params: React.PropTypes.any,
   };
-
-  static defaultProps = {
-    components: ['rotator', 'expander', 'elastic'],
-  };
-
-  state = {
-    animationActive:   false,
-    animatedComponent: null,
-    rotatorSide:       0,
-    expanderCollapsed: false,
-    elasticPhase:      0,
-  };
-
-  componentWillMount() {
-    this.props.components.forEach(component => {
-      this.listeners.toggleAnimation[component] = this.toggleComponent.bind(this, component);
-    }, this);
-  }
-
-  componentWillUnmount() {
-    this.stopAnimation();
-  }
-
-  toggleComponent(component) {
-    let { animationActive, animatedComponent } = this.state;
-
-    if (animationActive && animatedComponent === component) {
-      animationActive = false;
-      animatedComponent = null;
-    } else {
-      animationActive = true;
-      animatedComponent = component;
-    }
-
-    this.setState({ animationActive, animatedComponent });
-
-    this.stopAnimation();
-
-    if (animationActive) {
-      this.startAnimation();
-    }
-  }
-
-  listeners = {
-    toggleAnimation: {},
-  };
-
-  startAnimation() {
-    this.animationRAF = requestAnimationFrame(() => {
-      this.animateComponent();
-    });
-    this.animationTO = setInterval(() => {
-      this.animationRAF = requestAnimationFrame(() => {
-        this.animateComponent();
-      });
-    }, 3000);
-  }
-
-  stopAnimation() {
-    if (this.animationRAF) cancelAnimationFrame(this.animationRAF);
-    if (this.animationTO) clearInterval(this.animationTO);
-  }
-
-  animateComponent() {
-    if (this.state.animatedComponent === 'rotator') {
-      let rotatorSide = this.state.rotatorSide + 1;
-      if (rotatorSide === 5) rotatorSide = 0;
-      this.setState({ rotatorSide });
-    }
-
-    if (this.state.animatedComponent === 'expander') {
-      const expanderCollapsed =  !this.state.expanderCollapsed;
-      this.setState({ expanderCollapsed });
-    }
-
-    if (this.state.animatedComponent === 'elastic') {
-      let elasticPhase = this.state.elasticPhase + 1;
-      if (elasticPhase === 4) elasticPhase = 0;
-      this.setState({ elasticPhase });
-    }
-  }
 
   render() {
-    const animation = {};
-    const { animationActive, animatedComponent } = this.state;
-    this.props.components.forEach(component => {
-      animation[component] = (animationActive && animatedComponent === component);
-    });
-
     return (
       <main className = { styles.root }>
 
@@ -115,7 +26,7 @@ export default class App extends React.Component {
           </div>
         </div>
 
-        <div className = { styles.block }>
+        <div className = { styles.blockUse }>
           <div className = { styles.use }>
             <h2 className = { styles.title }>Easy to use</h2>
             <ol className = { styles.useList }>
@@ -125,7 +36,7 @@ export default class App extends React.Component {
                   <CodeBlock
                     highlight
                   >
-                    { 'npm install animakit-component' }
+                    { 'npm install animakit-rotator' }
                   </CodeBlock>
                 </Code>
               </li>
@@ -136,7 +47,7 @@ export default class App extends React.Component {
                     highlight
                     language = { 'javascript' }
                   >
-                    { "import AnimakitComponent from 'animakit-component';" }
+                    { "import AnimakitRotator from 'animakit-rotator';" }
                   </CodeBlock>
                 </Code>
               </li>
@@ -147,15 +58,77 @@ export default class App extends React.Component {
                     highlight
                   >
                     {
-`<AnimakitComponent>
-  <YourContent />
-</AnimakitComponent>`
+`<AnimakitRotator side={this.state.loading}>
+  <Button />
+  <Loader />
+</AnimakitRotator>`
                     }
                   </CodeBlock>
                 </Code>
               </li>
             </ol>
           </div>
+        </div>
+
+        <div className = { styles.block }>
+          <article className = { styles.article }>
+            <h2 className = { styles.title }>Choose one to start</h2>
+            <p>
+              Try out the simple demo or click “Learn More” for more demos.
+            </p>
+          </article>
+        </div>
+
+        <div className = { styles.blockDemo }>
+          <nav className = { styles.nav }>
+            <ul className = { styles.navList }>
+              <li className = { styles.navItem }>
+                <h3 className = { styles.navTitle }>AnimakitRotator</h3>
+                <p className = { styles.navText }>
+                  Rotate your components in 3D space
+                </p>
+                <Link
+                  to = "/rotator"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <div className = { styles.navComponent }>
+                  <RotatorDemo onlyOne />
+                </div>
+              </li>
+              <li className = { styles.navItem }>
+                <h3 className = { styles.navTitle }>AnimakitExpander</h3>
+                <p className = { styles.navText }>
+                  Expand and collapse the content of your components
+                </p>
+                <Link
+                  to = "/expander"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <div className = { styles.navComponent }>
+                  <ExpanderDemo onlyOne />
+                </div>
+              </li>
+              <li className = { styles.navItem }>
+                <h3 className = { styles.navTitle }>AnimakitElastic</h3>
+                <p className = { styles.navText }>
+                  Make the content of your components elastic
+                </p>
+                <Link
+                  to = "/elastic"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <div className = { styles.navComponent }>
+                  <ElasticDemo onlyOne />
+                </div>
+              </li>
+            </ul>
+          </nav>
         </div>
 
         <div className = { styles.block }>
@@ -178,116 +151,6 @@ export default class App extends React.Component {
               and make&nbsp;it more pleasant to&nbsp;use.
             </p>
           </article>
-        </div>
-
-        <div className = { styles.block }>
-          <h2 className = { styles.title }>Choose one to start</h2>
-          <nav className = { styles.nav }>
-            <ul className = { styles.navList }>
-              <li className = { styles.navItemRotator }>
-                <div
-                  className = { animation.rotator ? styles.navLauncherActive : styles.navLauncher }
-                  onClick = { this.listeners.toggleAnimation.rotator }
-                />
-                <Link
-                  to = "/rotator"
-                  className = { styles.navLink }
-                >
-                  <div className = { styles.navComponent }>
-                    <div className = { styles.rotator }>
-                      <AnimakitRotator
-                        side = { this.state.rotatorSide }
-                        shadow
-                      >
-                        { Array.from(new Array(5), (_, i) =>
-                          <div className = { styles.rotatorSide } key = { (i + 1) }>
-                            { this.state.rotatorSide === i ? 'Rotator' : '' }
-                          </div>
-                        )}
-                      </AnimakitRotator>
-                    </div>
-                  </div>
-                  <p className = { styles.navText }>
-                    Rotate
-                    <br />
-                    your components
-                    <br />
-                    in 3D space
-                    <br />
-                    <span className = { styles.navMore }>Learn more</span>
-                  </p>
-                </Link>
-              </li>
-              <li className = { styles.navItemExpander }>
-                <div
-                  className = { animation.expander ? styles.navLauncherActive : styles.navLauncher }
-                  onClick = { this.listeners.toggleAnimation.expander }
-                />
-                <Link
-                  to = "/expander"
-                  className = { styles.navLink }
-                >
-                  <div className = { styles.navComponent }>
-                    <div className = { styles.expander }>
-                      <div className = { styles.expanderContainer }>
-                        <AnimakitExpander
-                          expanded = { !this.state.expanderCollapsed }
-                        >
-                          <div
-                            className = { styles.expanderContent }
-                          />
-                        </AnimakitExpander>
-                      </div>
-                      <div className = { styles.expanderTitle }>Expander</div>
-                    </div>
-                  </div>
-                  <p className = { styles.navText }>
-                    Expand and collapse
-                    <br />
-                    the content
-                    <br />
-                    of your components
-                    <br />
-                    <span className = { styles.navMore }>Learn more</span>
-                  </p>
-                </Link>
-              </li>
-              <li className = { styles.navItemElastic }>
-                <div
-                  className = { animation.elastic ? styles.navLauncherActive : styles.navLauncher }
-                  onClick = { this.listeners.toggleAnimation.elastic }
-                />
-                <Link
-                  to = "/elastic"
-                  className = { styles.navLink }
-                >
-                  <div className = { styles.navComponent }>
-                    <div className = { styles.elastic }>
-                      <div className = { styles.elasticContainer }>
-                        <div className = { styles.elasticContainerIn }>
-                          <AnimakitElastic>
-                            <div
-                              className = { styles[`elasticContent${this.state.elasticPhase}`] }
-                            />
-                          </AnimakitElastic>
-                          <div className = { styles.elasticTitle }>Elastic</div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <p className = { styles.navText }>
-                    Make the content
-                    <br />
-                    of your components
-                    <br />
-                    elastic
-                    <br />
-                    <span className = { styles.navMore }>Learn more</span>
-                  </p>
-                </Link>
-              </li>
-            </ul>
-          </nav>
         </div>
 
         <div className = { styles.block }>

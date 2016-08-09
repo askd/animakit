@@ -1,13 +1,5 @@
 @import '../vars.css';
 
-.root {
-
-}
-
-.intro {
-  padding: 40px 20px;
-}
-
 .button {
   box-sizing: border-box;
   appearance: none;
