@@ -1,4 +1,5 @@
 const path              = require('path');
+
 const srcPath           = path.join(__dirname, 'src');
 const nodeModulesPath   = path.join(__dirname, 'node_modules');
 
@@ -17,17 +18,17 @@ const config = {
   entry: production ?
   [
     'babel-polyfill',
-    path.join(srcPath, 'index')
+    path.join(srcPath, 'index'),
   ] :
   [
     'webpack-hot-middleware/client',
-    path.join(srcPath, 'index')
+    path.join(srcPath, 'index'),
   ],
 
   output: {
     path:       path.join(__dirname, 'assets'),
     filename:   'application.js',
-    publicPath: production ? '/animakit/assets/' : '/assets/'
+    publicPath: production ? '/assets/' : '/assets/',
   },
 
   resolve: {
@@ -35,14 +36,14 @@ const config = {
     extensions:         ['', '.js', '.es6'],
     modulesDirectories: [
       srcPath,
-      nodeModulesPath
-    ]
+      nodeModulesPath,
+    ],
   },
 
   plugins: [
     new ExtractTextPlugin('application.css', {
-      allChunks: true
-    })
+      allChunks: true,
+    }),
   ],
 
   module: {
@@ -50,7 +51,7 @@ const config = {
       {
         test:    /\.(js|es6)$/,
         loader:  'babel',
-        include: srcPath
+        include: srcPath,
       },
       {
         test:   /\.css$/,
@@ -59,20 +60,20 @@ const config = {
           'style',
           'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
         ) : 'style!css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss',
-        include: srcPath
+        include: srcPath,
       },
       {
         test:   /\.(jpg|png)$/,
-        loader: 'file?name=[name].[ext]'
-      }
-    ]
+        loader: 'file?name=[name].[ext]',
+      },
+    ],
   },
 
   postcss: [
     precss(),
     assets(),
-    autoprefixer()
-  ]
+    autoprefixer(),
+  ],
 };
 
 if (production) {
@@ -80,13 +81,13 @@ if (production) {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
+        NODE_ENV: JSON.stringify('production'),
+      },
     }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
-        warnings: false
-      }
+        warnings: false,
+      },
     })
   );
 } else {
