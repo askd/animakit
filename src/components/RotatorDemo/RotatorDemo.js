@@ -73,9 +73,9 @@ export default class RotatorDemo extends React.Component {
 
     return (
       <div>
-        <Demo key = "button">
+        { !onlyOne && <Demo key = "button">
           <DemoComponent
-            comment = { onlyOne ? null : 'Fixed width' }
+            comment = { 'Fixed width' }
           >
             <RotatorButton
               showAttempts
@@ -93,7 +93,7 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <button key="button">Submit</button>
+`  <button key="button">Submit form</button>
   <div key="loader" className="loader"></div>`
                 }
               </CodeBlock>
@@ -104,11 +104,11 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
             </Code>
           </DemoCode>
-        </Demo>
+        </Demo> }
 
-        { !onlyOne && <Demo key = "button2">
+        <Demo key = "button2">
           <DemoComponent
-            comment = { `Flexible width
+            comment = { onlyOne ? null : `Flexible width
               (see <a href="https://github.com/animakit/animakit-rotator/blob/master/README.md">
                 Limitations in README
               </a>)` }
@@ -129,7 +129,7 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <button key="button">Submit</button>
+`  <button key="button">Submit form</button>
   <div key="loader" className="loader"></div>`
                 }
               </CodeBlock>
@@ -140,7 +140,7 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
             </Code>
           </DemoCode>
-        </Demo> }
+        </Demo>
 
         { !onlyOne && <Demo key = "form">
           <DemoComponent>
