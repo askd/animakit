@@ -19,8 +19,6 @@
   composes: block;
   padding: 0;
   border: 0;
-  background: #333;
-  color: #fff;
 }
 
 
@@ -74,21 +72,15 @@
 
 .navItem {
   width: 100%;
-  padding-top: 20px;
+  padding-top: 30px;
 }
 
 .navTitle {
-  display: inline-block;
-  vertical-align: top;
   margin-left: 20px;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 40px;
   font-weight: 700;
-  /* color: #333; */
-
-  &::after {
-    content: ':';
-  }
+  color: #333;
 }
 
 .navText {
@@ -122,7 +114,7 @@
 }
 
 .navComponent {
-  margin: 20px 0 0;
+  margin: 10px 0 0;
   background: $bgcolor;
   border-top: 1px dotted rgba(0, 0, 0, 0.25);
   color: #000;
