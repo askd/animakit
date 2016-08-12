@@ -21,6 +21,7 @@ export default class Header extends React.PureComponent {
 
     return (
       <header className = { styles.header }>
+        <div className = { styles.logo } />
         <nav className = { styles.nav }>
           { this.props.routes.map((route, i) => {
             if (i === navLen - 1) {

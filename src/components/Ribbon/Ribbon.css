@@ -1,5 +1,5 @@
 .root {
-  position: fixed;
+  position: absolute;
   z-index: 10;
   bottom: 0;
   right: 0;
@@ -7,6 +7,11 @@
   height: 150px;
   overflow: hidden;
   pointer-events: none;
+}
+
+.rootFixed {
+  composes: root;
+  position: fixed;
 }
 
 .ribbon {

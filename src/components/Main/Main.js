@@ -3,6 +3,7 @@ import ExpanderDemo from 'components/ExpanderDemo/ExpanderDemo';
 import ElasticDemo  from 'components/ElasticDemo/ElasticDemo';
 import Code         from 'components/Code/Code';
 import CodeBlock    from 'components/Code/CodeBlock';
+import Ribbon       from 'components/Ribbon/Ribbon';
 
 import React        from 'react';
 import { Link }     from 'react-router';
@@ -83,49 +84,58 @@ export default class App extends React.PureComponent {
           <nav className = { styles.nav }>
             <ul className = { styles.navList }>
               <li className = { styles.navItem }>
-                <h3 className = { styles.navTitle }>AnimakitRotator</h3>
-                <p className = { styles.navText }>
-                  Rotate your components in 3D space
-                </p>
-                <Link
-                  to = "/rotator"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitRotator</h3>
+                  <p className = { styles.navText }>
+                    Rotate your components in 3D space
+                  </p>
+                  <Link
+                    to = "/rotator"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
                 <div className = { styles.navComponent }>
                   <RotatorDemo onlyOne />
                 </div>
+                <Ribbon path={ 'rotator' } />
               </li>
               <li className = { styles.navItem }>
-                <h3 className = { styles.navTitle }>AnimakitExpander</h3>
-                <p className = { styles.navText }>
-                  Expand and collapse the content of your components
-                </p>
-                <Link
-                  to = "/expander"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitExpander</h3>
+                  <p className = { styles.navText }>
+                    Expand and collapse the content of your components
+                  </p>
+                  <Link
+                    to = "/expander"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
                 <div className = { styles.navComponent }>
                   <ExpanderDemo onlyOne />
                 </div>
+                <Ribbon path={ 'expander' } />
               </li>
               <li className = { styles.navItem }>
-                <h3 className = { styles.navTitle }>AnimakitElastic</h3>
-                <p className = { styles.navText }>
-                  Make the content of your components elastic
-                </p>
-                <Link
-                  to = "/elastic"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitElastic</h3>
+                  <p className = { styles.navText }>
+                    Make the content of your components elastic
+                  </p>
+                  <Link
+                    to = "/elastic"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
                 <div className = { styles.navComponent }>
                   <ElasticDemo onlyOne />
                 </div>
+                <Ribbon path={ 'elastic' } />
               </li>
             </ul>
           </nav>

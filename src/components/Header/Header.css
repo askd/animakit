@@ -22,8 +22,19 @@
   }
 }
 
+.logo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-image: url('./images/animakit.png');
+}
+
 .nav {
-  margin-left: 10px;
+  margin-left: 36px;
 }
 
 .navLink {

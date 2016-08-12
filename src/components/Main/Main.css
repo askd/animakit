@@ -7,7 +7,7 @@
 .block {
   position: relative;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
-  padding: 20px;
+  padding: 20px 36px;
 }
 
 .blockUse {
@@ -71,8 +71,13 @@
 }
 
 .navItem {
+  position: relative;
   width: 100%;
   padding-top: 30px;
+}
+
+.navHeading {
+  padding: 0 16px;
 }
 
 .navTitle {
@@ -114,7 +119,7 @@
 }
 
 .navComponent {
-  margin: 10px 0 0;
+  margin: 15px 0 0;
   background: $bgcolor;
   border-top: 1px dotted rgba(0, 0, 0, 0.25);
   color: #000;

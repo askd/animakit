@@ -29,7 +29,7 @@ export default class App extends React.PureComponent {
 
         { !showLinks && this.props.children }
 
-        { showRibbon && <Ribbon path={ ribbonPath } /> }
+        { showRibbon && <Ribbon fixed path={ ribbonPath } /> }
       </div>
     );
   }

@@ -1,7 +1,7 @@
 @import '../vars.css';
 
 .root {
-  padding: 20px;
+  padding: 20px 36px;
   background: $bgcolor;
   border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
 }
@@ -71,7 +71,7 @@
   width: 50%;
 }
 
-@media all and (max-width: 999px) {
+@media all and (max-width: 1023px) {
   .component {
     float: none;
     width: 100%;

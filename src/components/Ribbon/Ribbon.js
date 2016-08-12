@@ -4,12 +4,13 @@ import styles from './Ribbon.css';
 
 export default class Ribbon extends React.PureComponent {
   static propTypes = {
-    path: React.PropTypes.string,
+    path:  React.PropTypes.string,
+    fixed: React.PropTypes.bool,
   };
 
   render() {
     return (
-      <div className = { styles.root }>
+      <div className = { this.props.fixed ? styles.rootFixed : styles.root }>
         <div className = { styles.ribbon }>
           <a
             className = { styles.link }
