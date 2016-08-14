@@ -10,56 +10,10 @@
   padding: 20px 36px;
 }
 
-.blockUse {
-  composes: block;
-  background: $bgcolor;
-}
-
-.blockDemo {
-  composes: block;
-  padding: 0;
-  border: 0;
-}
-
 
 .title {
   font-size: 24px;
   font-weight: 700;
-}
-
-.intro {
-  margin: 20px 0;
-
-  & p + p {
-    margin-top: 20px;
-  }
-}
-
-.use {
-  line-height: 1;
-}
-
-.useList {
-  counter-reset: use;
-}
-
-.useItem {
-  position: relative;
-  margin-top: 40px;
-
-  &::before {
-    counter-increment: use;
-    content: counter(use) '.';
-    position: absolute;
-    top: -4px;
-    left: 0;
-    font-size: 20px;
-    font-weight: 700;
-  }
-}
-
-.useItemTitle {
-  margin: 0 0 10px 24px;
 }
 
 .nav {
@@ -119,6 +73,7 @@
 }
 
 .navComponent {
+  position: relative;
   margin: 15px 0 0;
   background: $bgcolor;
   border-top: 1px dotted rgba(0, 0, 0, 0.25);

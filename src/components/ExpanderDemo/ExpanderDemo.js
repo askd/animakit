@@ -100,7 +100,7 @@ export default class ExpanderDemo extends React.Component {
                 }
               </CodeBlock>
               <CodeBlock>
-                { '  <article>...</article>' }
+                { '  <div className="text">...</div>' }
               </CodeBlock>
               <CodeBlock
                 highlight

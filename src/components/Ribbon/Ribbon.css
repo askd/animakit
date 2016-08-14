@@ -1,7 +1,9 @@
+@import '../vars.css';
+
 .root {
   position: absolute;
   z-index: 10;
-  bottom: 0;
+  top: 0;
   right: 0;
   width: 150px;
   height: 150px;
@@ -16,9 +18,9 @@
 
 .ribbon {
   position: absolute;
-  top: 80px;
+  top: 43px;
   right: -43px;
-  transform: rotate(-45deg);
+  transform: rotate(45deg);
   background: rgba(0, 0, 0, 0.75);
   padding: 2px 0;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15));

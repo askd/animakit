@@ -1,0 +1,36 @@
+@import '../vars.css';
+
+.root {
+  padding: 20px 36px;
+  background: $bgcolor;
+  line-height: 1;
+  border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.list {
+  counter-reset: use;
+}
+
+.item {
+  position: relative;
+  margin-top: 40px;
+
+  &::before {
+    counter-increment: use;
+    content: counter(use) '.';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
+
+.itemTitle {
+  margin: 0 0 10px 24px;
+}
