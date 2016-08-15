@@ -1,0 +1,96 @@
+@import '../vars.css';
+
+.root {
+  padding: 24px 36px 36px;
+
+  font-size: 16px;
+  line-height: 24px;
+
+  & h2 {
+    max-width: 600px;
+    font-size: 24px;
+    line-height: 36px;
+    font-weight: 700;
+
+    &:last-child {
+      margin-bottom: -20px;
+    }
+  }
+
+  & p {
+    margin-top: 20px;
+    max-width: 600px;
+  }
+
+  & dl {
+    max-width: 600px;
+    line-height: 20px;
+  }
+
+  & dt {
+    margin-top: 20px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  & dd {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+
+  & a {
+    color: $color5;
+
+    &:hover {
+      text-decoration: none;
+    }
+
+    &:visited {
+      color: $color6;
+    }
+  }
+
+  & table {
+    display: block;
+    width: 100%;
+    overflow: auto;
+    word-break: keep-all;
+    border-spacing: 0;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  & table tr {
+
+  }
+
+  & table tr:nth-child(2n) {
+    background-color: $bgcolor;
+  }
+
+  & table th {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    text-align: left;
+  }
+
+  & table td {
+    padding: 4px 8px;
+    border: 1px solid #ddd;
+  }
+
+  & code {
+    padding: 0.2em 0;
+    margin: 0;
+    font-size: 85%;
+    background-color: rgba(0,0,0,0.04);
+    border-radius: 3px;
+    font-family: Consolas, 'Liberation Mono', Menlo, Courier, monospace;
+
+    &::before, &::after {
+      letter-spacing: -0.2em;
+      content: '\00a0';
+    }
+  }
+}

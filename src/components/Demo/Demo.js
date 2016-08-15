@@ -4,18 +4,18 @@ import styles from './Demo.css';
 
 export default class Demo extends React.PureComponent {
   static propTypes = {
-    title:    React.PropTypes.string,
+    text:     React.PropTypes.any,
     children: React.PropTypes.any,
   };
 
   render() {
-    const hasTitle = !!this.props.title;
+    const hasText = !!this.props.text;
 
     return (
       <div
         className = { styles.root }
       >
-        { hasTitle && <p className = { styles.title }>{ this.props.title }</p> }
+        { hasText && <p className = { styles.text }>{ this.props.text }</p> }
         <div className = { styles.content }>
           { this.props.children }
         </div>

@@ -4,11 +4,11 @@
   padding: 20px 36px;
   background: $bgcolor;
   line-height: 1;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
 }
 
 .title {
   font-size: 24px;
+  line-height: 36px;
   font-weight: 700;
 }
 

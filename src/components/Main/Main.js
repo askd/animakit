@@ -1,8 +1,10 @@
 import RotatorDemo  from 'components/RotatorDemo/RotatorDemo';
 import ExpanderDemo from 'components/ExpanderDemo/ExpanderDemo';
 import ElasticDemo  from 'components/ElasticDemo/ElasticDemo';
+import Section      from 'components/Section/Section';
 import Intro        from 'components/Intro/Intro';
 import Usage        from 'components/Usage/Usage';
+import Article      from 'components/Article/Article';
 import Ribbon       from 'components/Ribbon/Ribbon';
 
 import React        from 'react';
@@ -20,84 +22,88 @@ export default class App extends React.PureComponent {
     return (
       <main className = { styles.root }>
 
-        <Intro>
-          <p>React components developed to&nbsp;make your site more friendly&nbsp;;)</p>
-          <p>Just wrap your existing UI with&nbsp;Animakit components to&nbsp;get transitions for&nbsp;better UX.</p>
-        </Intro>
+        <Section>
+          <Intro>
+            <p>React components developed to&nbsp;make your site more friendly&nbsp;;)</p>
+            <p>Just wrap your existing UI with&nbsp;Animakit components to&nbsp;get transitions for&nbsp;better UX.</p>
+          </Intro>
+        </Section>
 
-        <Usage />
+        <Section>
+          <Usage />
+        </Section>
 
-        <div className = { styles.block }>
-          <article className = { styles.article }>
-            <h2 className = { styles.title }>Choose one to start</h2>
+        <Section>
+          <Article>
+            <h2>Choose one to start</h2>
             <p>
               Try out the simple demo or click “Learn More” for more demos.
             </p>
-          </article>
-        </div>
+          </Article>
 
-        <nav className = { styles.nav }>
-          <ul className = { styles.navList }>
-            <li className = { styles.navItem }>
-              <div className = { styles.navHeading }>
-                <h3 className = { styles.navTitle }>AnimakitRotator</h3>
-                <p className = { styles.navText }>
-                  Rotate your components in 3D space
-                </p>
-                <Link
-                  to = "/rotator"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
-              </div>
-              <div className = { styles.navComponent }>
-                <RotatorDemo onlyOne />
-              </div>
-              <Ribbon path={ 'rotator' } />
-            </li>
-            <li className = { styles.navItem }>
-              <div className = { styles.navHeading }>
-                <h3 className = { styles.navTitle }>AnimakitExpander</h3>
-                <p className = { styles.navText }>
-                  Expand and collapse the content of your components
-                </p>
-                <Link
-                  to = "/expander"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
-              </div>
-              <div className = { styles.navComponent }>
-                <ExpanderDemo onlyOne />
-              </div>
-              <Ribbon path={ 'expander' } />
-            </li>
-            <li className = { styles.navItem }>
-              <div className = { styles.navHeading }>
-                <h3 className = { styles.navTitle }>AnimakitElastic</h3>
-                <p className = { styles.navText }>
-                  Make the content of your components elastic
-                </p>
-                <Link
-                  to = "/elastic"
-                  className = { styles.navMore }
-                >
-                  Learn more
-                </Link>
-              </div>
-              <div className = { styles.navComponent }>
-                <ElasticDemo onlyOne />
-              </div>
-              <Ribbon path={ 'elastic' } />
-            </li>
-          </ul>
-        </nav>
+          <nav className = { styles.nav }>
+            <ul className = { styles.navList }>
+              <li className = { styles.navItem }>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitRotator</h3>
+                  <p className = { styles.navText }>
+                    Rotate your components in 3D space
+                  </p>
+                  <Link
+                    to = "/rotator"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
+                <div className = { styles.navComponent }>
+                  <RotatorDemo onlyOne />
+                </div>
+                <Ribbon path={ 'rotator' } />
+              </li>
+              <li className = { styles.navItem }>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitExpander</h3>
+                  <p className = { styles.navText }>
+                    Expand and collapse the content of your components
+                  </p>
+                  <Link
+                    to = "/expander"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
+                <div className = { styles.navComponent }>
+                  <ExpanderDemo onlyOne />
+                </div>
+                <Ribbon path={ 'expander' } />
+              </li>
+              <li className = { styles.navItem }>
+                <div className = { styles.navHeading }>
+                  <h3 className = { styles.navTitle }>AnimakitElastic</h3>
+                  <p className = { styles.navText }>
+                    Make the content of your components elastic
+                  </p>
+                  <Link
+                    to = "/elastic"
+                    className = { styles.navMore }
+                  >
+                    Learn more
+                  </Link>
+                </div>
+                <div className = { styles.navComponent }>
+                  <ElasticDemo onlyOne />
+                </div>
+                <Ribbon path={ 'elastic' } />
+              </li>
+            </ul>
+          </nav>
+        </Section>
 
-        <div className = { styles.block }>
-          <article className = { styles.article }>
-            <h2 className={ styles.title }>The reason to use</h2>
+        <Section>
+          <Article>
+            <h2>The reason to use</h2>
             <p>
               Animations draw attention to and explain changes on&nbsp;the&nbsp;page.
             </p>
@@ -114,12 +120,12 @@ export default class App extends React.PureComponent {
               Adding transition effects helps you to&nbsp;enliven your website
               and make&nbsp;it more pleasant to&nbsp;use.
             </p>
-          </article>
-        </div>
+          </Article>
+        </Section>
 
-        <div className = { styles.block }>
-          <article className = { styles.article }>
-            <h2 className={ styles.title }>FAQ</h2>
+        <Section>
+          <Article>
+            <h2>FAQ</h2>
 
             <dl>
               <dt>Do I need to install the whole Animakit to use one of the components?</dt>
@@ -132,8 +138,8 @@ export default class App extends React.PureComponent {
                 Yes. Feel free to leave an&nbsp;<a href="https://github.com/animakit/animakit-core/issues">issue</a> ;)
               </dd>
             </dl>
-          </article>
-        </div>
+          </Article>
+        </Section>
 
       </main>
     );

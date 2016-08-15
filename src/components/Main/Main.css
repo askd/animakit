@@ -4,18 +4,6 @@
 
 }
 
-.block {
-  position: relative;
-  border-bottom: 1px dotted rgba(0, 0, 0, 0.25);
-  padding: 20px 36px;
-}
-
-
-.title {
-  font-size: 24px;
-  font-weight: 700;
-}
-
 .nav {
 
 }
@@ -27,11 +15,11 @@
 .navItem {
   position: relative;
   width: 100%;
-  padding-top: 30px;
 }
 
 .navHeading {
-  padding: 0 16px;
+  padding: 24px 16px 16px;
+  border-top: 1px dotted rgba(0, 0, 0, 0.25);
 }
 
 .navTitle {
@@ -74,45 +62,6 @@
 
 .navComponent {
   position: relative;
-  margin: 15px 0 0;
   background: $bgcolor;
-  border-top: 1px dotted rgba(0, 0, 0, 0.25);
   color: #000;
-}
-
-.article {
-  max-width: 600px;
-  margin: 10px 0 20px;
-
-  & p {
-    margin-top: 20px;
-    line-height: 24px;
-  }
-
-  & dl {
-    line-height: 20px;
-  }
-
-  & dt {
-    margin-top: 20px;
-    font-weight: 700;
-    color: #333;
-  }
-
-  & dd {
-    margin-top: 10px;
-    font-size: 14px;
-  }
-
-  & a {
-    color: $color5;
-
-    &:hover {
-      text-decoration: none;
-    }
-
-    &:visited {
-      color: $color6;
-    }
-  }
 }

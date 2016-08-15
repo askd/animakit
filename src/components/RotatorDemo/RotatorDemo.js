@@ -108,10 +108,10 @@ export default class RotatorDemo extends React.Component {
 
         <Demo key = "button2">
           <DemoComponent
-            comment = { onlyOne ? null : `Flexible width
+            comment = { onlyOne ? null : <span>Flexible width
               (see <a href="https://github.com/animakit/animakit-rotator/blob/master/README.md">
                 Limitations in README
-              </a>)` }
+              </a>)</span> }
           >
             <RotatorButton
               modifier = "Flexible"
@@ -229,7 +229,7 @@ export default class RotatorDemo extends React.Component {
 
         { !onlyOne && <Demo
           key   = "full"
-          title = {' Need more options? '}
+          text = { <span>Need more animations? Press the red button&nbsp;;)</span> }
         >
           { !this.state.showFull &&
             <button
