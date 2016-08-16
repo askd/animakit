@@ -10,10 +10,8 @@ export default class Header extends React.PureComponent {
 
   getNavTitle(path) {
     if (path === '/') return 'Animakit';
-    if (path === '/rotator') return 'Rotator';
-    if (path === '/expander') return 'Expander';
-    if (path === '/elastic') return 'Elastic';
-    return '';
+
+    return `${path.substr(1, 1).toUpperCase()}${path.substr(2)}`;
   }
 
   render() {

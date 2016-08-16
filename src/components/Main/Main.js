@@ -1,6 +1,7 @@
 import RotatorDemo  from 'components/RotatorDemo/RotatorDemo';
 import ExpanderDemo from 'components/ExpanderDemo/ExpanderDemo';
 import ElasticDemo  from 'components/ElasticDemo/ElasticDemo';
+import SliderDemo   from 'components/SliderDemo/SliderDemo';
 import Section      from 'components/Section/Section';
 import Intro        from 'components/Intro/Intro';
 import Usage        from 'components/Usage/Usage';

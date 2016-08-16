@@ -1,4 +1,4 @@
-import ElasticDemo from 'components/ElasticDemo/ElasticDemo';
+import SliderDemo from 'components/SliderDemo/SliderDemo';
 import Section     from 'components/Section/Section';
 import Intro       from 'components/Intro/Intro';
 import Usage       from 'components/Usage/Usage';
@@ -14,20 +14,20 @@ export default class Elastic extends React.PureComponent {
 
         <Section>
           <Intro>
-            <p>{ `Don't you like abrupt changes in the sizes?
-            AnimakitElastic will solve this problem ;)` }</p>
+            <p>{ `Do you need simple slider?
+            AnimakitSlider will be released soon ;)` }</p>
           </Intro>
         </Section>
 
         <Section>
-          <Usage component="elastic" />
+          <Usage component="slider" />
         </Section>
 
         <Section>
           <Article>
             <h2>Demos</h2>
           </Article>
-          <ElasticDemo />
+          <SliderDemo />
         </Section>
 
         <Section>
@@ -46,6 +46,14 @@ export default class Elastic extends React.PureComponent {
               </thead>
               <tbody>
                 <tr>
+                  <td>slide</td>
+                  <td>true</td>
+                  <td>string</td>
+                  <td>Key of the first child</td>
+                  <td>Key of the component child</td>
+                  <td>Current visible slide, that contains a child with the corresponding key</td>
+                </tr>
+                <tr>
                   <td>duration</td>
                   <td>false</td>
                   <td>number</td>
@@ -57,7 +65,7 @@ export default class Elastic extends React.PureComponent {
                   <td>easing</td>
                   <td>false</td>
                   <td>string</td>
-                  <td><code>cubic-bezier(0.68, -0.55, 0.265, 1.55)</code></td>
+                  <td><code>cubic-bezier(.165,.84,.44,1)</code></td>
                   <td>Any <a href="http://easings.net/">easing function</a></td>
                   <td>Easing function of animation</td>
                 </tr>

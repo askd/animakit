@@ -192,7 +192,7 @@ export default class RotatorDemo extends React.Component {
               <CodeBlock
                 highlight
                 blink
-                Active = { this.state.sideChanged === 'promo' }
+                blinkActive = { this.state.sideChanged === 'promo' }
               >
                 {
 `<AnimakitRotator
@@ -229,7 +229,7 @@ export default class RotatorDemo extends React.Component {
 
         { !onlyOne && <Demo
           key   = "full"
-          text = { <span>Need more animations? Press the red button&nbsp;;)</span> }
+          text = { <span>Need more? Press the red button&nbsp;;)</span> }
         >
           { !this.state.showFull &&
             <button

@@ -17,6 +17,14 @@ export default class Usage extends React.PureComponent {
     const component = this.props.component;
     const componentCapitalized = `${component.charAt(0).toUpperCase()}${component.slice(1)}`;
 
+    if (component === 'slider') {
+      return (
+        <div className = { styles.rootUD }>
+          Under development
+        </div>
+      );
+    }
+
     return (
       <div className = { styles.root }>
         <h2 className = { styles.title }>Easy to use</h2>

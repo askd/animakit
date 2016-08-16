@@ -18,8 +18,8 @@ export default class App extends React.PureComponent {
     const showLinks = this.props.children === null;
 
     const navLen = this.props.routes.length;
-    const showRibbon = navLen > 1;
     const ribbonPath = this.props.routes[navLen - 1].path.substr(1);
+    const showRibbon = navLen > 1 && ribbonPath !== 'slider';
 
     return (
       <div className = { styles.root }>

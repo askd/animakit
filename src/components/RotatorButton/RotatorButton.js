@@ -1,7 +1,9 @@
 import AnimakitRotator  from 'animakit-rotator';
-import SimpleButton     from 'components/SimpleButton/SimpleButton';
 
 import React            from 'react';
+
+import SimpleButton     from 'components/SimpleButton/SimpleButton';
+
 import styles           from './RotatorButton.css';
 
 export default class RotatorButton extends React.Component {
