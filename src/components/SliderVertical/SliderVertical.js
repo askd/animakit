@@ -1,6 +1,7 @@
 import AnimakitSlider from 'components/AnimakitSlider/AnimakitSlider'; // 'animakit-slider';
 
 import React          from 'react';
+import Dotnav         from 'components/Dotnav/Dotnav';
 
 import styles         from './SliderVertical.css';
 
@@ -23,17 +24,14 @@ export default class SliderVertical extends React.Component {
     slide: 'mars',
   };
 
-  componentWillMount() {
-    this.listeners.setSlide = this.props.slides.map(slide => this.setSlide.bind(this, slide), this);
-  }
-
-  setSlide(slide) {
+  setSlide(index) {
+    const slide = this.props.slides[index];
     this.setState({ slide });
     this.props.handleChangeSlide(slide);
   }
 
   listeners = {
-    setSlide: [],
+    setSlide: this.setSlide.bind(this),
   };
 
   render() {
@@ -87,15 +85,14 @@ export default class SliderVertical extends React.Component {
             </p>
           </div>
         </AnimakitSlider>
-        <ul className = { styles.nav }>
-          { this.props.slides.map((slide, i) =>
-            <li
-              key = { slide }
-              className = { this.state.slide === slide ? styles.navItemActive : styles.navItem }
-              onClick = { this.listeners.setSlide[i] }
-            />
-          , this)}
-        </ul>
+        <div className = { styles.nav }>
+          <Dotnav
+            vertical
+            count = { this.props.slides.length }
+            colors = { [1, 5, 3, 6] }
+            handleChange = { this.listeners.setSlide }
+          />
+        </div>
       </div>
     );
   }

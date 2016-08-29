@@ -13,64 +13,6 @@
   width: 20px;
 }
 
-.navItem {
-  margin: 10px 0;
-  width: 10px;
-  height: 10px;
-  padding: 5px;
-  cursor: pointer;
-
-  &::after {
-    content: '';
-    display: block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: #fff;
-    transition: all 0.5s;
-  }
-
-  &:nth-child(1):hover::after {
-    box-shadow: 0 0 0 3px $color1;
-  }
-
-  &:nth-child(2):hover::after {
-    box-shadow: 0 0 0 3px $color5;
-  }
-
-  &:nth-child(3):hover::after {
-    box-shadow: 0 0 0 3px $color3;
-  }
-
-  &:nth-child(4):hover::after {
-    box-shadow: 0 0 0 3px $color6;
-  }
-}
-
-.navItemActive {
-  composes: navItem;
-
-  &:nth-child(1)::after {
-    background: $color1;
-    box-shadow: 0 0 0 3px $color1;
-  }
-
-  &:nth-child(2)::after {
-    background: $color5;
-    box-shadow: 0 0 0 3px $color5;
-  }
-
-  &:nth-child(3)::after {
-    background: $color3;
-    box-shadow: 0 0 0 3px $color3;
-  }
-
-  &:nth-child(4)::after {
-    background: $color6;
-    box-shadow: 0 0 0 3px $color6;
-  }
-}
-
 .slide {
   position: relative;
   width: 400px;
@@ -82,7 +24,6 @@
   background-position: 0 0;
   background-repeat: no-repeat;
   background-size: cover;
-  box-shadow: inset 0 0 0 1px color(#fff a(25%));
   color: #fff;
   text-align: center;
 }

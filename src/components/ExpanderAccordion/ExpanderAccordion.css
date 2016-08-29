@@ -7,28 +7,33 @@
 
 .item {
   border-left: 10px solid;
-  background: #333;
-  transition: background .125s ease-out .5s;
 }
-.item.expanded {
+
+.itemCollapsed {
+  composes: item;
+  background: #333;
+  transition: background 0.125s ease-out 0.5s;
+}
+
+.itemExpanded {
+  composes: item;
   background: #000;
-  transition: background .125s ease-out .375s;
+  transition: background 0.125s ease-out 0.375s;
 }
 
 .itemMars {
-  composes: item;
   border-color: $color1;
 }
+
 .itemEarth {
-  composes: item;
   border-color: $color5;
 }
+
 .itemVenus {
-  composes: item;
   border-color: $color3;
 }
+
 .itemMercury {
-  composes: item;
   border-color: $color6;
 }
 
@@ -48,10 +53,30 @@
   width: 360px;
   height: 360px;
   transform: scale(0);
-  transition: transform .5s ease-out 0s;
+  animation: expandImage;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
+  animation-iteration-count: 1;
+  animation-delay: 0.5s;
+  animation-fill-mode: forwards;
 }
 
-.item.expanded .image {
-  transform: scale(1);
-  transition: transform .5s ease-out .5s;
+.imageCollapsed {
+  composes: image;
+  animation-name: collapseImage;
+  animation-delay: 0s;
+}
+
+.imageExpanded {
+  composes: image;
+}
+
+@keyframes expandImage {
+  0% { transform: scale(0); }
+  100% { transform: scale(1); }
+}
+
+@keyframes collapseImage {
+  0% { transform: scale(1); }
+  100% { transform: scale(0); }
 }

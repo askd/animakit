@@ -1,6 +1,8 @@
 import AnimakitRotator from 'animakit-rotator';
 
 import React           from 'react';
+import Dotnav          from 'components/Dotnav/Dotnav';
+
 import styles          from './RotatorPromo.css';
 
 export default class RotatorPromo extends React.Component {
@@ -22,17 +24,14 @@ export default class RotatorPromo extends React.Component {
     side: 'mars',
   };
 
-  componentWillMount() {
-    this.listeners.setSide = this.props.sides.map(side => this.setSide.bind(this, side), this);
-  }
-
-  setSide(side) {
+  setSide(index) {
+    const side = this.props.sides[index];
     this.setState({ side });
     this.props.handleChangeSide(side);
   }
 
   listeners = {
-    setSide: [],
+    setSide: this.setSide.bind(this),
   };
 
   render() {
@@ -87,15 +86,14 @@ export default class RotatorPromo extends React.Component {
             </p>
           </div>
         </AnimakitRotator>
-        <ul className = { styles.nav }>
-          { this.props.sides.map((side, i) =>
-            <li
-              key = { side }
-              className = { this.state.side === side ? styles.navItemActive : styles.navItem }
-              onClick = { this.listeners.setSide[i] }
-            />
-          , this)}
-        </ul>
+        <div className = { styles.nav }>
+          <Dotnav
+            vertical
+            count = { this.props.sides.length }
+            colors = { [1, 5, 3, 6] }
+            handleChange = { this.listeners.setSide }
+          />
+        </div>
       </div>
     );
   }

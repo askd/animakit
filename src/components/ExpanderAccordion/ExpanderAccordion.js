@@ -38,7 +38,7 @@ export default class ExpanderAccordion extends React.Component {
   };
 
   toggleExpanded(name) {
-    const expanded = this.state.expanded;
+    const expanded = { ...this.state.expanded };
     if (expanded[name]) {
       expanded[name] = false;
     } else {
@@ -55,12 +55,15 @@ export default class ExpanderAccordion extends React.Component {
       <div className = { styles.root }>
         { this.props.items.map(item => {
           const itemName = item.charAt(0).toUpperCase() + item.slice(1);
-          let className = styles[`item${itemName}`];
-          if (this.state.expanded[item]) className += ` ${styles.expanded}`;
+          const itemExpanded = this.state.expanded[item];
+
+          const className = styles[`item${itemName}`];
+          const modExpanded = itemExpanded ? styles.itemExpanded : styles.itemCollapsed;
+
           return (
             <div
               key = { item }
-              className = { className }
+              className = { `${className} ${modExpanded}` }
             >
               <div
                 key = { `${item}Header ` }
@@ -75,7 +78,7 @@ export default class ExpanderAccordion extends React.Component {
                 duration = { 1000 }
               >
                 <img
-                  className = { styles.image }
+                  className = { itemExpanded ? styles.imageExpanded : styles.imageCollapsed }
                   src = { `assets/${item}.jpg` }
                   alt=""
                 />

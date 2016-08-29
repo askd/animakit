@@ -1,6 +1,7 @@
 import AnimakitSlider from 'components/AnimakitSlider/AnimakitSlider'; // 'animakit-slider';
 
 import React          from 'react';
+import Dotnav         from 'components/Dotnav/Dotnav';
 
 import styles         from './SliderSimple.css';
 
@@ -12,70 +13,54 @@ export default class SliderSimple extends React.Component {
 
   static defaultProps = {
     slides: [
-      'mars',
-      'earth',
-      'venus',
-      'mercury',
+      'red',
+      'orange',
+      'yellow',
+      'green',
+      'blue',
+      'purple',
     ],
   };
 
   state = {
-    slide: 'mars',
+    slide: 'red',
   };
 
-  componentWillMount() {
-    this.listeners.setSlide = this.props.slides.map(slide => this.setSlide.bind(this, slide), this);
-  }
-
-  setSlide(slide) {
+  setSlide(index) {
+    const slide = this.props.slides[index];
     this.setState({ slide });
     this.props.handleChangeSlide(slide);
   }
 
   listeners = {
-    setSlide: [],
+    setSlide: this.setSlide.bind(this),
   };
 
   render() {
     return (
       <div className = { styles.root }>
         <AnimakitSlider
+          loop
           slide   =   { this.state.slide }
         >
-          <div
-            key       = { this.props.slides[0] }
-            className = { styles.slideMars }
-          >
-            <h2 className = { styles.slideTitle }>Mars</h2>
-          </div>
-          <div
-            key       = { this.props.slides[1] }
-            className = { styles.slideEarth }
-          >
-            <h2 className = { styles.slideTitle }>Earth</h2>
-          </div>
-          <div
-            key       = { this.props.slides[2] }
-            className = { styles.slideVenus }
-          >
-            <h2 className = { styles.slideTitle }>Venus</h2>
-          </div>
-          <div
-            key       = { this.props.slides[3] }
-            className = { styles.slideMercury }
-          >
-            <h2 className = { styles.slideTitle }>Mercury</h2>
-          </div>
+        { this.props.slides.map(slide => {
+          const title = slide.charAt(0).toUpperCase() + slide.slice(1);
+          return (
+            <div
+              key       = { slide }
+              className = { styles[`slide${title}`] }
+            >
+              <h2 className = { styles.slideTitle }>{ title }</h2>
+            </div>
+          );
+        }) }
         </AnimakitSlider>
-        <ul className = { styles.nav }>
-          { this.props.slides.map((slide, i) =>
-            <li
-              key = { slide }
-              className = { this.state.slide === slide ? styles.navItemActive : styles.navItem }
-              onClick = { this.listeners.setSlide[i] }
-            />
-          , this)}
-        </ul>
+        <div className = { styles.nav }>
+          <Dotnav
+            count = { this.props.slides.length }
+            handleChange = { this.listeners.setSlide }
+          />
+        </div>
       </div>
     );
   }

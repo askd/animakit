@@ -1,0 +1,127 @@
+@import '../vars.css';
+
+.dotsHorizontal {
+  display: flex;
+}
+
+.dotsHorizontal .dot {
+  margin: 0 5px;
+}
+
+.dotsVertical .dot {
+  margin: 10px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fff;
+    transition: all 0.5s;
+  }
+
+  &:hover::after {
+    box-shadow: 0 0 0 3px color(#fff a(50%));
+  }
+}
+
+.dotActive {
+  composes: dot;
+
+  &::after,
+  &:hover::after {
+    box-shadow: 0 0 0 3px #fff;
+  }
+}
+
+.dotColor1 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color1;
+  }
+}
+
+.dotColor2 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color2;
+  }
+}
+
+.dotColor3 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotColor4 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color4;
+  }
+}
+
+.dotColor5 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color5;
+  }
+}
+
+.dotColor6 {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color6;
+  }
+}
+
+.dotActive.dotColor1 {
+  &::after,
+  &:hover::after {
+    background: $color1;
+    box-shadow: 0 0 0 3px $color1;
+  }
+}
+
+.dotActive.dotColor2 {
+  &::after,
+  &:hover::after {
+    background: $color2;
+    box-shadow: 0 0 0 3px $color2;
+  }
+}
+
+.dotActive.dotColor3 {
+  &::after,
+  &:hover::after {
+    background: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotActive.dotColor4 {
+  &::after,
+  &:hover::after {
+    background: $color4;
+    box-shadow: 0 0 0 3px $color4;
+  }
+}
+
+.dotActive.dotColor5 {
+  &::after,
+  &:hover::after {
+    background: $color5;
+    box-shadow: 0 0 0 3px $color5;
+  }
+}
+
+.dotActive.dotColor6 {
+  &::after,
+  &:hover::after {
+    background: $color6;
+    box-shadow: 0 0 0 3px $color6;
+  }
+}

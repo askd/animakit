@@ -20,7 +20,7 @@ export default class SliderDemo extends React.PureComponent {
 
   state = {
     slide: {
-      simple:   'mars',
+      simple:   'red',
       vertical: 'mars',
     },
     slideChanged: null,
@@ -61,22 +61,16 @@ export default class SliderDemo extends React.PureComponent {
                 blink
                 blinkActive = { this.state.slideChanged === 'simple' }
               >
-                { `<AnimakitSlider slide="${this.state.slide.simple}">` }
+                { `<AnimakitSlider slide="${this.state.slide.simple}" loop>` }
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div key="mars">
-    ...
-  </div>
-  <div key="earth">
-    ...
-  </div>
-  <div key="venus">
-    ...
-  </div>
-  <div key="mercury">
-    ...
-  </div>`
+`  <div key="red">...</div>
+  <div key="orange">...</div>
+  <div key="yellow">...</div>
+  <div key="green">...</div>
+  <div key="blue">...</div>
+  <div key="purple"></div>`
                 }
               </CodeBlock>
               <CodeBlock
