@@ -2,16 +2,14 @@ import React from 'react';
 
 import styles from './Demo.css';
 
-export default class DemoCode extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-  };
+const DemoCode = (props) =>
+  <div className = { styles.code }>
+    { props.children }
+  </div>
+;
 
-  render() {
-    return (
-      <div className = { styles.code }>
-        { this.props.children }
-      </div>
-    );
-  }
-}
+DemoCode.propTypes = {
+  children: React.PropTypes.any,
+};
+
+export default DemoCode;

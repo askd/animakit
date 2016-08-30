@@ -2,16 +2,14 @@ import React  from 'react';
 
 import styles from './Section.css';
 
-export default class Section extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-  };
+const Section  = (props) =>
+  <section className = { styles.root }>
+    { props.children }
+  </section>
+;
 
-  render() {
-    return (
-      <section className = { styles.root }>
-        { this.props.children }
-      </section>
-    );
-  }
-}
+Section.propTypes = {
+  children: React.PropTypes.any,
+};
+
+export default Section;

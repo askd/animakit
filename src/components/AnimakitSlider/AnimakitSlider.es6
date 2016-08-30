@@ -9,6 +9,7 @@ export default class AnimakitSlider extends React.Component {
     vertical: React.PropTypes.bool,
     loop:     React.PropTypes.bool,
     skip:     React.PropTypes.bool,
+    flexible: React.PropTypes.bool,
     duration: React.PropTypes.number,
     easing:   React.PropTypes.string,
   };
@@ -18,6 +19,7 @@ export default class AnimakitSlider extends React.Component {
     vertical: false,
     loop:     false,
     skip:     false,
+    flexible: false,
     duration: 500,
     easing:   'cubic-bezier(.165,.84,.44,1)',
   };
@@ -27,8 +29,8 @@ export default class AnimakitSlider extends React.Component {
     prevSlide:    -1,
     currentSlide: 0,
     slidesCount:  0,
-    width:        0,
-    height:       0,
+    width:        null,
+    height:       null,
   };
 
   componentWillMount() {
@@ -74,7 +76,9 @@ export default class AnimakitSlider extends React.Component {
 
   getOffset() {
     const { currentSlide, prevSlide, slidesCount, animation } = this.state;
-    const useLoop = this.props.loop && slidesCount > 2;
+    const { loop, skip } = this.props;
+
+    const useLoop = (loop || skip) && slidesCount > 2;
     if (!useLoop) return 0;
 
     return Math.ceil(slidesCount / 2) - (animation ? prevSlide : currentSlide) - 1;
@@ -90,6 +94,40 @@ export default class AnimakitSlider extends React.Component {
     return slideNum;
   }
 
+  getDirection() {
+    const { currentSlide, prevSlide, slidesCount } = this.state;
+    const { loop, skip } = this.props;
+
+    let direction = prevSlide < currentSlide;
+
+    if (!loop && !skip) {
+      return direction;
+    }
+
+    if (skip) {
+      if (prevSlide === slidesCount - 1 && currentSlide === 0) direction = true;
+      if (prevSlide === 0 && currentSlide === slidesCount - 1) direction = false;
+
+      return direction;
+    }
+
+    // TODO check loop
+
+    return direction;
+  }
+
+  getSlideVisibility(num) {
+    if (!this.props.skip) return true;
+
+    const { currentSlide, prevSlide, animation } = this.state;
+
+    if ((num === currentSlide) || (animation && num === prevSlide)) {
+      return true;
+    }
+
+    return false;
+  }
+
   getChildVisibility(num) {
     const { currentSlide, prevSlide, animation } = this.state;
 
@@ -102,6 +140,7 @@ export default class AnimakitSlider extends React.Component {
     }
 
     // TODO calculate visible slides indexes
+    const direction = this.getDirection();
 
     return true;
   }
@@ -110,34 +149,70 @@ export default class AnimakitSlider extends React.Component {
     if (!this.props.children) return {};
 
     const position = 'relative';
-    const { width, height } = this.state;
     const overflow = 'hidden';
 
-    return { position, width, height, overflow };
+    let { width, height } = this.state;
+
+    if (!this.props.flexible) {
+      return { position, width, height, overflow };
+    }
+
+    width = 0;
+    height = 0;
+
+    const num = this.state.animation ? this.state.prevSlide : this.state.currentSlide;
+
+    if (this.slidesDimensions[num]) {
+      width  = this.slidesDimensions[num].width;
+      height = this.slidesDimensions[num].height;
+    }
+
+    const { duration, easing } = this.props;
+
+    if (!this.contentMounted) {
+      return { position, width, height, overflow };
+    }
+
+    const transition = `width ${duration}ms ${easing}, height ${duration}ms ${easing}`;
+
+    return { position, width, height, transition, overflow };
   }
 
   getContainerStyles() {
     if (!this.props.children) return {};
 
-    const vertical = this.props.vertical;
-    const { currentSlide, slidesCount } = this.state;
+    const { vertical, loop, skip } = this.props;
+    const { currentSlide, slidesCount, animation } = this.state;
 
     const axis = vertical ? 'Y' : 'X';
-    const offset = this.getOffset();
 
-    let index = currentSlide + offset;
+    let count = slidesCount;
+    let index = currentSlide;
 
-    if (index < 0) index += slidesCount;
-    if (index >= slidesCount) index -= slidesCount;
+    if (skip) {
+      count = 3;
+      index = 1;
+
+      if (animation) {
+        const direction = this.getDirection();
+        index = direction ? 2 : 0;
+      }
+    } else if (loop) {
+      const offset = this.getOffset();
+      index = currentSlide + offset;
+
+      if (index < 0) index += slidesCount;
+      if (index >= slidesCount) index -= slidesCount;
+    }
 
     const position = 'absolute';
-    const transform = `translate${axis}(${index * (-100 / slidesCount)}%)`;
+    const transform = `translate${axis}(${index * (-100 / count)}%)`;
 
-    const size = slidesCount * 100;
+    const size = count * 100;
     const width = vertical ? '100%' : `${size}%`;
     const height = vertical ? `${size}%` : '100%';
 
-    if (!this.state.animation) {
+    if (!animation) {
       return { position, transform, width, height };
     }
 
@@ -147,19 +222,37 @@ export default class AnimakitSlider extends React.Component {
     return { position, transition, transform, width, height };
   }
 
-  getSlideStyles() {
-    const vertical = this.props.vertical;
+  getSlideStyles(num) {
+    const { vertical, skip } = this.props;
+    const { prevSlide, slidesCount, animation } = this.state;
+
     const position = 'relative';
 
-    const size = 100 / this.state.slidesCount;
+    const count = skip ? 3 : slidesCount;
+
+    const size = 100 / count;
     const width = vertical ? '100%' : `${size}%`;
     const height = vertical ? `${size}%` : '100%';
 
+    const direction = this.getDirection();
+
+    const appendMargin = skip && (!animation || (direction && num === prevSlide));
+
     if (vertical) {
+      if (appendMargin) {
+        const marginTop = `${size}%`;
+        return { position, width, height, marginTop };
+      }
+
       return { position, width, height };
     }
 
     const float = 'left';
+
+    if (appendMargin) {
+      const marginLeft = `${size}%`;
+      return { position, float, width, height, marginLeft };
+    }
 
     return { position, float, width, height };
   }
@@ -170,6 +263,8 @@ export default class AnimakitSlider extends React.Component {
 
     this.animationResetTO = null;
     this.resizeCheckerRAF = null;
+
+    this.contentMounted = false;
 
     this.listeners = {
       checkResize: this.checkResize.bind(this),
@@ -285,6 +380,12 @@ export default class AnimakitSlider extends React.Component {
       this.resetCurrentSlideState({ currentSlide, slidesCount }),
     );
 
+    if (this.state.width !== null) {
+      setTimeout(() => {
+        this.contentMounted = true;
+      }, 1);
+    }
+
     if (!Object.keys(state).length) return;
 
     if (state.animation) {
@@ -299,12 +400,19 @@ export default class AnimakitSlider extends React.Component {
   }
 
   renderChild(num, child) {
+    const slideVisible = this.getSlideVisibility(num);
+
     return (
       <div
-        style = { styles.slideWrapper }
-        ref = { (c) => { this.slidesNodes[num] = c; } }
+        key = { num }
+        style = { slideVisible ? this.getSlideStyles(num) : null }
       >
-        { this.getChildVisibility(num) ? child : null }
+        <div
+          style = { slideVisible ? styles.slideWrapper : null }
+          ref = { (c) => { this.slidesNodes[num] = c; } }
+        >
+          { this.getChildVisibility(num) ? child : null }
+        </div>
       </div>
     );
   }
@@ -315,19 +423,23 @@ export default class AnimakitSlider extends React.Component {
       return item;
     });
 
-    const offset = this.getOffset();
+    const { loop, skip } = this.props;
 
-    if (offset) {
-      if (offset > 0) {
-        for (let i = 0; i < offset; i++) {
-          const lastChild = children.pop();
-          children.unshift(lastChild);
+    if (loop || skip) {
+      const offset = this.getOffset();
+
+      if (offset) {
+        if (offset > 0) {
+          for (let i = 0; i < offset; i++) {
+            const lastChild = children.pop();
+            children.unshift(lastChild);
+          }
         }
-      }
-      if (offset < 0) {
-        for (let i = 0; i > offset; i--) {
-          const lastChild = children.shift();
-          children.push(lastChild);
+        if (offset < 0) {
+          for (let i = 0; i > offset; i--) {
+            const firstChild = children.shift();
+            children.push(firstChild);
+          }
         }
       }
     }
@@ -335,14 +447,7 @@ export default class AnimakitSlider extends React.Component {
     return children.map(item => {
       const { child, num } = item;
 
-      return (
-        <div
-          key = { num }
-          style = { this.getSlideStyles() }
-        >
-          { this.renderChild(num, child) }
-        </div>
-      );
+      return this.renderChild(num, child);
     });
   }
 

@@ -1,0 +1,58 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  width: 400px;
+}
+
+.nav {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20px;
+}
+
+.slide {
+  position: relative;
+  width: 400px;
+  height: 200px;
+  color: #fff;
+  text-align: center;
+}
+
+.slideTitle {
+  padding: 20px 0;
+  font-size: 40px;
+  line-height: 1;
+}
+
+.slideRed {
+  composes: slide;
+  background: $color1;
+}
+
+.slideOrange {
+  composes: slide;
+  background: $color2;
+}
+
+.slideYellow {
+  composes: slide;
+  background: $color3;
+}
+
+.slideGreen {
+  composes: slide;
+  background: $color4;
+}
+
+.slideBlue {
+  composes: slide;
+  background: $color5;
+}
+
+.slidePurple {
+  composes: slide;
+  background: $color6;
+}

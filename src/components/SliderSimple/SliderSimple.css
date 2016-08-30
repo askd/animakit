@@ -2,57 +2,42 @@
 
 .root {
   position: relative;
-  width: 400px;
+  display: inline-block;
+  padding: 40px;
+  background: #000;
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+
+  & a {
+    color: $color3;
+    text-decoration: none;
+  }
 }
 
 .nav {
   position: absolute;
-  bottom: 20px;
+  bottom: 10px;
   left: 50%;
   transform: translateX(-50%);
   height: 20px;
 }
 
 .slide {
-  position: relative;
-  width: 400px;
-  height: 200px;
-  color: #fff;
-  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.slideTitle {
-  padding: 20px 0;
-  font-size: 40px;
-  line-height: 1;
-}
-
-.slideRed {
-  composes: slide;
-  background: $color1;
-}
-
-.slideOrange {
-  composes: slide;
-  background: $color2;
-}
-
-.slideYellow {
-  composes: slide;
-  background: $color3;
-}
-
-.slideGreen {
-  composes: slide;
-  background: $color4;
-}
-
-.slideBlue {
-  composes: slide;
-  background: $color5;
-}
-
-.slidePurple {
-  composes: slide;
-  background: $color6;
+.image {
+  max-width: 335px;
 }

@@ -13,7 +13,7 @@ import { Link }     from 'react-router';
 
 import styles       from './Main.css';
 
-const App = () =>
+const Main = () =>
   <main className = { styles.root }>
 
     <Section>
@@ -138,4 +138,4 @@ const App = () =>
   </main>
 ;
 
-export default App;
+export default Main;

@@ -70,6 +70,28 @@ const Slider = () =>
               </td>
             </tr>
             <tr>
+              <td>skip</td>
+              <td>false</td>
+              <td>bool</td>
+              <td><code>false</code></td>
+              <td><code>true</code>, <code>false</code></td>
+              <td>
+                If true, the component will animate directly to the selected slide
+                and will not show the slides located between
+              </td>
+            </tr>
+            <tr>
+              <td>flexible</td>
+              <td>false</td>
+              <td>bool</td>
+              <td><code>false</code></td>
+              <td><code>true</code>, <code>false</code></td>
+              <td>
+                If true, the component size automatically to fit the current slide.
+                By default, the component selects the size of the largest slide.
+              </td>
+            </tr>
+            <tr>
               <td>duration</td>
               <td>false</td>
               <td>number</td>

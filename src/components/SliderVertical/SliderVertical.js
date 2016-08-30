@@ -21,12 +21,13 @@ export default class SliderVertical extends React.Component {
   };
 
   state = {
+    index: 0,
     slide: 'mars',
   };
 
   setSlide(index) {
     const slide = this.props.slides[index];
-    this.setState({ slide });
+    this.setState({ index, slide });
     this.props.handleChangeSlide(slide);
   }
 
@@ -89,6 +90,7 @@ export default class SliderVertical extends React.Component {
           <Dotnav
             vertical
             count = { this.props.slides.length }
+            index = { this.state.index }
             colors = { [1, 5, 3, 6] }
             handleChange = { this.listeners.setSlide }
           />

@@ -2,16 +2,14 @@ import React  from 'react';
 
 import styles from './Code.css';
 
-export default class Code extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-  };
+const Code = (props) =>
+  <div className = { styles.root }>
+    { props.children }
+  </div>
+;
 
-  render() {
-    return (
-      <div className = { styles.root }>
-        { this.props.children }
-      </div>
-    );
-  }
-}
+Code.propTypes = {
+  children: React.PropTypes.any,
+};
+
+export default Code;

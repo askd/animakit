@@ -2,23 +2,23 @@ import React from 'react';
 
 import styles from './Demo.css';
 
-export default class DemoComponent extends React.PureComponent {
-  static propTypes = {
-    comment:    React.PropTypes.any,
-    fullscreen: React.PropTypes.bool,
-    children:   React.PropTypes.any,
-  };
+const DemoComponent = (props) => {
+  const hasComment = !!props.comment;
 
-  render() {
-    const hasComment = !!this.props.comment;
+  return (
+    <div className = { props.fullscreen ? styles.componentFullscreen : styles.component }>
+      { hasComment && <p className = { styles.comment }>
+        { props.comment }
+      </p> }
+      { props.children }
+    </div>
+  );
+};
 
-    return (
-      <div className = { this.props.fullscreen ? styles.componentFullscreen : styles.component }>
-        { hasComment && <p className = { styles.comment }>
-          { this.props.comment }
-        </p> }
-        { this.props.children }
-      </div>
-    );
-  }
-}
+DemoComponent.propTypes = {
+  comment:    React.PropTypes.any,
+  fullscreen: React.PropTypes.bool,
+  children:   React.PropTypes.any,
+};
+
+export default DemoComponent;

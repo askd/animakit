@@ -2,16 +2,14 @@ import React  from 'react';
 
 import styles from './Intro.css';
 
-export default class Intro extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-  };
+const Intro = (props) =>
+  <div className = { styles.root }>
+    { props.children }
+  </div>
+;
 
-  render() {
-    return (
-      <div className = { styles.root }>
-        { this.props.children }
-      </div>
-    );
-  }
-}
+Intro.propTypes = {
+  children: React.PropTypes.any,
+};
+
+export default Intro;

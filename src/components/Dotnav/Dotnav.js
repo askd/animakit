@@ -5,12 +5,14 @@ import styles from './Dotnav.css';
 export default class Dotnav extends React.Component {
   static propTypes = {
     count:        React.PropTypes.number,
+    index:        React.PropTypes.number,
     vertical:     React.PropTypes.bool,
     colors:       React.PropTypes.array,
     handleChange: React.PropTypes.func,
   };
 
-  state = {
+  static defaultProps = {
+    count:    0,
     index:    0,
     vertical: false,
     colors:   [],
@@ -22,7 +24,6 @@ export default class Dotnav extends React.Component {
   }
 
   setIndex(index) {
-    this.setState({ index });
     this.props.handleChange(index);
   }
 
@@ -31,14 +32,19 @@ export default class Dotnav extends React.Component {
   };
 
   render() {
+    if (this.props.count < 2) return null;
+
     const { count, vertical, colors } = this.props;
 
     return (
       <div className = { styles.root }>
         <ul className = { vertical ? styles.dotsVertical : styles.dotsHorizontal }>
           { [...Array(count)].map((_, i) => {
-            const baseClassName = this.state.index === i ? styles.dotActive : styles.dot;
-            const colorClassName = colors && colors[i] ? styles[`dotColor${colors[i]}`] : '';
+            const baseClassName = this.props.index === i ? styles.dotActive : styles.dot;
+            let colorClassName = '';
+            if (colors) {
+              colorClassName = styles[`dotColor${colors[colors[i] ? i : 0]}`];
+            }
 
             return (
               <li

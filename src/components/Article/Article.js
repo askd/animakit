@@ -2,16 +2,14 @@ import React  from 'react';
 
 import styles from './Article.css';
 
-export default class Article extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-  };
+const Article = (props) =>
+  <article className = { styles.root }>
+    { props.children }
+  </article>
+;
 
-  render() {
-    return (
-      <article className = { styles.root }>
-        { this.props.children }
-      </article>
-    );
-  }
-}
+Article.propTypes = {
+  children: React.PropTypes.any,
+};
+
+export default Article;

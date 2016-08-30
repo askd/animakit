@@ -1,4 +1,5 @@
 import SliderSimple   from 'components/SliderSimple/SliderSimple';
+import SliderColor    from 'components/SliderColor/SliderColor';
 import SliderVertical from 'components/SliderVertical/SliderVertical';
 import Demo           from 'components/Demo/Demo';
 import DemoComponent  from 'components/Demo/DemoComponent';
@@ -20,7 +21,8 @@ export default class SliderDemo extends React.PureComponent {
 
   state = {
     slide: {
-      simple:   'red',
+      simple:   0,
+      color:    'red',
       vertical: 'mars',
     },
     slideChanged: null,
@@ -29,6 +31,7 @@ export default class SliderDemo extends React.PureComponent {
   listeners = {
     changeSlide: {
       simple:   this.changeSlide.bind(this, 'simple'),
+      color:    this.changeSlide.bind(this, 'color'),
       vertical: this.changeSlide.bind(this, 'vertical'),
     },
   };
@@ -61,7 +64,41 @@ export default class SliderDemo extends React.PureComponent {
                 blink
                 blinkActive = { this.state.slideChanged === 'simple' }
               >
-                { `<AnimakitSlider slide="${this.state.slide.simple}" loop>` }
+                {
+`<AnimakitSlider
+  slide="${this.state.slide.simple}"
+  flexible
+  skip
+>` }
+              </CodeBlock>
+              <CodeBlock>
+                {
+`  <div className="slide">...</div>
+  ...
+  <div className="slide">...</div>`
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '</AnimakitSlider>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
+
+        { !onlyOne && <Demo key = "color">
+          <DemoComponent>
+            <SliderColor handleChangeSlide = { this.listeners.changeSlide.color } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { this.state.slideChanged === 'color' }
+              >
+                { `<AnimakitSlider slide="${this.state.slide.color}" loop>` }
               </CodeBlock>
               <CodeBlock>
                 {
@@ -80,7 +117,7 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
             </Code>
           </DemoCode>
-        </Demo>
+        </Demo> }
 
         { !onlyOne && <Demo key = "vertical">
           <DemoComponent>

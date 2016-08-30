@@ -21,12 +21,13 @@ export default class RotatorPromo extends React.Component {
   };
 
   state = {
-    side: 'mars',
+    index: 0,
+    side:  'mars',
   };
 
   setSide(index) {
     const side = this.props.sides[index];
-    this.setState({ side });
+    this.setState({ index, side });
     this.props.handleChangeSide(side);
   }
 
@@ -90,6 +91,7 @@ export default class RotatorPromo extends React.Component {
           <Dotnav
             vertical
             count = { this.props.sides.length }
+            index = { this.state.index }
             colors = { [1, 5, 3, 6] }
             handleChange = { this.listeners.setSide }
           />

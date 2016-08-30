@@ -8,29 +8,29 @@ import styles          from './App.css';
 
 import './favicon.png';
 
-export default class App extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-    routes:   React.PropTypes.array,
-  };
+const App = (props) => {
+  const showLinks = props.children === null;
 
-  render() {
-    const showLinks = this.props.children === null;
+  const navLen = props.routes.length;
+  const ribbonPath = props.routes[navLen - 1].path.substr(1);
+  const showRibbon = navLen > 1 && ribbonPath !== 'slider';
 
-    const navLen = this.props.routes.length;
-    const ribbonPath = this.props.routes[navLen - 1].path.substr(1);
-    const showRibbon = navLen > 1 && ribbonPath !== 'slider';
+  return (
+    <div className = { styles.root }>
+      <Header routes={ props.routes } />
 
-    return (
-      <div className = { styles.root }>
-        <Header routes={ this.props.routes } />
+      { showLinks && <Main /> }
 
-        { showLinks && <Main /> }
+      { !showLinks && props.children }
 
-        { !showLinks && this.props.children }
+      { showRibbon && <Ribbon fixed path={ ribbonPath } /> }
+    </div>
+  );
+};
 
-        { showRibbon && <Ribbon fixed path={ ribbonPath } /> }
-      </div>
-    );
-  }
-}
+App.propTypes = {
+  children: React.PropTypes.any,
+  routes:   React.PropTypes.array,
+};
+
+export default App;

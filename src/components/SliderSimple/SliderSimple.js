@@ -7,57 +7,73 @@ import styles         from './SliderSimple.css';
 
 export default class SliderSimple extends React.Component {
   static propTypes = {
-    slides:            React.PropTypes.array,
+    slidesCount:       React.PropTypes.number,
     handleChangeSlide: React.PropTypes.func,
   };
 
   static defaultProps = {
-    slides: [
-      'red',
-      'orange',
-      'yellow',
-      'green',
-      'blue',
-      'purple',
-    ],
+    slidesCount: 11,
   };
 
   state = {
-    slide: 'red',
+    slide: 0,
   };
 
-  setSlide(index) {
-    const slide = this.props.slides[index];
+  onClick() {
+    let slide = this.state.slide;
+    slide++;
+    if (slide >= this.props.slidesCount) slide = 0;
+    this.setSlide(slide);
+  }
+
+  setSlide(slide) {
     this.setState({ slide });
     this.props.handleChangeSlide(slide);
   }
 
   listeners = {
+    onClick:  this.onClick.bind(this),
     setSlide: this.setSlide.bind(this),
   };
 
   render() {
     return (
       <div className = { styles.root }>
-        <AnimakitSlider
-          loop
-          slide   =   { this.state.slide }
+        <div className = { styles.title }>
+          Photos by <a href="https://www.flickr.com/photos/nasacommons">NASA on The Commons</a>
+        </div>
+        <div
+          className = { styles.content }
+          onClick = { this.listeners.onClick }
         >
-        { this.props.slides.map(slide => {
-          const title = slide.charAt(0).toUpperCase() + slide.slice(1);
-          return (
-            <div
-              key       = { slide }
-              className = { styles[`slide${title}`] }
-            >
-              <h2 className = { styles.slideTitle }>{ title }</h2>
-            </div>
-          );
-        }) }
-        </AnimakitSlider>
+          <AnimakitSlider
+            skip
+            flexible
+            slide = { this.state.slide }
+            duration = { 500 }
+          >
+          { [...Array(this.props.slidesCount)].map((_, i) => {
+            const image = (i < 10) ? `0${i}` : i;
+            return (
+              <div
+                key       = { i }
+                className = { styles.slide }
+              >
+                <img
+                  className = { styles.image }
+                  src = { require(`./images/nasa/${image}.jpg`) }
+                  alt = ""
+                />
+              </div>
+            );
+          }) }
+          </AnimakitSlider>
+        </div>
         <div className = { styles.nav }>
           <Dotnav
-            count = { this.props.slides.length }
+            count = { this.props.slidesCount }
+            index = { this.state.slide }
+            colors = { [3] }
             handleChange = { this.listeners.setSlide }
           />
         </div>

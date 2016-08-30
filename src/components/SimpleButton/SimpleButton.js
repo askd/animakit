@@ -1,20 +1,18 @@
 import React from 'react';
 
-export default class SimpleButton extends React.PureComponent {
-  static propTypes = {
-    className:   React.PropTypes.string,
-    caption:     React.PropTypes.string,
-    handleClick: React.PropTypes.func,
-  };
+const SimpleButton = (props) =>
+  <button
+    className = { props.className }
+    onClick   = { props.handleClick }
+  >
+    { props.caption }
+  </button>
+;
 
-  render() {
-    return (
-      <button
-        className = { this.props.className }
-        onClick   = { this.props.handleClick }
-      >
-        { this.props.caption }
-      </button>
-    );
-  }
-}
+SimpleButton.propTypes = {
+  className:   React.PropTypes.string,
+  caption:     React.PropTypes.string,
+  handleClick: React.PropTypes.func,
+};
+
+export default SimpleButton;
