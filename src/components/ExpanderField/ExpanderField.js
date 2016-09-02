@@ -1,4 +1,5 @@
 import AnimakitExpander from 'animakit-expander';
+// import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
 
 import React            from 'react';
 import styles           from './ExpanderField.css';
@@ -103,11 +104,13 @@ export default class ExpanderField extends React.Component {
             expanded = { this.state.expanded.other }
             align = "bottom"
           >
+            <div className = { styles.inputTextareaWrap }>
             <textarea
               name = "message"
               placeholder = "Your message"
               className = { styles.inputTextarea }
             />
+            </div>
           </AnimakitExpander>
         </div>
       </div>

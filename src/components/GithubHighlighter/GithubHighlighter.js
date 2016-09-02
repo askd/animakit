@@ -1,6 +1,13 @@
 import React             from 'react';
 import SyntaxHighlighter from 'react-syntax-highlighter';
-import { githubGist }    from 'react-syntax-highlighter/dist/styles';
+
+import lowlight          from 'lowlight/lib/core';
+import javascript        from 'highlight.js/lib/languages/javascript';
+import xml               from 'highlight.js/lib/languages/xml';
+import githubGist        from 'react-syntax-highlighter/dist/styles/github-gist';
+
+lowlight.registerLanguage('javascript', javascript);
+lowlight.registerLanguage('xml', xml);
 
 export default class GithubHighlighter extends React.PureComponent {
   static propTypes = {

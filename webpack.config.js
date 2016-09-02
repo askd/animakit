@@ -81,7 +81,8 @@ if (production) {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production'),
+        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD: true,
+        NODE_ENV:                             JSON.stringify('production'),
       },
     }),
     new webpack.optimize.UglifyJsPlugin({
@@ -92,6 +93,12 @@ if (production) {
   );
 } else {
   config.plugins.push(
+    new webpack.DefinePlugin({
+      'process.env': {
+        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD: true,
+        NODE_ENV:                             JSON.stringify('development'),
+      },
+    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );

@@ -25,7 +25,7 @@
 
 .content {
   display: flex;
-  padding: 12px 15px;
+  margin: 12px 15px;
 }
 
 .image {

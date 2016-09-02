@@ -16,7 +16,7 @@ export default class ElasticSimple extends React.Component {
   };
 
   state = {
-    // show:      false,
+    show:      true,
     showText:  false,
     showImage: false,
   };
@@ -24,7 +24,7 @@ export default class ElasticSimple extends React.Component {
   /* componentDidMount() {
     setTimeout(() => {
       this.setState({
-        show: true
+        show: true,
       });
     }, 5000);
   } */
@@ -48,7 +48,7 @@ export default class ElasticSimple extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitElastic>
-          <div className = { styles.content }>
+          { this.state.show && <div className = { styles.content }>
             <SimpleText
               className    = { styles.text }
               title        = "I Got You"
@@ -64,7 +64,7 @@ export default class ElasticSimple extends React.Component {
                 { this.state.showImage ? '- Image' : '+ Image' }
               </span>
             </div>
-          </div>
+          </div> }
         </AnimakitElastic>
       </div>
     );
