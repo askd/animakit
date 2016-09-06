@@ -12,6 +12,10 @@ const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
 
+const REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD = true;
+const NODE_ENV = JSON.stringify(production ? 'production' : 'development');
+
+
 const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
@@ -43,6 +47,12 @@ const config = {
   plugins: [
     new ExtractTextPlugin('application.css', {
       allChunks: true,
+    }),
+    new webpack.DefinePlugin({
+      'process.env': {
+        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD,
+        NODE_ENV,
+      },
     }),
   ],
 
@@ -79,12 +89,6 @@ const config = {
 if (production) {
   config.plugins.push(
     new webpack.optimize.OccurenceOrderPlugin(),
-    new webpack.DefinePlugin({
-      'process.env': {
-        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD: true,
-        NODE_ENV:                             JSON.stringify('production'),
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
@@ -93,12 +97,6 @@ if (production) {
   );
 } else {
   config.plugins.push(
-    new webpack.DefinePlugin({
-      'process.env': {
-        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD: true,
-        NODE_ENV:                             JSON.stringify('development'),
-      },
-    }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin()
   );

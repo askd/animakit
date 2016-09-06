@@ -1,5 +1,5 @@
-import AnimakitExpander from 'animakit-expander';
-// import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
+// import AnimakitExpander from 'animakit-expander';
+import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
 
 import React            from 'react';
 

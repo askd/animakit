@@ -1,5 +1,5 @@
-import AnimakitExpander from 'animakit-expander';
-// import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
+// import AnimakitExpander from 'animakit-expander';
+import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
 
 import React            from 'react';
 import SimpleText       from 'components/SimpleText/SimpleText';
@@ -17,13 +17,13 @@ export default class ExpanderSimple extends React.Component {
     showMore: false,
   };
 
-  /* componentDidMount() {
-    setTimeout(() => {
+  componentDidMount() {
+    /* setTimeout(() => {
       this.setState({
         show: true,
       });
-    }, 5000);
-  } */
+    }, 5000); */
+  }
 
   onClick() {
     this.toggleExpanded();

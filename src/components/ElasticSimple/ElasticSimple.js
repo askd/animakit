@@ -1,4 +1,5 @@
-import AnimakitElastic from /* 'components/AnimakitElastic/AnimakitElastic'; */ 'animakit-elastic';
+// import AnimakitElastic from 'animakit-elastic';
+import AnimakitElastic from 'components/AnimakitElastic/AnimakitElastic';
 
 import SimpleText      from 'components/SimpleText/SimpleText';
 

@@ -1,4 +1,5 @@
-import AnimakitRotator from 'animakit-rotator';
+// import AnimakitRotator  from 'animakit-rotator';
+import AnimakitRotator from 'components/AnimakitRotator/AnimakitRotator';
 
 import React           from 'react';
 
