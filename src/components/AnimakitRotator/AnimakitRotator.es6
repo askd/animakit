@@ -1,5 +1,6 @@
 import React        from 'react';
-import AnimakitBase from 'components/AnimakitBase/AnimakitBase';
+// import AnimakitBase from 'animakit-core';
+import AnimakitBase from 'components/AnimakitBase';
 
 import styles       from './styles';
 
@@ -41,20 +42,14 @@ export default class AnimakitRotator extends AnimakitBase {
     turnover:    0,
   };
 
-  shouldComponentUpdate(nextProps, nextState) {
-    const should = super.shouldComponentUpdate(nextProps, nextState);
-
-    const propsChanged = nextProps.background !== this.props.background ||
-                         nextProps.shadow !== this.props.shadow;
-
-    return should || propsChanged;
-  }
-
   init() {
     this.sidesNodes      = [];
     this.sidesDimensions = [];
 
     this.is3DSupported = this.get3DSupport();
+
+    this.changingProps = ['background', 'shadow'];
+    this.useWinResize = true;
   }
 
   getSceneStyles() {

@@ -1,23 +1,27 @@
-import React                                               from 'react';
-import { isEqual, getScrollbarWidth, isPropertySupported } from 'animakit-core';
+import React      from 'react';
+import * as utils from './utils';
 
 export default class AnimakitBase extends React.Component {
   static propTypes = {
-    children:     React.PropTypes.any,
-    duration:     React.PropTypes.number,
-    useWinResize: React.PropTypes.bool,
+    children: React.PropTypes.any,
+    duration: React.PropTypes.number,
+  };
+
+  static defaultProps = {
+    duration: 500,
   };
 
   state = {
-    animation:    false,
-    duration:     500,
-    useWinResize: false,
-    winHeight:    0,
+    animation: false,
+    winHeight: 0,
   };
 
   componentWillMount() {
     this.animationResetTO = null;
     this.resizeCheckerRAF = null;
+
+    this.changingProps = [];
+    this.useWinResize = false;
 
     this.init();
 
@@ -25,13 +29,11 @@ export default class AnimakitBase extends React.Component {
   }
 
   componentDidMount() {
-    const useWinResize = this.props.useWinResize;
-
-    if (useWinResize) this.winResize();
+    if (this.useWinResize) this.winResize();
 
     this.repaint(this.props);
 
-    if (window && useWinResize) {
+    if (window && this.useWinResize) {
       window.addEventListener('resize', this.listeners.winResize, false);
     }
   }
@@ -41,11 +43,13 @@ export default class AnimakitBase extends React.Component {
   }
 
   shouldComponentUpdate(nextProps, nextState) {
-    const stateChanged = !isEqual(nextState, this.state);
+    const stateChanged = !utils.isEqual(nextState, this.state);
 
-    const propsChanged = !isEqual(nextProps.children, this.props.children);
+    const childrenChanged = !utils.isEqual(nextProps.children, this.props.children);
 
-    return stateChanged || propsChanged;
+    const propsChanged = this.changingProps.some(name => nextProps[name] !== this.props[name]);
+
+    return stateChanged || childrenChanged || propsChanged;
   }
 
   componentWillUpdate() {
@@ -57,12 +61,10 @@ export default class AnimakitBase extends React.Component {
   }
 
   componentWillUnmount() {
-    const useWinResize = this.props.useWinResize;
-
     this.cancelResizeChecker();
     this.cancelAnimationReset();
 
-    if (window && useWinResize) {
+    if (window && this.useWinResize) {
       window.removeEventListener('resize', this.listeners.winResize, false);
     }
   }
@@ -71,20 +73,25 @@ export default class AnimakitBase extends React.Component {
     const listeners = {};
 
     listeners.checkResize = this.checkResize.bind(this);
-    if (this.props.useWinResize) {
+
+    if (this.useWinResize) {
       listeners.winResize = this.winResize.bind(this);
     }
 
     return listeners;
   }
 
+  getDuration() {
+    return this.props.duration;
+  }
+
   getScrollbarWidth() {
-    return getScrollbarWidth();
+    return utils.getScrollbarWidth();
   }
 
   get3DSupport() {
-    return isPropertySupported('perspective', '1px') &&
-           isPropertySupported('transform-style', 'preserve-3d');
+    return utils.isPropertySupported('perspective', '1px') &&
+           utils.isPropertySupported('transform-style', 'preserve-3d');
   }
 
   init() {
@@ -112,7 +119,7 @@ export default class AnimakitBase extends React.Component {
       this.setState({
         animation: false,
       });
-    }, this.props.duration);
+    }, this.getDuration());
   }
 
   cancelAnimationReset() {
@@ -149,5 +156,9 @@ export default class AnimakitBase extends React.Component {
     if (state.animation) {
       this.startAnimationReset();
     }
+  }
+
+  render() {
+    return false;
   }
 }

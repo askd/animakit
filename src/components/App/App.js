@@ -13,7 +13,7 @@ const App = (props) => {
 
   const navLen = props.routes.length;
   const ribbonPath = props.routes[navLen - 1].path.substr(1);
-  const showRibbon = navLen > 1 && ribbonPath !== 'slider';
+  const showRibbon = navLen > 1 && ribbonPath !== 'new';
 
   return (
     <div className = { styles.root }>

@@ -1,5 +1,6 @@
 import React        from 'react';
-import AnimakitBase from 'components/AnimakitBase/AnimakitBase';
+// import AnimakitBase from 'animakit-core';
+import AnimakitBase from 'components/AnimakitBase';
 
 export default class AnimakitElastic extends AnimakitBase {
   static propTypes = {
@@ -27,6 +28,10 @@ export default class AnimakitElastic extends AnimakitBase {
 
     this.contentNode    = null;
     this.contentMounted = false;
+  }
+
+  getDuration() {
+    return this.props.duration + 1;
   }
 
   getRootStyles() {
@@ -79,24 +84,21 @@ export default class AnimakitElastic extends AnimakitBase {
     return children ? 1 : 0;
   }
 
-  calcContentDimensions(childrenCount) {
-    if (!childrenCount) return [0, 0];
-
-    const contentWidth  = this.contentNode.offsetWidth;
-    const contentHeight = this.contentNode.offsetHeight;
-
-    return [contentWidth, contentHeight];
-  }
-
-  calcParentDimensions(childrenCount) {
-    if (!childrenCount) return [0, 0];
+  calcDimensions(childrenCount) {
+    if (!childrenCount) return [0, 0, 0, 0];
 
     const rect = this.contentNode.getBoundingClientRect();
+
+    // const contentWidth  = this.contentNode.offsetWidth;
+    // const contentHeight = this.contentNode.offsetHeight;
+
+    const contentWidth  = Math.ceil(rect.width);
+    const contentHeight = Math.ceil(rect.height);
 
     const parentWidth  = this.parentNode.offsetWidth - rect.left - this.scrollbarWidth;
     const parentHeight = this.parentNode.offsetHeight - rect.top - this.scrollbarWidth;
 
-    return [parentWidth, parentHeight];
+    return [contentWidth, contentHeight, parentWidth, parentHeight];
   }
 
   resetDimensionsState(stateChunk) {
@@ -115,8 +117,7 @@ export default class AnimakitElastic extends AnimakitBase {
   repaint(props) {
     const childrenCount = this.getChildrenCount(props.children);
 
-    const [contentWidth, contentHeight] = this.calcContentDimensions(childrenCount);
-    const [parentWidth, parentHeight] = this.calcParentDimensions(childrenCount);
+    const [contentWidth, contentHeight, parentWidth, parentHeight] = this.calcDimensions(childrenCount);
 
     const state = this.resetDimensionsState({ contentWidth, contentHeight, parentWidth, parentHeight });
 

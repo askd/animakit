@@ -1,5 +1,4 @@
-// import AnimakitExpander from 'animakit-expander';
-import AnimakitExpander from 'components/AnimakitExpander/AnimakitExpander';
+import AnimakitExpander from 'components/AnimakitExpander';
 
 import React            from 'react';
 import SimpleText       from 'components/SimpleText/SimpleText';

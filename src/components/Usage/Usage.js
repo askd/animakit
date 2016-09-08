@@ -17,7 +17,7 @@ export default class Usage extends React.PureComponent {
     const component = this.props.component;
     const componentCapitalized = `${component.charAt(0).toUpperCase()}${component.slice(1)}`;
 
-    if (component === 'slider') {
+    if (component === 'new') {
       return (
         <div className = { styles.rootUD }>
           Under development
@@ -102,6 +102,23 @@ export default class Usage extends React.PureComponent {
                 </CodeBlock>
                 <CodeBlock highlight>
                   { '</AnimakitElastic>' }
+                </CodeBlock>
+              </Code>
+            }
+            {
+              (component === 'slider') && <Code>
+                <CodeBlock highlight>
+                  { '<AnimakitSlider slide={this.state.index}>' }
+                </CodeBlock>
+                <CodeBlock>
+                  {
+`  <div className="slide"><img src="/img/photo1.jpg" /></div>
+  <div className="slide"><img src="/img/photo2.jpg" /></div>
+  <div className="slide"><img src="/img/photo3.jpg" /></div>`
+                  }
+                </CodeBlock>
+                <CodeBlock highlight>
+                  { '</AnimakitSlider>' }
                 </CodeBlock>
               </Code>
             }

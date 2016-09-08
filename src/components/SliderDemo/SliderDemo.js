@@ -73,9 +73,13 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div className="slide">...</div>
+`  <div className="slide">
+    <img src="/images/00.jpg" />
+  </div>
   ...
-  <div className="slide">...</div>`
+  <div className="slide">
+    <img src="/images/10.jpg" />
+  </div>`
                 }
               </CodeBlock>
               <CodeBlock

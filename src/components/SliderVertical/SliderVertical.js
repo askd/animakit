@@ -1,4 +1,4 @@
-import AnimakitSlider from 'components/AnimakitSlider/AnimakitSlider'; // 'animakit-slider';
+import AnimakitSlider from 'components/AnimakitSlider';
 
 import React          from 'react';
 import Dotnav         from 'components/Dotnav/Dotnav';

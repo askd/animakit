@@ -91,6 +91,24 @@ const Main = () =>
             </div>
             <Ribbon path={ 'elastic' } />
           </li>
+          <li className = { styles.navItem }>
+            <div className = { styles.navHeading }>
+              <h3 className = { styles.navTitle }>AnimakitSlider</h3>
+              <p className = { styles.navText }>
+                Slide your components easily
+              </p>
+              <Link
+                to = "/slider"
+                className = { styles.navMore }
+              >
+                Learn more
+              </Link>
+            </div>
+            <div className = { styles.navComponent }>
+              <SliderDemo onlyOne />
+            </div>
+            <Ribbon path={ 'slider' } />
+          </li>
         </ul>
       </nav>
     </Section>

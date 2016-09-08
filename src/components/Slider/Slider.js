@@ -11,8 +11,8 @@ const Slider = () =>
 
     <Section>
       <Intro>
-        <p>{ `Do you need simple slider?
-        AnimakitSlider will be released soon ;)` }</p>
+        <p>{ `Do you need a simple and useful slider?
+Wrap your components with the AnimakitSlider and your slider is ready ;)` }</p>
       </Intro>
     </Section>
 

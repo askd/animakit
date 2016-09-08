@@ -1,5 +1,6 @@
 import React        from 'react';
-import AnimakitBase from 'components/AnimakitBase/AnimakitBase';
+// import AnimakitBase from 'animakit-core';
+import AnimakitBase from 'components/AnimakitBase';
 
 export default class AnimakitExpander extends AnimakitBase {
   static propTypes = {
@@ -31,6 +32,10 @@ export default class AnimakitExpander extends AnimakitBase {
   init() {
     this.contentNode      = null;
     this.contentMounted   = false;
+  }
+
+  getDuration() {
+    return this.state.duration;
   }
 
   getRootStyles() {
@@ -104,7 +109,10 @@ export default class AnimakitExpander extends AnimakitBase {
     if (!this.state.expanded) return 0;
 
     const node = this.contentNode;
-    return this.props.horizontal ? node.offsetWidth : node.offsetHeight;
+    // return this.props.horizontal ? node.offsetWidth : node.offsetHeight;
+
+    const rect = node.getBoundingClientRect();
+    return Math.ceil(rect[this.props.horizontal ? 'width' : 'height']);
   }
 
   repaint(nextProps) {
