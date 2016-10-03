@@ -3,7 +3,7 @@
   box-sizing: border-box;
   padding: 20px;
   background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(0,0,0,.125);
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);
   font-family: 'Lucida Console', monospace;
   font-size: 14px;
   line-height: 20px;
@@ -11,7 +11,7 @@
 
 .block {
   display: block;
-  color: rgba(0,0,0,.375);
+  color: rgba(0, 0, 0, 0.375);
   overflow-x: auto;
 }
 
@@ -23,9 +23,9 @@
 .blockBlink {
   composes: blockHighlight;
 
-  & > code > span > span:nth-child(6) {
+  & > code > span > span:nth-child(3) {
     display: inline-block;
-    background: rgba(0,0,0,.125);
+    background: rgba(0, 0, 0, 0.125);
     border-radius: 10px;
   }
 }
@@ -33,13 +33,24 @@
 .blockBlinkActive {
   composes: blockBlink;
 
-  & > code > span > span:nth-child(6) {
-    animation: blink .5s 1;
+  & > code > span > span:nth-child(3) {
+    animation: blink 0.5s 1;
   }
 }
 
 @keyframes blink {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.5); opacity: .5; }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
