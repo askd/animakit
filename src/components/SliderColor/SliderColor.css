@@ -56,3 +56,25 @@
   composes: slide;
   background: $color6;
 }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  border-radius: 20px;
+  transition: background 0.3s;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.25);
+  }
+}
+
+.arrowPrev {
+  composes: arrow;
+  left: 20px;
+}
+
+.arrowNext {
+  composes: arrow;
+  right: 20px;
+}

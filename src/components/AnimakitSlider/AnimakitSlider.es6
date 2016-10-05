@@ -53,7 +53,7 @@ export default class AnimakitSlider extends AnimakitBase {
   getOffset() {
     const { currentSlide, prevSlide, slidesCount, animation } = this.state;
 
-    if (prevSlide === -1) return 0;
+    // if (prevSlide === -1) return 0;
 
     const { loop, skip } = this.props;
 
@@ -76,7 +76,7 @@ export default class AnimakitSlider extends AnimakitBase {
   getOrder() {
     const order = Array(this.state.slidesCount).fill(0).map((_, i) => i);
 
-    if (this.state.prevSlide === -1) return order;
+    // if (this.state.prevSlide === -1) return order;
 
     const { loop, skip } = this.props;
 

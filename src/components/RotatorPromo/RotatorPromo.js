@@ -3,6 +3,7 @@ import AnimakitRotator from 'components/AnimakitRotator';
 import React           from 'react';
 import Dotnav          from 'components/Dotnav/Dotnav';
 
+import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles          from './RotatorPromo.css';
 
 export default class RotatorPromo extends React.Component {
@@ -87,15 +88,16 @@ export default class RotatorPromo extends React.Component {
             </p>
           </div>
         </AnimakitRotator>
-        <div className = { styles.nav }>
-          <Dotnav
-            vertical
-            count = { this.props.sides.length }
-            index = { this.state.index }
-            colors = { [1, 5, 3, 6] }
-            handleChange = { this.listeners.setSide }
-          />
-        </div>
+        <Dotnav
+          count = { this.props.sides.length }
+          index = { this.state.index }
+          handleChange = { this.listeners.setSide }
+          classes = {{
+            dots:      `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
+            dot:       dotnavStyles.dot,
+            dotActive: dotnavStyles.dotActive,
+          }}
+        />
       </div>
     );
   }

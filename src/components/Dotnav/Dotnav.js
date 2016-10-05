@@ -1,21 +1,31 @@
 import React  from 'react';
 
-import styles from './Dotnav.css';
-
 export default class Dotnav extends React.Component {
   static propTypes = {
+    withArrows:   React.PropTypes.bool,
     count:        React.PropTypes.number,
     index:        React.PropTypes.number,
-    vertical:     React.PropTypes.bool,
-    colors:       React.PropTypes.array,
     handleChange: React.PropTypes.func,
+    classes:      React.PropTypes.shape({
+      dots:      React.PropTypes.string,
+      dot:       React.PropTypes.string,
+      dotActive: React.PropTypes.string,
+      arrowPrev: React.PropTypes.string,
+      arrowNext: React.PropTypes.string,
+    }),
   };
 
   static defaultProps = {
-    count:    0,
-    index:    0,
-    vertical: false,
-    colors:   [],
+    withArrows: false,
+    count:      0,
+    index:      0,
+    classes:    {
+      dots:      'DotNav-dots',
+      dot:       'DotNav-dot',
+      dotActive: 'DotNav-dot_active',
+      arrowPrev: 'DotNav-arrow_prev',
+      arrowNext: 'DotNav-arrow_next',
+    },
   };
 
   componentWillMount() {
@@ -23,38 +33,58 @@ export default class Dotnav extends React.Component {
     this.listeners.setIndex = [...Array(count)].map((_, i) => this.setIndex.bind(this, i), this);
   }
 
+  onClickPrev() {
+    let index = this.props.index;
+    index--;
+    if (index < 0) index = this.props.count - 1;
+    this.props.handleChange(index);
+  }
+
+  onClickNext() {
+    let index = this.props.index;
+    index++;
+    if (index > this.props.count - 1) index = 0;
+    this.props.handleChange(index);
+  }
+
   setIndex(index) {
     this.props.handleChange(index);
   }
 
   listeners = {
-    setIndex: [],
+    setIndex:    [],
+    onClickPrev: this.onClickPrev.bind(this),
+    onClickNext: this.onClickNext.bind(this),
   };
 
   render() {
     if (this.props.count < 2) return null;
 
-    const { count, vertical, colors } = this.props;
+    const { count, classes } = this.props;
 
     return (
-      <div className = { styles.root }>
-        <ul className = { vertical ? styles.dotsVertical : styles.dotsHorizontal }>
+      <div>
+        <ul className = { classes.dots }>
           { [...Array(count)].map((_, i) => {
-            const baseClassName = this.props.index === i ? styles.dotActive : styles.dot;
-            let colorClassName = '';
-            if (colors) {
-              colorClassName = styles[`dotColor${colors[colors[i] ? i : 0]}`];
-            }
+            const dotClassName = this.props.index === i ? classes.dotActive : classes.dot;
 
             return (
               <li
                 key = { i }
-                className = { `${baseClassName} ${colorClassName}` }
+                className = { dotClassName }
                 onClick = { this.listeners.setIndex[i] }
               />
             );
           }, this)}
         </ul>
+        { this.props.withArrows && <div
+          className = { classes.arrowPrev }
+          onClick = { this.listeners.onClickPrev }
+        /> }
+        { this.props.withArrows && <div
+          className = { classes.arrowNext }
+          onClick = { this.listeners.onClickNext }
+        /> }
       </div>
     );
   }

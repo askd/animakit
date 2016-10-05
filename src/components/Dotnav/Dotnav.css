@@ -42,43 +42,31 @@
   }
 }
 
-.dotColor1 {
+.dotsColored .dot:nth-child(1) {
   &:hover::after {
     box-shadow: 0 0 0 3px $color1;
   }
 }
 
-.dotColor2 {
-  &:hover::after {
-    box-shadow: 0 0 0 3px $color2;
-  }
-}
-
-.dotColor3 {
-  &:hover::after {
-    box-shadow: 0 0 0 3px $color3;
-  }
-}
-
-.dotColor4 {
-  &:hover::after {
-    box-shadow: 0 0 0 3px $color4;
-  }
-}
-
-.dotColor5 {
+.dotsColored .dot:nth-child(2) {
   &:hover::after {
     box-shadow: 0 0 0 3px $color5;
   }
 }
 
-.dotColor6 {
+.dotsColored .dot:nth-child(3) {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsColored .dot:nth-child(4) {
   &:hover::after {
     box-shadow: 0 0 0 3px $color6;
   }
 }
 
-.dotActive.dotColor1 {
+.dotsColored .dotActive:nth-child(1) {
   &::after,
   &:hover::after {
     background: $color1;
@@ -86,31 +74,7 @@
   }
 }
 
-.dotActive.dotColor2 {
-  &::after,
-  &:hover::after {
-    background: $color2;
-    box-shadow: 0 0 0 3px $color2;
-  }
-}
-
-.dotActive.dotColor3 {
-  &::after,
-  &:hover::after {
-    background: $color3;
-    box-shadow: 0 0 0 3px $color3;
-  }
-}
-
-.dotActive.dotColor4 {
-  &::after,
-  &:hover::after {
-    background: $color4;
-    box-shadow: 0 0 0 3px $color4;
-  }
-}
-
-.dotActive.dotColor5 {
+.dotsColored .dotActive:nth-child(2) {
   &::after,
   &:hover::after {
     background: $color5;
@@ -118,10 +82,84 @@
   }
 }
 
-.dotActive.dotColor6 {
+.dotsColored .dotActive:nth-child(3) {
+  &::after,
+  &:hover::after {
+    background: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsColored .dotActive:nth-child(4) {
   &::after,
   &:hover::after {
     background: $color6;
     box-shadow: 0 0 0 3px $color6;
+  }
+}
+
+.dotsHighlighted .dot {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsHighlighted .dotActive {
+  &::after,
+  &:hover::after {
+    background: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.arrow {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: 10px;
+    width: 20px;
+    height: 5px;
+    border-radius: 3px;
+    background: currentColor;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+
+.arrowPrev {
+  composes: arrow;
+
+  &::after {
+    margin-top: -3px;
+  }
+
+  &::before,
+  &::after {
+    transform-origin: 0% 50%;
+  }
+}
+
+.arrowNext {
+  composes: arrow;
+
+  &::before {
+    margin-top: -3px;
+  }
+
+  &::before,
+  &::after {
+    transform-origin: 100% 50%;
   }
 }

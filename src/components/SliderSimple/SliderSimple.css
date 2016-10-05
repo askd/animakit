@@ -41,3 +41,24 @@
 .image {
   max-width: 335px;
 }
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color3;
+  }
+}
+
+.arrowPrev {
+  composes: arrow;
+  left: 0;
+}
+
+.arrowNext {
+  composes: arrow;
+  right: 0;
+}

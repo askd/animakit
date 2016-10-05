@@ -3,6 +3,7 @@ import AnimakitSlider from 'components/AnimakitSlider';
 import React          from 'react';
 import Dotnav         from 'components/Dotnav/Dotnav';
 
+import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderVertical.css';
 
 export default class SliderVertical extends React.Component {
@@ -86,15 +87,16 @@ export default class SliderVertical extends React.Component {
             </p>
           </div>
         </AnimakitSlider>
-        <div className = { styles.nav }>
-          <Dotnav
-            vertical
-            count = { this.props.slides.length }
-            index = { this.state.index }
-            colors = { [1, 5, 3, 6] }
-            handleChange = { this.listeners.setSlide }
-          />
-        </div>
+        <Dotnav
+          count = { this.props.slides.length }
+          index = { this.state.index }
+          handleChange = { this.listeners.setSlide }
+          classes = {{
+            dots:      `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
+            dot:       dotnavStyles.dot,
+            dotActive: dotnavStyles.dotActive,
+          }}
+        />
       </div>
     );
   }
