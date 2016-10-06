@@ -285,9 +285,18 @@ export default class AnimakitSlider extends AnimakitBase {
       let width  = 0;
       let height = 0;
 
+      //
+      let pWidth = 0;
+      let pHeight = 0;
+      //
+
       if (this.slidesDimensions[num]) {
         width  = this.slidesDimensions[num].width;
         height = this.slidesDimensions[num].height;
+        //
+        pWidth  = this.slidesDimensions[num].width;
+        pHeight = this.slidesDimensions[num].height;
+        //
       }
 
       if (this.getChildVisibility(num)) {
@@ -299,6 +308,10 @@ export default class AnimakitSlider extends AnimakitBase {
           const rect = node.getBoundingClientRect();
           width = Math.ceil(rect.width);
           height = Math.ceil(rect.height);
+
+          if (width != pWidth || height != pHeight) {
+            console.log(num, pWidth, pHeight, width, height)
+          }
         }
 
         this.slidesDimensions[num] = { width, height };

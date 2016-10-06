@@ -62,7 +62,10 @@ export default class SliderSimple extends React.Component {
               >
                 <img
                   className = { styles.image }
-                  src = { require(`./images/nasa/${image}.jpg`) }
+                  src = {
+                    // i === this.state.slide ? require(`./images/nasa/${image}.jpg`) : ''
+                    require(`./images/nasa/${image}.jpg`)
+                  }
                   alt = ""
                 />
               </div>
