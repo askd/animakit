@@ -2,26 +2,8 @@
 
 .root {
   position: relative;
-  display: inline-block;
-  padding: 40px;
+  width: 320px;
   background: #000;
-  text-align: center;
-}
-
-.title {
-  position: absolute;
-  top: 10px;
-  left: 0;
-  width: 100%;
-  font-size: 16px;
-  line-height: 20px;
-  color: #fff;
-  text-align: center;
-
-  & a {
-    color: $color3;
-    text-decoration: none;
-  }
 }
 
 .nav {
@@ -33,34 +15,66 @@
 }
 
 .slide {
+  position: relative;
+  width: 320px;
+  height: 320px;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  min-width: 300px;
-  min-height: 200px;
+  justify-content: space-between;
+  background-position: 0 0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #fff;
+  text-align: center;
 }
 
-.image {
-  max-width: 335px;
+.slideTitle {
+  position: relative;
+  width: 300px;
+  padding: 10px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.slideMars {
+  composes: slide;
+  background-image: url('./images/mars.jpg');
+}
+
+.slideEarth {
+  composes: slide;
+  background-image: url('./images/earth.jpg');
+}
+
+.slideVenus {
+  composes: slide;
+  background-image: url('./images/venus.jpg');
+}
+
+.slideMercury {
+  composes: slide;
+  background-image: url('./images/mercury.jpg');
 }
 
 .arrow {
   position: absolute;
   top: 50%;
   margin-top: -20px;
-  transition: color 0.3s;
+  border-radius: 20px;
+  transition: background 0.3s;
 
   &:hover {
-    color: $color3;
+    background: rgba(255, 255, 255, 0.25);
   }
 }
 
 .arrowPrev {
   composes: arrow;
-  left: 0;
+  left: 10px;
 }
 
 .arrowNext {
   composes: arrow;
-  right: 0;
+  right: 10px;
 }

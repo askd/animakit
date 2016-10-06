@@ -1,4 +1,5 @@
 import SliderSimple   from 'components/SliderSimple/SliderSimple';
+import SliderFlexible from 'components/SliderFlexible/SliderFlexible';
 import SliderColor    from 'components/SliderColor/SliderColor';
 import SliderVertical from 'components/SliderVertical/SliderVertical';
 import Demo           from 'components/Demo/Demo';
@@ -21,7 +22,8 @@ export default class SliderDemo extends React.PureComponent {
 
   state = {
     slide: {
-      simple:   0,
+      simple:   'mars',
+      flexible: 0,
       color:    'red',
       vertical: 'mars',
     },
@@ -30,6 +32,7 @@ export default class SliderDemo extends React.PureComponent {
 
   listeners = {
     changeSlide: {
+      flexible: this.changeSlide.bind(this, 'flexible'),
       simple:   this.changeSlide.bind(this, 'simple'),
       color:    this.changeSlide.bind(this, 'color'),
       vertical: this.changeSlide.bind(this, 'vertical'),
@@ -65,8 +68,47 @@ export default class SliderDemo extends React.PureComponent {
                 blinkActive = { this.state.slideChanged === 'simple' }
               >
                 {
+`<AnimakitSlider slide="${this.state.slide.simple}">` }
+              </CodeBlock>
+              <CodeBlock>
+                {
+`  <div key="mars">
+    ...
+  </div>
+  <div key="earth">
+    ...
+  </div>
+  <div key="venus">
+    ...
+  </div>
+  <div key="mercury">
+    ...
+  </div>`
+                }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '</AnimakitSlider>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
+
+        { !onlyOne && <Demo key = "flexible">
+          <DemoComponent>
+            <SliderFlexible handleChangeSlide = { this.listeners.changeSlide.flexible } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { this.state.slideChanged === 'flexible' }
+              >
+                {
 `<AnimakitSlider
-  slide="${this.state.slide.simple}"
+  slide="${this.state.slide.flexible}"
   flexible
   skip
 >` }
@@ -89,7 +131,7 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
             </Code>
           </DemoCode>
-        </Demo>
+        </Demo> }
 
         { !onlyOne && <Demo key = "color">
           <DemoComponent>

@@ -1,0 +1,66 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  display: inline-block;
+  padding: 40px;
+  background: #000;
+  text-align: center;
+}
+
+.title {
+  position: absolute;
+  top: 10px;
+  left: 0;
+  width: 100%;
+  font-size: 16px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+
+  & a {
+    color: $color3;
+    text-decoration: none;
+  }
+}
+
+.nav {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 20px;
+}
+
+.slide {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 300px;
+  min-height: 200px;
+}
+
+.image {
+  max-width: 335px;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  margin-top: -20px;
+  transition: color 0.3s;
+
+  &:hover {
+    color: $color3;
+  }
+}
+
+.arrowPrev {
+  composes: arrow;
+  left: 0;
+}
+
+.arrowNext {
+  composes: arrow;
+  right: 0;
+}
