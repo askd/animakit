@@ -2,6 +2,7 @@ import SliderSimple   from 'components/SliderSimple/SliderSimple';
 import SliderFlexible from 'components/SliderFlexible/SliderFlexible';
 import SliderColor    from 'components/SliderColor/SliderColor';
 import SliderVertical from 'components/SliderVertical/SliderVertical';
+import SliderTimer    from 'components/SliderTimer/SliderTimer';
 import Demo           from 'components/Demo/Demo';
 import DemoComponent  from 'components/Demo/DemoComponent';
 import DemoCode       from 'components/Demo/DemoCode';
@@ -20,29 +21,41 @@ export default class SliderDemo extends React.PureComponent {
     onlyOne: false,
   };
 
-  state = {
-    slide: {
-      simple:   'mars',
-      flexible: 0,
-      color:    'red',
-      vertical: 'mars',
-    },
-    slideChanged: null,
-  };
-
   listeners = {
     changeSlide: {
       flexible: this.changeSlide.bind(this, 'flexible'),
       simple:   this.changeSlide.bind(this, 'simple'),
       color:    this.changeSlide.bind(this, 'color'),
       vertical: this.changeSlide.bind(this, 'vertical'),
+      timer:    this.changeSlide.bind(this, 'timer'),
     },
   };
 
-  changeSlide(name, value) {
+  constructor(props) {
+    super(props);
+
+    const state = {
+      slide: {
+        simple:   'mars',
+        flexible: 0,
+        color:    'red',
+        vertical: 'mars',
+      },
+      slideChanged: null,
+    };
+
+    Array.from(Array(6).keys()).forEach(index => {
+      state.slide[`timer${index}`] = '0';
+    });
+
+    this.state = { ...state };
+  }
+
+  changeSlide(name, value, index = 0) {
     const slide = this.state.slide;
-    slide[name] = value;
-    const slideChanged = name;
+    const slideName = name === 'timer' ? `${name}${index}` : name;
+    slide[slideName] = value;
+    const slideChanged = slideName;
 
     this.setState({ slide, slideChanged });
 
@@ -165,7 +178,7 @@ export default class SliderDemo extends React.PureComponent {
           </DemoCode>
         </Demo> }
 
-        { !onlyOne && <Demo key = "vertical">
+        { false && <Demo key = "vertical">
           <DemoComponent>
             <SliderVertical handleChangeSlide = { this.listeners.changeSlide.vertical } />
           </DemoComponent>
@@ -199,6 +212,37 @@ export default class SliderDemo extends React.PureComponent {
               >
                 { '</AnimakitSlider>' }
               </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo> }
+
+        { !onlyOne && <Demo key = "timer">
+          <DemoComponent>
+            <SliderTimer handleChangeSlide = { this.listeners.changeSlide.timer } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              { Array.from(Array(6).keys()).map(index =>
+                <div key = { index }>
+                  <CodeBlock
+                    highlight
+                    blink
+                    blinkActive = { this.state.slideChanged === `timer${index}` }
+                  >
+                    { `<AnimakitSlider slide="${this.state.slide[`timer${index}`]}" vertical loop>` }
+                  </CodeBlock>
+                  <CodeBlock>
+                    {
+                      '  <div>0</div> ... <div>9</div>'
+                    }
+                  </CodeBlock>
+                  <CodeBlock
+                    highlight
+                  >
+                    { '</AnimakitSlider>' }
+                  </CodeBlock>
+                </div>
+              ) }
             </Code>
           </DemoCode>
         </Demo> }

@@ -1,0 +1,49 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  width: 326px;
+  display: flex;
+  padding: 8px;
+  border-radius: 4px;
+  background: #666;
+}
+
+.digits {
+  position: relative;
+  width: 48px;
+  height: 64px;
+  border-radius: 4px;
+  background: #000;
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 300;
+  color: #fff;
+  text-align: center;
+
+  &:not(:last-child) {
+    margin-right: 2px;
+  }
+
+  &:nth-child(2),
+  &:nth-child(4) {
+    margin-right: 16px;
+
+    &::after {
+      content: ':';
+      position: absolute;
+      top: 0;
+      left: 100%;
+      width: 16px;
+      height: 100%;
+      font-family: serif;
+      font-size: 0.75em;
+      line-height: 1.25em;
+    }
+  }
+}
+
+.digit {
+  width: 48px;
+  max-height: 64px;
+}
