@@ -21,6 +21,18 @@ export default class SliderDemo extends React.PureComponent {
     onlyOne: false,
   };
 
+  state = {
+    slide: {
+      simple:   'mars',
+      flexible: 0,
+      color:    'red',
+      vertical: 'mars',
+      timer:    ['0', '0', '0', '0', '0', '0'],
+    },
+    slideChanged:   null,
+    indexesChanged: null,
+  };
+
   listeners = {
     changeSlide: {
       flexible: this.changeSlide.bind(this, 'flexible'),
@@ -31,37 +43,31 @@ export default class SliderDemo extends React.PureComponent {
     },
   };
 
-  constructor(props) {
-    super(props);
+  changeSlide(name, value) {
+    const slide = { ...this.state.slide };
+    const slideChanged = name;
+    let indexesChanged = null;
 
-    const state = {
-      slide: {
-        simple:   'mars',
-        flexible: 0,
-        color:    'red',
-        vertical: 'mars',
-      },
-      slideChanged: null,
-    };
+    if (name === 'timer') {
+      indexesChanged = Object.keys(value);
+      indexesChanged.forEach(index => {
+        slide[name][index] = value[index];
+      });
+    } else {
+      slide[name] = value;
+    }
 
-    Array.from(Array(6).keys()).forEach(index => {
-      state.slide[`timer${index}`] = '0';
-    });
-
-    this.state = { ...state };
-  }
-
-  changeSlide(name, value, index = 0) {
-    const slide = this.state.slide;
-    const slideName = name === 'timer' ? `${name}${index}` : name;
-    slide[slideName] = value;
-    const slideChanged = slideName;
-
-    this.setState({ slide, slideChanged });
+    this.setState({ slide, slideChanged, indexesChanged });
 
     setTimeout(() => {
-      this.setState({ slideChanged: null });
+      this.setState({ slideChanged: null, indexesChanged: null });
     }, 500);
+  }
+
+  isSlideChanged(name, index = null) {
+    if (name !== 'timer') return this.state.slideChanged === name;
+
+    return this.state.slideChanged === name && this.state.indexesChanged.indexOf(index.toString()) !== -1;
   }
 
   render() {
@@ -78,7 +84,7 @@ export default class SliderDemo extends React.PureComponent {
               <CodeBlock
                 highlight
                 blink
-                blinkActive = { this.state.slideChanged === 'simple' }
+                blinkActive = { this.isSlideChanged('simple') }
               >
                 {
 `<AnimakitSlider slide="${this.state.slide.simple}">` }
@@ -117,7 +123,7 @@ export default class SliderDemo extends React.PureComponent {
               <CodeBlock
                 highlight
                 blink
-                blinkActive = { this.state.slideChanged === 'flexible' }
+                blinkActive = { this.isSlideChanged('flexible') }
               >
                 {
 `<AnimakitSlider
@@ -155,7 +161,7 @@ export default class SliderDemo extends React.PureComponent {
               <CodeBlock
                 highlight
                 blink
-                blinkActive = { this.state.slideChanged === 'color' }
+                blinkActive = { this.isSlideChanged('color') }
               >
                 { `<AnimakitSlider slide="${this.state.slide.color}" loop>` }
               </CodeBlock>
@@ -187,7 +193,7 @@ export default class SliderDemo extends React.PureComponent {
               <CodeBlock
                 highlight
                 blink
-                blinkActive = { this.state.slideChanged === 'vertical' }
+                blinkActive = { this.isSlideChanged('vertical') }
               >
                 { `<AnimakitSlider slide="${this.state.slide.vertical}" vertical>` }
               </CodeBlock>
@@ -227,9 +233,9 @@ export default class SliderDemo extends React.PureComponent {
                   <CodeBlock
                     highlight
                     blink
-                    blinkActive = { this.state.slideChanged === `timer${index}` }
+                    blinkActive = { this.isSlideChanged('timer', index) }
                   >
-                    { `<AnimakitSlider slide="${this.state.slide[`timer${index}`]}" vertical loop>` }
+                    { `<AnimakitSlider slide="${this.state.slide.timer[index]}" vertical loop skip>` }
                   </CodeBlock>
                   <CodeBlock>
                     {

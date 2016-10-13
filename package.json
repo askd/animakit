@@ -54,7 +54,7 @@
     "animakit-elastic": "^1.0.0",
     "animakit-expander": "^2.0.0",
     "animakit-rotator": "^2.0.0",
-    "animakit-slider": "0.0.3",
+    "animakit-slider": "0.0.4",
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1",

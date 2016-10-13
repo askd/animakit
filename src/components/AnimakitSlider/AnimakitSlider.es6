@@ -80,7 +80,9 @@ export default class AnimakitSlider extends AnimakitBase {
 
     const { loop, skip } = this.props;
 
-    if (loop || skip) {
+    const useLoop = (loop || skip) && this.state.slidesCount > 2;
+
+    if (useLoop) {
       const offset = this.getOffset();
 
       if (offset) {
@@ -127,6 +129,8 @@ export default class AnimakitSlider extends AnimakitBase {
 
   getSlideVisibility(num) {
     if (!this.props.skip) return true;
+
+    if (this.state.slidesCount <= 2) return true;
 
     const { currentSlide, prevSlide, animation } = this.state;
 
@@ -209,20 +213,22 @@ export default class AnimakitSlider extends AnimakitBase {
     let count = slidesCount;
     let index = currentSlide;
 
-    if (skip) {
-      count = 3;
-      index = 1;
+    if (slidesCount > 2) {
+      if (skip) {
+        count = 3;
+        index = 1;
 
-      if (animation) {
-        const direction = this.getDirection();
-        index = direction ? 2 : 0;
+        if (animation) {
+          const direction = this.getDirection();
+          index = direction ? 2 : 0;
+        }
+      } else if (loop) {
+        const offset = this.getOffset();
+        index = currentSlide + offset;
+
+        if (index < 0) index += slidesCount;
+        if (index >= slidesCount) index -= slidesCount;
       }
-    } else if (loop) {
-      const offset = this.getOffset();
-      index = currentSlide + offset;
-
-      if (index < 0) index += slidesCount;
-      if (index >= slidesCount) index -= slidesCount;
     }
 
     const position = 'absolute';
@@ -248,7 +254,7 @@ export default class AnimakitSlider extends AnimakitBase {
 
     const position = 'relative';
 
-    const count = skip ? 3 : slidesCount;
+    const count = (skip && slidesCount > 2) ? 3 : slidesCount;
 
     const size = 100 / count;
     const width = vertical ? '100%' : `${size}%`;
@@ -256,11 +262,12 @@ export default class AnimakitSlider extends AnimakitBase {
 
     const direction = this.getDirection();
 
-    const appendMargin = skip && (!animation || (direction && num === prevSlide));
+    const appendMargin = skip && slidesCount > 2 && (!animation || (direction && num === prevSlide));
 
     if (vertical) {
       if (appendMargin) {
-        const marginTop = `${size}%`;
+        const ratio = (this.state.height / this.state.width) * 100;
+        const marginTop = `${ratio}%`;
         return { position, width, height, marginTop };
       }
 
@@ -285,18 +292,9 @@ export default class AnimakitSlider extends AnimakitBase {
       let width  = 0;
       let height = 0;
 
-      //
-      let pWidth = 0;
-      let pHeight = 0;
-      //
-
       if (this.slidesDimensions[num]) {
         width  = this.slidesDimensions[num].width;
         height = this.slidesDimensions[num].height;
-        //
-        pWidth  = this.slidesDimensions[num].width;
-        pHeight = this.slidesDimensions[num].height;
-        //
       }
 
       if (this.getChildVisibility(num)) {
@@ -308,10 +306,6 @@ export default class AnimakitSlider extends AnimakitBase {
           const rect = node.getBoundingClientRect();
           width = Math.ceil(rect.width);
           height = Math.ceil(rect.height);
-
-          if (width != pWidth || height != pHeight) {
-            console.log(num, pWidth, pHeight, width, height)
-          }
         }
 
         this.slidesDimensions[num] = { width, height };

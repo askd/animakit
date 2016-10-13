@@ -10,7 +10,7 @@ export default class SliderTimer extends React.Component {
   };
 
   state = {
-    slides:    [0, 0, 0, 0, 0, 0],
+    slides: [0, 0, 0, 0, 0, 0],
   };
 
   animActive = false; // eslint-disable-line
@@ -67,11 +67,14 @@ export default class SliderTimer extends React.Component {
       secs.split('')
     );
 
+    const values = {};
     slides.forEach((value, index) => {
       if (this.state.slides[index] !== value) {
-        this.props.handleChangeSlide(value, index);
+        values[index] = value;
       }
     });
+
+    if (Object.keys(values).length) this.props.handleChangeSlide(values);
 
     this.setState({ slides });
   }
@@ -82,24 +85,36 @@ export default class SliderTimer extends React.Component {
   };
 
   render() {
-    const digits = Array.from(Array(10).keys());
+    const digits10 = Array.from(Array(10).keys());
+    const digits6 = Array.from(Array(6).keys());
+    const digits2 = Array.from(Array(3).keys());
 
     return (
       <div className = { styles.root }>
-        { Array.from(Array(6).keys()).map(index =>
-          <div
-            key = { index }
-            className = { styles.digits }
-          >
-            <AnimakitSlider
-              slide = { this.state.slides[index] }
-              vertical
-              loop
+        { Array.from(Array(6).keys()).map(index => {
+          let digits;
+          if (index === 0) {
+            digits = digits2;
+          } else {
+            digits = index % 2 === 0 ? digits6 : digits10;
+          }
+
+          return (
+            <div
+              key = { index }
+              className = { styles.digits }
             >
-              { digits.map(digit => <div key = { digit } className = { styles.digit }>{ digit }</div>) }
-            </AnimakitSlider>
-          </div>
-        ) }
+              <AnimakitSlider
+                slide = { this.state.slides[index] }
+                vertical
+                loop
+                skip
+              >
+                { digits.map(digit => <div key = { digit } className = { styles.digit }>{ digit }</div>) }
+              </AnimakitSlider>
+            </div>
+          );
+        }) }
       </div>
     );
   }
