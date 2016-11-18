@@ -97,6 +97,14 @@ const Expander = () =>
               <td>Any <a href="http://easings.net/">easing function</a></td>
               <td>Easing function of animation</td>
             </tr>
+            { false && <tr>
+              <td>smoothResize</td>
+              <td>false</td>
+              <td>bool</td>
+              <td><code>false</code></td>
+              <td><code>true</code>, <code>false</code></td>
+              <td>Smooth height resizing in expanded state</td>
+            </tr> }
           </tbody>
         </table>
       </Article>

@@ -3,16 +3,17 @@ import AnimakitExpander from 'components/AnimakitExpander';
 import React            from 'react';
 import SimpleText       from 'components/SimpleText/SimpleText';
 
-import styles           from './ExpanderSimple.css';
+import styles           from './ExpanderSmooth.css';
 
-export default class ExpanderSimple extends React.Component {
+export default class ExpanderSmooth extends React.Component {
   static propTypes = {
     handleChangeExpanded: React.PropTypes.func,
   };
 
   state = {
     show:     true,
-    expanded: false,
+    expanded: true,
+    showMore: false,
   };
 
   componentDidMount() {
@@ -27,8 +28,14 @@ export default class ExpanderSimple extends React.Component {
     this.toggleExpanded();
   }
 
+  onToggleText() {
+    const showMore = !this.state.showMore;
+    this.setState({ showMore });
+  }
+
   listeners = {
-    onClick: this.onClick.bind(this),
+    onClick:      this.onClick.bind(this),
+    onToggleText: this.onToggleText.bind(this),
   };
 
   toggleExpanded() {
@@ -48,10 +55,11 @@ export default class ExpanderSimple extends React.Component {
           <span className = { this.state.expanded ? styles.toggleOff : styles.toggleOn } />
         </div>
 
-        <AnimakitExpander expanded = { this.state.expanded }>
+        <AnimakitExpander expanded = { this.state.expanded } smoothResize durationPerPx = { 3 }>
           { this.state.show && <SimpleText
             className     = { styles.content }
-            hasMore       = { false }
+            handleToggle  = { this.listeners.onToggleText }
+            showMore      = { this.state.showMore }
           /> }
         </AnimakitExpander>
       </div>

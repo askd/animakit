@@ -1,4 +1,5 @@
 import ExpanderSimple    from 'components/ExpanderSimple/ExpanderSimple';
+import ExpanderSmooth    from 'components/ExpanderSmooth/ExpanderSmooth';
 import ExpanderField     from 'components/ExpanderField/ExpanderField';
 import ExpanderVertical  from 'components/ExpanderVertical/ExpanderVertical';
 import ExpanderAccordion from 'components/ExpanderAccordion/ExpanderAccordion';
@@ -24,6 +25,7 @@ export default class ExpanderDemo extends React.Component {
   state = {
     expanded: {
       simple: false,
+      smooth: true,
       field:  {
         error: false,
         other: false,
@@ -42,6 +44,7 @@ export default class ExpanderDemo extends React.Component {
   listeners = {
     changeExpanded: {
       simple:    this.changeExpanded.bind(this, 'simple'),
+      smooth:    this.changeExpanded.bind(this, 'smooth'),
       field:     this.changeExpanded.bind(this, 'field'),
       vertical:  this.changeExpanded.bind(this, 'vertical'),
       accordion: this.changeExpanded.bind(this, 'accordion'),
@@ -92,9 +95,38 @@ export default class ExpanderDemo extends React.Component {
                 blink
                 blinkActive = { expandedChanged.indexOf('simple') !== -1 }
               >
+                { `<AnimakitExpander expanded={${this.state.expanded.simple}}>` }
+              </CodeBlock>
+              <CodeBlock>
+                { '  <div className="text">...</div>' }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+              >
+                { '</AnimakitExpander>' }
+              </CodeBlock>
+            </Code>
+          </DemoCode>
+        </Demo>
+
+        { false && <Demo key = "smooth">
+          <DemoComponent>
+            <ExpanderSmooth handleChangeExpanded = { this.listeners.changeExpanded.smooth } />
+          </DemoComponent>
+          <DemoCode>
+            <Code>
+              <CodeBlock>
+                { '<div className="title" onClick={toggle}>...</div>' }
+              </CodeBlock>
+              <CodeBlock
+                highlight
+                blink
+                blinkActive = { expandedChanged.indexOf('smooth') !== -1 }
+              >
                 {
 `<AnimakitExpander
-  expanded={${this.state.expanded.simple}}
+  expanded={${this.state.expanded.smooth}}
+  smoothResize
   durationPerPx={3}
 >`
                 }
@@ -109,7 +141,7 @@ export default class ExpanderDemo extends React.Component {
               </CodeBlock>
             </Code>
           </DemoCode>
-        </Demo>
+        </Demo> }
 
         { !onlyOne && <Demo key = "field">
           <DemoComponent>

@@ -142,7 +142,7 @@ export default class AnimakitElastic extends AnimakitBase {
             style = { this.getContentStyles() }
             ref = {(c) => { this.contentNode = c; }}
           >
-          { this.props.children }
+            { this.props.children }
           </div>
         </div>
       </div>
