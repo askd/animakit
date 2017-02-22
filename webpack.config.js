@@ -19,33 +19,28 @@ const NODE_ENV = JSON.stringify(production ? 'production' : 'development');
 const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
-  entry: production ?
-  [
-    'babel-polyfill',
-    path.join(srcPath, 'index'),
-  ] :
-  [
-    'webpack-hot-middleware/client',
+  entry: [
+    production ? 'babel-polyfill' : 'webpack-hot-middleware/client',
     path.join(srcPath, 'index'),
   ],
 
   output: {
     path:       path.join(__dirname, 'assets'),
     filename:   'application.js',
-    publicPath: production ? '/assets/' : '/assets/',
+    publicPath: '/assets/',
   },
 
   resolve: {
-    root:               srcPath,
-    extensions:         ['', '.js', '.es6'],
-    modulesDirectories: [
+    extensions: ['.js', '.es6'],
+    modules:    [
       srcPath,
       nodeModulesPath,
     ],
   },
 
   plugins: [
-    new ExtractTextPlugin('application.css', {
+    new ExtractTextPlugin({
+      filename:  'application.css',
       allChunks: true,
     }),
     new webpack.DefinePlugin({
@@ -57,49 +52,101 @@ const config = {
   ],
 
   module: {
-    loaders: [
+    rules: [
       {
-        test:    /\.(js|es6)$/,
-        loader:  'babel',
-        include: srcPath,
-      },
-      {
-        test:   /\.css$/,
-        loader: production ?
-        ExtractTextPlugin.extract(
-          'style',
-          'css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss'
-        ) : 'style!css?modules&importLoaders=1&localIdentName=[name]-[local]--[hash:base64:5]!postcss',
+        test: /\.(js|es6)$/,
+        use:  [
+          {
+            loader:  'babel-loader',
+            options: {
+              presets: [
+                ['es2015', { loose: true, modules: false }],
+                'stage-0',
+                'react',
+              ],
+            },
+          },
+        ],
         include: srcPath,
       },
       {
         test:   /\.(jpg|png)$/,
-        loader: 'file?name=[name].[ext]',
+        loader: 'file-loader?name=[name].[ext]',
       },
     ],
   },
-
-  postcss: [
-    precss(),
-    assets(),
-    autoprefixer(),
-  ],
 };
 
 if (production) {
+//
+  config.module.rules.push({
+    test:   /\.css$/,
+    loader: ExtractTextPlugin.extract({
+      loader: [
+        {
+          loader: 'css-loader',
+          query:  {
+            importLoaders:   1,
+            modules:         true,
+            localIdentName:  '[name]-[local]--[hash:base64:5]',
+            minimize:        false,
+            sourceMap:       false,
+            discardComments: {
+              removeAll: true,
+            },
+          },
+        },
+        'postcss-loader',
+      ],
+    }),
+  });
+
   config.plugins.push(
-    new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compressor: {
         warnings: false,
       },
     })
   );
+//
 } else {
+//
+  config.module.rules.push({
+    test: /\.css$/,
+    use:  [
+      'style-loader',
+      {
+        loader: 'css-loader',
+        query:  {
+          importLoaders:  1,
+          modules:        true,
+          localIdentName: '[name]-[local]--[hash:base64:5]',
+          minimize:       false,
+          sourceMap:      true,
+        },
+      },
+      'postcss-loader',
+    ],
+  });
+
   config.plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin()
   );
+//
 }
+
+config.plugins.push(
+  new webpack.LoaderOptionsPlugin({
+    options: {
+      postcss: [
+        precss(),
+        assets(),
+        autoprefixer(),
+      ],
+      context: '/',
+    },
+  })
+);
 
 module.exports = config;
