@@ -12,7 +12,6 @@ const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
 
-const REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD = true;
 const NODE_ENV = JSON.stringify(production ? 'production' : 'development');
 
 
@@ -45,7 +44,6 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        REACT_SYNTAX_HIGHLIGHTER_LIGHT_BUILD,
         NODE_ENV,
       },
     }),
