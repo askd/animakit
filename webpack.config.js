@@ -82,7 +82,7 @@ if (production) {
   config.module.rules.push({
     test:   /\.css$/,
     loader: ExtractTextPlugin.extract({
-      loader: [
+      use: [
         {
           loader: 'css-loader',
           query:  {
