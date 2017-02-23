@@ -30,7 +30,7 @@ export default class Dotnav extends React.Component {
 
   componentWillMount() {
     const count = this.props.count;
-    this.listeners.setIndex = [...Array(count)].map((_, i) => this.setIndex.bind(this, i), this);
+    this.listeners.setIndex = Array.from({ length: count }, (_, i) => this.setIndex.bind(this, i), this);
   }
 
   onClickPrev() {
@@ -65,7 +65,7 @@ export default class Dotnav extends React.Component {
     return (
       <div>
         <ul className = { classes.dots }>
-          { [...Array(count)].map((_, i) => {
+          { Array.from({ length: count }, (_, i) => {
             const dotClassName = this.props.index === i ? classes.dotActive : classes.dot;
 
             return (

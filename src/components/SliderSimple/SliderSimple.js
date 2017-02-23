@@ -3,6 +3,8 @@ import AnimakitSlider from 'components/AnimakitSlider';
 import React          from 'react';
 import Dotnav         from 'components/Dotnav/Dotnav';
 
+import pathToImage    from 'utils/path-to-image';
+
 import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderSimple.css';
 
@@ -44,26 +46,46 @@ export default class SliderSimple extends React.Component {
         >
           <div
             key       = { this.props.slides[0] }
-            className = { styles.slideMars }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[0])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mars</h2>
           </div>
           <div
             key       = { this.props.slides[1] }
-            className = { styles.slideEarth }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[1])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Earth</h2>
           </div>
           <div
             key       = { this.props.slides[2] }
-            className = { styles.slideVenus }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[2])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Venus</h2>
           </div>
           <div
             key       = { this.props.slides[3] }
-            className = { styles.slideMercury }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[3])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mercury</h2>
           </div>
         </AnimakitSlider>

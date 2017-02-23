@@ -6,8 +6,6 @@ import Main            from 'components/Main/Main';
 
 import styles          from './App.css';
 
-import './favicon.png';
-
 const App = (props) => {
   const showLinks = props.children === null;
 

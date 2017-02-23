@@ -67,7 +67,7 @@ export default class AnimakitSlider extends AnimakitBase {
     let slideNum = slideKey;
 
     React.Children.forEach(this.props.children, (child, num) => {
-      if (child.key === slideKey) slideNum = num;
+      if (child && child.key === slideKey) slideNum = num;
     });
 
     return slideNum;

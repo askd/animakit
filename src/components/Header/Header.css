@@ -29,12 +29,13 @@
   width: 36px;
   height: 36px;
   background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-image: url('./images/animakit.png');
+  background-position: 50% 50%;
+  background-size: 16px 28px;
+  background-image: inline('./images/animakit.svg');
 }
 
 .nav {
-  margin-left: 36px;
+  margin-left: 26px;
 }
 
 .navLink {

@@ -3,6 +3,8 @@ import AnimakitSlider from 'components/AnimakitSlider';
 import React          from 'react';
 import Dotnav         from 'components/Dotnav/Dotnav';
 
+import pathToImage    from 'utils/path-to-image';
+
 import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderVertical.css';
 
@@ -44,9 +46,14 @@ export default class SliderVertical extends React.Component {
           vertical
         >
           <div
-            key       = { this.props.slides[0] }
-            className = { styles.slideMars }
+            key = { this.props.slides[0] }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[0])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mars</h2>
             <p className = { styles.slideText }>
               {`Mars is a terrestrial planet with a thin atmosphere,
@@ -55,9 +62,14 @@ export default class SliderVertical extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.slides[1] }
-            className = { styles.slideEarth }
+            key = { this.props.slides[1] }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[1])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Earth</h2>
             <p className = { styles.slideText }>
               {`Earth is the third planet from the Sun, the densest planet in the Solar System,
@@ -66,9 +78,14 @@ export default class SliderVertical extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.slides[2] }
-            className = { styles.slideVenus }
+            key = { this.props.slides[2] }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[2])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Venus</h2>
             <p className = { styles.slideText }>
               {`Venus is a terrestrial planet and is sometimes called Earth's "sister planet"
@@ -76,9 +93,14 @@ export default class SliderVertical extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.slides[3] }
-            className = { styles.slideMercury }
+            key = { this.props.slides[3] }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.slides[3])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mercury</h2>
             <p className = { styles.slideText }>
               {`Mercury is one of four terrestrial planets in the Solar System,

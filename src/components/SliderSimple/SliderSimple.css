@@ -29,32 +29,20 @@
   text-align: center;
 }
 
+.slideImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
 .slideTitle {
   position: relative;
   width: 300px;
   padding: 10px;
   font-size: 32px;
   line-height: 1;
-}
-
-.slideMars {
-  composes: slide;
-  background-image: url('./images/mars.jpg');
-}
-
-.slideEarth {
-  composes: slide;
-  background-image: url('./images/earth.jpg');
-}
-
-.slideVenus {
-  composes: slide;
-  background-image: url('./images/venus.jpg');
-}
-
-.slideMercury {
-  composes: slide;
-  background-image: url('./images/mercury.jpg');
 }
 
 .arrow {

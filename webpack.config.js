@@ -12,9 +12,6 @@ const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
 
-const NODE_ENV = JSON.stringify(production ? 'production' : 'development');
-
-
 const config = {
   devtool: production ? 'source-map' : 'cheap-module-eval-source-map',
 
@@ -44,7 +41,7 @@ const config = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV,
+        NODE_ENV: JSON.stringify(production ? 'production' : 'development'),
       },
     }),
   ],

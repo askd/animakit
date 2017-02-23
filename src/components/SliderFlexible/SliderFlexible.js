@@ -3,6 +3,8 @@ import AnimakitSlider from 'components/AnimakitSlider';
 import React          from 'react';
 import Dotnav         from 'components/Dotnav/Dotnav';
 
+import pathToImage    from 'utils/path-to-image';
+
 import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderFlexible.css';
 
@@ -53,24 +55,21 @@ export default class SliderFlexible extends React.Component {
             slide = { this.state.slide }
             duration = { 500 }
           >
-          { [...Array(this.props.slidesCount)].map((_, i) => {
-            const image = (i < 10) ? `0${i}` : i;
-            return (
-              <div
-                key       = { i }
-                className = { styles.slide }
-              >
-                <img
-                  className = { styles.image }
-                  src = {
-                    // i === this.state.slide ? require(`./images/nasa/${image}.jpg`) : ''
-                    require(`./images/nasa/${image}.jpg`)
-                  }
-                  alt = ""
-                />
-              </div>
-            );
-          }) }
+            { Array.from({ length: this.props.slidesCount }, (_, i) => {
+              const image = (i < 10) ? `0${i}` : i;
+              return (
+                <div
+                  key       = { i }
+                  className = { styles.slide }
+                >
+                  <img
+                    className = { styles.image }
+                    src = {pathToImage(`nasa${image}`)}
+                    alt = ""
+                  />
+                </div>
+              );
+            }) }
           </AnimakitSlider>
         </div>
         <Dotnav

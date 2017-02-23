@@ -3,6 +3,8 @@ import AnimakitRotator from 'components/AnimakitRotator';
 import React           from 'react';
 import Dotnav          from 'components/Dotnav/Dotnav';
 
+import pathToImage    from 'utils/path-to-image';
+
 import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles          from './RotatorPromo.css';
 
@@ -46,8 +48,13 @@ export default class RotatorPromo extends React.Component {
         >
           <div
             key       = { this.props.sides[0] }
-            className = { styles.slideMars }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.sides[0])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mars</h2>
             <p className = { styles.slideText }>
               {`Mars is a terrestrial planet with a thin atmosphere,
@@ -57,8 +64,13 @@ export default class RotatorPromo extends React.Component {
           </div>
           <div
             key       = { this.props.sides[1] }
-            className = { styles.slideEarth }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.sides[1])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Earth</h2>
             <p className = { styles.slideText }>
               {`Earth is the third planet from the Sun, the densest planet in the Solar System,
@@ -68,8 +80,13 @@ export default class RotatorPromo extends React.Component {
           </div>
           <div
             key       = { this.props.sides[2] }
-            className = { styles.slideVenus }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.sides[2])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Venus</h2>
             <p className = { styles.slideText }>
               {`Venus is a terrestrial planet and is sometimes called Earth's "sister planet"
@@ -78,8 +95,13 @@ export default class RotatorPromo extends React.Component {
           </div>
           <div
             key       = { this.props.sides[3] }
-            className = { styles.slideMercury }
+            className = { styles.slide }
           >
+            <img
+              className = { styles.slideImage }
+              src = {pathToImage(this.props.sides[3])}
+              alt = ""
+            />
             <h2 className = { styles.slideTitle }>Mercury</h2>
             <p className = { styles.slideText }>
               {`Mercury is one of four terrestrial planets in the Solar System,

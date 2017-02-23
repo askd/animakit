@@ -4,6 +4,8 @@ import SimpleText      from 'components/SimpleText/SimpleText';
 
 import React           from 'react';
 
+import pathToImage     from 'utils/path-to-image';
+
 import styles          from './ElasticSimple.css';
 
 export default class ElasticSimple extends React.Component {
@@ -57,6 +59,11 @@ export default class ElasticSimple extends React.Component {
               hasMore      = { !this.props.onlyHorizontal }
             />
             <div className = { this.state.showImage ? styles.imageVisible : styles.imageHidden }>
+              <img
+                className = { styles.imageContent }
+                src = {pathToImage('good')}
+                alt = ""
+              />
               <span
                 className = { styles.more }
                 onClick = { this.listeners.onToggleImage }

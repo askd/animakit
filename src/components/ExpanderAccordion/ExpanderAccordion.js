@@ -2,6 +2,8 @@ import AnimakitExpander from 'components/AnimakitExpander';
 
 import React            from 'react';
 
+import pathToImage      from 'utils/path-to-image';
+
 import styles           from './ExpanderAccordion.css';
 
 export default class ExpanderAccordion extends React.Component {
@@ -79,7 +81,7 @@ export default class ExpanderAccordion extends React.Component {
               >
                 <img
                   className = { itemExpanded ? styles.imageExpanded : styles.imageCollapsed }
-                  src = { `assets/${item}.jpg` }
+                  src = { pathToImage(item) }
                   alt=""
                 />
               </AnimakitExpander>
