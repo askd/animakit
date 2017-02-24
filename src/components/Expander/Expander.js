@@ -10,10 +10,7 @@ const Expander = () =>
   <div>
 
     <Section>
-      <Intro>
-        <p>Dreaming about easy way to expand and collapse content of your components?
-        Feel free to use AnimakitExpander&nbsp;;)</p>
-      </Intro>
+      <Intro component="expander" />
     </Section>
 
     <Section>

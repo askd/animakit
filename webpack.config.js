@@ -7,7 +7,7 @@ const webpack           = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const precss            = require('precss');
-const assets            = require('postcss-assets');
+const inlineSVG         = require('postcss-inline-svg');
 const autoprefixer      = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
@@ -136,7 +136,7 @@ config.plugins.push(
     options: {
       postcss: [
         precss(),
-        assets(),
+        inlineSVG(),
         autoprefixer(),
       ],
       context: '/',

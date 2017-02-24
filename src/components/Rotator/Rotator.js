@@ -10,10 +10,7 @@ const Rotator = () =>
   <div>
 
     <Section>
-      <Intro>
-        <p>Rotate your components in three-dimensional space.
-        Just wrap them with AnimakitRotator, set the side and enjoy ;)</p>
-      </Intro>
+      <Intro component = "rotator" />
     </Section>
 
     <Section>

@@ -2,11 +2,11 @@
 
 .root {
   min-width: 480px;
-  font-family: $font;
-  font-size: 16px;
 }
 
+.root,
 button,
 input {
-  font-family: $font;
+  font-family: Ubuntu, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 16px;
 }

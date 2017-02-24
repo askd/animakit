@@ -8,35 +8,31 @@
 
 .rootUD {
   composes: root;
-  color: $color1;
-  font-weight: 700;
+  color: $color2;
 }
 
 .title {
-  font-size: 24px;
+  font-size: 32px;
   line-height: 36px;
-  font-weight: 700;
+  color: $color0;
+  letter-spacing: 0.05em;
+  text-align: center;
 }
 
 .list {
+  max-width: 400px;
+  margin: 0 auto;
   counter-reset: use;
 }
 
 .item {
   position: relative;
-  margin-top: 40px;
-
-  &::before {
-    counter-increment: use;
-    content: counter(use) '.';
-    position: absolute;
-    top: -4px;
-    left: 0;
-    font-size: 20px;
-    font-weight: 700;
-  }
+  margin-top: 36px;
 }
 
 .itemTitle {
-  margin: 0 0 10px 24px;
+  margin: 0 0 10px;
+  font-size: 20px;
+  letter-spacing: 0.05em;
+  text-align: center;
 }

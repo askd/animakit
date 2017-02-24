@@ -1,15 +1,16 @@
 @import '../vars.css';
 
 .root {
+  box-sizing: border-box;
   padding: 24px 36px 36px;
   font-size: 16px;
   line-height: 24px;
 
   & h2 {
-    max-width: 600px;
-    font-size: 24px;
+    font-size: 32px;
     line-height: 36px;
-    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-align: center;
 
     &:last-child {
       margin-bottom: -20px;
@@ -17,19 +18,19 @@
   }
 
   & p {
-    margin-top: 20px;
     max-width: 600px;
+    margin: 20px auto 0;
   }
 
   & dl {
     max-width: 600px;
+    margin: 0 auto;
     line-height: 20px;
   }
 
   & dt {
     margin-top: 20px;
-    font-weight: 700;
-    color: $color0;
+    color: $color4;
   }
 
   & dd {
@@ -66,7 +67,7 @@
   & table th {
     padding: 4px 8px;
     border: 1px solid #ddd;
-    font-weight: bold;
+    color: $color5;
     text-align: left;
   }
 
@@ -88,5 +89,14 @@
       letter-spacing: -0.2em;
       content: '\00a0';
     }
+  }
+}
+
+.rootCentered {
+  composes: root;
+
+  & p {
+    max-width: 100%;
+    text-align: center;
   }
 }

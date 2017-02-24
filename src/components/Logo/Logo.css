@@ -1,0 +1,9 @@
+@import '../vars.css';
+
+.logo {
+  width: 46px;
+  height: 80px;
+  background-repeat: no-repeat;
+  background-image: svg-load('./images/animakit.svg');
+  background-size: 100% 100%;
+}

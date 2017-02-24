@@ -1,27 +1,23 @@
-import React           from 'react';
+import React    from 'react';
 
-import Header          from 'components/Header/Header';
-import Ribbon          from 'components/Ribbon/Ribbon';
-import Main            from 'components/Main/Main';
+import BackLink from 'components/BackLink/BackLink';
+import Main     from 'components/Main/Main';
 
-import styles          from './App.css';
+import styles   from './App.css';
 
 const App = (props) => {
-  const showLinks = props.children === null;
-
   const navLen = props.routes.length;
-  const ribbonPath = props.routes[navLen - 1].path.substr(1);
-  const showRibbon = navLen > 1 && ribbonPath !== 'new';
+
+  const isMainPage = navLen === 1;
+  const rootPath = props.routes[0].path;
 
   return (
     <div className = { styles.root }>
-      <Header routes={ props.routes } />
+      { !isMainPage && <BackLink to={rootPath} /> }
 
-      { showLinks && <Main /> }
+      { isMainPage && <Main /> }
 
-      { !showLinks && props.children }
-
-      { showRibbon && <Ribbon fixed path={ ribbonPath } /> }
+      { !isMainPage && props.children }
     </div>
   );
 };

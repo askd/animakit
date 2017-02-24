@@ -10,10 +10,7 @@ const Slider = () =>
   <div>
 
     <Section>
-      <Intro>
-        <p>{ `Do you need a simple and useful slider?
-Wrap your components with the AnimakitSlider and your slider is ready ;)` }</p>
-      </Intro>
+      <Intro component="slider" />
     </Section>
 
     <Section>

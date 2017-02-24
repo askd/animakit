@@ -1,0 +1,33 @@
+@import '../vars.css';
+
+.button {
+  display: inline-block;
+  vertical-align: top;
+  color: #fff;
+  background: $color3;
+  border-radius: 20px;
+  padding: 10px 20px;
+  line-height: 20px;
+  text-decoration: none;
+
+  /*
+  transition: all 0.5s ease;
+  */
+
+  &::after {
+    content: '';
+    display: inline-block;
+    vertical-align: top;
+    margin: 1px 0 0 8px;
+    width: 16px;
+    height: 16px;
+    background-image: svg-load('./images/octocat.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+  }
+}
+
+.navLink:hover .navMore,
+.navLink:focus .navMore {
+  /* * */
+}

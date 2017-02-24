@@ -1,11 +1,44 @@
 @import '../vars.css';
 
 .root {
+  height: 100%;
+  box-sizing: border-box;
   padding: 40px 36px;
-  font-size: 16px;
-  line-height: 20px;
+  background-color: #fff;
+  color: $color0;
+}
 
-  & p + p {
-    margin-top: 20px;
-  }
+.rootInner {
+  composes: root;
+
+  /*
+  background-color: $color0;
+  color: #fff;
+  */
+}
+
+.logo {
+  margin: 0 auto;
+  width: 92px;
+  height: 160px;
+}
+
+.title {
+  font-size: 32px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.text {
+  margin-top: 24px;
+  font-size: 16px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.button {
+  margin-top: 24px;
+  text-align: center;
 }

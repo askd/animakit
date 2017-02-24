@@ -10,10 +10,7 @@ const Elastic = () =>
   <div>
 
     <Section>
-      <Intro>
-        <p>{ `Don't you like abrupt changes in the sizes?
-        AnimakitElastic will solve this problem ;)` }</p>
-      </Intro>
+      <Intro component="elastic" />
     </Section>
 
     <Section>

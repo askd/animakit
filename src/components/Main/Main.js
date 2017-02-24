@@ -6,7 +6,7 @@ import Section      from 'components/Section/Section';
 import Intro        from 'components/Intro/Intro';
 import Usage        from 'components/Usage/Usage';
 import Article      from 'components/Article/Article';
-import Ribbon       from 'components/Ribbon/Ribbon';
+import GithubButton from 'components/GithubButton/GithubButton';
 
 import React        from 'react';
 import { Link }     from 'react-router';
@@ -17,10 +17,7 @@ const Main = () =>
   <main className = { styles.root }>
 
     <Section>
-      <Intro>
-        <p>React components developed to&nbsp;make your site more friendly&nbsp;;)</p>
-        <p>Just wrap your existing UI with&nbsp;Animakit components to&nbsp;get transitions for&nbsp;better UX.</p>
-      </Intro>
+      <Intro />
     </Section>
 
     <Section>
@@ -28,7 +25,7 @@ const Main = () =>
     </Section>
 
     <Section>
-      <Article>
+      <Article centered>
         <h2>Choose one to start</h2>
         <p>
           Try out the simple demo or click “Learn More” for more demos.
@@ -43,17 +40,19 @@ const Main = () =>
               <p className = { styles.navText }>
                 Rotate your components in 3D space
               </p>
-              <Link
-                to = "/rotator"
-                className = { styles.navMore }
-              >
-                Learn more
-              </Link>
+              <div className = { styles.navButtons }>
+                <Link
+                  to = "/rotator"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <GithubButton component = "rotator" />
+              </div>
             </div>
             <div className = { styles.navComponent }>
               <RotatorDemo onlyOne />
             </div>
-            <Ribbon path={ 'rotator' } />
           </li>
           <li className = { styles.navItem }>
             <div className = { styles.navHeading }>
@@ -61,17 +60,19 @@ const Main = () =>
               <p className = { styles.navText }>
                 Expand and collapse the content of your components
               </p>
-              <Link
-                to = "/expander"
-                className = { styles.navMore }
-              >
-                Learn more
-              </Link>
+              <div className = { styles.navButtons }>
+                <Link
+                  to = "/expander"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <GithubButton component = "expander" />
+              </div>
             </div>
             <div className = { styles.navComponent }>
               <ExpanderDemo onlyOne />
             </div>
-            <Ribbon path={ 'expander' } />
           </li>
           <li className = { styles.navItem }>
             <div className = { styles.navHeading }>
@@ -79,17 +80,19 @@ const Main = () =>
               <p className = { styles.navText }>
                 Make the content of your components elastic
               </p>
-              <Link
-                to = "/elastic"
-                className = { styles.navMore }
-              >
-                Learn more
-              </Link>
+              <div className = { styles.navButtons }>
+                <Link
+                  to = "/elastic"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <GithubButton component = "elastic" />
+              </div>
             </div>
             <div className = { styles.navComponent }>
               <ElasticDemo onlyOne />
             </div>
-            <Ribbon path={ 'elastic' } />
           </li>
           <li className = { styles.navItem }>
             <div className = { styles.navHeading }>
@@ -97,17 +100,19 @@ const Main = () =>
               <p className = { styles.navText }>
                 Slide your components easily
               </p>
-              <Link
-                to = "/slider"
-                className = { styles.navMore }
-              >
-                Learn more
-              </Link>
+              <div className = { styles.navButtons }>
+                <Link
+                  to = "/slider"
+                  className = { styles.navMore }
+                >
+                  Learn more
+                </Link>
+                <GithubButton component = "slider" />
+              </div>
             </div>
             <div className = { styles.navComponent }>
               <SliderDemo onlyOne />
             </div>
-            <Ribbon path={ 'slider' } />
           </li>
         </ul>
       </nav>
