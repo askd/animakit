@@ -11,7 +11,7 @@
 
 .itemCollapsed {
   composes: item;
-  background: #333;
+  background: $color0;
   transition: background 0.125s ease-out 0.5s;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .itemMars {
-  border-color: $color1;
+  border-color: $color2;
 }
 
 .itemEarth {

@@ -4,7 +4,7 @@
   position: relative;
   display: inline-block;
   vertical-align: top;
-  height: 320px;
+  height: 280px;
   box-sizing: border-box;
   border: 2px solid $color4;
 
@@ -17,7 +17,7 @@
   float: left;
   position: relative;
   width: 40px;
-  height: 316px;
+  height: 276px;
   background: $color4;
   cursor: pointer;
 }
@@ -26,7 +26,7 @@
   position: absolute;
   bottom: -40px;
   left: 0;
-  width: 316px;
+  width: 276px;
   height: 40px;
   box-sizing: border-box;
   padding: 10px;
@@ -39,27 +39,26 @@
 
 .content {
   float: left;
-  height: 316px;
+  height: 276px;
   background: #fff;
 }
 
 .form {
   width: 260px;
-  padding: 10px 20px;
+  padding: 15px 20px 20px;
 }
 
 .input {
   width: 260px;
-  height: 40px;
+  height: 30px;
   box-sizing: border-box;
-  margin: 10px 0 0;
-  padding: 10px 15px;
+  margin: 5px 0 0;
+  padding: 5px 10px;
   background: #fff;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.25);
   color: #000;
   appearance: none;
-  border: 0;
-  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-shadow: none;
   outline: none;
   font-size: 14px;
   line-height: 20px;
@@ -68,21 +67,20 @@
 
 .inputTextarea {
   composes: input;
-  height: 110px;
+  height: 114px;
   resize: none;
 }
 
 .button {
   width: 260px;
-  height: 50px;
+  height: 40px;
   box-sizing: border-box;
-  margin: 15px 0 0;
-  padding: 15px;
-  background: $color0;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.15), 0 0 10px color($color0 a(65%));
+  margin: 10px 0 0;
+  padding: 10px;
+  background: $color6;
   appearance: none;
   border: 0;
-  border-radius: 5px;
+  box-shadow: none;
   outline: none;
   color: #fff;
   text-align: center;

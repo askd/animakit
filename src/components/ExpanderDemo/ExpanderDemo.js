@@ -84,11 +84,7 @@ export default class ExpanderDemo extends React.Component {
           <DemoCode>
             <Code>
               <CodeBlock>
-                {
-`<div className="title" onClick={toggle}>
-  <span>I Got You</span>
-</div>`
-                }
+                { '<Title onClick={toggle} />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -98,7 +94,7 @@ export default class ExpanderDemo extends React.Component {
                 { `<AnimakitExpander expanded={${this.state.expanded.simple}}>` }
               </CodeBlock>
               <CodeBlock>
-                { '  <div className="text">...</div>' }
+                { '  <Text />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -116,7 +112,7 @@ export default class ExpanderDemo extends React.Component {
           <DemoCode>
             <Code>
               <CodeBlock>
-                { '<div className="title" onClick={toggle}>...</div>' }
+                { '<Title onClick={toggle} />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -132,7 +128,7 @@ export default class ExpanderDemo extends React.Component {
                 }
               </CodeBlock>
               <CodeBlock>
-                { '  <div className="text">...</div>' }
+                { '  <Text />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -151,8 +147,8 @@ export default class ExpanderDemo extends React.Component {
             <Code>
               <CodeBlock>
                 {
-`<div className="field">
-  <input onKeyUp={validate} />`
+`<Field>
+  <Email onKeyUp={validate} />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -163,7 +159,7 @@ export default class ExpanderDemo extends React.Component {
                 { `  <AnimakitExpander expanded={${this.state.expanded.field.error}}>` }
               </CodeBlock>
               <CodeBlock>
-                { '    <div>Sorry, ... </div>' }
+                { '    <Error />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -172,11 +168,9 @@ export default class ExpanderDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`</div>
-<div className="field">
-  <input type="radio" ... /> No
-  <input type="radio" ... /> Yes
-`
+`</Field>
+<Field>
+  <AnythingElse />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -187,7 +181,7 @@ export default class ExpanderDemo extends React.Component {
                 { `  <AnimakitExpander expanded={${this.state.expanded.field.other}} align="bottom">` }
               </CodeBlock>
               <CodeBlock>
-                { '    <textarea ... />' }
+                { '    <Textarea />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -195,7 +189,7 @@ export default class ExpanderDemo extends React.Component {
                 { '  </AnimakitExpander>' }
               </CodeBlock>
               <CodeBlock>
-                { '</div>' }
+                { '</Field>' }
               </CodeBlock>
             </Code>
           </DemoCode>
@@ -209,10 +203,10 @@ export default class ExpanderDemo extends React.Component {
             <Code>
               <CodeBlock>
                 {
-`<header onClick={toggle}>
+`<Header onClick={toggle}>
   Contact Us
-</header>
-<main>`
+</Header>
+<Content>`
                 }
               </CodeBlock>
               <CodeBlock
@@ -229,11 +223,7 @@ export default class ExpanderDemo extends React.Component {
                 }
               </CodeBlock>
               <CodeBlock>
-                {
-`    <form>
-    ...
-    </form>`
-                }
+                { '    <Form />' }
               </CodeBlock>
               <CodeBlock
                 highlight
@@ -241,7 +231,7 @@ export default class ExpanderDemo extends React.Component {
                 { '  </AnimakitExpander>' }
               </CodeBlock>
               <CodeBlock>
-                { '</main>' }
+                { '</Content>' }
               </CodeBlock>
             </Code>
           </DemoCode>
@@ -253,35 +243,33 @@ export default class ExpanderDemo extends React.Component {
           </DemoComponent>
           <DemoCode>
             <Code>
-            { Object.keys(this.state.expanded.accordion).map(item => {
-              const active = expandedChanged.indexOf(`accordion.${item}`) !== -1;
-              return (
-                <div key = { item }>
-                  <CodeBlock>
-                    {
-`<div onClick={toggle}>
-  ${item.charAt(0).toUpperCase() + item.slice(1)}
-</div>`
-                    }
-                  </CodeBlock>
-                  <CodeBlock
-                    highlight
-                    blink
-                    blinkActive = { active }
-                  >
-                    { `<AnimakitExpander expanded={${this.state.expanded.accordion[item]}}>` }
-                  </CodeBlock>
-                  <CodeBlock>
-                    { '  <image ... />' }
-                  </CodeBlock>
-                  <CodeBlock
-                    highlight
-                  >
-                    { '</AnimakitExpander>' }
-                  </CodeBlock>
-                </div>
-              );
-            })}
+              { Object.keys(this.state.expanded.accordion).map(item => {
+                const active = expandedChanged.indexOf(`accordion.${item}`) !== -1;
+                return (
+                  <div key = { item }>
+                    <CodeBlock>
+                      {
+`<Title onClick={toggle}>${item.charAt(0).toUpperCase() + item.slice(1)}</Title>`
+                      }
+                    </CodeBlock>
+                    <CodeBlock
+                      highlight
+                      blink
+                      blinkActive = { active }
+                    >
+                      { `<AnimakitExpander expanded={${this.state.expanded.accordion[item]}}>` }
+                    </CodeBlock>
+                    <CodeBlock>
+                      { '  <Image />' }
+                    </CodeBlock>
+                    <CodeBlock
+                      highlight
+                    >
+                      { '</AnimakitExpander>' }
+                    </CodeBlock>
+                  </div>
+                );
+              })}
             </Code>
           </DemoCode>
         </Demo> }

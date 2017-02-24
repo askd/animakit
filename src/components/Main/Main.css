@@ -1,15 +1,15 @@
 @import '../vars.css';
 
 .root {
-
+  /* * */
 }
 
 .nav {
-
+  /* * */
 }
 
 .navList {
-
+  /* * */
 }
 
 .navItem {
@@ -27,7 +27,7 @@
   font-size: 20px;
   line-height: 40px;
   font-weight: 700;
-  color: #333;
+  color: $color0;
 }
 
 .navText {
@@ -57,7 +57,7 @@
 
 .navLink:hover .navMore,
 .navLink:focus .navMore {
-
+  /* * */
 }
 
 .navComponent {

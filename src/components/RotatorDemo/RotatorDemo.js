@@ -93,8 +93,8 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <button key="button">Submit form</button>
-  <div key="loader" className="loader"></div>`
+`  <Button key="button">Submit form</Button>
+  <Loader key="loader" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -129,8 +129,8 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <button key="button">Submit form</button>
-  <div key="loader" className="loader"></div>`
+`  <Button key="button">Submit form</Button>
+  <Loader key="loader" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -163,15 +163,11 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <form key="signin">
-    ...
-  </form>
-  <form key="signup">
-    ...
-  </form>
-  <form key="passrec">
-    ...
-  </form>`
+`  <SignInForm key="signin" />
+
+  <SignUpForm key="signup" />
+
+  <PasswordRecoveryForm key="passrec" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -204,18 +200,13 @@ export default class RotatorDemo extends React.Component {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div key="mars">
-    ...
-  </div>
-  <div key="earth">
-    ...
-  </div>
-  <div key="venus">
-    ...
-  </div>
-  <div key="mercury">
-    ...
-  </div>`
+`  <Slide key="mars" />
+
+  <Slide key="earth" />
+
+  <Slide key="venus" />
+
+  <Slide key="mercury" />`
                 }
               </CodeBlock>
               <CodeBlock

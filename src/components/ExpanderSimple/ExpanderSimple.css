@@ -16,7 +16,7 @@
   display: inline-block;
   vertical-align: top;
   line-height: 18px;
-  color: $color5;
+  color: $color4;
   border-bottom: 2px dotted;
 }
 
@@ -34,13 +34,13 @@
 .toggleOn {
   composes: toggle;
   border-bottom-width: 0;
-  border-top-color: $color5;
+  border-top-color: $color4;
 }
 
 .toggleOff {
   composes: toggle;
   border-top-width: 0;
-  border-bottom-color: $color5;
+  border-bottom-color: $color4;
 }
 
 .content {

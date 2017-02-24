@@ -45,7 +45,7 @@
 
 .dotsColored .dot:nth-child(1) {
   &:hover::after {
-    box-shadow: 0 0 0 3px $color1;
+    box-shadow: 0 0 0 3px $color2;
   }
 }
 
@@ -70,8 +70,8 @@
 .dotsColored .dotActive:nth-child(1) {
   &::after,
   &:hover::after {
-    background: $color1;
-    box-shadow: 0 0 0 3px $color1;
+    background: $color2;
+    box-shadow: 0 0 0 3px $color2;
   }
 }
 

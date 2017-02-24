@@ -1,20 +1,41 @@
 $font: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
-$color0: #999;
+$color0: #333;
+
+$color1: #a71d5d;
+$color2: #df5000;
+$color3: #f1c40f;
+$color4: #63a35c;
+$color5: #795da3;
+$color6: #9498a1;
+
+/* last
 $color1: #e74c3c;
 $color2: #e67e22;
 $color3: #f1c40f;
 $color4: #27ae60;
 $color5: #2980b9;
 $color6: #8e44ad;
+$color7: #999;
+*/
 
 $bgcolor: #f7f7f7;
 
-/*
+/* old
 $color1: #f50d1d;
 $color2: #f87c22;
 $color3: #f6b30a;
 $color4: #239e34;
 $color5: #2e7ce1;
 $color6: #bb39db;
+*/
+
+/* gist
+$color0: #333;
+$color1: #a71d5d; // bordo
+$color2: #df5000; // orangered
+$color3: ; // gold
+$color4: #63a35c; // green
+$color5: #795da3; // blueviolet
+$color6: #9498a1; // silver
 */

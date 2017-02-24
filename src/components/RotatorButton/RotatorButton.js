@@ -59,7 +59,7 @@ export default class RotatorButton extends React.Component {
       }
 
       this.showButton();
-    }, 1000);
+    }, 1500);
   }
 
   showButton() {

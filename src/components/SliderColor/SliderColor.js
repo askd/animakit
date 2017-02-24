@@ -14,18 +14,17 @@ export default class SliderColor extends React.Component {
 
   static defaultProps = {
     slides: [
-      'red',
-      'orange',
-      'yellow',
-      'green',
-      'blue',
-      'purple',
+      'one-two',
+      'three-four',
+      'five-six',
+      'seven-eight',
+      'nine-ten',
     ],
   };
 
   state = {
     index: 0,
-    slide: 'red',
+    slide: 'one-two',
   };
 
   setSlide(index) {
@@ -39,23 +38,35 @@ export default class SliderColor extends React.Component {
   };
 
   render() {
+    const titles = [
+      'One, two',
+      'Three, four',
+      'Five, six',
+      'Seven, eight',
+      'Nine, ten',
+    ];
+    const texts = [
+      'How are you?',
+      'Who\'s at the door?',
+      'My name is Fix.',
+      'Sorry, I\'m late.',
+      'Say it again.',
+    ];
     return (
       <div className = { styles.root }>
         <AnimakitSlider
           loop
           slide   =   { this.state.slide }
         >
-        { this.props.slides.map(slide => {
-          const title = slide.charAt(0).toUpperCase() + slide.slice(1);
-          return (
+          { this.props.slides.map((slide, index) =>
             <div
               key       = { slide }
-              className = { styles[`slide${title}`] }
+              className = { styles[`slide${index + 1}`] }
             >
-              <h2 className = { styles.slideTitle }>{ title }</h2>
+              <h2 className = { styles.slideTitle }>{ titles[index] }.</h2>
+              <p className = { styles.slideText }>{ texts[index] }</p>
             </div>
-          );
-        }) }
+          ) }
         </AnimakitSlider>
         <Dotnav
           withArrows

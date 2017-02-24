@@ -67,21 +67,13 @@ export default class Usage extends React.PureComponent {
             {
               (component === 'expander') && <Code>
                 <CodeBlock>
-                  {
-`<div className="title" onClick={toggle}>
-  {this.props.title}
-</div>`
-                  }
+                  { '<Title onClick={toggle} />' }
                 </CodeBlock>
                 <CodeBlock highlight>
                   { '<AnimakitExpander expanded={this.state.expanded}>' }
                 </CodeBlock>
                 <CodeBlock>
-                  {
-`  <div className="text">
-    {this.props.text}
-  </div>`
-                  }
+                  { '  <Text />' }
                 </CodeBlock>
                 <CodeBlock highlight>
                   { '</AnimakitExpander>' }
@@ -94,10 +86,7 @@ export default class Usage extends React.PureComponent {
                   { '<AnimakitElastic>' }
                 </CodeBlock>
                 <CodeBlock>
-                  {
-`  <div className="text">
-    {this.props.text}
-  </div>`
+                  { '  <Content />'
                   }
                 </CodeBlock>
                 <CodeBlock highlight>
@@ -112,9 +101,9 @@ export default class Usage extends React.PureComponent {
                 </CodeBlock>
                 <CodeBlock>
                   {
-`  <div className="slide"><img src="/img/photo1.jpg" /></div>
-  <div className="slide"><img src="/img/photo2.jpg" /></div>
-  <div className="slide"><img src="/img/photo3.jpg" /></div>`
+`  <Slide />
+  <Slide />
+  <Slide />`
                   }
                 </CodeBlock>
                 <CodeBlock highlight>

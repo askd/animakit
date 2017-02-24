@@ -16,45 +16,47 @@
 .slide {
   position: relative;
   width: 400px;
-  height: 200px;
+  height: 180px;
+  box-sizing: border-box;
+  padding: 20px 80px;
   color: #fff;
   text-align: center;
+
+  &1 {
+    composes: slide;
+    background: $color2;
+  }
+
+  &2 {
+    composes: slide;
+    background: $color5;
+  }
+
+  &3 {
+    composes: slide;
+    background: $color0;
+  }
+
+  &4 {
+    composes: slide;
+    background: $color4;
+  }
+
+  &5 {
+    composes: slide;
+    background: $color1;
+  }
 }
 
 .slideTitle {
-  padding: 20px 0;
-  font-size: 40px;
+  font-size: 36px;
   line-height: 1;
 }
 
-.slideRed {
-  composes: slide;
-  background: $color1;
-}
-
-.slideOrange {
-  composes: slide;
-  background: $color2;
-}
-
-.slideYellow {
-  composes: slide;
-  background: $color3;
-}
-
-.slideGreen {
-  composes: slide;
-  background: $color4;
-}
-
-.slideBlue {
-  composes: slide;
-  background: $color5;
-}
-
-.slidePurple {
-  composes: slide;
-  background: $color6;
+.slideText {
+  margin-top: 20px;
+  font-size: 24px;
+  line-height: 1;
 }
 
 .arrow {

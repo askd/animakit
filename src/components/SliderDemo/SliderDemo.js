@@ -25,7 +25,7 @@ export default class SliderDemo extends React.PureComponent {
     slide: {
       simple:   'mars',
       flexible: 0,
-      color:    'red',
+      color:    'one-two',
       vertical: 'mars',
       timer:    ['0', '0', '0', '0', '0', '0'],
     },
@@ -91,18 +91,13 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div key="mars">
-    ...
-  </div>
-  <div key="earth">
-    ...
-  </div>
-  <div key="venus">
-    ...
-  </div>
-  <div key="mercury">
-    ...
-  </div>`
+`  <Slide key="mars" />
+
+  <Slide key="earth" />
+
+  <Slide key="venus" />
+
+  <Slide key="mercury" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -134,13 +129,13 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div className="slide">
-    <img src="/images/00.jpg" />
-  </div>
+`  <Slide />
+
+  <Slide />
+
   ...
-  <div className="slide">
-    <img src="/images/10.jpg" />
-  </div>`
+
+  <Slide />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -167,12 +162,11 @@ export default class SliderDemo extends React.PureComponent {
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div key="red">...</div>
-  <div key="orange">...</div>
-  <div key="yellow">...</div>
-  <div key="green">...</div>
-  <div key="blue">...</div>
-  <div key="purple"></div>`
+`  <Slide key="one-two /">
+  <Slide key="three-four" />
+  <Slide key="five-six" />
+  <Slide key="seven-eight" />
+  <Slide key="nine-ten" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -195,22 +189,21 @@ export default class SliderDemo extends React.PureComponent {
                 blink
                 blinkActive = { this.isSlideChanged('vertical') }
               >
-                { `<AnimakitSlider slide="${this.state.slide.vertical}" vertical>` }
+                {
+`<AnimakitSlider
+  slide="${this.state.slide.vertical}"
+  vertical
+>` }
               </CodeBlock>
               <CodeBlock>
                 {
-`  <div key="mars">
-    ...
-  </div>
-  <div key="earth">
-    ...
-  </div>
-  <div key="venus">
-    ...
-  </div>
-  <div key="mercury">
-    ...
-  </div>`
+`  <Slide key="mars" />
+
+  <Slide key="earth" />
+
+  <Slide key="venus" />
+
+  <Slide key="mercury" />`
                 }
               </CodeBlock>
               <CodeBlock
@@ -239,7 +232,7 @@ export default class SliderDemo extends React.PureComponent {
                   </CodeBlock>
                   <CodeBlock>
                     {
-                      '  <div>0</div> ... <div>9</div>'
+                      '  <Digits />'
                     }
                   </CodeBlock>
                   <CodeBlock

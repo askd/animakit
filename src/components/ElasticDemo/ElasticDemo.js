@@ -34,20 +34,12 @@ export default class ElasticDemo extends React.PureComponent {
                 { '<AnimakitElastic>' }
               </CodeBlock>
               <CodeBlock>
-                { onlyOne ?
-`  <article>
-    <h2>I Got You</h2>
-    ...
-  </article>
-  <img ... />`
-                  :
-`  <div>
-    <article>
-      <h2>I Got You</h2>
-      ...
-    </article>
-    <img ... />
-  </div>`
+                {
+`  <Content>
+    <Article />
+
+    <Image />
+  </Content>`
                 }
               </CodeBlock>
               <CodeBlock
