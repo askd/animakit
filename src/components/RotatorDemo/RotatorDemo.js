@@ -10,21 +10,20 @@ import CodeBlock     from 'components/Code/CodeBlock';
 
 import React         from 'react';
 
-import styles        from './RotatorDemo.css';
-
 export default class RotatorDemo extends React.Component {
   static propTypes = {
-    children: React.PropTypes.any,
-    onlyOne:  React.PropTypes.bool,
+    children:   React.PropTypes.any,
+    onlyOne:    React.PropTypes.bool,
+    playground: React.PropTypes.bool,
   };
 
   static defaultProps = {
-    onlyOne: false,
+    onlyOne:    false,
+    playground: false,
   };
 
   state = {
-    showFull: false,
-    side:     {
+    side: {
       button:  'button',
       button2: 'button',
       form:    'signin',
@@ -34,8 +33,6 @@ export default class RotatorDemo extends React.Component {
   };
 
   listeners = {
-    launch:     this.launch.bind(this),
-    close:      this.close.bind(this),
     changeSide: {
       button:  this.changeSide.bind(this, 'button'),
       button2: this.changeSide.bind(this, 'button2'),
@@ -43,18 +40,6 @@ export default class RotatorDemo extends React.Component {
       promo:   this.changeSide.bind(this, 'promo'),
     },
   };
-
-  launch() {
-    this.setState({
-      showFull: true,
-    });
-  }
-
-  close() {
-    this.setState({
-      showFull: false,
-    });
-  }
 
   changeSide(name, value) {
     const side = this.state.side;
@@ -217,32 +202,13 @@ export default class RotatorDemo extends React.Component {
             </Code>
           </DemoCode>
         </Demo> }
-
-        { !onlyOne && <Demo
-          key   = "full"
-          text = { <span>Need more? Press the red button&nbsp;;)</span> }
-        >
-          { !this.state.showFull &&
-            <button
-              className = { styles.buttonLaunch }
-              onClick = { this.listeners.launch }
-            >
-              Launch
-            </button>
-          }
-          { this.state.showFull &&
+        { !onlyOne && <div>
+          { this.props.playground &&
             <DemoComponent fullscreen>
               <RotatorFull />
-              <button
-                className = { styles.buttonHide }
-                onClick = { this.listeners.close }
-              >
-                Hide
-              </button>
             </DemoComponent>
           }
-        </Demo> }
-
+        </div> }
       </div>
     );
   }

@@ -18,7 +18,7 @@ const Expander = () =>
     </Section>
 
     <Section>
-      <Article>
+      <Article accent>
         <h2>Demos</h2>
       </Article>
       <ExpanderDemo />
@@ -33,8 +33,8 @@ const Expander = () =>
               <th>Property</th>
               <th>Required</th>
               <th>Type</th>
-              <th>Default Value</th>
-              <th>Available Values</th>
+              <th>Default&nbsp;Value</th>
+              <th>Available&nbsp;Values</th>
               <th>Description</th>
             </tr>
           </thead>

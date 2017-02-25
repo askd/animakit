@@ -18,7 +18,7 @@ const Elastic = () =>
     </Section>
 
     <Section>
-      <Article>
+      <Article accent>
         <h2>Demos</h2>
       </Article>
       <ElasticDemo />
@@ -34,7 +34,7 @@ const Elastic = () =>
               <th>Required</th>
               <th>Type</th>
               <th>Default Value</th>
-              <th>Available Values</th>
+              <th>Available&nbsp;Values</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -51,7 +51,7 @@ const Elastic = () =>
               <td>easing</td>
               <td>false</td>
               <td>string</td>
-              <td><code>cubic-bezier(0.68, -0.55, 0.265, 1.55)</code></td>
+              <td><code>cubic-bezier (0.68,-0.55,0.265,1.55)</code></td>
               <td>Any <a href="http://easings.net/">easing function</a></td>
               <td>Easing function of animation</td>
             </tr>

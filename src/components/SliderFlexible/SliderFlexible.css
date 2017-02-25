@@ -36,12 +36,12 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 300px;
+  min-width: 200px;
   min-height: 200px;
 }
 
 .image {
-  max-width: 335px;
+  max-width: 300px;
 }
 
 .arrow {

@@ -17,7 +17,7 @@
   vertical-align: top;
   line-height: 18px;
   color: $color5;
-  border-bottom: 2px dotted;
+  border-bottom: 1px dotted;
 }
 
 .toggle {

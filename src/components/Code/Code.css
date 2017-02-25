@@ -1,9 +1,9 @@
 @import '../vars.css';
 
 .root {
-  max-width: 480px;
+  max-width: 400px;
   box-sizing: border-box;
-  padding: 20px;
+  padding: 10px 12px;
   background: #fff;
   color: $color0;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.125);

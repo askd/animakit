@@ -1,9 +1,24 @@
 @import '../vars.css';
 
 .root {
+  position: relative;
   padding: 20px 36px;
   background: $bgcolor;
-  border-top: 1px dotted rgba(0, 0, 0, 0.125);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -5px;
+    right: -5px;
+    bottom: 0;
+    box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.1), inset 0 0 5px rgba(0, 0, 0, 0.25);
+  }
+
+  & + & {
+    margin-top: 48px;
+  }
 }
 
 .text {
@@ -65,18 +80,29 @@
   width: 50%;
 }
 
-@media all and (max-width: 1023px) {
+@media all and (max-width: 900px) {
   .component {
     float: none;
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
     margin: 0 auto;
   }
 
   .code {
     float: none;
     width: 100%;
-    max-width: 480px;
+    max-width: 400px;
     margin: 36px auto 0;
   }
+}
+
+@media all and (max-width: $breakpoint) {
+  .root {
+    padding: 20px 12px;
+  }
+}
+
+@keyframes popup {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

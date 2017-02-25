@@ -60,13 +60,13 @@ export default class RotatorForm extends React.Component {
                 type        = "password"
                 placeholder = "Password"
               />
-              <button className = { styles.button }>Sign In</button>
               <span
                 className = { styles.link }
                 onClick   = { this.listeners.onClickPassRec }
               >
                 Forgot password?
               </span>
+              <button className = { styles.button }>Sign In</button>
             </div>
             <div
               className = { styles.formFooter }

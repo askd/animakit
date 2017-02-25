@@ -36,9 +36,10 @@ export default class ElasticDemo extends React.PureComponent {
               <CodeBlock>
                 {
 `  <Content>
-    <Article />
 
+    <Article />
     <Image />
+
   </Content>`
                 }
               </CodeBlock>

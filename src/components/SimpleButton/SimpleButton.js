@@ -2,6 +2,7 @@ import React from 'react';
 
 const SimpleButton = (props) =>
   <button
+    type = "button"
     className = { props.className }
     onClick   = { props.handleClick }
   >

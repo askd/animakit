@@ -1,8 +1,10 @@
 /* eslint global-require: "off" */
 
+require('static/favicon/favicon.svg');
+require('static/favicon/favicon.png');
+
 const images = {
-  favicon: require('static/favicon.png'),
-  good:    require('static/good.jpg'),
+  good: require('static/good.jpg'),
 };
 
 ['mercury', 'venus', 'earth', 'mars'].forEach(name => {

@@ -25,11 +25,11 @@ const Main = () =>
     </Section>
 
     <Section>
-      <Article centered>
-        <h2>Choose one to start</h2>
-        <p>
+      <Article  accent centered>
+        <h2>Choose you&nbsp;component</h2>
+        { /* <p>
           Try out the simple demo or click “Learn More” for more demos.
-        </p>
+        </p> */ }
       </Article>
 
       <nav className = { styles.nav }>
@@ -120,28 +120,6 @@ const Main = () =>
 
     <Section>
       <Article>
-        <h2>The reason to use</h2>
-        <p>
-          Animations draw attention to and explain changes on&nbsp;the&nbsp;page.
-        </p>
-        <p>
-          Changes in&nbsp;the&nbsp;state of&nbsp;an&nbsp;element,
-          revealing and hiding of&nbsp;content, or&nbsp;shifts to&nbsp;another area of&nbsp;content
-          are all common areas for&nbsp;transitional animations.
-        </p>
-        <p>
-          The word “animation” is derived from “anima”, the&nbsp;Latin word for&nbsp;soul or&nbsp;spirit.
-          The&nbsp;verb “to&nbsp;animate” literally means “to&nbsp;give life&nbsp;to”.
-        </p>
-        <p>
-          Adding transition effects helps you to&nbsp;enliven your website
-          and make&nbsp;it more pleasant to&nbsp;use.
-        </p>
-      </Article>
-    </Section>
-
-    <Section>
-      <Article>
         <h2>FAQ</h2>
 
         <dl>
@@ -152,7 +130,7 @@ const Main = () =>
 
           <dt>Could I request to add one more component to Animakit?</dt>
           <dd>
-            Yes. Feel free to leave an&nbsp;<a href="https://github.com/animakit/animakit-core/issues">issue</a> ;)
+            Yes. Feel free to leave an&nbsp;<a href="https://github.com/animakit/animakit/issues">issue</a> ;)
           </dd>
         </dl>
       </Article>

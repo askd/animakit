@@ -65,7 +65,7 @@ const config = {
         include: srcPath,
       },
       {
-        test:   /\.(jpg|png)$/,
+        test:   /\.(jpg|png|svg)$/,
         loader: 'file-loader?name=[name].[ext]',
       },
     ],

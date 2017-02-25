@@ -18,19 +18,34 @@
   }
 
   & p {
-    max-width: 600px;
+    max-width: 400px;
     margin: 20px auto 0;
   }
 
   & dl {
-    max-width: 600px;
+    max-width: 400px;
     margin: 0 auto;
-    line-height: 20px;
   }
 
   & dt {
+    position: relative;
     margin-top: 20px;
-    color: $color4;
+    color: $color0;
+
+    &::before {
+      content: '?';
+      position: absolute;
+      top: 0;
+      left: -36px;
+      width: 24px;
+      height: 24px;
+      background-color: $color5;
+      border-radius: 50%;
+      color: #fff;
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+    }
   }
 
   & dd {
@@ -67,13 +82,15 @@
   & table th {
     padding: 4px 8px;
     border: 1px solid #ddd;
-    color: $color5;
+    color: $color0;
+    font-weight: 400;
     text-align: left;
   }
 
   & table td {
     padding: 4px 8px;
     border: 1px solid #ddd;
+    font-size: 14px;
   }
 
   & code {
@@ -92,11 +109,20 @@
   }
 }
 
-.rootCentered {
-  composes: root;
+.rootAccent {
+  background-color: $color2;
+  color: #fff;
+}
 
+.rootCentered {
   & p {
     max-width: 100%;
     text-align: center;
+  }
+}
+
+@media all and (max-width: $breakpoint) {
+  .root {
+    padding: 24px 24px 36px;
   }
 }

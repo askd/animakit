@@ -18,7 +18,7 @@ const Slider = () =>
     </Section>
 
     <Section>
-      <Article>
+      <Article accent>
         <h2>Demos</h2>
       </Article>
       <SliderDemo />
@@ -33,8 +33,8 @@ const Slider = () =>
               <th>Property</th>
               <th>Required</th>
               <th>Type</th>
-              <th>Default Value</th>
-              <th>Available Values</th>
+              <th>Default&nbsp;Value</th>
+              <th>Available&nbsp;Values</th>
               <th>Description</th>
             </tr>
           </thead>
@@ -100,7 +100,7 @@ const Slider = () =>
               <td>easing</td>
               <td>false</td>
               <td>string</td>
-              <td><code>cubic-bezier(.165,.84,.44,1)</code></td>
+              <td><code>cubic-bezier (.165,.84,.44,1)</code></td>
               <td>Any <a href="http://easings.net/">easing function</a></td>
               <td>Easing function of animation</td>
             </tr>

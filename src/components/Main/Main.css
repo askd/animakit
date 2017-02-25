@@ -19,7 +19,6 @@
 
 .navHeading {
   padding: 24px 36px 16px;
-  border-top: 1px dotted rgba(0, 0, 0, 0.25);
 }
 
 .navTitle {
@@ -52,19 +51,16 @@
   padding: 10px 20px;
   line-height: 20px;
   text-decoration: none;
-
-  /*
-  transition: all 0.5s ease;
-  */
+  transition: box-shadow 0.25s ease-in-out;
 
   &::after {
     content: ' \2192';
   }
-}
 
-.navLink:hover .navMore,
-.navLink:focus .navMore {
-  /* * */
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  }
 }
 
 .navComponent {

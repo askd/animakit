@@ -2,7 +2,7 @@
 
 .root {
   position: absolute;
-  z-index: 12;
+  z-index: 10;
 
   /*
   width: 120px;
@@ -42,4 +42,10 @@
   top: 8px;
   left: 8px;
   pointer-events: none;
+}
+
+@media all and (max-width: $breakpoint) {
+  .root {
+    position: relative;
+  }
 }

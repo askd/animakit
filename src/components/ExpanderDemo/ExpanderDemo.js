@@ -248,6 +248,8 @@ export default class ExpanderDemo extends React.Component {
                 return (
                   <div key = { item }>
                     <CodeBlock>
+                      { (item === 'mars') ? '' : `
+` }
                       {
 `<Title onClick={toggle}>${item.charAt(0).toUpperCase() + item.slice(1)}</Title>`
                       }

@@ -9,10 +9,12 @@
   padding: 10px 20px;
   line-height: 20px;
   text-decoration: none;
+  transition: box-shadow 0.25s ease-in-out;
 
-  /*
-  transition: all 0.5s ease;
-  */
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  }
 
   &::after {
     content: '';
@@ -25,9 +27,4 @@
     background-repeat: no-repeat;
     background-size: 100% 100%;
   }
-}
-
-.navLink:hover .navMore,
-.navLink:focus .navMore {
-  /* * */
 }

@@ -1,9 +1,10 @@
 @import '../vars.css';
 
 .root {
+  position: relative;
   height: 100%;
   box-sizing: border-box;
-  padding: 40px 36px;
+  padding: 36px;
   background-color: #fff;
   color: $color0;
 }
@@ -41,4 +42,60 @@
 .button {
   margin-top: 24px;
   text-align: center;
+}
+
+.whyButton {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  margin: 0 0 0 112px;
+  width: 72px;
+  height: 72px;
+  padding: 28px 0;
+  appearance: none;
+  box-shadow: none;
+  border: none;
+  border-radius: 50%;
+  outline: none;
+  background-color: $color2;
+  color: #fff;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  cursor: pointer;
+  transition: box-shadow 0.25s ease-in-out;
+
+  &:focus,
+  &:hover {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.25);
+  }
+}
+
+.whyPopup {
+  position: fixed;
+  z-index: 11;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 64px 0;
+  background: $color2;
+  animation: popup 0.25s ease-in 1;
+}
+
+@media all and (max-width: $breakpoint) {
+  .root {
+    padding: 24px;
+  }
+
+  .rootInner {
+    margin-top: -24px;
+    padding-top: 0;
+  }
+}
+
+@keyframes popup {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }

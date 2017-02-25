@@ -2,11 +2,12 @@
 
 .root {
   position: relative;
-  width: 370px;
+  width: 250px;
 }
 
 .item {
   border-left: 10px solid;
+  line-height: 0;
 }
 
 .itemCollapsed {
@@ -39,7 +40,7 @@
 
 .header {
   position: relative;
-  width: 360px;
+  width: 240px;
   height: 40px;
   box-sizing: border-box;
   padding: 10px;
@@ -50,8 +51,8 @@
 
 .image {
   position: relative;
-  width: 360px;
-  height: 360px;
+  width: 240px;
+  height: 240px;
   transform: scale(0);
   animation: expandImage;
   animation-duration: 0.5s;

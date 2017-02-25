@@ -2,7 +2,7 @@
 
 .root {
   position: relative;
-  width: 400px;
+  width: 360px;
 }
 
 .nav {
@@ -15,10 +15,10 @@
 
 .slide {
   position: relative;
-  width: 400px;
-  height: 180px;
+  width: 360px;
+  height: 160px;
   box-sizing: border-box;
-  padding: 20px 80px;
+  padding: 20px 60px;
   color: #fff;
   text-align: center;
 

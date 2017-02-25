@@ -1,7 +1,9 @@
 import React        from 'react';
 
 import Logo         from 'components/Logo/Logo';
+import Article      from 'components/Article/Article';
 import GithubButton from 'components/GithubButton/GithubButton';
+import CloseButton  from 'components/CloseButton/CloseButton';
 
 import styles from './Intro.css';
 
@@ -13,6 +15,27 @@ export default class Intro extends React.PureComponent {
   static defaultProps = {
     component: '',
   };
+
+  state = {
+    why: false,
+  };
+
+  listeners = {
+    showWhy: this.showWhy.bind(this),
+    hideWhy: this.hideWhy.bind(this),
+  };
+
+  showWhy() {
+    this.setState({
+      why: true,
+    });
+  }
+
+  hideWhy() {
+    this.setState({
+      why: false,
+    });
+  }
 
   render() {
     const { component } = this.props;
@@ -76,6 +99,43 @@ export default class Intro extends React.PureComponent {
         <div className = { styles.button }>
           <GithubButton component = {component} />
         </div>
+
+        { isMainPage && !this.state.why &&
+          <button
+            type = "button"
+            className = { styles.whyButton }
+            onClick = { this.listeners.showWhy }
+          >
+            Why?
+          </button>
+        }
+
+        { isMainPage && this.state.why &&
+          <div className = { styles.whyPopup }>
+            <Article accent>
+              <h2>Why Animakit</h2>
+              <p>
+                Animations draw attention to and explain changes on&nbsp;the&nbsp;page.
+              </p>
+              <p>
+                Changes in&nbsp;the&nbsp;state of&nbsp;an&nbsp;element,
+                revealing and hiding of&nbsp;content, or&nbsp;shifts to&nbsp;another area of&nbsp;content
+                are all common areas for&nbsp;transitional animations.
+              </p>
+              <p>
+                The word “animation” is derived from “anima”, the&nbsp;Latin word for&nbsp;soul or&nbsp;spirit.
+                The&nbsp;verb “to&nbsp;animate” literally means “to&nbsp;give life&nbsp;to”.
+              </p>
+              <p>
+                Adding transition effects helps you to&nbsp;enliven your website
+                and make&nbsp;it more pleasant to&nbsp;use.
+              </p>
+            </Article>
+            <CloseButton
+              handleClick = { this.listeners.hideWhy }
+            />
+          </div>
+        }
       </div>
     );
   }
