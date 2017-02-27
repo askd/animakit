@@ -1,32 +1,15 @@
 import React  from 'react';
 
 export default class Dotnav extends React.Component {
-  static propTypes = {
-    withArrows:   React.PropTypes.bool,
-    count:        React.PropTypes.number,
-    index:        React.PropTypes.number,
-    handleChange: React.PropTypes.func,
-    classes:      React.PropTypes.shape({
-      dots:      React.PropTypes.string,
-      dot:       React.PropTypes.string,
-      dotActive: React.PropTypes.string,
-      arrowPrev: React.PropTypes.string,
-      arrowNext: React.PropTypes.string,
-    }),
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    withArrows: false,
-    count:      0,
-    index:      0,
-    classes:    {
-      dots:      'DotNav-dots',
-      dot:       'DotNav-dot',
-      dotActive: 'DotNav-dot_active',
-      arrowPrev: 'DotNav-arrow_prev',
-      arrowNext: 'DotNav-arrow_next',
-    },
-  };
+    this.listeners = {
+      setIndex:    [],
+      onClickPrev: this.onClickPrev.bind(this),
+      onClickNext: this.onClickNext.bind(this),
+    };
+  }
 
   componentWillMount() {
     const count = this.props.count;
@@ -50,12 +33,6 @@ export default class Dotnav extends React.Component {
   setIndex(index) {
     this.props.handleChange(index);
   }
-
-  listeners = {
-    setIndex:    [],
-    onClickPrev: this.onClickPrev.bind(this),
-    onClickNext: this.onClickNext.bind(this),
-  };
 
   render() {
     if (this.props.count < 2) return null;
@@ -89,3 +66,30 @@ export default class Dotnav extends React.Component {
     );
   }
 }
+
+Dotnav.propTypes = {
+  withArrows:   React.PropTypes.bool,
+  count:        React.PropTypes.number,
+  index:        React.PropTypes.number,
+  handleChange: React.PropTypes.func,
+  classes:      React.PropTypes.shape({
+    dots:      React.PropTypes.string,
+    dot:       React.PropTypes.string,
+    dotActive: React.PropTypes.string,
+    arrowPrev: React.PropTypes.string,
+    arrowNext: React.PropTypes.string,
+  }),
+};
+
+Dotnav.defaultProps = {
+  withArrows: false,
+  count:      0,
+  index:      0,
+  classes:    {
+    dots:      'DotNav-dots',
+    dot:       'DotNav-dot',
+    dotActive: 'DotNav-dot_active',
+    arrowPrev: 'DotNav-arrow_prev',
+    arrowNext: 'DotNav-arrow_next',
+  },
+};

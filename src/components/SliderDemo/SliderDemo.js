@@ -12,36 +12,31 @@ import CodeBlock      from 'components/Code/CodeBlock';
 import React          from 'react';
 
 export default class SliderDemo extends React.PureComponent {
-  static propTypes = {
-    children: React.PropTypes.any,
-    onlyOne:  React.PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    onlyOne: false,
-  };
+    this.state = {
+      slide: {
+        simple:   'mars',
+        flexible: 0,
+        color:    'one-two',
+        vertical: 'mars',
+        timer:    ['0', '0', '0', '0', '0', '0'],
+      },
+      slideChanged:   null,
+      indexesChanged: null,
+    };
 
-  state = {
-    slide: {
-      simple:   'mars',
-      flexible: 0,
-      color:    'one-two',
-      vertical: 'mars',
-      timer:    ['0', '0', '0', '0', '0', '0'],
-    },
-    slideChanged:   null,
-    indexesChanged: null,
-  };
-
-  listeners = {
-    changeSlide: {
-      flexible: this.changeSlide.bind(this, 'flexible'),
-      simple:   this.changeSlide.bind(this, 'simple'),
-      color:    this.changeSlide.bind(this, 'color'),
-      vertical: this.changeSlide.bind(this, 'vertical'),
-      timer:    this.changeSlide.bind(this, 'timer'),
-    },
-  };
+    this.listeners = {
+      changeSlide: {
+        flexible: this.changeSlide.bind(this, 'flexible'),
+        simple:   this.changeSlide.bind(this, 'simple'),
+        color:    this.changeSlide.bind(this, 'color'),
+        vertical: this.changeSlide.bind(this, 'vertical'),
+        timer:    this.changeSlide.bind(this, 'timer'),
+      },
+    };
+  }
 
   changeSlide(name, value) {
     const slide = { ...this.state.slide };
@@ -249,3 +244,12 @@ export default class SliderDemo extends React.PureComponent {
     );
   }
 }
+
+SliderDemo.propTypes = {
+  children: React.PropTypes.any,
+  onlyOne:  React.PropTypes.bool,
+};
+
+SliderDemo.defaultProps = {
+  onlyOne: false,
+};

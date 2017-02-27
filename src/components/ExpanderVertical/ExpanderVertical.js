@@ -5,21 +5,21 @@ import React            from 'react';
 import styles           from './ExpanderVertical.css';
 
 export default class ExpanderVertical extends React.Component {
-  static propTypes = {
-    handleChangeExpanded: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    expanded: false,
-  };
+    this.state = {
+      expanded: false,
+    };
+
+    this.listeners = {
+      onClick: this.onClick.bind(this),
+    };
+  }
 
   onClick() {
     this.toggleExpanded();
   }
-
-  listeners = {
-    onClick: this.onClick.bind(this),
-  };
 
   toggleExpanded() {
     const expanded = !this.state.expanded;
@@ -66,3 +66,7 @@ export default class ExpanderVertical extends React.Component {
     );
   }
 }
+
+ExpanderVertical.propTypes = {
+  handleChangeExpanded: React.PropTypes.func,
+};

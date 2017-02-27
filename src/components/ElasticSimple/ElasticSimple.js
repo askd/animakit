@@ -9,19 +9,20 @@ import pathToImage     from 'utils/path-to-image';
 import styles          from './ElasticSimple.css';
 
 export default class ElasticSimple extends React.Component {
-  static propTypes = {
-    onlyHorizontal: React.PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    onlyHorizontal: false,
-  };
+    this.state = {
+      show:      true,
+      showText:  false,
+      showImage: false,
+    };
 
-  state = {
-    show:      true,
-    showText:  false,
-    showImage: false,
-  };
+    this.listeners = {
+      onToggleImage: this.onToggleImage.bind(this),
+      onToggleText:  this.onToggleText.bind(this),
+    };
+  }
 
   /* componentDidMount() {
     setTimeout(() => {
@@ -40,11 +41,6 @@ export default class ElasticSimple extends React.Component {
     const showText = !this.state.showText;
     this.setState({ showText });
   }
-
-  listeners = {
-    onToggleImage: this.onToggleImage.bind(this),
-    onToggleText:  this.onToggleText.bind(this),
-  };
 
   render() {
     return (
@@ -77,3 +73,11 @@ export default class ElasticSimple extends React.Component {
     );
   }
 }
+
+ElasticSimple.propTypes = {
+  onlyHorizontal: React.PropTypes.bool,
+};
+
+ElasticSimple.defaultProps = {
+  onlyHorizontal: false,
+};

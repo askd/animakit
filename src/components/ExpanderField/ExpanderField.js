@@ -4,16 +4,21 @@ import React            from 'react';
 import styles           from './ExpanderField.css';
 
 export default class ExpanderField extends React.Component {
-  static propTypes = {
-    handleChangeExpanded: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    expanded: {
-      error: false,
-      other: false,
-    },
-  };
+    this.state = {
+      expanded: {
+        error: false,
+        other: false,
+      },
+    };
+
+    this.listeners = {
+      onKeyUp:  this.onKeyUp.bind(this),
+      onChange: this.onChange.bind(this),
+    };
+  }
 
   onKeyUp(event) {
     const value = event.target.value;
@@ -24,11 +29,6 @@ export default class ExpanderField extends React.Component {
   onChange(event) {
     this.toggleExpanded('other', event.target.value === 'Yes');
   }
-
-  listeners = {
-    onKeyUp:  this.onKeyUp.bind(this),
-    onChange: this.onChange.bind(this),
-  };
 
   toggleExpanded(name, value) {
     if (this.state.expanded[name] === value) return;
@@ -115,3 +115,7 @@ export default class ExpanderField extends React.Component {
     );
   }
 }
+
+ExpanderField.propTypes = {
+  handleChangeExpanded: React.PropTypes.func,
+};

@@ -5,11 +5,14 @@
   vertical-align: top;
   border: 3px dotted $color4;
   border-radius: 10px;
-  max-width: 434px;
 }
 
-.text h2 {
-  color: $color4;
+.text {
+  max-width: 225px;
+
+  & h2 {
+    color: $color4;
+  }
 }
 
 .more {
@@ -25,7 +28,7 @@
 
 .content {
   display: flex;
-  margin: 12px 15px;
+  margin: 7px 10px 7px 15px;
 }
 
 .image {
@@ -45,7 +48,7 @@
 .imageVisible {
   composes: image;
   width: 135px;
-  margin-left: 8px;
+  margin-left: 9px;
 
   & .more {
     margin-right: 10px;

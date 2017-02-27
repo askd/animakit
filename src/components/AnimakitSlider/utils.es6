@@ -1,0 +1,1 @@
+../../../../animakit-slider/lib/utils.es6

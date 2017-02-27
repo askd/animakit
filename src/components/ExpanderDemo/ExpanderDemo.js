@@ -13,43 +13,38 @@ import React             from 'react';
 
 
 export default class ExpanderDemo extends React.Component {
-  static propTypes = {
-    children: React.PropTypes.any,
-    onlyOne:  React.PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    onlyOne: false,
-  };
-
-  state = {
-    expanded: {
-      simple: false,
-      smooth: true,
-      field:  {
-        error: false,
-        other: false,
+    this.state = {
+      expanded: {
+        simple: false,
+        smooth: true,
+        field:  {
+          error: false,
+          other: false,
+        },
+        vertical:  false,
+        accordion: {
+          mars:    false,
+          earth:   false,
+          venus:   false,
+          mercury: false,
+        },
       },
-      vertical:  false,
-      accordion: {
-        mars:    false,
-        earth:   false,
-        venus:   false,
-        mercury: false,
-      },
-    },
-    expandedChanged: null,
-  };
+      expandedChanged: null,
+    };
 
-  listeners = {
-    changeExpanded: {
-      simple:    this.changeExpanded.bind(this, 'simple'),
-      smooth:    this.changeExpanded.bind(this, 'smooth'),
-      field:     this.changeExpanded.bind(this, 'field'),
-      vertical:  this.changeExpanded.bind(this, 'vertical'),
-      accordion: this.changeExpanded.bind(this, 'accordion'),
-    },
-  };
+    this.listeners = {
+      changeExpanded: {
+        simple:    this.changeExpanded.bind(this, 'simple'),
+        smooth:    this.changeExpanded.bind(this, 'smooth'),
+        field:     this.changeExpanded.bind(this, 'field'),
+        vertical:  this.changeExpanded.bind(this, 'vertical'),
+        accordion: this.changeExpanded.bind(this, 'accordion'),
+      },
+    };
+  }
 
   changeExpanded(name, value) {
     const expanded = { ...this.state.expanded };
@@ -280,3 +275,12 @@ export default class ExpanderDemo extends React.Component {
     );
   }
 }
+
+ExpanderDemo.propTypes = {
+  children: React.PropTypes.any,
+  onlyOne:  React.PropTypes.bool,
+};
+
+ExpanderDemo.defaultProps = {
+  onlyOne: false,
+};

@@ -1,26 +1,26 @@
+import React from 'react';
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import React          from 'react';
-import Dotnav         from 'components/Dotnav/Dotnav';
+import Dotnav from 'components/Dotnav/Dotnav';
 
-import pathToImage    from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles   from 'components/Dotnav/Dotnav.css';
-import styles         from './SliderFlexible.css';
+import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import styles from './SliderFlexible.css';
 
 export default class SliderFlexible extends React.Component {
-  static propTypes = {
-    slidesCount:       React.PropTypes.number,
-    handleChangeSlide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    slidesCount: 11,
-  };
+    this.state = {
+      slide: 0,
+    };
 
-  state = {
-    slide: 0,
-  };
+    this.listeners = {
+      onClick: this.onClick.bind(this),
+      setSlide: this.setSlide.bind(this),
+    };
+  }
 
   onClick() {
     let slide = this.state.slide;
@@ -34,19 +34,14 @@ export default class SliderFlexible extends React.Component {
     this.props.handleChangeSlide(slide);
   }
 
-  listeners = {
-    onClick:  this.onClick.bind(this),
-    setSlide: this.setSlide.bind(this),
-  };
-
   render() {
     return (
-      <div className = { styles.root }>
-        <div className = { styles.title }>
+      <div className={ styles.root }>
+        <div className={ styles.title }>
           Photos by <a href="https://www.flickr.com/photos/nasacommons">NASA on The Commons</a>
         </div>
         <div
-          className = { styles.content }
+          className={ styles.content }
           onClick = { this.listeners.onClick }
         >
           <AnimakitSlider
@@ -59,13 +54,13 @@ export default class SliderFlexible extends React.Component {
               const image = (i < 10) ? `0${i}` : i;
               return (
                 <div
-                  key       = { i }
-                  className = { styles.slide }
+                  key={ i }
+                  className={ styles.slide }
                 >
                   <img
-                    className = { styles.image }
-                    src = {pathToImage(`nasa${image}`)}
-                    alt = ""
+                    className={ styles.image }
+                    src={pathToImage(`nasa${image}`)}
+                    alt=""
                   />
                 </div>
               );
@@ -74,12 +69,12 @@ export default class SliderFlexible extends React.Component {
         </div>
         <Dotnav
           withArrows
-          count = { this.props.slidesCount }
-          index = { this.state.slide }
-          handleChange = { this.listeners.setSlide }
-          classes = {{
-            dots:      `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsHighlighted}`,
-            dot:       dotnavStyles.dot,
+          count={ this.props.slidesCount }
+          index={ this.state.slide }
+          handleChange={ this.listeners.setSlide }
+          classes={{
+            dots: `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsHighlighted}`,
+            dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
             arrowPrev: `${styles.arrowPrev} ${dotnavStyles.arrowPrev}`,
             arrowNext: `${styles.arrowNext} ${dotnavStyles.arrowNext}`,
@@ -89,3 +84,12 @@ export default class SliderFlexible extends React.Component {
     );
   }
 }
+
+SliderFlexible.propTypes = {
+  slidesCount: React.PropTypes.number,
+  handleChangeSlide: React.PropTypes.func,
+};
+
+SliderFlexible.defaultProps = {
+  slidesCount: 11,
+};

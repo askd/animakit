@@ -1,9 +1,9 @@
-import React    from 'react';
+import React from 'react';
 
 import BackLink from 'components/BackLink/BackLink';
-import Main     from 'components/Main/Main';
+import Main from 'components/Main/Main';
 
-import styles   from './App.css';
+import styles from './App.css';
 
 const App = (props) => {
   const navLen = props.routes.length;
@@ -24,7 +24,7 @@ const App = (props) => {
 
 App.propTypes = {
   children: React.PropTypes.any,
-  routes:   React.PropTypes.array,
+  routes: React.PropTypes.array,
 };
 
 export default App;

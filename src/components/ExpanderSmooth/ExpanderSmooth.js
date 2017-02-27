@@ -6,15 +6,20 @@ import SimpleText       from 'components/SimpleText/SimpleText';
 import styles           from './ExpanderSmooth.css';
 
 export default class ExpanderSmooth extends React.Component {
-  static propTypes = {
-    handleChangeExpanded: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    show:     true,
-    expanded: true,
-    showMore: false,
-  };
+    this.state = {
+      show:     true,
+      expanded: true,
+      showMore: false,
+    };
+
+    this.listeners = {
+      onClick:      this.onClick.bind(this),
+      onToggleText: this.onToggleText.bind(this),
+    };
+  }
 
   componentDidMount() {
     /* setTimeout(() => {
@@ -32,11 +37,6 @@ export default class ExpanderSmooth extends React.Component {
     const showMore = !this.state.showMore;
     this.setState({ showMore });
   }
-
-  listeners = {
-    onClick:      this.onClick.bind(this),
-    onToggleText: this.onToggleText.bind(this),
-  };
 
   toggleExpanded() {
     const expanded = !this.state.expanded;
@@ -66,3 +66,7 @@ export default class ExpanderSmooth extends React.Component {
     );
   }
 }
+
+ExpanderSmooth.propTypes = {
+  handleChangeExpanded: React.PropTypes.func,
+};

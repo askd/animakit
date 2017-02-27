@@ -7,23 +7,22 @@ import pathToImage      from 'utils/path-to-image';
 import styles           from './ExpanderAccordion.css';
 
 export default class ExpanderAccordion extends React.Component {
-  static propTypes = {
-    items:                React.PropTypes.array,
-    handleChangeExpanded: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    items: ['mars', 'earth', 'venus', 'mercury'],
-  };
+    this.state = {
+      expanded: {
+        mars:    false,
+        earth:   false,
+        venus:   false,
+        mercury: false,
+      },
+    };
 
-  state = {
-    expanded: {
-      mars:    false,
-      earth:   false,
-      venus:   false,
-      mercury: false,
-    },
-  };
+    this.listeners = {
+      onClick: {},
+    };
+  }
 
   componentWillMount() {
     this.props.items.forEach(item => {
@@ -34,10 +33,6 @@ export default class ExpanderAccordion extends React.Component {
   onClick(name) {
     this.toggleExpanded(name);
   }
-
-  listeners = {
-    onClick: {},
-  };
 
   toggleExpanded(name) {
     const expanded = { ...this.state.expanded };
@@ -92,3 +87,12 @@ export default class ExpanderAccordion extends React.Component {
     );
   }
 }
+
+ExpanderAccordion.propTypes = {
+  items:                React.PropTypes.array,
+  handleChangeExpanded: React.PropTypes.func,
+};
+
+ExpanderAccordion.defaultProps = {
+  items: ['mars', 'earth', 'venus', 'mercury'],
+};

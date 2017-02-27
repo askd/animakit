@@ -1,9 +1,9 @@
-import React    from 'react';
+import React from 'react';
 
-import styles   from './Logo.css';
+import styles from './Logo.css';
 
 const Logo = (props) =>
-  <div className = { `${styles.logo} ${props.className}` } />
+  <div className={ `${styles.logo} ${props.className}` } />
 ;
 
 Logo.propTypes = {

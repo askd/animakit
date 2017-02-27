@@ -1,4 +1,4 @@
-import React  from 'react';
+import React from 'react';
 
 import styles from './Article.css';
 
@@ -7,7 +7,7 @@ const Article = (props) => {
   if (props.accent) className += ` ${styles.rootAccent}`;
   if (props.centered) className += ` ${styles.rootCentered}`;
   return (
-    <article className = { className }>
+    <article className={ className }>
       { props.children }
     </article>
   );
@@ -15,7 +15,7 @@ const Article = (props) => {
 
 Article.propTypes = {
   children: React.PropTypes.any,
-  accent:   React.PropTypes.bool,
+  accent: React.PropTypes.bool,
   centered: React.PropTypes.bool,
 };
 

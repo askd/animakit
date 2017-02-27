@@ -9,34 +9,24 @@ import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles          from './RotatorPromo.css';
 
 export default class RotatorPromo extends React.Component {
-  static propTypes = {
-    sides:            React.PropTypes.array,
-    handleChangeSide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    sides: [
-      'mars',
-      'earth',
-      'venus',
-      'mercury',
-    ],
-  };
+    this.state = {
+      index: 0,
+      side:  'mars',
+    };
 
-  state = {
-    index: 0,
-    side:  'mars',
-  };
+    this.listeners = {
+      setSide: this.setSide.bind(this),
+    };
+  }
 
   setSide(index) {
     const side = this.props.sides[index];
     this.setState({ index, side });
     this.props.handleChangeSide(side);
   }
-
-  listeners = {
-    setSide: this.setSide.bind(this),
-  };
 
   render() {
     return (
@@ -124,3 +114,17 @@ export default class RotatorPromo extends React.Component {
     );
   }
 }
+
+RotatorPromo.propTypes = {
+  sides:            React.PropTypes.array,
+  handleChangeSide: React.PropTypes.func,
+};
+
+RotatorPromo.defaultProps = {
+  sides: [
+    'mars',
+    'earth',
+    'venus',
+    'mercury',
+  ],
+};

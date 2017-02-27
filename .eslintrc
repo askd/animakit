@@ -1,16 +1,7 @@
 {
-  "extends": "airbnb",
+  "extends": ["eslint:recommended", "plugin:react/recommended", "airbnb-base"],
   "parser": "babel-eslint",
   "rules": {
-    "max-len": [2, 120, 2],
-    "no-multi-spaces": 0,
-    "key-spacing": [2, {
-      "beforeColon": false,
-      "afterColon": true,
-      "align": "value"
-    }],
-    "react/jsx-equals-spacing": 0,
-    "react/jsx-curly-spacing": 0,
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx", ".es6"] }],
     "import/no-unresolved": 0,
     "import/no-extraneous-dependencies": 0

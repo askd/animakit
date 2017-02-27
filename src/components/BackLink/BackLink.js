@@ -1,17 +1,17 @@
-import React    from 'react';
+import React from 'react';
 import { Link } from 'react-router';
 
-import Logo     from 'components/Logo/Logo';
+import Logo from 'components/Logo/Logo';
 
-import styles   from './BackLink.css';
+import styles from './BackLink.css';
 
 const BackLink = (props) =>
-  <div className = { styles.root }>
+  <div className={ styles.root }>
     <Link
-      to = {props.to}
-      className = { styles.link }
+      to={props.to}
+      className={ styles.link }
     />
-    <Logo className = { styles.logo } />
+    <Logo className={ styles.logo } />
   </div>
 ;
 

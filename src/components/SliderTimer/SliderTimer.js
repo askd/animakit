@@ -5,17 +5,22 @@ import React          from 'react';
 import styles         from './SliderTimer.css';
 
 export default class SliderTimer extends React.Component {
-  static propTypes = {
-    handleChangeSlide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    slides: [0, 0, 0, 0, 0, 0],
-  };
+    this.state = {
+      slides: [0, 0, 0, 0, 0, 0],
+    };
 
-  animActive = false; // eslint-disable-line
-  animInterval = false;
-  animRAF = false;
+    this.animActive = false; // eslint-disable-line
+    this.animInterval = false;
+    this.animRAF = false;
+
+    this.listeners = {
+      setTime:            this.setTime.bind(this),
+      onVisibilityChange: this.onVisibilityChange.bind(this),
+    };
+  }
 
   componentDidMount() {
     this.startAnimation();
@@ -79,11 +84,6 @@ export default class SliderTimer extends React.Component {
     this.setState({ slides });
   }
 
-  listeners = {
-    setTime:            this.setTime.bind(this),
-    onVisibilityChange: this.onVisibilityChange.bind(this),
-  };
-
   render() {
     const digits10 = Array.from(Array(10).keys());
     const digits6 = Array.from(Array(6).keys());
@@ -119,3 +119,7 @@ export default class SliderTimer extends React.Component {
     );
   }
 }
+
+SliderTimer.propTypes = {
+  handleChangeSlide: React.PropTypes.func,
+};

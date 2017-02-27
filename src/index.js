@@ -1,12 +1,12 @@
-import React                          from 'react';
+import React from 'react';
 import { Router, Route, hashHistory } from 'react-router';
-import { render }                     from 'react-dom';
+import { render } from 'react-dom';
 
-import App                            from 'components/App/App';
-import Rotator                        from 'components/Rotator/Rotator';
-import Expander                       from 'components/Expander/Expander';
-import Elastic                        from 'components/Elastic/Elastic';
-import Slider                         from 'components/Slider/Slider';
+import App from 'components/App/App';
+import Rotator from 'components/Rotator/Rotator';
+import Expander from 'components/Expander/Expander';
+import Elastic from 'components/Elastic/Elastic';
+import Slider from 'components/Slider/Slider';
 
 import './reset.css';
 

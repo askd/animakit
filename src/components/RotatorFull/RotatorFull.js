@@ -4,31 +4,40 @@ import React           from 'react';
 import styles          from './RotatorFull.css';
 
 export default class RotatorFull extends React.Component {
-  static propTypes = {
-    minSidesCount: React.PropTypes.number,
-    maxSidesCount: React.PropTypes.number,
-    minZoom:       React.PropTypes.number,
-    maxZoom:       React.PropTypes.number,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    minSidesCount: 2,
-    maxSidesCount: 6,
-    minZoom:       1,
-    maxZoom:       3,
-  };
+    this.state = {
+      axis:       'X',
+      side:       0,
+      sidesCount: 2,
+      zoom:       1,
+      back:       true,
+      shadow:     true,
+      duration:   1000,
+      durationIn: 1000,
+      easing:     'cubic-bezier(.175,.885,.32,1.275)', // 'cubic-bezier(.45,-0.67,.53,1.63)',
+    };
 
-  state = {
-    axis:       'X',
-    side:       0,
-    sidesCount: 2,
-    zoom:       1,
-    back:       true,
-    shadow:     true,
-    duration:   1000,
-    durationIn: 1000,
-    easing:     'cubic-bezier(.175,.885,.32,1.275)', // 'cubic-bezier(.45,-0.67,.53,1.63)',
-  };
+    this.isKeyDownInput = false;
+
+    this.listeners = {
+      nextSide:      this.nextSide.bind(this),
+      prevSide:      this.prevSide.bind(this),
+      addSide:       this.addSide.bind(this),
+      removeSide:    this.removeSide.bind(this),
+      setBack:       this.setBack.bind(this),
+      setShadow:     this.setShadow.bind(this),
+      setAxis:       this.setAxis.bind(this),
+      zoomIn:        this.zoomIn.bind(this),
+      zoomOut:       this.zoomOut.bind(this),
+      setDuration:   this.setDuration.bind(this),
+      resetDuration: this.resetDuration.bind(this),
+      setEasing:     this.setEasing.bind(this),
+      keyDown:       this.keyDown.bind(this),
+      keyDownInput:  this.keyDownInput.bind(this),
+    };
+  }
 
   componentDidMount() {
     document.addEventListener('keydown', this.listeners.keyDown);
@@ -74,25 +83,6 @@ export default class RotatorFull extends React.Component {
       });
     }
   }
-
-  isKeyDownInput = false;
-
-  listeners = {
-    nextSide:      this.nextSide.bind(this),
-    prevSide:      this.prevSide.bind(this),
-    addSide:       this.addSide.bind(this),
-    removeSide:    this.removeSide.bind(this),
-    setBack:       this.setBack.bind(this),
-    setShadow:     this.setShadow.bind(this),
-    setAxis:       this.setAxis.bind(this),
-    zoomIn:        this.zoomIn.bind(this),
-    zoomOut:       this.zoomOut.bind(this),
-    setDuration:   this.setDuration.bind(this),
-    resetDuration: this.resetDuration.bind(this),
-    setEasing:     this.setEasing.bind(this),
-    keyDown:       this.keyDown.bind(this),
-    keyDownInput:  this.keyDownInput.bind(this),
-  };
 
   nextSide() {
     let side = this.state.side + 1;
@@ -323,3 +313,17 @@ export default class RotatorFull extends React.Component {
     );
   }
 }
+
+RotatorFull.propTypes = {
+  minSidesCount: React.PropTypes.number,
+  maxSidesCount: React.PropTypes.number,
+  minZoom:       React.PropTypes.number,
+  maxZoom:       React.PropTypes.number,
+};
+
+RotatorFull.defaultProps = {
+  minSidesCount: 2,
+  maxSidesCount: 6,
+  minZoom:       1,
+  maxZoom:       3,
+};

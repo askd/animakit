@@ -5,18 +5,6 @@ import React             from 'react';
 import styles            from './Code.css';
 
 export default class CodeBlock extends React.PureComponent {
-  static propTypes = {
-    highlight:   React.PropTypes.bool,
-    language:    React.PropTypes.string,
-    blink:       React.PropTypes.bool,
-    blinkActive: React.PropTypes.bool,
-    children:    React.PropTypes.any,
-  };
-
-  static defaultProps = {
-    language: 'xml',
-  };
-
   render() {
     if (this.props.highlight) {
       let className = styles.blockHightlight;
@@ -42,3 +30,15 @@ export default class CodeBlock extends React.PureComponent {
     );
   }
 }
+
+CodeBlock.propTypes = {
+  highlight:   React.PropTypes.bool,
+  language:    React.PropTypes.string,
+  blink:       React.PropTypes.bool,
+  blinkActive: React.PropTypes.bool,
+  children:    React.PropTypes.any,
+};
+
+CodeBlock.defaultProps = {
+  language: 'xml',
+};

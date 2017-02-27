@@ -9,34 +9,24 @@ import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderVertical.css';
 
 export default class SliderVertical extends React.Component {
-  static propTypes = {
-    slides:            React.PropTypes.array,
-    handleChangeSlide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    slides: [
-      'mars',
-      'earth',
-      'venus',
-      'mercury',
-    ],
-  };
+    this.state = {
+      index: 0,
+      slide: 'mars',
+    };
 
-  state = {
-    index: 0,
-    slide: 'mars',
-  };
+    this.listeners = {
+      setSlide: this.setSlide.bind(this),
+    };
+  }
 
   setSlide(index) {
     const slide = this.props.slides[index];
     this.setState({ index, slide });
     this.props.handleChangeSlide(slide);
   }
-
-  listeners = {
-    setSlide: this.setSlide.bind(this),
-  };
 
   render() {
     return (
@@ -123,3 +113,17 @@ export default class SliderVertical extends React.Component {
     );
   }
 }
+
+SliderVertical.propTypes = {
+  slides:            React.PropTypes.array,
+  handleChangeSlide: React.PropTypes.func,
+};
+
+SliderVertical.defaultProps = {
+  slides: [
+    'mars',
+    'earth',
+    'venus',
+    'mercury',
+  ],
+};

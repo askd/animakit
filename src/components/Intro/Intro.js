@@ -8,22 +8,18 @@ import CloseButton  from 'components/CloseButton/CloseButton';
 import styles from './Intro.css';
 
 export default class Intro extends React.PureComponent {
-  static propTypes = {
-    component: React.PropTypes.string,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    component: '',
-  };
+    this.state = {
+      why: false,
+    };
 
-  state = {
-    why: false,
-  };
-
-  listeners = {
-    showWhy: this.showWhy.bind(this),
-    hideWhy: this.hideWhy.bind(this),
-  };
+    this.listeners = {
+      showWhy: this.showWhy.bind(this),
+      hideWhy: this.hideWhy.bind(this),
+    };
+  }
 
   showWhy() {
     this.setState({
@@ -140,3 +136,11 @@ export default class Intro extends React.PureComponent {
     );
   }
 }
+
+Intro.propTypes = {
+  component: React.PropTypes.string,
+};
+
+Intro.defaultProps = {
+  component: '',
+};

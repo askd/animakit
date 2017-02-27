@@ -7,35 +7,24 @@ import dotnavStyles   from 'components/Dotnav/Dotnav.css';
 import styles         from './SliderColor.css';
 
 export default class SliderColor extends React.Component {
-  static propTypes = {
-    slides:            React.PropTypes.array,
-    handleChangeSlide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    slides: [
-      'one-two',
-      'three-four',
-      'five-six',
-      'seven-eight',
-      'nine-ten',
-    ],
-  };
+    this.state = {
+      index: 0,
+      slide: 'one-two',
+    };
 
-  state = {
-    index: 0,
-    slide: 'one-two',
-  };
+    this.listeners = {
+      setSlide: this.setSlide.bind(this),
+    };
+  }
 
   setSlide(index) {
     const slide = this.props.slides[index];
     this.setState({ index, slide });
     this.props.handleChangeSlide(slide);
   }
-
-  listeners = {
-    setSlide: this.setSlide.bind(this),
-  };
 
   render() {
     const titles = [
@@ -85,3 +74,18 @@ export default class SliderColor extends React.Component {
     );
   }
 }
+
+SliderColor.propTypes = {
+  slides:            React.PropTypes.array,
+  handleChangeSlide: React.PropTypes.func,
+};
+
+SliderColor.defaultProps = {
+  slides: [
+    'one-two',
+    'three-four',
+    'five-six',
+    'seven-eight',
+    'nine-ten',
+  ],
+};

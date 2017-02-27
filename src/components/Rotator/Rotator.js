@@ -10,14 +10,18 @@ import CloseButton from 'components/CloseButton/CloseButton';
 import styles      from './Rotator.css';
 
 export default class Rotator extends React.Component {
-  state = {
-    playground: false,
-  };
+  constructor(props) {
+    super(props);
 
-  listeners = {
-    showPlayground: this.showPlayground.bind(this),
-    hidePlayground: this.hidePlayground.bind(this),
-  };
+    this.state = {
+      playground: false,
+    };
+
+    this.listeners = {
+      showPlayground: this.showPlayground.bind(this),
+      hidePlayground: this.hidePlayground.bind(this),
+    };
+  }
 
   showPlayground() {
     this.setState({

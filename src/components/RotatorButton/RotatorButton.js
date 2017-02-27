@@ -1,37 +1,30 @@
+import React from 'react';
+
 import AnimakitRotator from 'components/AnimakitRotator';
 
-import React            from 'react';
+import SimpleButton from 'components/SimpleButton/SimpleButton';
 
-import SimpleButton     from 'components/SimpleButton/SimpleButton';
-
-import styles           from './RotatorButton.css';
+import styles from './RotatorButton.css';
 
 export default class RotatorButton extends React.Component {
-  static propTypes = {
-    modifier:         React.PropTypes.string,
-    showAttempts:     React.PropTypes.bool,
-    handleChangeSide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    modifier:     '',
-    showAttempts: false,
-  };
+    this.state = {
+      side: 'button',
+      attempts: 0,
+    };
 
-  state = {
-    side:     'button',
-    attempts: 0,
-  };
+    this.listeners = {
+      onClick: this.onClick.bind(this),
+    };
+
+    this.interval = false;
+  }
 
   onClick() {
     this.showLoader();
   }
-
-  listeners = {
-    onClick: this.onClick.bind(this),
-  };
-
-  interval = false;
 
   /* componentDidMount() {
     this.interval = setInterval(() => {
@@ -76,21 +69,30 @@ export default class RotatorButton extends React.Component {
 
     return (
       <div className = { styles[`root${this.props.modifier}`] }>
-        <AnimakitRotator
-          side = { this.state.side }
-        >
+        <AnimakitRotator side={ this.state.side }>
           <SimpleButton
-            key         = "button"
-            className   = { styles.button }
-            caption     = { caption }
-            handleClick = { this.listeners.onClick }
+            key="button"
+            className={ styles.button }
+            caption={ caption }
+            handleClick={ this.listeners.onClick }
           />
           <div
-            key       = "loader"
-            className = { styles.loader }
+            key="loader"
+            className={ styles.loader }
           />
         </AnimakitRotator>
       </div>
     );
   }
 }
+
+RotatorButton.propTypes = {
+  modifier: React.PropTypes.string,
+  showAttempts: React.PropTypes.bool,
+  handleChangeSide: React.PropTypes.func,
+};
+
+RotatorButton.defaultProps = {
+  modifier: '',
+  showAttempts: false,
+};

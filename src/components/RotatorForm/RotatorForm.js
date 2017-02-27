@@ -5,13 +5,19 @@ import React           from 'react';
 import styles          from './RotatorForm.css';
 
 export default class RotatorForm extends React.Component {
-  static propTypes = {
-    handleChangeSide: React.PropTypes.func,
-  };
+  constructor(props) {
+    super(props);
 
-  state = {
-    form: 'signin',
-  };
+    this.state = {
+      form: 'signin',
+    };
+
+    this.listeners = {
+      onClickSignIn:  this.onClickSignIn.bind(this),
+      onClickSignUp:  this.onClickSignUp.bind(this),
+      onClickPassRec: this.onClickPassRec.bind(this),
+    };
+  }
 
   onClickSignIn() {
     this.showForm('signin');
@@ -29,12 +35,6 @@ export default class RotatorForm extends React.Component {
     this.setState({ form });
     this.props.handleChangeSide(form);
   }
-
-  listeners = {
-    onClickSignIn:  this.onClickSignIn.bind(this),
-    onClickSignUp:  this.onClickSignUp.bind(this),
-    onClickPassRec: this.onClickPassRec.bind(this),
-  };
 
   render() {
     return (
@@ -135,3 +135,7 @@ export default class RotatorForm extends React.Component {
     );
   }
 }
+
+RotatorForm.propTypes = {
+  handleChangeSide: React.PropTypes.func,
+};

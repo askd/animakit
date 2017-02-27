@@ -11,35 +11,28 @@ import CodeBlock     from 'components/Code/CodeBlock';
 import React         from 'react';
 
 export default class RotatorDemo extends React.Component {
-  static propTypes = {
-    children:   React.PropTypes.any,
-    onlyOne:    React.PropTypes.bool,
-    playground: React.PropTypes.bool,
-  };
+  constructor(props) {
+    super(props);
 
-  static defaultProps = {
-    onlyOne:    false,
-    playground: false,
-  };
+    this.state = {
+      side: {
+        button:  'button',
+        button2: 'button',
+        form:    'signin',
+        promo:   'mars',
+      },
+      sideChanged: null,
+    };
 
-  state = {
-    side: {
-      button:  'button',
-      button2: 'button',
-      form:    'signin',
-      promo:   'mars',
-    },
-    sideChanged: null,
-  };
-
-  listeners = {
-    changeSide: {
-      button:  this.changeSide.bind(this, 'button'),
-      button2: this.changeSide.bind(this, 'button2'),
-      form:    this.changeSide.bind(this, 'form'),
-      promo:   this.changeSide.bind(this, 'promo'),
-    },
-  };
+    this.listeners = {
+      changeSide: {
+        button:  this.changeSide.bind(this, 'button'),
+        button2: this.changeSide.bind(this, 'button2'),
+        form:    this.changeSide.bind(this, 'form'),
+        promo:   this.changeSide.bind(this, 'promo'),
+      },
+    };
+  }
 
   changeSide(name, value) {
     const side = this.state.side;
@@ -213,3 +206,14 @@ export default class RotatorDemo extends React.Component {
     );
   }
 }
+
+RotatorDemo.propTypes = {
+  children:   React.PropTypes.any,
+  onlyOne:    React.PropTypes.bool,
+  playground: React.PropTypes.bool,
+};
+
+RotatorDemo.defaultProps = {
+  onlyOne:    false,
+  playground: false,
+};

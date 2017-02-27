@@ -1,14 +1,14 @@
-const path              = require('path');
+const path = require('path');
 
-const srcPath           = path.join(__dirname, 'src');
-const nodeModulesPath   = path.join(__dirname, 'node_modules');
+const srcPath = path.resolve(__dirname, 'src');
+const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 
-const webpack           = require('webpack');
+const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const precss            = require('precss');
-const inlineSVG         = require('postcss-inline-svg');
-const autoprefixer      = require('autoprefixer');
+const precss = require('precss');
+const inlineSVG = require('postcss-inline-svg');
+const autoprefixer = require('autoprefixer');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -21,22 +21,23 @@ const config = {
   ],
 
   output: {
-    path:       path.join(__dirname, 'assets'),
-    filename:   'application.js',
+    path: path.join(__dirname, 'assets'),
+    filename: 'application.js',
     publicPath: '/assets/',
   },
 
   resolve: {
     extensions: ['.js', '.es6'],
-    modules:    [
+    modules: [
       srcPath,
       nodeModulesPath,
     ],
+    symlinks: false,
   },
 
   plugins: [
     new ExtractTextPlugin({
-      filename:  'application.css',
+      filename: 'application.css',
       allChunks: true,
     }),
     new webpack.DefinePlugin({
@@ -50,22 +51,22 @@ const config = {
     rules: [
       {
         test: /\.(js|es6)$/,
-        use:  [
+        use: [
           {
-            loader:  'babel-loader',
+            loader: 'babel-loader',
             options: {
               presets: [
                 ['es2015', { loose: true, modules: false }],
-                'stage-0',
+                'stage-3',
                 'react',
               ],
             },
           },
         ],
-        include: srcPath,
+        exclude: nodeModulesPath,
       },
       {
-        test:   /\.(jpg|png|svg)$/,
+        test: /\.(jpg|png|svg)$/,
         loader: 'file-loader?name=[name].[ext]',
       },
     ],
@@ -75,17 +76,17 @@ const config = {
 if (production) {
 //
   config.module.rules.push({
-    test:   /\.css$/,
+    test: /\.css$/,
     loader: ExtractTextPlugin.extract({
       use: [
         {
           loader: 'css-loader',
-          query:  {
-            importLoaders:   1,
-            modules:         true,
-            localIdentName:  '[name]-[local]--[hash:base64:5]',
-            minimize:        false,
-            sourceMap:       false,
+          query: {
+            importLoaders: 1,
+            modules: true,
+            localIdentName: '[name]-[local]--[hash:base64:5]',
+            minimize: false,
+            sourceMap: false,
             discardComments: {
               removeAll: true,
             },
@@ -108,16 +109,16 @@ if (production) {
 //
   config.module.rules.push({
     test: /\.css$/,
-    use:  [
+    use: [
       'style-loader',
       {
         loader: 'css-loader',
-        query:  {
-          importLoaders:  1,
-          modules:        true,
+        query: {
+          importLoaders: 1,
+          modules: true,
           localIdentName: '[name]-[local]--[hash:base64:5]',
-          minimize:       false,
-          sourceMap:      true,
+          minimize: false,
+          sourceMap: true,
         },
       },
       'postcss-loader',
