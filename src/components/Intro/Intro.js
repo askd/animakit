@@ -1,9 +1,9 @@
-import React        from 'react';
+import React from 'react';
 
-import Logo         from 'components/Logo/Logo';
-import Article      from 'components/Article/Article';
+import Logo from 'components/Logo/Logo';
+import Article from 'components/Article/Article';
 import GithubButton from 'components/GithubButton/GithubButton';
-import CloseButton  from 'components/CloseButton/CloseButton';
+import CloseButton from 'components/CloseButton/CloseButton';
 
 import styles from './Intro.css';
 
@@ -71,8 +71,9 @@ export default class Intro extends React.PureComponent {
         break;
       default:
         texts = [
-          'React components developed to\u00A0make your site more friendly\u00A0;)',
-          'Just wrap your existing UI with\u00A0Animakit components to\u00A0get transitions for\u00A0better UX.',
+          'React components crafted to\u00A0make your site more friendly\u00A0;)',
+          'Just wrap your existing UI with\u00A0Animakit components ' +
+          'to\u00A0get transitions for\u00A0better UX.',
         ];
     }
 
@@ -111,15 +112,17 @@ export default class Intro extends React.PureComponent {
             <Article accent>
               <h2>Why Animakit</h2>
               <p>
-                Animations draw attention to and explain changes on&nbsp;the&nbsp;page.
+                Animations draw attention to&nbsp;UI elements
+                and help explain changes on&nbsp;the&nbsp;page.
               </p>
               <p>
-                Changes in&nbsp;the&nbsp;state of&nbsp;an&nbsp;element,
-                revealing and hiding of&nbsp;content, or&nbsp;shifts to&nbsp;another area of&nbsp;content
-                are all common areas for&nbsp;transitional animations.
+                Changes in the state of&nbsp;an&nbsp;element, showing and hiding the&nbsp;content,
+                or&nbsp;shifts to&nbsp;another area of&nbsp;content are all
+                natural use cases for transitional animations.
               </p>
               <p>
-                The word “animation” is derived from “anima”, the&nbsp;Latin word for&nbsp;soul or&nbsp;spirit.
+                The word “animation” is derived from “anima”,
+                the&nbsp;Latin word for&nbsp;soul or&nbsp;spirit.
                 The&nbsp;verb “to&nbsp;animate” literally means “to&nbsp;give life&nbsp;to”.
               </p>
               <p>

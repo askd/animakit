@@ -1,5 +1,5 @@
 # Animakit
-React components developed to make your site more friendly ;)
+React components crafted to make your site more friendly ;)
 
 Just wrap your existing UI with Animakit components to get transitions for better UX.
 

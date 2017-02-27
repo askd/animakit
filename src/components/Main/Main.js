@@ -26,7 +26,7 @@ const Main = () =>
 
     <Section>
       <Article accent centered>
-        <h2>Choose you&nbsp;component</h2>
+        <h2>Choose your&nbsp;component</h2>
         { /* <p>
           Try out the simple demo or click “Learn More” for more demos.
         </p> */ }
@@ -123,12 +123,12 @@ const Main = () =>
         <h2>FAQ</h2>
 
         <dl>
-          <dt>Do I need to install the whole Animakit to use one of the components?</dt>
+          <dt>Do I need to install the whole Animakit to use one of&nbsp;the components?</dt>
           <dd>
-            No. All components are independent and developed for separate use.
+            No. All components are independent and intended for&nbsp;separate use.
           </dd>
 
-          <dt>Could I request to add one more component to Animakit?</dt>
+          <dt>Could I request to add one more component to&nbsp;Animakit?</dt>
           <dd>
             Yes. Feel free to leave an&nbsp;<a href="https://github.com/animakit/animakit/issues">issue</a> ;)
           </dd>
