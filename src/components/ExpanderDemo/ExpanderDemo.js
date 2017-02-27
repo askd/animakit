@@ -1,16 +1,15 @@
-import ExpanderSimple    from 'components/ExpanderSimple/ExpanderSimple';
-import ExpanderSmooth    from 'components/ExpanderSmooth/ExpanderSmooth';
-import ExpanderField     from 'components/ExpanderField/ExpanderField';
-import ExpanderVertical  from 'components/ExpanderVertical/ExpanderVertical';
+import React from 'react';
+
+import ExpanderSimple from 'components/ExpanderSimple/ExpanderSimple';
+import ExpanderSmooth from 'components/ExpanderSmooth/ExpanderSmooth';
+import ExpanderField from 'components/ExpanderField/ExpanderField';
+import ExpanderVertical from 'components/ExpanderVertical/ExpanderVertical';
 import ExpanderAccordion from 'components/ExpanderAccordion/ExpanderAccordion';
-import Demo              from 'components/Demo/Demo';
-import DemoComponent     from 'components/Demo/DemoComponent';
-import DemoCode          from 'components/Demo/DemoCode';
-import Code              from 'components/Code/Code';
-import CodeBlock         from 'components/Code/CodeBlock';
-
-import React             from 'react';
-
+import Demo from 'components/Demo/Demo';
+import DemoComponent from 'components/Demo/DemoComponent';
+import DemoCode from 'components/Demo/DemoCode';
+import Code from 'components/Code/Code';
+import CodeBlock from 'components/Code/CodeBlock';
 
 export default class ExpanderDemo extends React.Component {
   constructor(props) {
@@ -20,15 +19,15 @@ export default class ExpanderDemo extends React.Component {
       expanded: {
         simple: false,
         smooth: true,
-        field:  {
+        field: {
           error: false,
           other: false,
         },
-        vertical:  false,
+        vertical: false,
         accordion: {
-          mars:    false,
-          earth:   false,
-          venus:   false,
+          mars: false,
+          earth: false,
+          venus: false,
           mercury: false,
         },
       },
@@ -37,10 +36,10 @@ export default class ExpanderDemo extends React.Component {
 
     this.listeners = {
       changeExpanded: {
-        simple:    this.changeExpanded.bind(this, 'simple'),
-        smooth:    this.changeExpanded.bind(this, 'smooth'),
-        field:     this.changeExpanded.bind(this, 'field'),
-        vertical:  this.changeExpanded.bind(this, 'vertical'),
+        simple: this.changeExpanded.bind(this, 'simple'),
+        smooth: this.changeExpanded.bind(this, 'smooth'),
+        field: this.changeExpanded.bind(this, 'field'),
+        vertical: this.changeExpanded.bind(this, 'vertical'),
         accordion: this.changeExpanded.bind(this, 'accordion'),
       },
     };
@@ -86,7 +85,12 @@ export default class ExpanderDemo extends React.Component {
                 blink
                 blinkActive = { expandedChanged.indexOf('simple') !== -1 }
               >
-                { `<AnimakitExpander expanded={${this.state.expanded.simple}}>` }
+                {
+`
+<AnimakitExpander expanded={${this.state.expanded.simple}}>
+
+`
+                }
               </CodeBlock>
               <CodeBlock>
                 { '  <Text />' }
@@ -94,7 +98,10 @@ export default class ExpanderDemo extends React.Component {
               <CodeBlock
                 highlight
               >
-                { '</AnimakitExpander>' }
+                {
+`
+</AnimakitExpander>`
+}
               </CodeBlock>
             </Code>
           </DemoCode>

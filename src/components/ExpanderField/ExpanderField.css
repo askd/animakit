@@ -50,7 +50,7 @@
 .inputTextarea {
   composes: input;
   margin-top: 10px;
-  height: 104px;
+  height: 84px;
   resize: none;
 }
 
