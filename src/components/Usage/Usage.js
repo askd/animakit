@@ -1,8 +1,9 @@
-import React     from 'react';
-import Code      from 'components/Code/Code';
+import React from 'react';
+
+import Code from 'components/Code/Code';
 import CodeBlock from 'components/Code/CodeBlock';
 
-import styles    from './Usage.css';
+import styles from './Usage.css';
 
 const Usage = (props) => {
   const component = props.component;
@@ -10,18 +11,18 @@ const Usage = (props) => {
 
   if (component === 'new') {
     return (
-      <div className = { styles.rootUD }>
+      <div className={ styles.rootUD }>
         Under development
       </div>
     );
   }
 
   return (
-    <div className = { styles.root }>
-      <h2 className = { styles.title }>Easy to use</h2>
-      <ol className = { styles.list }>
-        <li className = { styles.item }>
-          <p className = { styles.itemTitle }>Install</p>
+    <div className={ styles.root }>
+      <h2 className={ styles.title }>Easy to use</h2>
+      <ol className={ styles.list }>
+        <li className={ styles.item }>
+          <p className={ styles.itemTitle }>Install</p>
           <Code>
             <CodeBlock
               highlight
@@ -30,8 +31,8 @@ const Usage = (props) => {
             </CodeBlock>
           </Code>
         </li>
-        <li className = { styles.item }>
-          <p className = { styles.itemTitle }>Import</p>
+        <li className={ styles.item }>
+          <p className={ styles.itemTitle }>Import</p>
           <Code>
             <CodeBlock
               highlight
@@ -41,17 +42,21 @@ const Usage = (props) => {
             </CodeBlock>
           </Code>
         </li>
-        <li className = { styles.item }>
-          <p className = { styles.itemTitle }>Wrap</p>
+        <li className={ styles.item }>
+          <p className={ styles.itemTitle }>Wrap</p>
           {
             (component === 'rotator') && <Code>
               <CodeBlock highlight>
+                { '<AnimakitRotator side={this.state.loading}>' }
+              </CodeBlock>
+              <CodeBlock>
                 {
-`<AnimakitRotator side={this.state.loading}>
-  <Button />
-  <Loader />
-</AnimakitRotator>`
+`  <Button />
+  <Loader />`
                 }
+              </CodeBlock>
+              <CodeBlock highlight>
+                { '</AnimakitRotator>' }
               </CodeBlock>
             </Code>
           }
