@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import AnimakitSlider from 'components/AnimakitSlider';
 
 import Dotnav from 'components/Dotnav/Dotnav';
@@ -86,8 +87,8 @@ export default class SliderFlexible extends React.Component {
 }
 
 SliderFlexible.propTypes = {
-  slidesCount: React.PropTypes.number,
-  handleChangeSlide: React.PropTypes.func,
+  slidesCount: PropTypes.number,
+  handleChangeSlide: PropTypes.func,
 };
 
 SliderFlexible.defaultProps = {

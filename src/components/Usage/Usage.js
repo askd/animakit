@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Code from 'components/Code/Code';
 import CodeBlock from 'components/Code/CodeBlock';
@@ -114,7 +115,7 @@ const Usage = (props) => {
 };
 
 Usage.propTypes = {
-  component: React.PropTypes.string,
+  component: PropTypes.string,
 };
 
 Usage.defaultProps = {

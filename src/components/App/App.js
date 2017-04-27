@@ -1,30 +1,27 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { withRouter } from 'react-router-dom';
 
 import BackLink from 'components/BackLink/BackLink';
-import Main from 'components/Main/Main';
 
 import styles from './App.css';
 
-const App = (props) => {
-  const navLen = props.routes.length;
-
-  const isMainPage = navLen === 1;
-  const rootPath = props.routes[0].path;
+const App = withRouter(({ location, children }) => {
+  const isMainPage = location.pathname === '/';
 
   return (
     <div className = { styles.root }>
-      { !isMainPage && <BackLink to={rootPath} /> }
+      { !isMainPage && <BackLink to={ '/' } /> }
 
-      { isMainPage && <Main /> }
-
-      { !isMainPage && props.children }
+      { children }
     </div>
   );
-};
+});
 
 App.propTypes = {
-  children: React.PropTypes.any,
-  routes: React.PropTypes.array,
+  location: PropTypes.any,
+  children: PropTypes.any,
 };
 
 export default App;

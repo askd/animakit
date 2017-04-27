@@ -1,4 +1,5 @@
-import React  from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Code.css';
 
@@ -9,7 +10,7 @@ const Code = (props) =>
 ;
 
 Code.propTypes = {
-  children: React.PropTypes.any,
+  children: PropTypes.any,
 };
 
 export default Code;

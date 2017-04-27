@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './GithubButton.css';
 
@@ -17,7 +18,7 @@ const GithubButton = (props) => {
 };
 
 GithubButton.propTypes = {
-  component: React.PropTypes.string,
+  component: PropTypes.string,
 };
 
 export default GithubButton;

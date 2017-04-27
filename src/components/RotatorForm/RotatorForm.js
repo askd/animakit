@@ -1,8 +1,9 @@
 import AnimakitRotator from 'components/AnimakitRotator';
 
-import React           from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles          from './RotatorForm.css';
+import styles from './RotatorForm.css';
 
 export default class RotatorForm extends React.Component {
   constructor(props) {
@@ -13,8 +14,8 @@ export default class RotatorForm extends React.Component {
     };
 
     this.listeners = {
-      onClickSignIn:  this.onClickSignIn.bind(this),
-      onClickSignUp:  this.onClickSignUp.bind(this),
+      onClickSignIn: this.onClickSignIn.bind(this),
+      onClickSignUp: this.onClickSignUp.bind(this),
       onClickPassRec: this.onClickPassRec.bind(this),
     };
   }
@@ -51,18 +52,18 @@ export default class RotatorForm extends React.Component {
             <div className = { styles.formMain }>
               <h2 className={ styles.title }>Sign In</h2>
               <input
-                className   = { styles.input }
-                type        = "email"
+                className = { styles.input }
+                type = "email"
                 placeholder = "E-mail"
               />
               <input
-                className   = { styles.input }
-                type        = "password"
+                className = { styles.input }
+                type = "password"
                 placeholder = "Password"
               />
               <span
                 className = { styles.link }
-                onClick   = { this.listeners.onClickPassRec }
+                onClick = { this.listeners.onClickPassRec }
               >
                 Forgot password?
               </span>
@@ -70,7 +71,7 @@ export default class RotatorForm extends React.Component {
             </div>
             <div
               className = { styles.formFooter }
-              onClick   = { this.listeners.onClickSignUp }
+              onClick = { this.listeners.onClickSignUp }
             >
               Not a Member Yet?
             </div>
@@ -83,25 +84,25 @@ export default class RotatorForm extends React.Component {
             <div className = { styles.formMain }>
               <h2 className={ styles.title }>Sign Up</h2>
               <input
-                className   = { styles.input }
-                type        = "email"
+                className = { styles.input }
+                type = "email"
                 placeholder = "E-mail"
               />
               <input
-                className   = { styles.input }
-                type        = "password"
+                className = { styles.input }
+                type = "password"
                 placeholder = "Password"
               />
               <input
-                className   = { styles.input }
-                type        = "password"
+                className = { styles.input }
+                type = "password"
                 placeholder = "Confirm Password"
               />
               <button className = { styles.button }>Sign Up</button>
             </div>
             <div
               className = { styles.formFooter }
-              onClick   = { this.listeners.onClickSignIn }
+              onClick = { this.listeners.onClickSignIn }
             >
               Already a Member?
             </div>
@@ -117,15 +118,15 @@ export default class RotatorForm extends React.Component {
                 { 'Enter your e-mail address and we\'ll help you reset your password:' }
               </p>
               <input
-                className   = { styles.input }
-                type        = "email"
+                className = { styles.input }
+                type = "email"
                 placeholder = "E-mail"
               />
               <button className = { styles.button }>Reset Password</button>
             </div>
             <div
               className = { styles.formFooter }
-              onClick   = { this.listeners.onClickSignIn }
+              onClick = { this.listeners.onClickSignIn }
             >
               Ready to Sign In?
             </div>
@@ -137,5 +138,5 @@ export default class RotatorForm extends React.Component {
 }
 
 RotatorForm.propTypes = {
-  handleChangeSide: React.PropTypes.func,
+  handleChangeSide: PropTypes.func,
 };

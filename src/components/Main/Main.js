@@ -9,7 +9,7 @@ import Article from 'components/Article/Article';
 import GithubButton from 'components/GithubButton/GithubButton';
 
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
 
 import styles from './Main.css';
 

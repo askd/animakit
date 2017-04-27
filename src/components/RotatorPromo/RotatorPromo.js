@@ -1,12 +1,13 @@
 import AnimakitRotator from 'components/AnimakitRotator';
 
-import React           from 'react';
-import Dotnav          from 'components/Dotnav/Dotnav';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Dotnav from 'components/Dotnav/Dotnav';
 
-import pathToImage    from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles   from 'components/Dotnav/Dotnav.css';
-import styles          from './RotatorPromo.css';
+import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import styles from './RotatorPromo.css';
 
 export default class RotatorPromo extends React.Component {
   constructor(props) {
@@ -14,7 +15,7 @@ export default class RotatorPromo extends React.Component {
 
     this.state = {
       index: 0,
-      side:  'mars',
+      side: 'mars',
     };
 
     this.listeners = {
@@ -32,12 +33,12 @@ export default class RotatorPromo extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitRotator
-          side   =   { this.state.side }
+          side = { this.state.side }
           duration = { 2000 }
           shadow
         >
           <div
-            key       = { this.props.sides[0] }
+            key = { this.props.sides[0] }
             className = { styles.slide }
           >
             <img
@@ -53,7 +54,7 @@ export default class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.sides[1] }
+            key = { this.props.sides[1] }
             className = { styles.slide }
           >
             <img
@@ -69,7 +70,7 @@ export default class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.sides[2] }
+            key = { this.props.sides[2] }
             className = { styles.slide }
           >
             <img
@@ -84,7 +85,7 @@ export default class RotatorPromo extends React.Component {
             </p>
           </div>
           <div
-            key       = { this.props.sides[3] }
+            key = { this.props.sides[3] }
             className = { styles.slide }
           >
             <img
@@ -105,8 +106,8 @@ export default class RotatorPromo extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSide }
           classes = {{
-            dots:      `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
-            dot:       dotnavStyles.dot,
+            dots: `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
+            dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
           }}
         />
@@ -116,8 +117,8 @@ export default class RotatorPromo extends React.Component {
 }
 
 RotatorPromo.propTypes = {
-  sides:            React.PropTypes.array,
-  handleChangeSide: React.PropTypes.func,
+  sides: PropTypes.array,
+  handleChangeSide: PropTypes.func,
 };
 
 RotatorPromo.defaultProps = {

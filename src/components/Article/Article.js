@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Article.css';
 
@@ -14,9 +15,9 @@ const Article = (props) => {
 };
 
 Article.propTypes = {
-  children: React.PropTypes.any,
-  accent: React.PropTypes.bool,
-  centered: React.PropTypes.bool,
+  children: PropTypes.any,
+  accent: PropTypes.bool,
+  centered: PropTypes.bool,
 };
 
 export default Article;

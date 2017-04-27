@@ -1,8 +1,9 @@
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import React          from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles         from './SliderTimer.css';
+import styles from './SliderTimer.css';
 
 export default class SliderTimer extends React.Component {
   constructor(props) {
@@ -17,7 +18,7 @@ export default class SliderTimer extends React.Component {
     this.animRAF = false;
 
     this.listeners = {
-      setTime:            this.setTime.bind(this),
+      setTime: this.setTime.bind(this),
       onVisibilityChange: this.onVisibilityChange.bind(this),
     };
   }
@@ -110,7 +111,9 @@ export default class SliderTimer extends React.Component {
                 loop
                 skip
               >
-                { digits.map(digit => <div key = { digit } className = { styles.digit }>{ digit }</div>) }
+                { digits.map(digit =>
+                  <div key = { digit } className = { styles.digit }>{ digit }</div>
+                ) }
               </AnimakitSlider>
             </div>
           );
@@ -121,5 +124,5 @@ export default class SliderTimer extends React.Component {
 }
 
 SliderTimer.propTypes = {
-  handleChangeSlide: React.PropTypes.func,
+  handleChangeSlide: PropTypes.func,
 };

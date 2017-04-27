@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Demo.css';
 
@@ -16,9 +17,9 @@ const DemoComponent = (props) => {
 };
 
 DemoComponent.propTypes = {
-  comment:    React.PropTypes.any,
-  fullscreen: React.PropTypes.bool,
-  children:   React.PropTypes.any,
+  comment: PropTypes.any,
+  fullscreen: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 export default DemoComponent;

@@ -1,12 +1,13 @@
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import React          from 'react';
-import Dotnav         from 'components/Dotnav/Dotnav';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Dotnav from 'components/Dotnav/Dotnav';
 
-import pathToImage    from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles   from 'components/Dotnav/Dotnav.css';
-import styles         from './SliderSimple.css';
+import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import styles from './SliderSimple.css';
 
 export default class SliderSimple extends React.Component {
   constructor(props) {
@@ -32,10 +33,10 @@ export default class SliderSimple extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitSlider
-          slide   =   { this.state.slide }
+          slide = { this.state.slide }
         >
           <div
-            key       = { this.props.slides[0] }
+            key = { this.props.slides[0] }
             className = { styles.slide }
           >
             <img
@@ -46,7 +47,7 @@ export default class SliderSimple extends React.Component {
             <h2 className = { styles.slideTitle }>Mars</h2>
           </div>
           <div
-            key       = { this.props.slides[1] }
+            key = { this.props.slides[1] }
             className = { styles.slide }
           >
             <img
@@ -57,7 +58,7 @@ export default class SliderSimple extends React.Component {
             <h2 className = { styles.slideTitle }>Earth</h2>
           </div>
           <div
-            key       = { this.props.slides[2] }
+            key = { this.props.slides[2] }
             className = { styles.slide }
           >
             <img
@@ -68,7 +69,7 @@ export default class SliderSimple extends React.Component {
             <h2 className = { styles.slideTitle }>Venus</h2>
           </div>
           <div
-            key       = { this.props.slides[3] }
+            key = { this.props.slides[3] }
             className = { styles.slide }
           >
             <img
@@ -85,8 +86,8 @@ export default class SliderSimple extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSlide }
           classes = {{
-            dots:      `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsColored}`,
-            dot:       dotnavStyles.dot,
+            dots: `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsColored}`,
+            dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
             arrowPrev: `${styles.arrowPrev} ${dotnavStyles.arrowPrev}`,
             arrowNext: `${styles.arrowNext} ${dotnavStyles.arrowNext}`,
@@ -98,8 +99,8 @@ export default class SliderSimple extends React.Component {
 }
 
 SliderSimple.propTypes = {
-  slides:            React.PropTypes.array,
-  handleChangeSlide: React.PropTypes.func,
+  slides: PropTypes.array,
+  handleChangeSlide: PropTypes.func,
 };
 
 SliderSimple.defaultProps = {

@@ -1,10 +1,10 @@
 import ElasticDemo from 'components/ElasticDemo/ElasticDemo';
-import Section     from 'components/Section/Section';
-import Intro       from 'components/Intro/Intro';
-import Usage       from 'components/Usage/Usage';
-import Article     from 'components/Article/Article';
+import Section from 'components/Section/Section';
+import Intro from 'components/Intro/Intro';
+import Usage from 'components/Usage/Usage';
+import Article from 'components/Article/Article';
 
-import React       from 'react';
+import React from 'react';
 
 const Elastic = () =>
   <div>

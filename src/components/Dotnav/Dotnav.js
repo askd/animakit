@@ -1,11 +1,12 @@
-import React  from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class Dotnav extends React.Component {
   constructor(props) {
     super(props);
 
     this.listeners = {
-      setIndex:    [],
+      setIndex: [],
       onClickPrev: this.onClickPrev.bind(this),
       onClickNext: this.onClickNext.bind(this),
     };
@@ -13,7 +14,9 @@ export default class Dotnav extends React.Component {
 
   componentWillMount() {
     const count = this.props.count;
-    this.listeners.setIndex = Array.from({ length: count }, (_, i) => this.setIndex.bind(this, i), this);
+    this.listeners.setIndex = Array.from({ length: count }, (_, i) =>
+      this.setIndex.bind(this, i)
+    , this);
   }
 
   onClickPrev() {
@@ -68,26 +71,26 @@ export default class Dotnav extends React.Component {
 }
 
 Dotnav.propTypes = {
-  withArrows:   React.PropTypes.bool,
-  count:        React.PropTypes.number,
-  index:        React.PropTypes.number,
-  handleChange: React.PropTypes.func,
-  classes:      React.PropTypes.shape({
-    dots:      React.PropTypes.string,
-    dot:       React.PropTypes.string,
-    dotActive: React.PropTypes.string,
-    arrowPrev: React.PropTypes.string,
-    arrowNext: React.PropTypes.string,
+  withArrows: PropTypes.bool,
+  count: PropTypes.number,
+  index: PropTypes.number,
+  handleChange: PropTypes.func,
+  classes: PropTypes.shape({
+    dots: PropTypes.string,
+    dot: PropTypes.string,
+    dotActive: PropTypes.string,
+    arrowPrev: PropTypes.string,
+    arrowNext: PropTypes.string,
   }),
 };
 
 Dotnav.defaultProps = {
   withArrows: false,
-  count:      0,
-  index:      0,
-  classes:    {
-    dots:      'DotNav-dots',
-    dot:       'DotNav-dot',
+  count: 0,
+  index: 0,
+  classes: {
+    dots: 'DotNav-dots',
+    dot: 'DotNav-dot',
     dotActive: 'DotNav-dot_active',
     arrowPrev: 'DotNav-arrow_prev',
     arrowNext: 'DotNav-arrow_next',

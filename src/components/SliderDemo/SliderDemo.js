@@ -1,15 +1,16 @@
-import SliderSimple   from 'components/SliderSimple/SliderSimple';
+import SliderSimple from 'components/SliderSimple/SliderSimple';
 import SliderFlexible from 'components/SliderFlexible/SliderFlexible';
-import SliderColor    from 'components/SliderColor/SliderColor';
+import SliderColor from 'components/SliderColor/SliderColor';
 import SliderVertical from 'components/SliderVertical/SliderVertical';
-import SliderTimer    from 'components/SliderTimer/SliderTimer';
-import Demo           from 'components/Demo/Demo';
-import DemoComponent  from 'components/Demo/DemoComponent';
-import DemoCode       from 'components/Demo/DemoCode';
-import Code           from 'components/Code/Code';
-import CodeBlock      from 'components/Code/CodeBlock';
+import SliderTimer from 'components/SliderTimer/SliderTimer';
+import Demo from 'components/Demo/Demo';
+import DemoComponent from 'components/Demo/DemoComponent';
+import DemoCode from 'components/Demo/DemoCode';
+import Code from 'components/Code/Code';
+import CodeBlock from 'components/Code/CodeBlock';
 
-import React          from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class SliderDemo extends React.PureComponent {
   constructor(props) {
@@ -17,23 +18,23 @@ export default class SliderDemo extends React.PureComponent {
 
     this.state = {
       slide: {
-        simple:   'mars',
+        simple: 'mars',
         flexible: 0,
-        color:    'one-two',
+        color: 'one-two',
         vertical: 'mars',
-        timer:    ['0', '0', '0', '0', '0', '0'],
+        timer: ['0', '0', '0', '0', '0', '0'],
       },
-      slideChanged:   null,
+      slideChanged: null,
       indexesChanged: null,
     };
 
     this.listeners = {
       changeSlide: {
         flexible: this.changeSlide.bind(this, 'flexible'),
-        simple:   this.changeSlide.bind(this, 'simple'),
-        color:    this.changeSlide.bind(this, 'color'),
+        simple: this.changeSlide.bind(this, 'simple'),
+        color: this.changeSlide.bind(this, 'color'),
         vertical: this.changeSlide.bind(this, 'vertical'),
-        timer:    this.changeSlide.bind(this, 'timer'),
+        timer: this.changeSlide.bind(this, 'timer'),
       },
     };
   }
@@ -62,7 +63,8 @@ export default class SliderDemo extends React.PureComponent {
   isSlideChanged(name, index = null) {
     if (name !== 'timer') return this.state.slideChanged === name;
 
-    return this.state.slideChanged === name && this.state.indexesChanged.indexOf(index.toString()) !== -1;
+    return this.state.slideChanged === name &&
+           this.state.indexesChanged.indexOf(index.toString()) !== -1;
   }
 
   render() {
@@ -223,7 +225,7 @@ export default class SliderDemo extends React.PureComponent {
                     blink
                     blinkActive = { this.isSlideChanged('timer', index) }
                   >
-                    { `<AnimakitSlider slide="${this.state.slide.timer[index]}" vertical loop skip>` }
+{ `<AnimakitSlider slide="${this.state.slide.timer[index]}" vertical loop skip>` }
                   </CodeBlock>
                   <CodeBlock>
                     {
@@ -246,8 +248,8 @@ export default class SliderDemo extends React.PureComponent {
 }
 
 SliderDemo.propTypes = {
-  children: React.PropTypes.any,
-  onlyOne:  React.PropTypes.bool,
+  children: PropTypes.any,
+  onlyOne: PropTypes.bool,
 };
 
 SliderDemo.defaultProps = {

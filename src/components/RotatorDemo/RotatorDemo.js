@@ -1,14 +1,15 @@
 import RotatorButton from 'components/RotatorButton/RotatorButton';
-import RotatorForm   from 'components/RotatorForm/RotatorForm';
-import RotatorPromo  from 'components/RotatorPromo/RotatorPromo';
-import RotatorFull   from 'components/RotatorFull/RotatorFull';
-import Demo          from 'components/Demo/Demo';
+import RotatorForm from 'components/RotatorForm/RotatorForm';
+import RotatorPromo from 'components/RotatorPromo/RotatorPromo';
+import RotatorFull from 'components/RotatorFull/RotatorFull';
+import Demo from 'components/Demo/Demo';
 import DemoComponent from 'components/Demo/DemoComponent';
-import DemoCode      from 'components/Demo/DemoCode';
-import Code          from 'components/Code/Code';
-import CodeBlock     from 'components/Code/CodeBlock';
+import DemoCode from 'components/Demo/DemoCode';
+import Code from 'components/Code/Code';
+import CodeBlock from 'components/Code/CodeBlock';
 
-import React         from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 export default class RotatorDemo extends React.Component {
   constructor(props) {
@@ -16,20 +17,20 @@ export default class RotatorDemo extends React.Component {
 
     this.state = {
       side: {
-        button:  'button',
+        button: 'button',
         button2: 'button',
-        form:    'signin',
-        promo:   'mars',
+        form: 'signin',
+        promo: 'mars',
       },
       sideChanged: null,
     };
 
     this.listeners = {
       changeSide: {
-        button:  this.changeSide.bind(this, 'button'),
+        button: this.changeSide.bind(this, 'button'),
         button2: this.changeSide.bind(this, 'button2'),
-        form:    this.changeSide.bind(this, 'form'),
-        promo:   this.changeSide.bind(this, 'promo'),
+        form: this.changeSide.bind(this, 'form'),
+        promo: this.changeSide.bind(this, 'promo'),
       },
     };
   }
@@ -208,12 +209,12 @@ export default class RotatorDemo extends React.Component {
 }
 
 RotatorDemo.propTypes = {
-  children:   React.PropTypes.any,
-  onlyOne:    React.PropTypes.bool,
-  playground: React.PropTypes.bool,
+  children: PropTypes.any,
+  onlyOne: PropTypes.bool,
+  playground: PropTypes.bool,
 };
 
 RotatorDemo.defaultProps = {
-  onlyOne:    false,
+  onlyOne: false,
   playground: false,
 };

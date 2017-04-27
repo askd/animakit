@@ -1,10 +1,11 @@
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import React          from 'react';
-import Dotnav         from 'components/Dotnav/Dotnav';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Dotnav from 'components/Dotnav/Dotnav';
 
-import dotnavStyles   from 'components/Dotnav/Dotnav.css';
-import styles         from './SliderColor.css';
+import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import styles from './SliderColor.css';
 
 export default class SliderColor extends React.Component {
   constructor(props) {
@@ -45,11 +46,11 @@ export default class SliderColor extends React.Component {
       <div className = { styles.root }>
         <AnimakitSlider
           loop
-          slide   =   { this.state.slide }
+          slide = { this.state.slide }
         >
           { this.props.slides.map((slide, index) =>
             <div
-              key       = { slide }
+              key = { slide }
               className = { styles[`slide${index + 1}`] }
             >
               <h2 className = { styles.slideTitle }>{ titles[index] }.</h2>
@@ -63,8 +64,8 @@ export default class SliderColor extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSlide }
           classes = {{
-            dots:      `${styles.nav} ${dotnavStyles.dotsHorizontal}`,
-            dot:       dotnavStyles.dot,
+            dots: `${styles.nav} ${dotnavStyles.dotsHorizontal}`,
+            dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
             arrowPrev: `${styles.arrowPrev} ${dotnavStyles.arrowPrev}`,
             arrowNext: `${styles.arrowNext} ${dotnavStyles.arrowNext}`,
@@ -76,8 +77,8 @@ export default class SliderColor extends React.Component {
 }
 
 SliderColor.propTypes = {
-  slides:            React.PropTypes.array,
-  handleChangeSlide: React.PropTypes.func,
+  slides: PropTypes.array,
+  handleChangeSlide: PropTypes.func,
 };
 
 SliderColor.defaultProps = {

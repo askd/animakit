@@ -1,10 +1,11 @@
 import AnimakitExpander from 'components/AnimakitExpander';
 
-import React            from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import pathToImage      from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import styles           from './ExpanderAccordion.css';
+import styles from './ExpanderAccordion.css';
 
 export default class ExpanderAccordion extends React.Component {
   constructor(props) {
@@ -12,9 +13,9 @@ export default class ExpanderAccordion extends React.Component {
 
     this.state = {
       expanded: {
-        mars:    false,
-        earth:   false,
-        venus:   false,
+        mars: false,
+        earth: false,
+        venus: false,
         mercury: false,
       },
     };
@@ -89,8 +90,8 @@ export default class ExpanderAccordion extends React.Component {
 }
 
 ExpanderAccordion.propTypes = {
-  items:                React.PropTypes.array,
-  handleChangeExpanded: React.PropTypes.func,
+  items: PropTypes.array,
+  handleChangeExpanded: PropTypes.func,
 };
 
 ExpanderAccordion.defaultProps = {

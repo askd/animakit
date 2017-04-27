@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './SimpleText.css';
 
@@ -32,11 +33,11 @@ const SimpleText = (props) =>
 ;
 
 SimpleText.propTypes = {
-  className: React.PropTypes.string,
-  title: React.PropTypes.string,
-  hasMore: React.PropTypes.bool,
-  showMore: React.PropTypes.bool,
-  handleToggle: React.PropTypes.func,
+  className: PropTypes.string,
+  title: PropTypes.string,
+  hasMore: PropTypes.bool,
+  showMore: PropTypes.bool,
+  handleToggle: PropTypes.func,
 };
 
 SimpleText.defaultProps = {

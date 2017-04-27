@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Demo.css';
 
@@ -18,8 +19,8 @@ const Demo = (props) => {
 };
 
 Demo.propTypes = {
-  text:     React.PropTypes.any,
-  children: React.PropTypes.any,
+  text: PropTypes.any,
+  children: PropTypes.any,
 };
 
 export default Demo;

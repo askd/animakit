@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Demo.css';
 
@@ -9,7 +10,7 @@ const DemoCode = (props) =>
 ;
 
 DemoCode.propTypes = {
-  children: React.PropTypes.any,
+  children: PropTypes.any,
 };
 
 export default DemoCode;

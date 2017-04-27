@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ExpanderSimple from 'components/ExpanderSimple/ExpanderSimple';
 import ExpanderSmooth from 'components/ExpanderSmooth/ExpanderSmooth';
@@ -284,8 +285,8 @@ export default class ExpanderDemo extends React.Component {
 }
 
 ExpanderDemo.propTypes = {
-  children: React.PropTypes.any,
-  onlyOne:  React.PropTypes.bool,
+  children: PropTypes.any,
+  onlyOne: PropTypes.bool,
 };
 
 ExpanderDemo.defaultProps = {

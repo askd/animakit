@@ -1,12 +1,13 @@
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import React          from 'react';
-import Dotnav         from 'components/Dotnav/Dotnav';
+import React from 'react';
+import PropTypes from 'prop-types';
+import Dotnav from 'components/Dotnav/Dotnav';
 
-import pathToImage    from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles   from 'components/Dotnav/Dotnav.css';
-import styles         from './SliderVertical.css';
+import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import styles from './SliderVertical.css';
 
 export default class SliderVertical extends React.Component {
   constructor(props) {
@@ -32,7 +33,7 @@ export default class SliderVertical extends React.Component {
     return (
       <div className = { styles.root }>
         <AnimakitSlider
-          slide   =   { this.state.slide }
+          slide = { this.state.slide }
           vertical
         >
           <div
@@ -104,8 +105,8 @@ export default class SliderVertical extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSlide }
           classes = {{
-            dots:      `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
-            dot:       dotnavStyles.dot,
+            dots: `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
+            dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
           }}
         />
@@ -115,8 +116,8 @@ export default class SliderVertical extends React.Component {
 }
 
 SliderVertical.propTypes = {
-  slides:            React.PropTypes.array,
-  handleChangeSlide: React.PropTypes.func,
+  slides: PropTypes.array,
+  handleChangeSlide: PropTypes.func,
 };
 
 SliderVertical.defaultProps = {

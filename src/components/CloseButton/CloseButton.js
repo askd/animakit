@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './CloseButton.css';
 
@@ -11,8 +12,8 @@ const CloseButton = (props) =>
 ;
 
 CloseButton.propTypes = {
-  className: React.PropTypes.string,
-  handleClick: React.PropTypes.func,
+  className: PropTypes.string,
+  handleClick: PropTypes.func,
 };
 
 export default CloseButton;

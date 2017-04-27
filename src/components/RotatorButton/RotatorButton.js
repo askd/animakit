@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import AnimakitRotator from 'components/AnimakitRotator';
 
@@ -87,9 +88,9 @@ export default class RotatorButton extends React.Component {
 }
 
 RotatorButton.propTypes = {
-  modifier: React.PropTypes.string,
-  showAttempts: React.PropTypes.bool,
-  handleChangeSide: React.PropTypes.func,
+  modifier: PropTypes.string,
+  showAttempts: PropTypes.bool,
+  handleChangeSide: PropTypes.func,
 };
 
 RotatorButton.defaultProps = {

@@ -1,4 +1,5 @@
-import React  from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 import styles from './Ribbon.css';
 
@@ -16,8 +17,8 @@ const Ribbon = (props) =>
 ;
 
 Ribbon.propTypes = {
-  path:  React.PropTypes.string,
-  fixed: React.PropTypes.bool,
+  path: PropTypes.string,
+  fixed: PropTypes.bool,
 };
 
 export default Ribbon;

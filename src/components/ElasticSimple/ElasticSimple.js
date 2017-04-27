@@ -1,26 +1,27 @@
 import AnimakitElastic from 'components/AnimakitElastic';
 
-import SimpleText      from 'components/SimpleText/SimpleText';
+import SimpleText from 'components/SimpleText/SimpleText';
 
-import React           from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import pathToImage     from 'utils/path-to-image';
+import pathToImage from 'utils/path-to-image';
 
-import styles          from './ElasticSimple.css';
+import styles from './ElasticSimple.css';
 
 export default class ElasticSimple extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      show:      true,
-      showText:  false,
+      show: true,
+      showText: false,
       showImage: false,
     };
 
     this.listeners = {
       onToggleImage: this.onToggleImage.bind(this),
-      onToggleText:  this.onToggleText.bind(this),
+      onToggleText: this.onToggleText.bind(this),
     };
   }
 
@@ -48,11 +49,11 @@ export default class ElasticSimple extends React.Component {
         <AnimakitElastic>
           { this.state.show && <div className = { styles.content }>
             <SimpleText
-              className    = { styles.text }
-              title        = "I Got You"
+              className = { styles.text }
+              title = "I Got You"
               handleToggle = { this.listeners.onToggleText }
-              showMore     = { this.state.showText }
-              hasMore      = { !this.props.onlyHorizontal }
+              showMore = { this.state.showText }
+              hasMore = { !this.props.onlyHorizontal }
             />
             <div className = { this.state.showImage ? styles.imageVisible : styles.imageHidden }>
               <img
@@ -75,7 +76,7 @@ export default class ElasticSimple extends React.Component {
 }
 
 ElasticSimple.propTypes = {
-  onlyHorizontal: React.PropTypes.bool,
+  onlyHorizontal: PropTypes.bool,
 };
 
 ElasticSimple.defaultProps = {

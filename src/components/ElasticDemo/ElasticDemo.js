@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import ElasticSimple from 'components/ElasticSimple/ElasticSimple';
 import Demo from 'components/Demo/Demo';
@@ -43,8 +44,8 @@ const ElasticDemo = (props) =>
 ;
 
 ElasticDemo.propTypes = {
-  children: React.PropTypes.any,
-  onlyOne: React.PropTypes.bool,
+  children: PropTypes.any,
+  onlyOne: PropTypes.bool,
 };
 
 ElasticDemo.defaultProps = {

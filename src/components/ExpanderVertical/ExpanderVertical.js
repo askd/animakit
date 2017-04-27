@@ -1,8 +1,9 @@
 import AnimakitExpander from 'components/AnimakitExpander';
 
-import React            from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import styles           from './ExpanderVertical.css';
+import styles from './ExpanderVertical.css';
 
 export default class ExpanderVertical extends React.Component {
   constructor(props) {
@@ -45,17 +46,17 @@ export default class ExpanderVertical extends React.Component {
           >
             <div className = { styles.form }>
               <input
-                className   = { styles.input }
-                type        = "text"
+                className = { styles.input }
+                type = "text"
                 placeholder = "Your name"
               />
               <input
-                className   = { styles.input }
-                type        = "email"
+                className = { styles.input }
+                type = "email"
                 placeholder = "E-mail"
               />
               <textarea
-                className   = { styles.inputTextarea }
+                className = { styles.inputTextarea }
                 placeholder = "Message"
               />
               <button className = { styles.button }>Send message</button>
@@ -68,5 +69,5 @@ export default class ExpanderVertical extends React.Component {
 }
 
 ExpanderVertical.propTypes = {
-  handleChangeExpanded: React.PropTypes.func,
+  handleChangeExpanded: PropTypes.func,
 };

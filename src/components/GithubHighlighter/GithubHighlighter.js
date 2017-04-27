@@ -1,19 +1,20 @@
-import React                                   from 'react';
-import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/light';
+import React from 'react';
+import PropTypes from 'prop-types';
 
-import javascript                              from 'highlight.js/lib/languages/javascript';
-import xml                                     from 'highlight.js/lib/languages/xml';
-import githubGist                              from 'react-syntax-highlighter/dist/styles/github-gist';
+// import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/dist/light';
+// import javascript from 'highlight.js/lib/languages/javascript';
+// import xml from 'highlight.js/lib/languages/xml';
+// import githubGist from 'react-syntax-highlighter/dist/styles/github-gist';
 
-registerLanguage('javascript', javascript);
-registerLanguage('xml', xml);
+// registerLanguage('javascript', javascript);
+// registerLanguage('xml', xml);
 
 const GithubHighlighter = (props) => {
   // const colorRedOrange = '#e74c3c';
   // const colorGreen = '#27ae60';
   // const colorBlueViolet = '#8e44ad';
 
-  githubGist.hljs = {};
+  // githubGist.hljs = {};
   /*
   githubGist['hljs-name'].color = colorGreen;
   githubGist['hljs-section'].color = colorGreen;
@@ -37,21 +38,22 @@ const GithubHighlighter = (props) => {
   githubGist['hljs-type'].color = colorBlueViolet;
   */
 
-  return (
-    <SyntaxHighlighter
-      language   = { props.language }
-      style      = { githubGist }
-      className  = { props.className }
-    >
-      { props.children }
-    </SyntaxHighlighter>
-  );
+  // return (
+  //   <SyntaxHighlighter
+  //     language = { props.language }
+  //     style = { githubGist }
+  //     className = { props.className }
+  //   >
+  //     { props.children }
+  //   </SyntaxHighlighter>
+  // );
+  return <span>{ props.children }</span>;
 };
 
 GithubHighlighter.propTypes = {
-  className: React.PropTypes.string,
-  language:  React.PropTypes.string,
-  children:  React.PropTypes.any,
+  className: PropTypes.string,
+  language: PropTypes.string,
+  children: PropTypes.any,
 };
 
 GithubHighlighter.defaultProps = {

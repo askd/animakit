@@ -1,8 +1,8 @@
+import React from 'react';
+import PropTypes from 'prop-types';
 import GithubHighlighter from 'components/GithubHighlighter/GithubHighlighter';
 
-import React             from 'react';
-
-import styles            from './Code.css';
+import styles from './Code.css';
 
 export default class CodeBlock extends React.PureComponent {
   render() {
@@ -14,7 +14,7 @@ export default class CodeBlock extends React.PureComponent {
       return (
         <GithubHighlighter
           className = { className }
-          language  = { this.props.language }
+          language = { this.props.language }
         >
           { this.props.children }
         </GithubHighlighter>
@@ -32,11 +32,11 @@ export default class CodeBlock extends React.PureComponent {
 }
 
 CodeBlock.propTypes = {
-  highlight:   React.PropTypes.bool,
-  language:    React.PropTypes.string,
-  blink:       React.PropTypes.bool,
-  blinkActive: React.PropTypes.bool,
-  children:    React.PropTypes.any,
+  highlight: PropTypes.bool,
+  language: PropTypes.string,
+  blink: PropTypes.bool,
+  blinkActive: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 CodeBlock.defaultProps = {

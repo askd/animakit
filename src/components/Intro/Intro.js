@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Logo from 'components/Logo/Logo';
 import Article from 'components/Article/Article';
@@ -141,7 +142,7 @@ export default class Intro extends React.PureComponent {
 }
 
 Intro.propTypes = {
-  component: React.PropTypes.string,
+  component: PropTypes.string,
 };
 
 Intro.defaultProps = {

@@ -1,22 +1,23 @@
 import AnimakitExpander from 'components/AnimakitExpander';
 
-import React            from 'react';
-import SimpleText       from 'components/SimpleText/SimpleText';
+import React from 'react';
+import PropTypes from 'prop-types';
+import SimpleText from 'components/SimpleText/SimpleText';
 
-import styles           from './ExpanderSmooth.css';
+import styles from './ExpanderSmooth.css';
 
 export default class ExpanderSmooth extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      show:     true,
+      show: true,
       expanded: true,
       showMore: false,
     };
 
     this.listeners = {
-      onClick:      this.onClick.bind(this),
+      onClick: this.onClick.bind(this),
       onToggleText: this.onToggleText.bind(this),
     };
   }
@@ -51,15 +52,17 @@ export default class ExpanderSmooth extends React.Component {
           className = { styles.header }
           onClick = { this.listeners.onClick }
         >
-          <span className = { styles.title }>{ this.state.expanded ? 'Hide lyrics' : 'Show lyrics' }</span>
+          <span className = { styles.title }>
+            { this.state.expanded ? 'Hide lyrics' : 'Show lyrics' }
+          </span>
           <span className = { this.state.expanded ? styles.toggleOff : styles.toggleOn } />
         </div>
 
         <AnimakitExpander expanded = { this.state.expanded } smoothResize durationPerPx = { 3 }>
           { this.state.show && <SimpleText
-            className     = { styles.content }
-            handleToggle  = { this.listeners.onToggleText }
-            showMore      = { this.state.showMore }
+            className = { styles.content }
+            handleToggle = { this.listeners.onToggleText }
+            showMore = { this.state.showMore }
           /> }
         </AnimakitExpander>
       </div>
@@ -68,5 +71,5 @@ export default class ExpanderSmooth extends React.Component {
 }
 
 ExpanderSmooth.propTypes = {
-  handleChangeExpanded: React.PropTypes.func,
+  handleChangeExpanded: PropTypes.func,
 };

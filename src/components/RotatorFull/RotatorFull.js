@@ -1,41 +1,42 @@
 import AnimakitRotator from 'components/AnimakitRotator';
 
-import React           from 'react';
-import styles          from './RotatorFull.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './RotatorFull.css';
 
 export default class RotatorFull extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      axis:       'X',
-      side:       0,
+      axis: 'X',
+      side: 0,
       sidesCount: 2,
-      zoom:       1,
-      back:       true,
-      shadow:     true,
-      duration:   1000,
+      zoom: 1,
+      back: true,
+      shadow: true,
+      duration: 1000,
       durationIn: 1000,
-      easing:     'cubic-bezier(.175,.885,.32,1.275)', // 'cubic-bezier(.45,-0.67,.53,1.63)',
+      easing: 'cubic-bezier(.175,.885,.32,1.275)', // 'cubic-bezier(.45,-0.67,.53,1.63)',
     };
 
     this.isKeyDownInput = false;
 
     this.listeners = {
-      nextSide:      this.nextSide.bind(this),
-      prevSide:      this.prevSide.bind(this),
-      addSide:       this.addSide.bind(this),
-      removeSide:    this.removeSide.bind(this),
-      setBack:       this.setBack.bind(this),
-      setShadow:     this.setShadow.bind(this),
-      setAxis:       this.setAxis.bind(this),
-      zoomIn:        this.zoomIn.bind(this),
-      zoomOut:       this.zoomOut.bind(this),
-      setDuration:   this.setDuration.bind(this),
+      nextSide: this.nextSide.bind(this),
+      prevSide: this.prevSide.bind(this),
+      addSide: this.addSide.bind(this),
+      removeSide: this.removeSide.bind(this),
+      setBack: this.setBack.bind(this),
+      setShadow: this.setShadow.bind(this),
+      setAxis: this.setAxis.bind(this),
+      zoomIn: this.zoomIn.bind(this),
+      zoomOut: this.zoomOut.bind(this),
+      setDuration: this.setDuration.bind(this),
       resetDuration: this.resetDuration.bind(this),
-      setEasing:     this.setEasing.bind(this),
-      keyDown:       this.keyDown.bind(this),
-      keyDownInput:  this.keyDownInput.bind(this),
+      setEasing: this.setEasing.bind(this),
+      keyDown: this.keyDown.bind(this),
+      keyDownInput: this.keyDownInput.bind(this),
     };
   }
 
@@ -162,13 +163,13 @@ export default class RotatorFull extends React.Component {
             <dd className = { styles.settingsData }>
               <button
                 className = { styles.buttonRotate }
-                onClick   = { this.listeners.prevSide }
+                onClick = { this.listeners.prevSide }
               >
                 &larr;
               </button>
               <button
                 className = { styles.buttonRotate }
-                onClick   = { this.listeners.nextSide }
+                onClick = { this.listeners.nextSide }
               >
                 &rarr;
               </button>
@@ -178,15 +179,15 @@ export default class RotatorFull extends React.Component {
               <span className = { styles.settingsVal }>{ this.state.sidesCount }</span>
               <button
                 className = { styles.button }
-                disabled  = { this.state.sidesCount === this.props.maxSidesCount }
-                onClick   = { this.listeners.addSide }
+                disabled = { this.state.sidesCount === this.props.maxSidesCount }
+                onClick = { this.listeners.addSide }
               >
                 +
               </button>
               <button
                 className = { styles.button }
-                disabled  = { this.state.sidesCount === this.props.minSidesCount }
-                onClick   = { this.listeners.removeSide }
+                disabled = { this.state.sidesCount === this.props.minSidesCount }
+                onClick = { this.listeners.removeSide }
               >
                 -
               </button>
@@ -197,15 +198,15 @@ export default class RotatorFull extends React.Component {
               <span className = { styles.settingsVal }>{ this.state.zoom }</span>
               <button
                 className = { styles.button }
-                disabled  = { this.state.zoom === this.props.maxZoom }
-                onClick   = { this.listeners.zoomIn }
+                disabled = { this.state.zoom === this.props.maxZoom }
+                onClick = { this.listeners.zoomIn }
               >
                 +
               </button>
               <button
                 className = { styles.button }
-                disabled  = { this.state.zoom === this.props.minZoom }
-                onClick   = { this.listeners.zoomOut }
+                disabled = { this.state.zoom === this.props.minZoom }
+                onClick = { this.listeners.zoomOut }
               >
                 -
               </button>
@@ -217,20 +218,20 @@ export default class RotatorFull extends React.Component {
             <dd className = { styles.settingsData }>
               <span className = { styles.settingsVal }>
                 <input
-                  id       = "s-axis"
-                  type     = { 'radio' }
-                  name     = { 'axis' }
-                  value    = { 'X' }
-                  checked  = { this.state.axis === 'X' }
+                  id = "s-axis"
+                  type = { 'radio' }
+                  name = { 'axis' }
+                  value = { 'X' }
+                  checked = { this.state.axis === 'X' }
                   onChange = { this.listeners.setAxis }
                 />X
               </span>
               <span className = { styles.settingsVal }>
                 <input
-                  type     = { 'radio' }
-                  name     = { 'axis' }
-                  value    = { 'Y' }
-                  checked  = { this.state.axis === 'Y' }
+                  type = { 'radio' }
+                  name = { 'axis' }
+                  value = { 'Y' }
+                  checked = { this.state.axis === 'Y' }
                   onChange = { this.listeners.setAxis }
                 />Y
               </span>
@@ -241,9 +242,9 @@ export default class RotatorFull extends React.Component {
             </dt>
             <dd className = { styles.settingsData }>
               <input
-                id       = "s-back"
-                type     = { 'checkbox' }
-                checked  = { this.state.back }
+                id = "s-back"
+                type = { 'checkbox' }
+                checked = { this.state.back }
                 onChange = { this.listeners.setBack }
               />
             </dd>
@@ -253,9 +254,9 @@ export default class RotatorFull extends React.Component {
             </dt>
             <dd className = { styles.settingsData }>
               <input
-                id       = "s-shadow"
-                type     = { 'checkbox' }
-                checked  = { this.state.shadow }
+                id = "s-shadow"
+                type = { 'checkbox' }
+                checked = { this.state.shadow }
                 onChange = { this.listeners.setShadow }
               />
             </dd>
@@ -265,13 +266,13 @@ export default class RotatorFull extends React.Component {
             </dt>
             <dd className = { styles.settingsData }>
               <input
-                id        = "s-dur"
-                type      = { 'number' }
+                id = "s-dur"
+                type = { 'number' }
                 className = { styles.inputNumber }
-                onChange  = { this.listeners.setDuration }
-                onBlur    = { this.listeners.resetDuration }
+                onChange = { this.listeners.setDuration }
+                onBlur = { this.listeners.resetDuration }
                 onKeyDown = { this.listeners.keyDownInput }
-                value     = { this.state.durationIn }
+                value = { this.state.durationIn }
               />
             </dd>
 
@@ -280,24 +281,24 @@ export default class RotatorFull extends React.Component {
             </dt>
             <dd className = { styles.settingsDataNL }>
               <input
-                id        = "s-easing"
-                type      = { 'text' }
+                id = "s-easing"
+                type = { 'text' }
                 className = { styles.input }
-                onChange  = { this.listeners.setEasing }
+                onChange = { this.listeners.setEasing }
                 onKeyDown = { this.listeners.keyDownInput }
-                value     = { this.state.easing }
+                value = { this.state.easing }
               />
             </dd>
           </dl>
         </div>
         <div className = { styles[`box${this.state.zoom}`] }>
           <AnimakitRotator
-            axis       = { this.state.axis }
-            side       = { this.state.side }
+            axis = { this.state.axis }
+            side = { this.state.side }
             background = { this.state.back ? '#fff' : null }
-            shadow     = { this.state.shadow }
-            duration   = { this.state.duration }
-            easing     = { this.state.easing }
+            shadow = { this.state.shadow }
+            duration = { this.state.duration }
+            easing = { this.state.easing }
           >
             { Array.from(Array(this.state.sidesCount), (_, i) =>
               <div
@@ -315,15 +316,15 @@ export default class RotatorFull extends React.Component {
 }
 
 RotatorFull.propTypes = {
-  minSidesCount: React.PropTypes.number,
-  maxSidesCount: React.PropTypes.number,
-  minZoom:       React.PropTypes.number,
-  maxZoom:       React.PropTypes.number,
+  minSidesCount: PropTypes.number,
+  maxSidesCount: PropTypes.number,
+  minZoom: PropTypes.number,
+  maxZoom: PropTypes.number,
 };
 
 RotatorFull.defaultProps = {
   minSidesCount: 2,
   maxSidesCount: 6,
-  minZoom:       1,
-  maxZoom:       3,
+  minZoom: 1,
+  maxZoom: 3,
 };

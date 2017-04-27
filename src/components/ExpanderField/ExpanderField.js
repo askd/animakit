@@ -1,7 +1,8 @@
 import AnimakitExpander from 'components/AnimakitExpander';
 
-import React            from 'react';
-import styles           from './ExpanderField.css';
+import React from 'react';
+import PropTypes from 'prop-types';
+import styles from './ExpanderField.css';
 
 export default class ExpanderField extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ export default class ExpanderField extends React.Component {
     };
 
     this.listeners = {
-      onKeyUp:  this.onKeyUp.bind(this),
+      onKeyUp: this.onKeyUp.bind(this),
       onChange: this.onChange.bind(this),
     };
   }
@@ -79,9 +80,9 @@ export default class ExpanderField extends React.Component {
           </span>
           <label htmlFor="a-no" className = { styles.radio }>
             <input
-              id    = "a-no"
-              name  = "else"
-              type  = "radio"
+              id = "a-no"
+              name = "else"
+              type = "radio"
               value = "No"
               checked = { !this.state.expanded.other }
               onChange = { this.listeners.onChange }
@@ -90,9 +91,9 @@ export default class ExpanderField extends React.Component {
           </label>
           <label htmlFor="a-yes" className = { styles.radio }>
             <input
-              id    = "a-yes"
-              name  = "else"
-              type  = "radio"
+              id = "a-yes"
+              name = "else"
+              type = "radio"
               value = "Yes"
               checked = { this.state.expanded.other }
               onChange = { this.listeners.onChange }
@@ -104,7 +105,6 @@ export default class ExpanderField extends React.Component {
             align = "bottom"
           >
             <textarea
-              className = { styles.inputTextareaWrap }
               name = "message"
               placeholder = "Your message"
               className = { styles.inputTextarea }
@@ -117,5 +117,5 @@ export default class ExpanderField extends React.Component {
 }
 
 ExpanderField.propTypes = {
-  handleChangeExpanded: React.PropTypes.func,
+  handleChangeExpanded: PropTypes.func,
 };

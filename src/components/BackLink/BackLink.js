@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import Logo from 'components/Logo/Logo';
 
@@ -16,7 +17,7 @@ const BackLink = (props) =>
 ;
 
 BackLink.propTypes = {
-  to: React.PropTypes.string,
+  to: PropTypes.string,
 };
 
 export default BackLink;
