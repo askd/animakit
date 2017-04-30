@@ -1,16 +1,22 @@
-import SliderDemo from 'components/SliderDemo/SliderDemo';
-import Section    from 'components/Section/Section';
-import Intro      from 'components/Intro/Intro';
-import Usage      from 'components/Usage/Usage';
-import Article    from 'components/Article/Article';
+import React from 'react';
 
-import React       from 'react';
+import SliderDemo from 'components/SliderDemo/SliderDemo';
+import Section from 'components/Section/Section';
+import Intro from 'components/Intro/Intro';
+import Usage from 'components/Usage/Usage';
+import Article from 'components/Article/Article';
+import IntroButton from 'components/IntroButton/IntroButton';
 
 const Slider = () =>
   <div>
 
     <Section>
       <Intro component="slider" />
+      <IntroButton
+        link = "https://github.com/askd/dotnav"
+      >
+        { 'Try it with Dotnav' }
+      </IntroButton>
     </Section>
 
     <Section>

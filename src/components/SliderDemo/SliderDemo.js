@@ -119,7 +119,7 @@ export default class SliderDemo extends React.PureComponent {
               >
                 {
 `<AnimakitSlider
-  slide="${this.state.slide.flexible}"
+  slide={${this.state.slide.flexible}}
   flexible
   skip
 >` }
@@ -129,9 +129,7 @@ export default class SliderDemo extends React.PureComponent {
 `  <Slide />
 
   <Slide />
-
   ...
-
   <Slide />`
                 }
               </CodeBlock>
@@ -139,6 +137,12 @@ export default class SliderDemo extends React.PureComponent {
                 highlight
               >
                 { '</AnimakitSlider>' }
+              </CodeBlock>
+              <CodeBlock>
+                {
+`
+<Dotnav index={${this.state.slide.flexible}} count={11} />`
+                }
               </CodeBlock>
             </Code>
           </DemoCode>

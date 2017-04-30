@@ -1,0 +1,201 @@
+@import '../vars.css';
+
+.root {
+  position: relative;
+  padding: 10px 40px;
+  border-radius: 20px;
+  background-color: #000;
+}
+
+.dotsHorizontal {
+  display: flex;
+  justify-content: center;
+}
+
+.dotsHorizontal .dot {
+  margin: 0 5px;
+}
+
+.dotsVertical .dot {
+  margin: 10px 0;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  padding: 5px;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #fff;
+    transition: box-shadow 0.5s;
+  }
+
+  &:hover::after,
+  &:focus::after {
+    box-shadow: 0 0 0 3px color(#fff a(50%));
+  }
+}
+
+.dotActive {
+  composes: dot;
+  cursor: default;
+
+  &::after,
+  &:hover::after,
+  &:focus::after {
+    box-shadow: 0 0 0 3px #fff;
+  }
+}
+
+.dotsColored .dot,
+.dotsHighlighted .dot {
+  &::after {
+    transition: all 0.5s;
+  }
+}
+
+.dotsColored .dot:nth-child(1) {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color2;
+  }
+}
+
+.dotsColored .dot:nth-child(2) {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color5;
+  }
+}
+
+.dotsColored .dot:nth-child(3) {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsColored .dot:nth-child(4) {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color6;
+  }
+}
+
+.dotsColored .dotActive:nth-child(1) {
+  &::after,
+  &:hover::after {
+    background-color: $color2;
+    box-shadow: 0 0 0 3px $color2;
+  }
+}
+
+.dotsColored .dotActive:nth-child(2) {
+  &::after,
+  &:hover::after {
+    background-color: $color5;
+    box-shadow: 0 0 0 3px $color5;
+  }
+}
+
+.dotsColored .dotActive:nth-child(3) {
+  &::after,
+  &:hover::after {
+    background-color: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsColored .dotActive:nth-child(4) {
+  &::after,
+  &:hover::after {
+    background-color: $color6;
+    box-shadow: 0 0 0 3px $color6;
+  }
+}
+
+.dotsHighlighted .dot {
+  &:hover::after {
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.dotsHighlighted .dotActive {
+  &::after,
+  &:hover::after {
+    background-color: $color3;
+    box-shadow: 0 0 0 3px $color3;
+  }
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px 0 0 0;
+  padding: 0;
+  border: none;
+  border-radius: 20px;
+  box-shadow: none;
+  outline: none;
+  background-color: transparent;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s;
+
+  &:focus,
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.25);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 19px;
+    left: 10px;
+    width: 20px;
+    height: 5px;
+    border-radius: 3px;
+    background-color: currentColor;
+  }
+
+  &::before {
+    transform: rotate(-45deg);
+  }
+
+  &::after {
+    transform: rotate(45deg);
+  }
+}
+
+.arrowPrev {
+  composes: arrow;
+  left: 0;
+
+  &::after {
+    margin-top: -3px;
+  }
+
+  &::before,
+  &::after {
+    transform-origin: 0% 50%;
+  }
+}
+
+.arrowNext {
+  composes: arrow;
+  right: 0;
+
+  &::before {
+    margin-top: -3px;
+  }
+
+  &::before,
+  &::after {
+    transform-origin: 100% 50%;
+  }
+}

@@ -47,7 +47,17 @@ const GithubHighlighter = (props) => {
   //     { props.children }
   //   </SyntaxHighlighter>
   // );
-  return <span>{ props.children }</span>;
+  let html = props.children;
+  html = html.replace(/</g, '&lt;');
+  html = html.replace(/>/g, '&gt;');
+  html = html.replace(/("[^"]+")/g, '<strong>$1</strong>');
+  html = html.replace(/({[^}]+})/g, '<strong>$1</strong>');
+  html = html.replace(/(Animakit[A-Za-z]+)/g, '<em>$1</em>');
+  return (
+    <pre className = { props.className }>
+      <code dangerouslySetInnerHTML={{ __html: html }} />
+    </pre>
+  );
 };
 
 GithubHighlighter.propTypes = {

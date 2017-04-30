@@ -2,11 +2,14 @@ import AnimakitSlider from 'components/AnimakitSlider';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dotnav from 'components/Dotnav/Dotnav';
+// import Dotnav from 'components/Dotnav/Dotnav';
+import Dotnav from 'dotnav';
 
 import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import dotnavStyles from 'components/Dotnav/Dotnav-my.css';
+// import srcDotnavStyles from 'components/Dotnav/Dotnav.css';
+import srcDotnavStyles from 'dotnav/lib/Dotnav.css';
 import styles from './SliderSimple.css';
 
 export default class SliderSimple extends React.Component {
@@ -32,6 +35,19 @@ export default class SliderSimple extends React.Component {
   render() {
     return (
       <div className = { styles.root }>
+        { false && <Dotnav
+          withArrows
+          count = { this.props.slides.length }
+          index = { this.state.index }
+          classes = {{
+            root: srcDotnavStyles['Dotnav'], // eslint-disable-line
+            dots: srcDotnavStyles['Dotnav-dots'],
+            dot: srcDotnavStyles['Dotnav-dot'],
+            dotActive: `${srcDotnavStyles['Dotnav-dot']} ${srcDotnavStyles['Dotnav-dot_active']}`,
+            arrowPrev: `${srcDotnavStyles['Dotnav-arrow']} ${srcDotnavStyles['Dotnav-arrow_prev']}`,
+            arrowNext: `${srcDotnavStyles['Dotnav-arrow']} ${srcDotnavStyles['Dotnav-arrow_next']}`,
+          }}
+        /> }
         <AnimakitSlider
           slide = { this.state.slide }
         >
@@ -86,11 +102,11 @@ export default class SliderSimple extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSlide }
           classes = {{
-            dots: `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsColored}`,
+            dots: `${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsColored} ${styles.nav}`,
             dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
-            arrowPrev: `${styles.arrowPrev} ${dotnavStyles.arrowPrev}`,
-            arrowNext: `${styles.arrowNext} ${dotnavStyles.arrowNext}`,
+            arrowPrev: `${dotnavStyles.arrowPrev} ${styles.arrowPrev}`,
+            arrowNext: `${dotnavStyles.arrowNext} ${styles.arrowNext}`,
           }}
         />
       </div>

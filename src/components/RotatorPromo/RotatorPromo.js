@@ -2,11 +2,12 @@ import AnimakitRotator from 'components/AnimakitRotator';
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import Dotnav from 'components/Dotnav/Dotnav';
+// import Dotnav from 'components/Dotnav/Dotnav';
+import Dotnav from 'dotnav';
 
 import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import dotnavStyles from 'components/Dotnav/Dotnav-my.css';
 import styles from './RotatorPromo.css';
 
 export default class RotatorPromo extends React.Component {
@@ -106,7 +107,7 @@ export default class RotatorPromo extends React.Component {
           index = { this.state.index }
           handleChange = { this.listeners.setSide }
           classes = {{
-            dots: `${styles.nav} ${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored}`,
+            dots: `${dotnavStyles.dotsVertical} ${dotnavStyles.dotsColored} ${styles.nav}`,
             dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
           }}

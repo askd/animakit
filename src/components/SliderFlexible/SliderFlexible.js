@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AnimakitSlider from 'components/AnimakitSlider';
 
-import Dotnav from 'components/Dotnav/Dotnav';
+// import Dotnav from 'components/Dotnav/Dotnav';
+import Dotnav from 'dotnav';
 
 import pathToImage from 'utils/path-to-image';
 
-import dotnavStyles from 'components/Dotnav/Dotnav.css';
+import dotnavStyles from 'components/Dotnav/Dotnav-my.css';
 import styles from './SliderFlexible.css';
 
 export default class SliderFlexible extends React.Component {
@@ -74,11 +75,11 @@ export default class SliderFlexible extends React.Component {
           index={ this.state.slide }
           handleChange={ this.listeners.setSlide }
           classes={{
-            dots: `${styles.nav} ${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsHighlighted}`,
+            dots: `${dotnavStyles.dotsHorizontal} ${dotnavStyles.dotsHighlighted} ${styles.nav}`,
             dot: dotnavStyles.dot,
             dotActive: dotnavStyles.dotActive,
-            arrowPrev: `${styles.arrowPrev} ${dotnavStyles.arrowPrev}`,
-            arrowNext: `${styles.arrowNext} ${dotnavStyles.arrowNext}`,
+            arrowPrev: `${dotnavStyles.arrowPrev} ${styles.arrowPrev}`,
+            arrowNext: `${dotnavStyles.arrowNext} ${styles.arrowNext}`,
           }}
         />
       </div>

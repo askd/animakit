@@ -10,6 +10,10 @@
   font-family: 'Ubuntu Mono', 'Lucida Console', monospace;
   font-size: 14px;
   line-height: 20px;
+
+  & pre > code > em {
+    color: $color4;
+  }
 }
 
 .block {
@@ -26,7 +30,12 @@
 .blockBlink {
   composes: blockHighlight;
 
-  & > code > span > span:nth-child(3) {
+  & > code > strong {
+    color: $color2;
+  }
+
+  & > code > span > span:nth-child(3),
+  & > code > strong {
     display: inline-block;
     background: rgba(0, 0, 0, 0.125);
     border-radius: 10px;
@@ -36,7 +45,8 @@
 .blockBlinkActive {
   composes: blockBlink;
 
-  & > code > span > span:nth-child(3) {
+  & > code > span > span:nth-child(3),
+  & > code > strong {
     animation: blink 0.5s 1;
   }
 }

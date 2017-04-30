@@ -45,19 +45,19 @@
 }
 
 .arrow {
-  position: absolute;
-  top: 50%;
   height: 120px;
   margin-top: -60px;
-  transition: color 0.3s;
+  transition: color 0.5s;
 
   &::before,
   &::after {
     top: 59px;
   }
 
+  &:focus,
   &:hover {
     color: $color3;
+    background-color: transparent;
   }
 }
 

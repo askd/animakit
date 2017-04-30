@@ -1,13 +1,12 @@
-import React       from 'react';
+import React from 'react';
 
 import RotatorDemo from 'components/RotatorDemo/RotatorDemo';
-import Section     from 'components/Section/Section';
-import Intro       from 'components/Intro/Intro';
-import Usage       from 'components/Usage/Usage';
-import Article     from 'components/Article/Article';
+import Section from 'components/Section/Section';
+import Intro from 'components/Intro/Intro';
+import Usage from 'components/Usage/Usage';
+import Article from 'components/Article/Article';
+import IntroButton from 'components/IntroButton/IntroButton';
 import CloseButton from 'components/CloseButton/CloseButton';
-
-import styles      from './Rotator.css';
 
 export default class Rotator extends React.Component {
   constructor(props) {
@@ -42,13 +41,11 @@ export default class Rotator extends React.Component {
         <Section>
           <Intro component = "rotator" />
           { !this.state.playground &&
-            <button
-              type = "button"
-              className = { styles.playground }
-              onClick = { this.listeners.showPlayground }
+            <IntroButton
+              handleClick = { this.listeners.showPlayground }
             >
               Playground
-            </button>
+            </IntroButton>
           }
           { this.state.playground &&
             <CloseButton
@@ -106,7 +103,8 @@ export default class Rotator extends React.Component {
                   <td>&nbsp;</td>
                   <td><code>true</code>, <code>false</code></td>
                   <td>
-                    Shadow on the rotator side. If you use 4 or less sides, it will be visible only while rotation
+                    Shadow on the rotator side
+                    (if you use 4 or less sides, it will be visible only while rotation)
                   </td>
                 </tr>
                 <tr>
