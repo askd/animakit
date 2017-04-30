@@ -9,6 +9,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const precss = require('precss');
 const inlineSVG = require('postcss-inline-svg');
 const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 const production = process.env.NODE_ENV === 'production';
 
@@ -135,7 +136,12 @@ if (production) {
 config.plugins.push(
   new webpack.LoaderOptionsPlugin({
     options: {
-      postcss: [
+      postcss: production ? [
+        precss(),
+        inlineSVG(),
+        autoprefixer(),
+        cssnano(),
+      ] : [
         precss(),
         inlineSVG(),
         autoprefixer(),

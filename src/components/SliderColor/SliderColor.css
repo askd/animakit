@@ -59,16 +59,10 @@
   line-height: 1;
 }
 
-.arrow {
-  
-}
-
 .arrowPrev {
-  composes: arrow;
   left: 20px;
 }
 
 .arrowNext {
-  composes: arrow;
   right: 20px;
 }

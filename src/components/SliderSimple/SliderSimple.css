@@ -44,16 +44,10 @@
   line-height: 1;
 }
 
-.arrow {
-
-}
-
 .arrowPrev {
-  composes: arrow;
   left: 5px;
 }
 
 .arrowNext {
-  composes: arrow;
   right: 5px;
 }
