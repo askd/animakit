@@ -39,14 +39,7 @@ export default class SliderSimple extends React.Component {
           withArrows
           count = { this.props.slides.length }
           index = { this.state.index }
-          classes = {{
-            root: srcDotnavStyles['Dotnav'], // eslint-disable-line
-            dots: srcDotnavStyles['Dotnav-dots'],
-            dot: srcDotnavStyles['Dotnav-dot'],
-            dotActive: `${srcDotnavStyles['Dotnav-dot']} ${srcDotnavStyles['Dotnav-dot_active']}`,
-            arrowPrev: `${srcDotnavStyles['Dotnav-arrow']} ${srcDotnavStyles['Dotnav-arrow_prev']}`,
-            arrowNext: `${srcDotnavStyles['Dotnav-arrow']} ${srcDotnavStyles['Dotnav-arrow_next']}`,
-          }}
+          classes = {srcDotnavStyles}
         /> }
         <AnimakitSlider
           slide = { this.state.slide }
