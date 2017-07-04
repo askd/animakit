@@ -11,8 +11,8 @@ export default class ExpanderSimple extends React.Component {
     super(props);
 
     this.state = {
-      show: true,
-      expanded: false,
+      show: true, // false,
+      expanded: true,
     };
 
     this.listeners = {
@@ -20,13 +20,13 @@ export default class ExpanderSimple extends React.Component {
     };
   }
 
-  componentDidMount() {
-    /* setTimeout(() => {
-      this.setState({
-        show: true,
-      });
-    }, 5000); */
-  }
+  // componentDidMount() {
+  //   setTimeout(() => {
+  //     this.setState({
+  //       show: true,
+  //     });
+  //   }, 5000);
+  // }
 
   onClick() {
     this.toggleExpanded();
