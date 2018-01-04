@@ -16,4 +16,8 @@ CloseButton.propTypes = {
   handleClick: PropTypes.func,
 };
 
+CloseButton.defaultProps = {
+  className: '',
+};
+
 export default CloseButton;

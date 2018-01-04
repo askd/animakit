@@ -6,11 +6,6 @@ const nodeModulesPath = path.resolve(__dirname, 'node_modules');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const precss = require('precss');
-const inlineSVG = require('postcss-inline-svg');
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
-
 const production = process.env.NODE_ENV === 'production';
 
 const config = {
@@ -132,23 +127,5 @@ if (production) {
   );
 //
 }
-
-config.plugins.push(
-  new webpack.LoaderOptionsPlugin({
-    options: {
-      postcss: production ? [
-        precss(),
-        inlineSVG(),
-        autoprefixer(),
-        cssnano(),
-      ] : [
-        precss(),
-        inlineSVG(),
-        autoprefixer(),
-      ],
-      context: '/',
-    },
-  })
-);
 
 module.exports = config;
